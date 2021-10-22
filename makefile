@@ -1,13 +1,13 @@
 CC = clang
 CFLGS = -std=c99 -Wall -pedantic
-EXECS = main group1
-O_FILES = group1.o group2.o group3.o group4.o group5.o group6.o group7.o group8.o group9.o group10.o group11.o group12.o group13.o group14.o group15.o group16.o group17.o
-H_FILES = group1.h group2.h group3.h group4.h group5.h group6.h group7.h group8.h group9.h group10.h group11.h group12.h group13.h group14.h group15.h group16.h group17.h
+EXECS = main
+O_FILES = Group1/group1.o Group2/group2.o Group3/group3.o Group4/group4.o Group5/group5.o Group6/group6.o Group7/group7.o Group8/group8.o Group9/group9.o Group10/group10.o Group11/group11.o Group12/group12.o Group13/group13.o Group14/group14.o Group15/group15.o Group16/group16.o Group17/group17.o
+H_FILES = Group1/group1.h Group2/group2.h Group3/group3.h Group4/group4.h Group5/group5.h Group6/group6.h Group7/group7.h Group8/group8.h Group9/group9.h Group10/group10.h Group11/group11.h Group12/group12.h Group13/group13.h Group14/group14.h Group15/group15.h Group16/group16.h Group17/group17.h
 
 all: $(EXECS)
 
 clean:
-	rm $($EXECS) *.o
+	rm $(EXECS) $(O_FILES)
 
 %: %.o
 %: %.c
@@ -21,54 +21,54 @@ main: main.o $(O_FILES) main.h $(H_FILES)
 main.o: main.c main.h $(H_FILES)
 	$(CC) $(CFLASG) -c main.c -o main.o
 
-#Group O Files
-group1.o: group1.c group1.h main.h
-	$(CC) $(CFLGAS) -c group1.c -o group1.o
+#Gtroup O Files
+Group1/group1.o: Group1/group1.c Group1/group1.h main.h
+	$(CC) $(CFLGAS) -c Group1/group1.c -o Group1/group1.o
 
-group2.o: group2.c group2.h main.h
-	$(CC) $(CFLGAS) -c group2.c -o group2.o
+Group2/group2.o: Group2/group2.c Group2/group2.h main.h
+	$(CC) $(CFLGAS) -c Group2/group2.c -o Group2/group2.o
 
-group3.o: group3.c group3.h main.h
-	$(CC) $(CFLGAS) -c group3.c -o group3.o
+Group3/group3.o: Group3/group3.c Group3/group3.h main.h
+	$(CC) $(CFLGAS) -c Group3/group3.c -o Group3/group3.o
 
-group4.o: group4.c group4.h main.h
-	$(CC) $(CFLGAS) -c group4.c -o group4.o
+Group4/group4.o: Group4/group4.c Group4/group4.h main.h
+	$(CC) $(CFLGAS) -c Group4/group4.c -o Group4/group4.o
 
-group5.o: group5.c group5.h main.h
-	$(CC) $(CFLGAS) -c group5.c -o group5.o
+Group5/group5.o: Group5/group5.c Group5/group5.h main.h
+	$(CC) $(CFLGAS) -c Group5/group5.c -o Group5/group5.o
 
-group6.o: group6.c group6.h main.h
-	$(CC) $(CFLGAS) -c group6.c -o group6.o
+Group6/group6.o: Group6/group6.c Group6/group6.h main.h
+	$(CC) $(CFLGAS) -c Group6/group6.c -o Group6/group6.o
 
-group7.o: group7.c group7.h main.h
-	$(CC) $(CFLGAS) -c group7.c -o group7.o
+Group7/group7.o: Group7/group7.c Group7/group7.h main.h
+	$(CC) $(CFLGAS) -c Group7/group7.c -o Group7/group7.o
 
-group8.o: group8.c group8.h main.h
-	$(CC) $(CFLGAS) -c group8.c -o group8.o
+Group8/group8.o: Group8/group8.c Group8/group8.h main.h
+	$(CC) $(CFLGAS) -c Group8/group8.c -o Group8/group8.o
 
-group9.o: group9.c group9.h main.h
-	$(CC) $(CFLGAS) -c group9.c -o group9.o
+Group9/group9.o: Group9/group9.c Group9/group9.h main.h
+	$(CC) $(CFLGAS) -c Group9/group9.c -o Group9/group9.o
 
-group10.o: group10.c group10.h main.h
-	$(CC) $(CFLGAS) -c group10.c -o group10.o
+Group10/group10.o: Group10/group10.c Group10/group10.h main.h
+	$(CC) $(CFLGAS) -c Group10/group10.c -o Group10/group10.o
 
-group11.o: group11.c group11.h main.h
-	$(CC) $(CFLGAS) -c group11.c -o group11.o
+Group11/group11.o: Group11/group11.c Group11/group11.h main.h
+	$(CC) $(CFLGAS) -c Group11/group11.c -o Group11/group11.o
 
-group12.o: group12.c group12.h main.h
-	$(CC) $(CFLGAS) -c group12.c -o group12.o
+Group12/group12.o: Group12/group12.c Group12/group12.h main.h
+	$(CC) $(CFLGAS) -c Group12/group12.c -o Group12/group12.o
 
-group13.o: group13.c group13.h main.h
-	$(CC) $(CFLGAS) -c group13.c -o group13.o
+Group13/group13.o: Group13/group13.c Group13/group13.h main.h
+	$(CC) $(CFLGAS) -c Group13/group13.c -o Group13/group13.o
 
-group14.o: group14.c group14.h main.h
-	$(CC) $(CFLGAS) -c group14.c -o group14.o
+Group14/group14.o: Group14/group14.c Group14/group14.h main.h
+	$(CC) $(CFLGAS) -c Group14/group14.c -o Group14/group14.o
 
-group15.o: group15.c group15.h main.h
-	$(CC) $(CFLGAS) -c group15.c -o group15.o
+Group15/group15.o: Group15/group15.c Group15/group15.h main.h
+	$(CC) $(CFLGAS) -c Group15/group15.c -o Group15/group15.o
 
-group16.o: group16.c group16.h main.h
-	$(CC) $(CFLGAS) -c group16.c -o group16.o
+Group16/group16.o: Group16/group16.c Group16/group16.h main.h
+	$(CC) $(CFLGAS) -c Group16/group16.c -o Group16/group16.o
 
-group17.o: group17.c group17.h main.h
-	$(CC) $(CFLGAS) -c group17.c -o group17.o
+Group17/group17.o: Group17/group17.c Group17/group17.h main.h
+	$(CC) $(CFLGAS) -c Group17/group17.c -o Group17/group17.o

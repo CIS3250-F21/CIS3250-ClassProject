@@ -1,5 +1,5 @@
 #include "Group1.h"
 
-struct shape* shape(char* fileName) {
+struct shape* shapeInputs(char* fileName) {
     return NULL;
 }

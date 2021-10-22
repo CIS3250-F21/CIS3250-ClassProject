@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 struct vector {
     float vector[4];
@@ -20,6 +21,7 @@ struct shape {
 
 float** transformationMatrix;
 struct shape* inputShape;
+char* fileName;
 
 //~~~~~~ Global Functions ~~~~~~//
 void multiplyMatrix(struct vector* currVector, float** matrix);

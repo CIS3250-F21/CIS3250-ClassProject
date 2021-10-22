@@ -19,7 +19,8 @@
 #include "Group9/Group9.h"
 
 int main(int argc, char** argv) {
-    char const fileName[] = "shape.txt";
+    fileName = malloc(sizeof(char) * 10);
+    strcpy(fileName, "shape.txt");
 
     //~~~~~ Group 1 ~~~~~//
     inputShape = shapeInputs(fileName);

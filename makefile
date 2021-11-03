@@ -2,7 +2,7 @@ CC = clang
 CFLGS = -std=c99 -Wall -pedantic
 EXECS = main
 O_FILES = Group1/Group1.o Group2/Group2.o Group3/Group3.o Group4/Group4.o Group5/Group5.o Group6/Group6.o Group7/Group7.o Group8/Group8.o Group9/Group9.o Group10/Group10.o Group11/Group11.o Group12/Group12.o Group13/Group13.o Group14/Group14.o Group15/Group15.o Group16/Group16.o Group17/Group17.o
-H_FILES = Group1/Group1.h Group2/Group2.h Group3/Group3.h Group4/Group4.h Group5/Group5.h Group6/Group6.h Group7/Group7.h Group8/Group8.h Group9/Group9.h Group10/Group10.h Group11/Group11.h Group12/Group12.h Group13/Group13.h Group14/Group14.h Group15/Group15.h Group16/Group16.h Group17/Group17.h
+H_FILES = main.h groupIncludes.h groupTestIncludes.h
 
 all: $(EXECS)
 
@@ -12,16 +12,16 @@ clean:
 %: %.o
 %: %.c
 
-%.o: %.c main.h $(H_FILES)
+%.o: %.c $(H_FILES)
 	$(CC) -c $(CFLAGS) $< -o $@
 
-main: main.o $(O_FILES) main.h $(H_FILES)
+main: main.o $(O_FILES) $(H_FILES)
 	$(CC) $(CFLAGS) main.o $(O_FILES) -o main
 	
-main.o: main.c main.h $(H_FILES)
+main.o: main.c $(H_FILES)
 	$(CC) $(CFLASG) -c main.c -o main.o
 
-#Gtroup O Files
+#Group O Files
 Group1/Group1.o: Group1/Group1.c Group1/Group1.h main.h
 	$(CC) $(CFLGAS) -c Group1/Group1.c -o Group1/Group1.o
 

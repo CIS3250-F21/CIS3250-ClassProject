@@ -1,3 +1,4 @@
 *.o
 main
 .vscode/settings.json
+.vscode

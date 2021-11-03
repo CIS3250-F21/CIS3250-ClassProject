@@ -1,5 +1,6 @@
 #include "Group1.h"
 
-struct shape* shapeInputs(char* fileName) {
-    return NULL;
+struct shape shapeInputs(char* fileName) {
+    struct shape newShape;
+    return newShape;
 }

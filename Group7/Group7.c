@@ -1,7 +1,9 @@
-#include "Group7.h"
+#include "../main.h"
 
-void yRotation() {
+void yRotation() {  // SLICK
+    // TODO
 }
 
-void generateYRotationMatrix(float theta) {
+void generateYRotationMatrix(float theta) {  // Syed
+                                             // TODO
 }

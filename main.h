@@ -19,7 +19,7 @@ struct shape {
 };
 
 float** transformationMatrix;
-struct shape inputShape;
+struct shape* inputShape;
 char* fileName;
 
 //~~~~~~ Global Functions ~~~~~~//
@@ -27,11 +27,36 @@ void multiplyMatrix(struct vector* currVector, float** matrix);
 
 //~~~~~~ Getters ~~~~~~//
 struct vector* getVector(int index);
+float getGloalScale();
+float getXScale();
+float getYScale();
+float getZScale();
+float getXRotation();
 float getYRotation();
+float getZRotation();
+float getXTranslation();
+float getYTranslation();
+float getZTranslation();
+float getXSheer();
+float getYSheer();
+float getZSheer();
+
 
 //~~~~~~ Setters ~~~~~~//
 void setVector(int index, struct vector* newVector);
-void setYRotation(float angle);
+void setGlobalScale (float newGlobalScale);
+void setXScale (float newXScale);
+void setYScale (float newYScale);
+void setZScale (float newZScale);
+void setXRotation (float newTheta);
+void setYRotation(float newTheta);
+void setZRotation(float newTheta);
+void setXTranslation (float newXTranslation);
+void setYTranslation (float newYTranslation);
+void setZTranslation (float newZTranslation);
+void setXShear (float newXShear);
+void setYShear (float newYShear);
+void setZShear (float newZShear);
 
 //~~~~~ Helpers ~~~~~~//
 void runAllTests();

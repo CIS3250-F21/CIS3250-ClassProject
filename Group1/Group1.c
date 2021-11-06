@@ -1,6 +1,6 @@
 #include "Group1.h"
 
-struct shape shapeInputs(char* fileName) {
-    struct shape newShape;
+struct shape * readInput (char* fileName) {
+    struct shape* newShape = malloc(sizeof(struct shape));
     return newShape;
 }

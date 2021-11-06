@@ -3,6 +3,6 @@
 
 #include "../main.h"
 
-struct shape shapeInputs(char* fileName);
+struct shape *readInput(char* fileName);
 
 #endif

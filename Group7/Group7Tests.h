@@ -5,13 +5,13 @@
 #include <stdio.h>
 
 #include "Group7.h"
-#include "main.h"
+#include "../main.h"
 
 int compareFloat(float x, float y, float acceptedDistance);
 
-void runTests();
+void runGroup7Tests();
 
-void testHandler(int (*test)(), char *testString);
+void group7TestHandler(int (*test)(), char *testString);
 
 void setup();
 

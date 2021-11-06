@@ -15,6 +15,14 @@
 // ~~~~~~ Get Vector Tests ~~~~~~ //
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
+int compareFloat(float x, float y, float acceptedDistance) {
+    float difference = (pow(x, 2) - pow(y, 2));
+    if (difference > acceptedDistance) {
+        return 1;
+    }
+    return 0;
+}
+
 // Dirty Test
 // Tests if Get Vector handles negative index values
 int testGetVectorReturnsNullWhenIndexIsNeagtive() {
@@ -383,9 +391,9 @@ int testYRotationWhenAngleIsNegative() {
     // instantiating the expected result
     for (int i = 0; i < 5; i++) {
         expected[i] = malloc(sizeof(struct vector));
-        expected[i]->vector[0] = (i + 1) * sin(inputShape.rotation[1]);
-        expected[i]->vector[1] = -(i)*sin(inputShape.rotation[1]);
-        expected[i]->vector[2] = 2 + i;
+        expected[i]->vector[0] = (i + 2) * -sin(inputShape.rotation[1]);
+        expected[i]->vector[1] = 1 + i;
+        expected[i]->vector[2] = (i)*sin(inputShape.rotation[1]);
         expected[i]->vector[3] = 1;
     }
 
@@ -394,7 +402,7 @@ int testYRotationWhenAngleIsNegative() {
     // seing if the results match
     for (int i = 0; i < inputShape.numOfVectors; i++) {
         for (int j = 0; j < 4; j++) {
-            if (expected[i]->vector[j] != inputShape.vectors[i]->vector[j]) {
+            if (compareFloat(expected[i]->vector[j], inputShape.vectors[i]->vector[j], 0.001)) {
                 for (int i = 0; i < 5; i++) {
                     free(expected[i]);
                 }
@@ -420,9 +428,9 @@ int testYRotationWhenAngleIsPositiveGreaterThanTwoPi() {
     // instantiating the expected result
     for (int i = 0; i < 5; i++) {
         expected[i] = malloc(sizeof(struct vector));
-        expected[i]->vector[0] = (i + 1) * sin(inputShape.rotation[1]);
-        expected[i]->vector[1] = -(i)*sin(inputShape.rotation[1]);
-        expected[i]->vector[2] = 2 + i;
+        expected[i]->vector[0] = (i + 2) * -sin(inputShape.rotation[1]);
+        expected[i]->vector[1] = 1 + i;
+        expected[i]->vector[2] = (i)*sin(inputShape.rotation[1]);
         expected[i]->vector[3] = 1;
     }
 
@@ -431,7 +439,7 @@ int testYRotationWhenAngleIsPositiveGreaterThanTwoPi() {
     // seeing if the results match
     for (int i = 0; i < inputShape.numOfVectors; i++) {
         for (int j = 0; j < 4; j++) {
-            if (expected[i]->vector[j] != inputShape.vectors[i]->vector[j]) {
+            if (compareFloat(expected[i]->vector[j], inputShape.vectors[i]->vector[j], 0.001)) {
                 for (int i = 0; i < 5; i++) {
                     free(expected[i]);
                 }
@@ -470,7 +478,7 @@ int testYRotationHandlesNullMatrix() {
     transformationMatrix = temp;
     for (int i = 0; i < inputShape.numOfVectors; i++) {
         for (int j = 0; j < 4; j++) {
-            if (expected[i]->vector[j] != inputShape.vectors[i]->vector[j]) {
+            if (compareFloat(expected[i]->vector[j], inputShape.vectors[i]->vector[j], 0.001)) {
                 for (int i = 0; i < 5; i++) {
                     free(expected[i]);
                 }
@@ -509,7 +517,7 @@ int testYRotationHandlesNullElementOfMatrix() {
     transformationMatrix[0] = temp;
     for (int i = 0; i < inputShape.numOfVectors; i++) {
         for (int j = 0; j < 4; j++) {
-            if (expected[i]->vector[j] != inputShape.vectors[i]->vector[j]) {
+            if (compareFloat(expected[i]->vector[j], inputShape.vectors[i]->vector[j], 0.001)) {
                 for (int i = 0; i < 5; i++) {
                     free(expected[i]);
                 }
@@ -543,15 +551,16 @@ int testYRotationHandlesNullVector() {
         expected[i]->vector[1] = 1;
     }
     // only alters the first one given a vector is NULL
-    expected[0]->vector[0] = 1;
-    expected[0]->vector[1] = 0;
+    expected[0]->vector[0] = -2;
+    expected[0]->vector[2] = 0;
 
     yRotation();
 
     inputShape.vectors[1] = temp;
     for (int i = 0; i < inputShape.numOfVectors; i++) {
         for (int j = 0; j < 4; j++) {
-            if (expected[i]->vector[j] != inputShape.vectors[i]->vector[j]) {
+            if (compareFloat(expected[i]->vector[j], inputShape.vectors[i]->vector[j], 0.001)) {
+                printf("%d %d %f %f\n", i, j, expected[i]->vector[j], inputShape.vectors[i]->vector[j]);
                 for (int i = 0; i < 5; i++) {
                     free(expected[i]);
                 }

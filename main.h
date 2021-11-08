@@ -10,7 +10,7 @@ struct point {
 };
 
 struct shape {
-    struct point** vectors;
+    struct point** points;
     int numOfVectors;
     float scaling[4];
     float rotation[3];

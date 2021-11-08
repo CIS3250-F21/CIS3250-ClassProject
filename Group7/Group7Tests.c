@@ -38,7 +38,7 @@ int testGetVectorReturnsNullWhenIndexIsGreaterThanLength() {
 // Clean Test
 //  Tests when getting the value it matches the expected value
 int testGetVectorReturnsMatchingVector() {
-    struct point *testVector = inputShape->vectors[0];
+    struct point *testVector = inputShape->points[0];
     return testVector == getVector(0);
 }
 
@@ -65,7 +65,7 @@ int testSetVectorIfVectorAddedAtIndex() {
     setVector(index, newVector);
 
     // check if new vector is added
-    if (inputShape->vectors[1] == newVector) {
+    if (inputShape->points[1] == newVector) {
         free(newVector);
 
         // put original vector back
@@ -75,7 +75,7 @@ int testSetVectorIfVectorAddedAtIndex() {
     }
 
     // put original vector back
-    inputShape->vectors[1] = tempVector;
+    inputShape->points[1] = tempVector;
 
     // free
     free(newVector);
@@ -365,7 +365,7 @@ int testYRotationWhenAngleIs0() {
 
     for (int i = 0; i < inputShape->numOfVectors; i++) {
         for (int j = 0; j < 4; j++) {
-            if (expected[i]->element[j] != inputShape->vectors[i]->element[j]) {
+            if (expected[i]->element[j] != inputShape->points[i]->element[j]) {
                 for (int i = 0; i < 5; i++) {
                     free(expected[i]);
                 }
@@ -402,7 +402,7 @@ int testYRotationWhenAngleIsNegative() {
     // seing if the results match
     for (int i = 0; i < inputShape->numOfVectors; i++) {
         for (int j = 0; j < 4; j++) {
-            if (compareFloat(expected[i]->element[j], inputShape->vectors[i]->element[j], 0.000001)) {
+            if (compareFloat(expected[i]->element[j], inputShape->points[i]->element[j], 0.000001)) {
                 for (int i = 0; i < 5; i++) {
                     free(expected[i]);
                 }
@@ -439,7 +439,7 @@ int testYRotationWhenAngleIsPositiveGreaterThanTwoPi() {
     // seeing if the results match
     for (int i = 0; i < inputShape->numOfVectors; i++) {
         for (int j = 0; j < 4; j++) {
-            if (compareFloat(expected[i]->element[j], inputShape->vectors[i]->element[j], 0.000001)) {
+            if (compareFloat(expected[i]->element[j], inputShape->points[i]->element[j], 0.000001)) {
                 for (int i = 0; i < 5; i++) {
                     free(expected[i]);
                 }
@@ -478,7 +478,7 @@ int testYRotationHandlesNullMatrix() {
     transformationMatrix = temp;
     for (int i = 0; i < inputShape->numOfVectors; i++) {
         for (int j = 0; j < 4; j++) {
-            if (compareFloat(expected[i]->element[j], inputShape->vectors[i]->element[j], 0.000001)) {
+            if (compareFloat(expected[i]->element[j], inputShape->points[i]->element[j], 0.000001)) {
                 for (int i = 0; i < 5; i++) {
                     free(expected[i]);
                 }
@@ -517,7 +517,7 @@ int testYRotationHandlesNullElementOfMatrix() {
     transformationMatrix[0] = temp;
     for (int i = 0; i < inputShape->numOfVectors; i++) {
         for (int j = 0; j < 4; j++) {
-            if (compareFloat(expected[i]->element[j], inputShape->vectors[i]->element[j], 0.000001)) {
+            if (compareFloat(expected[i]->element[j], inputShape->points[i]->element[j], 0.000001)) {
                 for (int i = 0; i < 5; i++) {
                     free(expected[i]);
                 }
@@ -537,8 +537,8 @@ int testYRotationHandlesNullElementOfMatrix() {
 // Dirty Test
 // Tests when a Null Matrix is found that nothing is changed for the vectors after the Null
 int testYRotationHandlesNullVector() {
-    struct point *temp = inputShape->vectors[1];
-    inputShape->vectors[1] = NULL;
+    struct point *temp = inputShape->points[1];
+    inputShape->points[1] = NULL;
     struct point **expected = malloc(sizeof(struct point *) * 5);
     inputShape->rotation[1] = ((0.5) * 3.14159265359);
 
@@ -556,11 +556,11 @@ int testYRotationHandlesNullVector() {
 
     yRotation();
 
-    inputShape->vectors[1] = temp;
+    inputShape->points[1] = temp;
     for (int i = 0; i < inputShape->numOfVectors; i++) {
         for (int j = 0; j < 4; j++) {
-            if (compareFloat(expected[i]->element[j], inputShape->vectors[i]->element[j], 0.000001)) {
-                printf("%d %d %f %f\n", i, j, expected[i]->element[j], inputShape->vectors[i]->element[j]);
+            if (compareFloat(expected[i]->element[j], inputShape->points[i]->element[j], 0.000001)) {
+                printf("%d %d %f %f\n", i, j, expected[i]->element[j], inputShape->points[i]->element[j]);
                 for (int i = 0; i < 5; i++) {
                     free(expected[i]);
                 }
@@ -580,17 +580,17 @@ int testYRotationHandlesNullVector() {
 // Dirty
 // Tests when all vectors are Null that nothing changes foir the value
 int testYRotationHandlesNullVectors() {
-    struct point **temp = inputShape->vectors;
-    inputShape->vectors = NULL;
+    struct point **temp = inputShape->points;
+    inputShape->points = NULL;
     inputShape->rotation[1] = ((0.5) * 3.14159265359);
 
     yRotation();
 
-    if (inputShape->vectors == NULL) {
-        inputShape->vectors = temp;
+    if (inputShape->points == NULL) {
+        inputShape->points = temp;
         return 1;
     }
-    inputShape->vectors = temp;
+    inputShape->points = temp;
     return 0;
 }
 
@@ -603,9 +603,9 @@ void setup() {
 
     for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 3; j++) {
-            inputShape->vectors[i]->element[j] = j + i;
+            inputShape->points[i]->element[j] = j + i;
         }
-        inputShape->vectors[i]->element[3] = 1;
+        inputShape->points[i]->element[3] = 1;
     }
 
     for (int i = 0; i < 4; i++) {

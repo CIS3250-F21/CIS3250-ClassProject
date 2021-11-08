@@ -189,7 +189,7 @@ void setYShear(float newYShear) {
 void setZShear(float newZShear) {
 }
 
-void multiplyMatrix(struct point* currVector, float** matrix) {
+void multiplyMatrix(struct point* currVector, float matrix[4][4]) {
     // Error checking for NULL paramaters
     if (currVector == NULL || matrix == NULL) {
         return;
@@ -203,15 +203,15 @@ void multiplyMatrix(struct point* currVector, float** matrix) {
 
     // updating the vectors values
     for (int i = 0; i < 4; i++) {
-        temp.point[i] = 0;
+        temp.element[i] = 0;
         for (int j = 0; j < 4; j++) {
-            temp.point[i] += currVector->point[j] * matrix[j][i];
+            temp.element[i] += currVector->element[j] * matrix[j][i];
         }
     }
 
     // storing new values into actual point
     for (int i = 0; i < 4; i++) {
-        currVector->point[i] = temp.point[i];
+        currVector->element[i] = temp.element[i];
     }
 }
 
@@ -230,15 +230,10 @@ void runAllTests() {
     for (i = 0; i < 5; i++) {
         struct point* temp = malloc(sizeof(struct point));
         for (int j = 0; j < 3; j++) {
-            temp->point[j] = j + i;
+            temp->element[j] = j + i;
         }
-        temp->point[3] = 1;
+        temp->element[3] = 1;
         inputShape->vectors[i] = temp;
-    }
-
-    transformationMatrix = malloc(sizeof(float*) * 4);
-    for (i = 0; i < 4; i++) {
-        transformationMatrix[i] = malloc(sizeof(float) * 4);
     }
 
     // TESTS GO HERE
@@ -250,9 +245,5 @@ void runAllTests() {
     }
     free(inputShape->vectors);
 
-    for (i = 0; i < 4; i++) {
-        free(transformationMatrix[i]);
-    }
-    free(transformationMatrix);
     free(inputShape);
 }

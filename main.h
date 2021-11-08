@@ -6,7 +6,7 @@
 #include <string.h>
 
 struct point {
-    float point[4];
+    float element[4];
 };
 
 struct shape {
@@ -18,12 +18,12 @@ struct shape {
     float shearing[3];
 };
 
-float** transformationMatrix;
+float transformationMatrix[4][4];
 struct shape* inputShape;
 char* fileName;
 
 //~~~~~~ Global Functions ~~~~~~//
-void multiplyMatrix(struct point* currVector, float** matrix);
+void multiplyMatrix(struct point* currVector, float matrix[4][4]);
 
 //~~~~~~ Getters ~~~~~~//
 struct point* getVector(int index);

@@ -4,8 +4,8 @@
 #include <math.h>
 #include <stdio.h>
 
-#include "Group7.h"
 #include "../main.h"
+#include "Group7.h"
 
 int compareFloat(float x, float y, float acceptedDistance);
 

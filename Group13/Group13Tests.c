@@ -2,10 +2,6 @@
 
 int main(int argc, char* argv[]) {  // Calls the tests
 
-#ifndef MAIN_H
-    printf("Major Warning: xShear's functionality did not detect the inclusion of the main header. The original get/set functions written before merging have been used as a fallback. However, this behaviour may be inconsistent with the functions in main.");
-#endif
-
     if (argc > 1 && strcmp(argv[1], "-t") == 0) {
         tstFlag = 1;
     } else {

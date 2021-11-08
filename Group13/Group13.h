@@ -3,6 +3,8 @@
 
 #include "../main.h"
 
+void printErr(char* toPrint);
+
 void xShear();
 
 #endif

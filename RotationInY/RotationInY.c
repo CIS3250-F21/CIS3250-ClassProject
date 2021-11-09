@@ -1,4 +1,4 @@
-#include "Group7.h"
+#include "RotationInY.h"
 
 #include "../main.h"
 
@@ -16,9 +16,9 @@ void yRotation() {
 
 void generateYRotationMatrix(float newTheta) {
     // check if matrix is null first right here
-    if (transformationMatrix == NULL) {
-        return;
-    }
+    // if (transformationMatrix == NULL) {
+    //     return;
+    // }
 
     for (int i = 0; i < 4; i++) {
         if (transformationMatrix[i] == NULL) {

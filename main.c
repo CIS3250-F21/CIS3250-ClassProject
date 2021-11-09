@@ -72,13 +72,13 @@ int main(int argc, char** argv) {
 
 struct point* getVector(int index) {
     // if the index is less then 0 or greater the the number of vectors, or the vectors are null
-    if ((index < 0) || (index >= inputShape->numOfVectors) || inputShape->vectors == NULL) {
+    if ((index < 0) || (index >= inputShape->numOfVectors) || inputShape->points == NULL) {
         // return null
         return NULL;
     }
 
     // otherwise return the vector at the index
-    return inputShape->vectors[index];
+    return inputShape->points[index];
 }
 
 // ~~~~~~~~~~~~~~~~~ GROUP Getters Go HERE ~~~~~~~~~~~~~~~~~~~ //
@@ -144,7 +144,7 @@ void setVector(int index, struct point* newVector) {
     // Otherwise if index is greater then 0 and is less then the number of vectors we have
     if ((index >= 0) && (index < inputShape->numOfVectors)) {
         // set the vector at the index to the new vector.
-        inputShape->vectors[index] = newVector;
+        inputShape->points[index] = newVector;
     }
 }
 
@@ -189,7 +189,7 @@ void setYShear(float newYShear) {
 void setZShear(float newZShear) {
 }
 
-void multiplyMatrix(struct point* currVector, float** matrix) {
+void multiplyMatrix(struct point* currVector, float matrix[4][4]) {
     // Error checking for NULL paramaters
     if (currVector == NULL || matrix == NULL) {
         return;
@@ -203,15 +203,15 @@ void multiplyMatrix(struct point* currVector, float** matrix) {
 
     // updating the vectors values
     for (int i = 0; i < 4; i++) {
-        temp.point[i] = 0;
+        temp.element[i] = 0;
         for (int j = 0; j < 4; j++) {
-            temp.point[i] += currVector->point[j] * matrix[j][i];
+            temp.element[i] += currVector->element[j] * matrix[j][i];
         }
     }
 
     // storing new values into actual point
     for (int i = 0; i < 4; i++) {
-        currVector->point[i] = temp.point[i];
+        currVector->element[i] = temp.element[i];
     }
 }
 
@@ -225,20 +225,15 @@ void runAllTests() {
     setYRotation(0);
 
     // Instantiation of the shape structure
-    inputShape->vectors = malloc(sizeof(struct point*) * 5);
+    inputShape->points = malloc(sizeof(struct point*) * 5);
 
     for (i = 0; i < 5; i++) {
         struct point* temp = malloc(sizeof(struct point));
         for (int j = 0; j < 3; j++) {
-            temp->point[j] = j + i;
+            temp->element[j] = j + i;
         }
-        temp->point[3] = 1;
-        inputShape->vectors[i] = temp;
-    }
-
-    transformationMatrix = malloc(sizeof(float*) * 4);
-    for (i = 0; i < 4; i++) {
-        transformationMatrix[i] = malloc(sizeof(float) * 4);
+        temp->element[3] = 1;
+        inputShape->points[i] = temp;
     }
 
     // TESTS GO HERE
@@ -246,13 +241,9 @@ void runAllTests() {
 
     // free
     for (i = 0; i < 5; i++) {
-        free(inputShape->vectors[i]);
+        free(inputShape->points[i]);
     }
-    free(inputShape->vectors);
+    free(inputShape->points);
 
-    for (i = 0; i < 4; i++) {
-        free(transformationMatrix[i]);
-    }
-    free(transformationMatrix);
     free(inputShape);
 }

@@ -12,7 +12,7 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~ Tests ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
-// ~~~~~~ Get Vector Tests ~~~~~~ //
+// ~~~~~~ Get Point Tests ~~~~~~ //
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
 int compareFloat(float x, float y, float acceptedDistance) {
@@ -24,115 +24,115 @@ int compareFloat(float x, float y, float acceptedDistance) {
 }
 
 // Dirty Test
-// Tests if Get Vector handles negative index values
-int testGetVectorReturnsNullWhenIndexIsNeagtive() {
-    return getVector(-1) == NULL;
+// Tests if Get Point handles negative index values
+int testGetPointReturnsNullWhenIndexIsNeagtive() {
+    return getPoint(-1) == NULL;
 }
 
 // Dirty Test
 // Tests When the value of the index exceeds the max length
-int testGetVectorReturnsNullWhenIndexIsGreaterThanLength() {
-    return getVector(inputShape->numOfVectors) == NULL;
+int testGetPointReturnsNullWhenIndexIsGreaterThanLength() {
+    return getPoint(inputShape->numOfPoints) == NULL;
 }
 
 // Clean Test
 //  Tests when getting the value it matches the expected value
-int testGetVectorReturnsMatchingVector() {
-    struct point *testVector = inputShape->points[0];
-    return testVector == getVector(0);
+int testGetPointReturnsMatchingPoint() {
+    struct point *testPoint = inputShape->points[0];
+    return testPoint == getPoint(0);
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
-// ~~~~~~ Set Vector Tests ~~~~~~ //
+// ~~~~~~ Set Point Tests ~~~~~~ //
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
 // Clean Test
-// Tests When a vector is added that the vector is stored in the global shape object
-int testSetVectorIfVectorAddedAtIndex() {
-    // create null ptr to vector
-    struct point *newVector = malloc(sizeof(struct point));
+// Tests When a point is added that the point is stored in the global shape object
+int testSetPointIfPointAddedAtIndex() {
+    // create null ptr to point
+    struct point *newPoint = malloc(sizeof(struct point));
     int index = 1;
 
-    // fill vector
+    // fill point
     for (int i = 0; i < 4; i++) {
-        newVector->element[i] = (float)1;
+        newPoint->element[i] = (float)1;
     }
 
-    // store current vector
-    struct point *tempVector = getVector(index);
+    // store current point
+    struct point *tempPoint = getPoint(index);
 
-    // set vector
-    setVector(index, newVector);
+    // set point
+    setPoint(index, newPoint);
 
-    // check if new vector is added
-    if (inputShape->points[1] == newVector) {
-        free(newVector);
+    // check if new point is added
+    if (inputShape->points[1] == newPoint) {
+        free(newPoint);
 
-        // put original vector back
-        setVector(index, tempVector);
+        // put original point back
+        setPoint(index, tempPoint);
 
         return 1;
     }
 
-    // put original vector back
-    inputShape->points[1] = tempVector;
+    // put original point back
+    inputShape->points[1] = tempPoint;
 
     // free
-    free(newVector);
+    free(newPoint);
     return 0;
 }
 
 // Dirty Test
-// Tests when a vector is added out of range (negative) that code does not crash
-int testSetVectorReturn0WhenIndexIsNegative() {
-    // index and vector
-    struct point *newVector = malloc(sizeof(struct point));
+// Tests when a point is added out of range (negative) that code does not crash
+int testSetPointReturn0WhenIndexIsNegative() {
+    // index and point
+    struct point *newPoint = malloc(sizeof(struct point));
     int index = -1;
 
-    // fill vector
+    // fill point
     for (int i = 0; i < 4; i++) {
-        newVector->element[i] = (float)1;
+        newPoint->element[i] = (float)1;
     }
 
-    // store current vector
-    // getVector(index);
+    // store current point
+    // getPoint(index);
 
-    // set vector
-    setVector(index, newVector);
+    // set point
+    setPoint(index, newPoint);
 
-    free(newVector);
+    free(newPoint);
     return 1;
 }
 
 // Dirty Test
-// Tests when a vector is added out of range that code does not crash
-int testSetVectorReturn0WhenIndexIsGreaterThenLength() {
-    // index and vector
-    struct point *newVector = malloc(sizeof(struct point));
-    int index = inputShape->numOfVectors;
+// Tests when a point is added out of range that code does not crash
+int testSetPointReturn0WhenIndexIsGreaterThenLength() {
+    // index and point
+    struct point *newPoint = malloc(sizeof(struct point));
+    int index = inputShape->numOfPoints;
 
-    // fill vector
+    // fill point
     for (int i = 0; i < 4; i++) {
-        newVector->element[i] = (float)1;
+        newPoint->element[i] = (float)1;
     }
 
-    // set vector
-    setVector(index, newVector);
+    // set point
+    setPoint(index, newPoint);
 
-    free(newVector);
+    free(newPoint);
 
     return 1;
 }
 
 // Dirty Test
-// Tests whether setVector can handle a struct point pointer pointing to null when passed in, or if it crashes.
-int testSetVectorReturn0IfVectorIsNull() {
-    // index and vector
-    struct point *newVector = NULL;
+// Tests whether setPoint can handle a struct point pointer pointing to null when passed in, or if it crashes.
+int testSetPointReturn0IfPointIsNull() {
+    // index and point
+    struct point *newPoint = NULL;
     int index = 1;
 
-    // set vector
-    setVector(index, newVector);
+    // set point
+    setPoint(index, newPoint);
 
     return 1;
 }
@@ -296,20 +296,20 @@ int testGenerateYRotationMatrixWhenAngleIsPositiveGreaterThanTwoPi() {
 
 // Dirty Test
 
-// This tests check whether the function vector is NULL
-int testMatrixMultiplicationWhenVectorIsNull() {
-    struct point *tempVector = NULL;
+// This tests check whether the function point is NULL
+int testMatrixMultiplicationWhenPointIsNull() {
+    struct point *tempPoint = NULL;
 
-    multiplyMatrix(tempVector, transformationMatrix);
+    multiplyMatrix(tempPoint, transformationMatrix);
 
     return 1;
 }
 
 // Clean Test
 
-// This function tests whether the vector is valid by looping through the //matrix
-int testMatrixMultiplicationWhenVectorIsValid() {
-    struct point *tempVector = malloc(sizeof(struct point));
+// This function tests whether the point is valid by looping through the //matrix
+int testMatrixMultiplicationWhenPointIsValid() {
+    struct point *tempPoint = malloc(sizeof(struct point));
 
     // set transform here
     float theta = 10;
@@ -324,22 +324,22 @@ int testMatrixMultiplicationWhenVectorIsValid() {
         transformationMatrix[i][i] = i;
     }
 
-    // set tempVector to to point to current vector
+    // set tempPoint to to point to current point
     for (int i = 0; i < 4; i++) {
-        tempVector->element[i] = (float)1;
+        tempPoint->element[i] = (float)1;
     }
 
-    multiplyMatrix(tempVector, transformationMatrix);
+    multiplyMatrix(tempPoint, transformationMatrix);
 
-    // loops through and free tempVector
+    // loops through and free tempPoint
     for (int i = 0; i < 4; i++) {
-        if (tempVector->element[i] != i) {
-            free(tempVector);
+        if (tempPoint->element[i] != i) {
+            free(tempPoint);
             return 0;
         }
     }
 
-    free(tempVector);
+    free(tempPoint);
     return 1;
 }
 
@@ -348,7 +348,7 @@ int testMatrixMultiplicationWhenVectorIsValid() {
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
 // Clean Test
-// Tests all vectors in the shape strucure such that they are rotated by 0 radians around Y
+// Tests all points in the shape strucure such that they are rotated by 0 radians around Y
 int testYRotationWhenAngleIs0() {
     struct point **expected = malloc(sizeof(struct point *) * 5);
 
@@ -363,7 +363,7 @@ int testYRotationWhenAngleIs0() {
 
     yRotation();
 
-    for (int i = 0; i < inputShape->numOfVectors; i++) {
+    for (int i = 0; i < inputShape->numOfPoints; i++) {
         for (int j = 0; j < 4; j++) {
             if (expected[i]->element[j] != inputShape->points[i]->element[j]) {
                 for (int i = 0; i < 5; i++) {
@@ -383,7 +383,7 @@ int testYRotationWhenAngleIs0() {
 }
 
 // Dirty Test
-// Tests all vectors in the shape strucure such that they are rotated by -PI/2 radians around Y properly for the negative angle
+// Tests all points in the shape strucure such that they are rotated by -PI/2 radians around Y properly for the negative angle
 int testYRotationWhenAngleIsNegative() {
     struct point **expected = malloc(sizeof(struct point *) * 5);
     inputShape->rotation[1] = (-(0.5) * 3.14159265359);
@@ -400,7 +400,7 @@ int testYRotationWhenAngleIsNegative() {
     yRotation();
 
     // seing if the results match
-    for (int i = 0; i < inputShape->numOfVectors; i++) {
+    for (int i = 0; i < inputShape->numOfPoints; i++) {
         for (int j = 0; j < 4; j++) {
             if (compareFloat(expected[i]->element[j], inputShape->points[i]->element[j], 0.000001)) {
                 for (int i = 0; i < 5; i++) {
@@ -420,7 +420,7 @@ int testYRotationWhenAngleIsNegative() {
 }
 
 // Dirty Test
-// Tests all vectors in the shape strucure such that they are rotated by (5 * PI)/2 radians around Y properly for the large angle
+// Tests all points in the shape strucure such that they are rotated by (5 * PI)/2 radians around Y properly for the large angle
 int testYRotationWhenAngleIsPositiveGreaterThanTwoPi() {
     struct point **expected = malloc(sizeof(struct point *) * 5);
     inputShape->rotation[1] = ((2.5) * 3.14159265359);
@@ -437,7 +437,7 @@ int testYRotationWhenAngleIsPositiveGreaterThanTwoPi() {
     yRotation();
 
     // seeing if the results match
-    for (int i = 0; i < inputShape->numOfVectors; i++) {
+    for (int i = 0; i < inputShape->numOfPoints; i++) {
         for (int j = 0; j < 4; j++) {
             if (compareFloat(expected[i]->element[j], inputShape->points[i]->element[j], 0.000001)) {
                 for (int i = 0; i < 5; i++) {
@@ -457,7 +457,7 @@ int testYRotationWhenAngleIsPositiveGreaterThanTwoPi() {
 }
 /*
 // Dirty Test
-// Tests when a Null Matrix is found that nothing is changed for the vectors
+// Tests when a Null Matrix is found that nothing is changed for the points
 int testYRotationHandlesNullMatrix() {
     float **temp = transformationMatrix;
     transformationMatrix = NULL;
@@ -476,7 +476,7 @@ int testYRotationHandlesNullMatrix() {
     yRotation();
 
     transformationMatrix = temp;
-    for (int i = 0; i < inputShape->numOfVectors; i++) {
+    for (int i = 0; i < inputShape->numOfPoints; i++) {
         for (int j = 0; j < 4; j++) {
             if (compareFloat(expected[i]->element[j], inputShape->points[i]->element[j], 0.000001)) {
                 for (int i = 0; i < 5; i++) {
@@ -496,7 +496,7 @@ int testYRotationHandlesNullMatrix() {
 }
 
 // Dirty Test
-// Tests when a Null Element of a Matrix is found that nothing is changed for the vectors
+// Tests when a Null Element of a Matrix is found that nothing is changed for the points
 int testYRotationHandlesNullElementOfMatrix() {
     float *temp = transformationMatrix[0];
     transformationMatrix[0] = NULL;
@@ -515,7 +515,7 @@ int testYRotationHandlesNullElementOfMatrix() {
     yRotation();
 
     transformationMatrix[0] = temp;
-    for (int i = 0; i < inputShape->numOfVectors; i++) {
+    for (int i = 0; i < inputShape->numOfPoints; i++) {
         for (int j = 0; j < 4; j++) {
             if (compareFloat(expected[i]->element[j], inputShape->points[i]->element[j], 0.000001)) {
                 for (int i = 0; i < 5; i++) {
@@ -535,8 +535,8 @@ int testYRotationHandlesNullElementOfMatrix() {
 }
 
 // Dirty Test
-// Tests when a Null Matrix is found that nothing is changed for the vectors after the Null
-int testYRotationHandlesNullVector() {
+// Tests when a Null Matrix is found that nothing is changed for the points after the Null
+int testYRotationHandlesNullPoint() {
     struct point *temp = inputShape->points[1];
     inputShape->points[1] = NULL;
     struct point **expected = malloc(sizeof(struct point *) * 5);
@@ -550,14 +550,14 @@ int testYRotationHandlesNullVector() {
         }
         expected[i]->element[3] = 1;
     }
-    // only alters the first one given a vector is NULL
+    // only alters the first one given a point is NULL
     expected[0]->element[0] = -2;
     expected[0]->element[2] = 0;
 
     yRotation();
 
     inputShape->points[1] = temp;
-    for (int i = 0; i < inputShape->numOfVectors; i++) {
+    for (int i = 0; i < inputShape->numOfPoints; i++) {
         for (int j = 0; j < 4; j++) {
             if (compareFloat(expected[i]->element[j], inputShape->points[i]->element[j], 0.000001)) {
                 printf("%d %d %f %f\n", i, j, expected[i]->element[j], inputShape->points[i]->element[j]);
@@ -578,8 +578,8 @@ int testYRotationHandlesNullVector() {
 }
 */
 // Dirty
-// Tests when all vectors are Null that nothing changes foir the value
-int testYRotationHandlesNullVectors() {
+// Tests when all points are Null that nothing changes foir the value
+int testYRotationHandlesNullPoints() {
     struct point **temp = inputShape->points;
     inputShape->points = NULL;
     inputShape->rotation[1] = ((0.5) * 3.14159265359);
@@ -598,7 +598,7 @@ int testYRotationHandlesNullVectors() {
 // ~~~~~~ Other Funcs ~~~~~~ //
 // ~~~~~~~~~~~~~~~~~~~~~~~~~ //
 void setup() {
-    inputShape->numOfVectors = 5;
+    inputShape->numOfPoints = 5;
     inputShape->rotation[1] = 0;
 
     for (int i = 0; i < 5; i++) {
@@ -625,27 +625,27 @@ void group7TestHandler(int (*test)(), char *testString) {
 }
 
 void runGroup7Tests() {
-    // getVector Tests //
+    // getPoint Tests //
 
     // Dirty Tests
-    group7TestHandler(testGetVectorReturnsNullWhenIndexIsNeagtive, "Test Get Vector Returns Null When Index Is Negative");
+    group7TestHandler(testGetPointReturnsNullWhenIndexIsNeagtive, "Test Get Point Returns Null When Index Is Negative");
 
-    group7TestHandler(testGetVectorReturnsNullWhenIndexIsGreaterThanLength, "Test Get Vector Returns Null When Index Is Greater Then Length");
+    group7TestHandler(testGetPointReturnsNullWhenIndexIsGreaterThanLength, "Test Get Point Returns Null When Index Is Greater Then Length");
 
     // Clean Tests
-    group7TestHandler(testGetVectorReturnsMatchingVector, "Test Get Vector Returns Matching Vector ");
+    group7TestHandler(testGetPointReturnsMatchingPoint, "Test Get Point Returns Matching Point ");
 
-    // setVector Tests //
+    // setPoint Tests //
 
     // Dirty Tests
-    group7TestHandler(testSetVectorReturn0WhenIndexIsNegative, "Test Set Vector If Returns 0 When Index Negative.");
+    group7TestHandler(testSetPointReturn0WhenIndexIsNegative, "Test Set Point If Returns 0 When Index Negative.");
 
-    group7TestHandler(testSetVectorReturn0WhenIndexIsGreaterThenLength, "Test Set Vector If Returns 0 When Index Greater Than Length.");
+    group7TestHandler(testSetPointReturn0WhenIndexIsGreaterThenLength, "Test Set Point If Returns 0 When Index Greater Than Length.");
 
-    group7TestHandler(testSetVectorReturn0IfVectorIsNull, "Test Set Vector If Returns 0 When Vector is Null");
+    group7TestHandler(testSetPointReturn0IfPointIsNull, "Test Set Point If Returns 0 When Point is Null");
 
     // Clean Tests
-    group7TestHandler(testSetVectorIfVectorAddedAtIndex, "Test Set Vector If Vector Added At Index");
+    group7TestHandler(testSetPointIfPointAddedAtIndex, "Test Set Point If Point Added At Index");
 
     // getYRotation Tests //
 
@@ -668,15 +668,15 @@ void runGroup7Tests() {
     // Matrix Multiplication Tests //
 
     // Dirty tests
-    group7TestHandler(testMatrixMultiplicationWhenVectorIsNull, "Test Matrix Multiplication To Check For NULL Vector ");
+    group7TestHandler(testMatrixMultiplicationWhenPointIsNull, "Test Matrix Multiplication To Check For NULL Point ");
 
     // Clean tests
-    group7TestHandler(testMatrixMultiplicationWhenVectorIsValid, "Test Matrix Multiplication Vectors Are Valid ");
+    group7TestHandler(testMatrixMultiplicationWhenPointIsValid, "Test Matrix Multiplication Points Are Valid ");
 
     // Dirty YRotation Tests
-    group7TestHandler(testYRotationHandlesNullVectors, "Test Y Rotation Handles Null Vectors ");
+    group7TestHandler(testYRotationHandlesNullPoints, "Test Y Rotation Handles Null Points ");
 
-    // group7TestHandler(testYRotationHandlesNullVector, "Test Y Rotation Handles Null Vector ");
+    // group7TestHandler(testYRotationHandlesNullPoint, "Test Y Rotation Handles Null Point ");
 
     // group7TestHandler(testYRotationHandlesNullMatrix, "Test Y Rotation Handles Null Matrix ");
 

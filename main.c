@@ -70,7 +70,7 @@ int main(int argc, char** argv) {
 
 // ~~~~~~~~~~~~~~~~~ Getters ~~~~~~~~~~~~~~~~~~~ //
 
-struct point* getVector(int index) {
+struct point* getPoint(int index) {
     // if the index is less then 0 or greater the the number of vectors, or the vectors are null
     if ((index < 0) || (index >= inputShape->numOfVectors) || inputShape->points == NULL) {
         // return null
@@ -135,16 +135,16 @@ float getZSheer() {
 }
 
 // ~~~~~~~~~~~~~~~~~ Setters ~~~~~~~~~~~~~~~~~~~ //
-void setVector(int index, struct point* newVector) {
+void setPoint(int index, struct point* newPoint) {
     // if the new vector is null, don't set
-    if (newVector == NULL) {
+    if (newPoint == NULL) {
         return;
     }
 
     // Otherwise if index is greater then 0 and is less then the number of vectors we have
     if ((index >= 0) && (index < inputShape->numOfVectors)) {
         // set the vector at the index to the new vector.
-        inputShape->points[index] = newVector;
+        inputShape->points[index] = newPoint;
     }
 }
 
@@ -189,14 +189,10 @@ void setYShear(float newYShear) {
 void setZShear(float newZShear) {
 }
 
-void multiplyMatrix(struct point* currVector, float matrix[4][4]) {
+void multiplyMatrix(struct point* currPoint, float matrix[4][4]) {
     // Error checking for NULL paramaters
-    if (currVector == NULL || matrix == NULL) {
+    if (currPoint == NULL) {
         return;
-    }
-    // loop through the matrix, if anything is null return and don't change.
-    for (int i = 0; i < 4; i++) {
-        if (matrix[i] == NULL) return;
     }
 
     struct point temp;
@@ -205,13 +201,13 @@ void multiplyMatrix(struct point* currVector, float matrix[4][4]) {
     for (int i = 0; i < 4; i++) {
         temp.element[i] = 0;
         for (int j = 0; j < 4; j++) {
-            temp.element[i] += currVector->element[j] * matrix[j][i];
+            temp.element[i] += currPoint->element[j] * matrix[j][i];
         }
     }
 
     // storing new values into actual point
     for (int i = 0; i < 4; i++) {
-        currVector->element[i] = temp.element[i];
+        currPoint->element[i] = temp.element[i];
     }
 }
 

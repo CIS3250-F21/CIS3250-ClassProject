@@ -11,7 +11,7 @@ struct point {
 
 struct shape {
     struct point** points;
-    int numOfVectors;
+    int numOfPoints;
     float scaling[4];
     float rotation[3];
     float translation[3];
@@ -23,10 +23,10 @@ struct shape* inputShape;
 char* fileName;
 
 //~~~~~~ Global Functions ~~~~~~//
-void multiplyMatrix(struct point* currVector, float matrix[4][4]);
+void multiplyMatrix(struct point* currPoint, float matrix[4][4]);
 
 //~~~~~~ Getters ~~~~~~//
-struct point* getVector(int index);
+struct point* getPoint(int index);
 float getGloalScale();
 float getXScale();
 float getYScale();
@@ -42,7 +42,7 @@ float getYSheer();
 float getZSheer();
 
 //~~~~~~ Setters ~~~~~~//
-void setVector(int index, struct point* newVector);
+void setPoint(int index, struct point* newPoint);
 void setGlobalScale(float newGlobalScale);
 void setXScale(float newXScale);
 void setYScale(float newYScale);

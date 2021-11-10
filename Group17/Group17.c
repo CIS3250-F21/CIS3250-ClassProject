@@ -5,7 +5,7 @@ int outputVector(char* filename) {
     struct point* point;
 
     // check if there are vectors to print
-    if (inputShape->numOfVectors <= 0) {
+    if (inputShape->numOfPoints <= 0) {
         #ifdef DEBUG
             printf("ERROR no vectors to print\n");
         #endif
@@ -29,7 +29,7 @@ int outputVector(char* filename) {
     }
 
     // output vectors to file
-    for (int i = 0; i < inputShape->numOfVectors; i++) {
+    for (int i = 0; i < inputShape->numOfPoints; i++) {
         point = getVector(i);
 
         if (point == NULL) {
@@ -51,4 +51,3 @@ int outputVector(char* filename) {
     fclose(fp);
     return 1;
 }
-

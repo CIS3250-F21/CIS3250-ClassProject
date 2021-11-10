@@ -4,7 +4,7 @@
 #include "Group1/Group1.h"
 #include "Group10/Group10.h"
 #include "Group11/Group11.h"
-#include "Group12/Group12.h"
+#include "zPlaneReflection/zPlaneReflection.h"
 #include "Group13/Group13.h"
 #include "Group14/Group14.h"
 #include "Group15/Group15.h"

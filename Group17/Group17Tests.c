@@ -3,11 +3,11 @@
 void runGroup17Tests () {
     // store prev points
     struct point** oldPoints = inputShape->points;
-    int oldNumOfVectors = inputShape->numOfVectors;
+    int oldNumOfPoints = inputShape->numOfPoints;
 
     // allocate space for temp points
     inputShape->points = malloc((sizeof(struct point*)) * 10);
-    inputShape->numOfVectors = 0;
+    inputShape->numOfPoints = 0;
 
     FILE* fp;
     float x, y, z, s;
@@ -33,7 +33,7 @@ void runGroup17Tests () {
     };
 
     // add vector to shape
-    inputShape->numOfVectors = 1;
+    inputShape->numOfPoints = 1;
     setVector(0, &testPoint);
 
     // Call the outputVector function with the input paramters
@@ -73,7 +73,7 @@ void runGroup17Tests () {
      *    not contain any values
      */
 
-    inputShape->numOfVectors = 0;
+    inputShape->numOfPoints = 0;
     
     if (outputVector("output2.1.txt") != 0) {
         printf("[Test 2.1] Return value is not 0\n");
@@ -98,7 +98,7 @@ void runGroup17Tests () {
     };
 
     // add vector to shape
-    inputShape->numOfVectors = 1;
+    inputShape->numOfPoints = 1;
     setVector(0, &testPoint2);
     
     // call outputMatrix function with filename
@@ -134,7 +134,7 @@ void runGroup17Tests () {
      */
 
     // add vector to shape
-    inputShape->numOfVectors = 1;
+    inputShape->numOfPoints = 1;
     inputShape->points[0] = NULL;
 
     // call function with input
@@ -176,7 +176,7 @@ void runGroup17Tests () {
     };
 
 
-    inputShape->numOfVectors = 2;
+    inputShape->numOfPoints = 2;
     setVector(0, &testPoint4);
     setVector(1, &testPoint5);
 
@@ -235,5 +235,5 @@ void runGroup17Tests () {
 
     // replace old points
     inputShape->points = oldPoints;
-    inputShape->numOfVectors = oldNumOfVectors;
+    inputShape->numOfPoints = oldNumOfPoints;
 }

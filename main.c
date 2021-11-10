@@ -233,7 +233,7 @@ void runAllTests() {
     }
 
     // TESTS GO HERE
-    // runGroup7Tests();  // Group 7 tests
+    runGroup7Tests();  // Group 7 tests
 
     zPlaneReflectionTests(); // Group 12 tests
 

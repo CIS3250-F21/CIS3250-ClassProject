@@ -1,7 +1,7 @@
 CC = clang
 CFLGS = -std=c99 -Wall -pedantic
 EXECS = main
-O_FILES = Group1/Group1.o Group2/Group2.o Group3/Group3.o Group4/Group4.o Group5/Group5.o Group6/Group6.o Group7/Group7.o Group8/Group8.o Group9/Group9.o Group10/Group10.o Group11/Group11.o zPlaneReflection/zPlaneReflection.o Group13/Group13.o Group14/Group14.o Group15/Group15.o Group16/Group16.o Group17/Group17.o Group1/Group1Tests.o Group2/Group2Tests.o Group3/Group3Tests.o Group4/Group4Tests.o Group5/Group5Tests.o Group6/Group6Tests.o Group7/Group7Tests.o Group8/Group8Tests.o Group9/Group9Tests.o Group10/Group10Tests.o Group11/Group11Tests.o zPlaneReflection/zPlaneReflectionTests.o Group13/Group13Tests.o Group14/Group14Tests.o Group15/Group15Tests.o Group16/Group16Tests.o Group17/Group17Tests.o
+O_FILES = Group1/Group1.o Group2/Group2.o Group3/Group3.o Group4/Group4.o Group5/Group5.o Group6/Group6.o RotationInY/RotationInY.o Group8/Group8.o Group9/Group9.o Group10/Group10.o Group11/Group11.o Group12/Group12.o Group13/Group13.o Group14/Group14.o Group15/Group15.o Group16/Group16.o Group17/Group17.o Group1/Group1Tests.o Group2/Group2Tests.o Group3/Group3Tests.o Group4/Group4Tests.o Group5/Group5Tests.o Group6/Group6Tests.o RotationInY/RotationInYTests.o Group8/Group8Tests.o Group9/Group9Tests.o Group10/Group10Tests.o Group11/Group11Tests.o Group12/Group12Tests.o Group13/Group13Tests.o Group14/Group14Tests.o Group15/Group15Tests.o Group16/Group16Tests.o Group17/Group17Tests.o
 H_FILES = main.h groupIncludes.h groupTestIncludes.h
 
 all: $(EXECS)
@@ -40,8 +40,8 @@ Group5/Group5.o: Group5/Group5.c Group5/Group5.h main.h
 Group6/Group6.o: Group6/Group6.c Group6/Group6.h main.h
 	$(CC) $(CFLGAS) -c Group6/Group6.c -o Group6/Group6.o
 
-Group7/Group7.o: Group7/Group7.c Group7/Group7.h main.h
-	$(CC) $(CFLGAS) -c Group7/Group7.c -o Group7/Group7.o
+RotationInY/RotationInY.o: RotationInY/RotationInY.c RotationInY/RotationInY.h main.h
+	$(CC) $(CFLGAS) -c RotationInY/RotationInY.c -o RotationInY/RotationInY.o
 
 Group8/Group8.o: Group8/Group8.c Group8/Group8.h main.h
 	$(CC) $(CFLGAS) -c Group8/Group8.c -o Group8/Group8.o
@@ -92,8 +92,8 @@ Group5/Group5Tests.o: Group5/Group5Tests.c Group5/Group5Tests.h main.h
 Group6/Group6Tests.o: Group6/Group6Tests.c Group6/Group6Tests.h main.h
 	$(CC) $(CFLGAS) -c Group6/Group6Tests.c -o Group6/Group6Tests.o
 
-Group7/Group7Tests.o: Group7/Group7Tests.c Group7/Group7Tests.h main.h
-	$(CC) $(CFLGAS) -c Group7/Group7Tests.c -o Group7/Group7Tests.o
+RotationInY/RotationInYTests.o: RotationInY/RotationInYTests.c RotationInY/RotationInYTests.h main.h
+	$(CC) $(CFLGAS) -c RotationInY/RotationInYTests.c -o RotationInY/RotationInYTests.o
 
 Group8/Group8Tests.o: Group8/Group8Tests.c Group8/Group8Tests.h main.h
 	$(CC) $(CFLGAS) -c Group8/Group8Tests.c -o Group8/Group8Tests.o

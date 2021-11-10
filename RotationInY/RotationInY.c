@@ -1,9 +1,10 @@
-#include "../main.h"
-#include "Group7.h"
+#include "RotationInY.h"
 
-void yRotation(){
-        generateYRotationMatrix(getYRotation());
-    struct vector * y;
+#include "../main.h"
+
+void yRotation() {
+    generateYRotationMatrix(getYRotation());
+    struct point* y;
     int i = 0;
 
     while ((y = getVector(i)) != NULL) {
@@ -13,17 +14,15 @@ void yRotation(){
     }
 }
 
+void generateYRotationMatrix(float newTheta) {
+    // check if matrix is null first right here
+    // if (transformationMatrix == NULL) {
+    //     return;
+    // }
 
-void generateYRotationMatrix(float newTheta){
-
-    //check if matrix is null first right here
-    if (transformationMatrix == NULL) {
-        return;
-    }
-    
-    for(int i = 0; i < 4; i++) {
-        if(transformationMatrix[i] == NULL) { 
-        return; 
+    for (int i = 0; i < 4; i++) {
+        if (transformationMatrix[i] == NULL) {
+            return;
         }
     }
 

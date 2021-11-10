@@ -60,7 +60,7 @@ int main(int argc, char** argv) {
         void xyzOrthographicProjection();
 
         //~~~~~ Group 17 ~~~~~//
-        int outputVector(struct vector * finalVector, char* filename);
+        int outputVector(struct vector* finalVector, char* filename);
 
         free (inputShape);
     }
@@ -70,15 +70,15 @@ int main(int argc, char** argv) {
 
 // ~~~~~~~~~~~~~~~~~ Getters ~~~~~~~~~~~~~~~~~~~ //
 
-struct vector* getVector(int index) {
+struct point* getPoints(int index) {
     // if the index is less then 0 or greater the the number of vectors, or the vectors are null
-    if ((index < 0) || (index >= inputShape->numOfVectors) || inputShape->vectors == NULL) {
+    if ((index < 0) || (index >= inputShape->numOfPoints) || inputShape->points == NULL) {
         // return null
         return NULL;
     }
 
     // otherwise return the vector at the index
-    return inputShape->vectors[index];
+    return inputShape->points[index];
 }
 
 
@@ -137,16 +137,16 @@ float getZSheer() {
 
 
 // ~~~~~~~~~~~~~~~~~ Setters ~~~~~~~~~~~~~~~~~~~ //
-void setVector(int index, struct vector* newVector) {
+void setPoint(int index, struct point* newPoint) {
     // if the new vector is null, don't set
-    if (newVector == NULL) {
+    if (newPoint == NULL) {
         return;
     }
 
     //Otherwise if index is greater then 0 and is less then the number of vectors we have
-    if ((index >= 0) && (index < inputShape->numOfVectors)) {
+    if ((index >= 0) && (index < inputShape->numOfPoints)) {
         // set the vector at the index to the new vector.
-        inputShape->vectors[index] = newVector;
+        inputShape->points[index] = newPoint;
     }
 }
 
@@ -203,10 +203,9 @@ void setZShear (float newZShear) {
 
 }
 
-
-void multiplyMatrix(struct vector* currVector, float** matrix) {
+void multiplyMatrix(struct point* currPoint, float matrix[4][4]) {
     // Error checking for NULL paramaters
-    if (currVector == NULL || matrix == NULL) {
+    if (currPoint == NULL || matrix == NULL) {
         return;
     }
     // loop through the matrix, if anything is null return and don't change.
@@ -214,19 +213,19 @@ void multiplyMatrix(struct vector* currVector, float** matrix) {
         if (matrix[i] == NULL) return;
     }
 
-    struct vector temp;
+    struct point temp;
 
     // updating the vectors values
     for (int i = 0; i < 4; i++) {
-        temp.vector[i] = 0;
+        temp.element[i] = 0;
         for (int j = 0; j < 4; j++) {
-            temp.vector[i] += currVector->vector[j] * matrix[j][i];
+            temp.element[i] += currPoint->element[j] * matrix[j][i];
         }
     }
 
     // storing new values into actual point
     for (int i = 0; i < 4; i++) {
-        currVector->vector[i] = temp.vector[i];
+        currPoint->element[i] = temp.element[i];
     }
 }
 
@@ -234,42 +233,36 @@ void runAllTests() {
     int i;
     inputShape = malloc(sizeof(struct shape));
 
-    inputShape->numOfVectors = 5;
+    inputShape->numOfPoints = 5;
 
     //SET YOUR VALUES HERE
     setYRotation(0);
 
     // Instantiation of the shape structure
-    inputShape->vectors = malloc(sizeof(struct vector*) * 5);
+    inputShape->points = malloc(sizeof(struct point*) * 5);
 
     for (i = 0; i < 5; i++) {
-        struct vector* temp = malloc(sizeof(struct vector));
+        struct point* temp = malloc(sizeof(struct point));
         for (int j = 0; j < 3; j++) {
-            temp->vector[j] = j + i;
+            temp->element[j] = j + i;
         }
-        temp->vector[3] = 1;
-        inputShape->vectors[i] = temp;
+        temp->element[3] = 1;
+        inputShape->points[i] = temp;
     }
-
-    transformationMatrix = malloc(sizeof(float*) * 4);
-    for (i = 0; i < 4; i++) {
-        transformationMatrix[i] = malloc(sizeof(float) * 4);
-    }
-
     //TESTS GO HERE
     runGroup7Tests();  // Group 7 tests
-
+	zPlaneReflectionTests(); //Group 12 zPlaneReflectionTests
 
 
     //free
     for (i = 0; i < 5; i++) {
-        free(inputShape->vectors[i]);
+        free(inputShape->points[i]);
     }
-    free(inputShape->vectors);
+    free(inputShape->points);
 
-    for(i =0; i < 4; i++) {
-        free(transformationMatrix[i]);
-    }
-    free(transformationMatrix);
+    // for(i =0; i < 4; i++) {
+    //     free(transformationMatrix[i]);
+    // }
+    // free(transformationMatrix);
     free(inputShape);
 }

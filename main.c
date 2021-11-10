@@ -4,8 +4,9 @@
 #include "groupTestIncludes.h"
 
 int main(int argc, char** argv) {
-    fileName = malloc(sizeof(char) * 10);
-    strcpy(fileName, "shape.txt");
+    fileName = "shape.txt";
+    // fileName = malloc(sizeof(char) * 10);
+    // strcpy(fileName, "shape.txt");
 
     // Run tests if need be
     if (argc == 2 && strcmp(argv[1], "-t") == 0) {
@@ -60,11 +61,11 @@ int main(int argc, char** argv) {
         void xyzOrthographicProjection();
 
         //~~~~~ Group 17 ~~~~~//
-        int outputVector(struct point * finalVector, char* filename);
+        outputVector(fileName);
 
         free(inputShape);
     }
-    free(fileName);
+    // free(fileName);
     return 0;
 }
 
@@ -238,6 +239,7 @@ void runAllTests() {
 
     // TESTS GO HERE
     runGroup7Tests();  // Group 7 tests
+    runGroup17Tests(); // Group 17 Tests
 
     // free
     for (i = 0; i < 5; i++) {

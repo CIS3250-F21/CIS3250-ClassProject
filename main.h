@@ -11,7 +11,7 @@ struct point {
 
 struct shape {
     struct point** points;
-    int numOfVectors;
+    int numOfPoints;
     float scaling[4];
     float rotation[3];
     float translation[3];
@@ -23,7 +23,7 @@ struct shape* inputShape;
 char* fileName;
 
 //~~~~~~ Global Functions ~~~~~~//
-void multiplyMatrix(struct point* currPoint, float[4][4] matrix);
+void multiplyMatrix(struct point* currPoint, float matrix[4][4]);
 
 //~~~~~~ Getters ~~~~~~//
 struct point* getPoint(int index);

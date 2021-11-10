@@ -60,7 +60,7 @@ int main(int argc, char** argv) {
         void xyzOrthographicProjection();
 
         //~~~~~ Group 17 ~~~~~//
-        int outputVector(struct point * finalVector, char* filename);
+        int outputPoint(struct point * finalPoint, char* filename);
 
         free(inputShape);
     }
@@ -71,13 +71,13 @@ int main(int argc, char** argv) {
 // ~~~~~~~~~~~~~~~~~ Getters ~~~~~~~~~~~~~~~~~~~ //
 
 struct point* getPoint(int index) {
-    // if the index is less then 0 or greater the the number of vectors, or the vectors are null
-    if ((index < 0) || (index >= inputShape->numOfVectors) || inputShape->points == NULL) {
+    // if the index is less then 0 or greater the the number of points, or the points are null
+    if ((index < 0) || (index >= inputShape->numOfPoints) || inputShape->points == NULL) {
         // return null
         return NULL;
     }
 
-    // otherwise return the vector at the index
+    // otherwise return the point at the index
     return inputShape->points[index];
 }
 
@@ -136,14 +136,14 @@ float getZSheer() {
 
 // ~~~~~~~~~~~~~~~~~ Setters ~~~~~~~~~~~~~~~~~~~ //
 void setPoint(int index, struct point* newPoint) {
-    // if the new vector is null, don't set
+    // if the new point is null, don't set
     if (newPoint == NULL) {
         return;
     }
 
-    // Otherwise if index is greater then 0 and is less then the number of vectors we have
-    if ((index >= 0) && (index < inputShape->numOfVectors)) {
-        // set the vector at the index to the new vector.
+    // Otherwise if index is greater then 0 and is less then the number of points we have
+    if ((index >= 0) && (index < inputShape->numOfPoints)) {
+        // set the point at the index to the new point.
         inputShape->points[index] = newPoint;
     }
 }
@@ -197,7 +197,7 @@ void multiplyMatrix(struct point* currPoint, float matrix[4][4]) {
 
     struct point temp;
 
-    // updating the vectors values
+    // updating the points values
     for (int i = 0; i < 4; i++) {
         temp.element[i] = 0;
         for (int j = 0; j < 4; j++) {
@@ -233,7 +233,9 @@ void runAllTests() {
     }
 
     // TESTS GO HERE
-    runGroup7Tests();  // Group 7 tests
+    // runGroup7Tests();  // Group 7 tests
+
+    zPlaneReflectionTests(); // Group 12 tests
 
     // free
     for (i = 0; i < 5; i++) {

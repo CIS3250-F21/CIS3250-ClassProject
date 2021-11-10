@@ -222,10 +222,10 @@ int testGenerateYRotationMatrixWhenAngleIs0() {
     generateYRotationMatrix(theta);
     // set the expected matrix
     float expectedMatrix[4][4] = {
-        cos(theta), 0, sin(theta), 0,
-        0, 1, 0, 0,
-        -sin(theta), 0, cos(theta), 0,
-        0, 0, 0, 1};
+        {cos(theta), 0, sin(theta), 0},
+        {0, 1, 0, 0},
+        {-sin(theta), 0, cos(theta), 0},
+        {0, 0, 0, 1}};
 
     // loop through the matrices
     for (int i = 0; i < 4; i++) {
@@ -248,10 +248,10 @@ int testGenerateYRotationMatrixWhenAngleIsNegative() {
 
     // set the expected matrix
     float expectedMatrix[4][4] = {
-        cos(theta), 0, sin(theta), 0,
-        0, 1, 0, 0,
-        -sin(theta), 0, cos(theta), 0,
-        0, 0, 0, 1};
+        {cos(theta), 0, sin(theta), 0},
+        {0, 1, 0, 0},
+        {-sin(theta), 0, cos(theta), 0},
+        {0, 0, 0, 1}};
 
     // loop through the matrices
     for (int i = 0; i < 4; i++) {
@@ -273,11 +273,10 @@ int testGenerateYRotationMatrixWhenAngleIsPositiveGreaterThanTwoPi() {
 
     // set the expected matrix
     float expectedMatrix[4][4] = {
-        cos(theta), 0, sin(theta), 0,
-        0, 1, 0, 0,
-        -sin(theta), 0, cos(theta), 0,
-        0, 0, 0, 1};
-
+        {cos(theta), 0, sin(theta), 0},
+        {0, 1, 0, 0},
+        {-sin(theta), 0, cos(theta), 0},
+        {0, 0, 0, 1}};
     // loop through the matrices
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 4; j++) {
@@ -310,9 +309,6 @@ int testMatrixMultiplicationWhenPointIsNull() {
 // This function tests whether the point is valid by looping through the //matrix
 int testMatrixMultiplicationWhenPointIsValid() {
     struct point *tempPoint = malloc(sizeof(struct point));
-
-    // set transform here
-    float theta = 10;
     // loop through the matrix
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 4; j++) {

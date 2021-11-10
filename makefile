@@ -56,7 +56,7 @@ Group11/Group11.o: Group11/Group11.c Group11/Group11.h main.h
 	$(CC) $(CFLAGS) -c Group11/Group11.c -o Group11/Group11.o
 
 zPlaneReflection/zPlaneReflection.o: zPlaneReflection/zPlaneReflection.c zPlaneReflection/zPlaneReflection.h main.h
-	$(CC) $(CFLGAS) -c zPlaneReflection/zPlaneReflection.c -o zPlaneReflection/zPlaneReflection.o
+	$(CC) $(CFLAGS) -c zPlaneReflection/zPlaneReflection.c -o zPlaneReflection/zPlaneReflection.o
 
 Group13/Group13.o: Group13/Group13.c Group13/Group13.h main.h
 	$(CC) $(CFLAGS) -c Group13/Group13.c -o Group13/Group13.o
@@ -108,7 +108,7 @@ Group11/Group11Tests.o: Group11/Group11Tests.c Group11/Group11Tests.h main.h
 	$(CC) $(CFLAGS) -c Group11/Group11Tests.c -o Group11/Group11Tests.o
 
 zPlaneReflection/zPlaneReflectionTests.o: zPlaneReflection/zPlaneReflectionTests.c zPlaneReflection/zPlaneReflectionTests.h main.h
-	$(CC) $(CFLGAS) -c zPlaneReflection/zPlaneReflectionTests.c -o zPlaneReflection/zPlaneReflectionTests.o
+	$(CC) $(CFLAGS) -c zPlaneReflection/zPlaneReflectionTests.c -o zPlaneReflection/zPlaneReflectionTests.o
 
 Group13/Group13Tests.o: Group13/Group13Tests.c Group13/Group13Tests.h main.h
 	$(CC) $(CFLAGS) -c Group13/Group13Tests.c -o Group13/Group13Tests.o

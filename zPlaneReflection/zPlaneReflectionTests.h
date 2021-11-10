@@ -1,8 +1,11 @@
-#ifndef GROUP_12_H
-#define GROUP_12_H
-
+#ifndef Z_PLANE_REFLECTION_TESTS_H
+#define Z_PLANE_REFLECTION_TESTS_H
 #include "../main.h"
-
-void zPlaneReflection();
-
+#include "zPlaneReflection.h"
+void zPlaneReflectionTest1();
+void zPlaneReflectionTest2();
+void zPlaneReflectionTest3();
+void zPlaneReflectionTest4();
+void zPlaneReflectionTest5();
+void zPlaneReflectionTests();
 #endif

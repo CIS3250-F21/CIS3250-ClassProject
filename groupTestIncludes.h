@@ -2,5 +2,5 @@
 #define GROUP_TEST_INCLUDES_H
 
 #include "RotationInY/RotationInYTests.h"
-
+#include "zPlaneReflection/zPlaneReflectionTests.h"
 #endif

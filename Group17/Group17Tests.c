@@ -15,35 +15,35 @@ void runGroup17Tests () {
     // Clean Tests
   
     /* 
-     * Test Case 1.1 - Passing valid matrix and filename
+     * Test Case 1.1 - Passing valid point and filename
      *
      * Input:
-     *  - Vector: [2.0, 1.0, 3.0, 1.0] 
+     *  - Point: [2.0, 1.0, 3.0, 1.0] 
      *  - Filename: "output1.1.txt"
      *
      * Expected Outcome:
      *  - The function should return 1
      *  - A file "output1.1.txt" should be created which
-     *    stores the X, Y, Z values of the matrix
+     *    stores the X, Y, Z values of the point
      */
 
-    // Initialize vector with input values
+    // Initialize point with input values
     struct point testPoint = {
         .element = {2.0f, 1.0f, 3.0f, 1.0f}
     };
 
-    // add vector to shape
+    // add point to shape
     inputShape->numOfPoints = 1;
-    setVector(0, &testPoint);
+    setPoint(0, &testPoint);
 
-    // Call the outputVector function with the input paramters
-    if (outputVector("output1.1.txt") != 1) {
+    // Call the outputPoints function with the input paramters
+    if (outputPoints("output1.1.txt") != 1) {
         printf("[Test 1.1] Return value is not 1\n");
     }
 
     // Check if the file was created and test its values
     if ((fp = fopen("output1.1.txt", "r")) == NULL) {
-        printf("[Test 1.1] File \"outputVector.txt\" does not exist\n");
+        printf("[Test 1.1] File \"output1.1.txt\" does not exist\n");
     }
     else {
         // read values from file
@@ -51,7 +51,7 @@ void runGroup17Tests () {
         
         // Check if values match
         if (x != testPoint.element[0] || y != testPoint.element[1] || z != testPoint.element[2] || (s - 1.0f) > 0.001) {
-            printf("[Test 1.1] Incorrect vector values\n");
+            printf("[Test 1.1] Incorrect point values for test point\n");
         }
         
         fclose(fp);
@@ -63,9 +63,9 @@ void runGroup17Tests () {
     // Dirty Tests
 
     /*
-     * Test Case 2.1 - Outputting with no vectors in shape
+     * Test Case 2.1 - Outputting with no points in shape
      * Input:
-     *  - Vector: []
+     *  - Shape: []
      *  - Filename: "output2.1.txt"
      *
      * Expected Output:
@@ -75,7 +75,7 @@ void runGroup17Tests () {
 
     inputShape->numOfPoints = 0;
     
-    if (outputVector("output2.1.txt") != 0) {
+    if (outputPoints("output2.1.txt") != 0) {
         printf("[Test 2.1] Return value is not 0\n");
     }
 
@@ -86,7 +86,7 @@ void runGroup17Tests () {
      * Test Case 2.2 - Passing an NULL pointer as the filename
      *
      * Input:
-     * - Vector: [2.0, 1.0, 3.0, 1.0] 
+     * - Point: [2.0, 1.0, 3.0, 1.0] 
      * - Filename: NULL;
      *
      * Expected Output:
@@ -97,12 +97,12 @@ void runGroup17Tests () {
         .element = {2.0f, 1.0f, 3.0f, 1.0f}
     };
 
-    // add vector to shape
+    // add point to shape
     inputShape->numOfPoints = 1;
-    setVector(0, &testPoint2);
+    setPoint(0, &testPoint2);
     
     // call outputMatrix function with filename
-    if (outputVector(NULL) != 0) {
+    if (outputPoints(NULL) != 0) {
         printf("[Test 2.2] Return value is not 0\n");
     }
     
@@ -110,35 +110,35 @@ void runGroup17Tests () {
      * Test Case 2.3 - Passing an empty string as the filename
      *
      * Input:
-     *  - Vector: [2.0, 1.0, 3.0, 1.0] 
+     *  - Point: [2.0, 1.0, 3.0, 1.0] 
      *  - Filename: ""
      *
      * Expected Output:
      *  - The function should return 0 since the file is invalid
      */
     
-    // call outputVector function with empty string as filename
-    if (outputVector("") != 0) {
+    // call outputPoints function with empty string as filename
+    if (outputPoints("") != 0) {
         printf("[Test 2.3] Return value is not 0\n");
     }
 
     /*
-     * Test Case 2.4 - Outputing a NULL Vector
+     * Test Case 2.4 - Outputing a NULL Point
      *
      * Input:
-     *  - Vector: NULL 
+     *  - Point: NULL 
      *  - filename: "output2.4.txt"
      *
      * Expected Output:
      *  - The function should return 0
      */
 
-    // add vector to shape
+    // add point to shape
     inputShape->numOfPoints = 1;
     inputShape->points[0] = NULL;
 
     // call function with input
-    if (outputVector("output2.4.txt") != 0) {
+    if (outputPoints("output2.4.txt") != 0) {
         printf("[Test 2.4] Return value was not 0\n");
     }
     
@@ -149,8 +149,8 @@ void runGroup17Tests () {
      * Test Case 2.5 - Outputting to a file multiple times
      *
      * Input:
-     *  - Vector 1: [255.0, 255.0, 255.0, 1.0] 
-     *  - Vector 2: [1.0, 2.0, 3.0, 1.0] 
+     *  - Point 1: [255.0, 255.0, 255.0, 1.0] 
+     *  - Point 2: [1.0, 2.0, 3.0, 1.0] 
      *  - Filename: "output2.5.txt"
      *
      * Expected Outcome:
@@ -177,51 +177,51 @@ void runGroup17Tests () {
 
 
     inputShape->numOfPoints = 2;
-    setVector(0, &testPoint4);
-    setVector(1, &testPoint5);
+    setPoint(0, &testPoint4);
+    setPoint(1, &testPoint5);
 
     // output first shape to file
-    if (outputVector("output2.5.txt") != 1) {
-        printf("[Test 2.5] Failed to output Vector 4\n");
+    if (outputPoints("output2.5.txt") != 1) {
+        printf("[Test 2.5] Failed to output points 4 and 5\n");
     }
     
-    setVector(0, &testPoint6);
-    setVector(1, &testPoint7);
+    setPoint(0, &testPoint6);
+    setPoint(1, &testPoint7);
 
     // output second shape to file
-    if (outputVector("output2.5.txt") != 1) {
-        printf("[Test 2.5] Failed to output Vector 5\n");
+    if (outputPoints("output2.5.txt") != 1) {
+        printf("[Test 2.5] Failed to output points 6 and 7\n");
     }
 
     // Check if the file was created and test its values
     if ((fp = fopen("output2.5.txt", "r")) == NULL) {
-        printf("[Test 2.5] File \"output.txt\" does not exist\n");
+        printf("[Test 2.5] File \"output2.5.txt\" does not exist\n");
     }
     else {
-        // read first vector from file
+        // read first point from file
         fscanf(fp, "%f %f %f %f", &x, &y, &z, &s);
 
-        // Check if values match for test vector 6
+        // Check if values match for test point 6
         if (
             x != testPoint6.element[0] || 
             y != testPoint6.element[1] || 
             z != testPoint6.element[2] || 
             (s - 1.0f) > 0.01
         ) {
-            printf("[Test 2.5] Incorrect values for test vector 6\n");
+            printf("[Test 2.5] Incorrect values for test point 6\n");
         }
         else {
-            // read second vector from file
+            // read second point from file
             fscanf(fp, "%f %f %f %f", &x, &y, &z, &s);
 
-            // check if values match for test vector 7
+            // check if values match for test point 7
             if (
                 x != testPoint7.element[0] ||
                 y != testPoint7.element[1] || 
                 z != testPoint7.element[2] || 
                 (s - 1.0f) > 0.01
             ) {
-                printf("[Test 2.5] Incorrect values for test vector 7\n");
+                printf("[Test 2.5] Incorrect values for test point 7\n");
             }
         }
     }

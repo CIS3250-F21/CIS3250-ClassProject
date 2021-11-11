@@ -1,13 +1,13 @@
 #include "Group17.h"
 
-int outputVector(char* filename) {
+int outputPoints(char* filename) {
     FILE* fp;
     struct point* point;
 
-    // check if there are vectors to print
+    // check if there are points to print
     if (inputShape->numOfPoints <= 0) {
         #ifdef DEBUG
-            printf("ERROR no vectors to print\n");
+            printf("ERROR no points to print\n");
         #endif
         return 0;
     }
@@ -28,13 +28,13 @@ int outputVector(char* filename) {
         return 0;
     }
 
-    // output vectors to file
+    // output points to file
     for (int i = 0; i < inputShape->numOfPoints; i++) {
-        point = getVector(i);
+        point = getPoint(i);
 
         if (point == NULL) {
             #ifdef DEBUG
-                printf("ERROR null vector\n");
+                printf("ERROR null point\n");
             #endif
             fclose(fp);
             return 0;

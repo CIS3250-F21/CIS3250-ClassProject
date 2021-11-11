@@ -61,7 +61,7 @@ int main(int argc, char** argv) {
         void xyzOrthographicProjection();
 
         //~~~~~ Group 17 ~~~~~//
-        outputVector(fileName);
+        outputPoints(fileName);
 
         free(inputShape);
     }

@@ -3,6 +3,6 @@
 
 #include "../main.h"
 
-int outputVector(char* filename);
+int outputPoints(char* filename);
 
 #endif

@@ -32,7 +32,7 @@ int testGetPointReturnsNullWhenIndexIsNeagtive() {
 // Dirty Test
 // Tests When the value of the index exceeds the max length
 int testGetPointReturnsNullWhenIndexIsGreaterThanLength() {
-    return getPoint(inputShape->numOfPoints) == NULL;
+    return getPoint(inputShape->numOfVectors) == NULL;
 }
 
 // Clean Test
@@ -109,7 +109,7 @@ int testSetPointReturn0WhenIndexIsNegative() {
 int testSetPointReturn0WhenIndexIsGreaterThenLength() {
     // index and point
     struct point *newPoint = malloc(sizeof(struct point));
-    int index = inputShape->numOfPoints;
+    int index = inputShape->numOfVectors;
 
     // fill point
     for (int i = 0; i < 4; i++) {
@@ -363,7 +363,7 @@ int testYRotationWhenAngleIs0() {
 
     yRotation();
 
-    for (int i = 0; i < inputShape->numOfPoints; i++) {
+    for (int i = 0; i < inputShape->numOfVectors; i++) {
         for (int j = 0; j < 4; j++) {
             if (expected[i]->element[j] != inputShape->points[i]->element[j]) {
                 for (int i = 0; i < 5; i++) {
@@ -400,7 +400,7 @@ int testYRotationWhenAngleIsNegative() {
     yRotation();
 
     // seing if the results match
-    for (int i = 0; i < inputShape->numOfPoints; i++) {
+    for (int i = 0; i < inputShape->numOfVectors; i++) {
         for (int j = 0; j < 4; j++) {
             if (compareFloat(expected[i]->element[j], inputShape->points[i]->element[j], 0.000001)) {
                 for (int i = 0; i < 5; i++) {
@@ -437,7 +437,7 @@ int testYRotationWhenAngleIsPositiveGreaterThanTwoPi() {
     yRotation();
 
     // seeing if the results match
-    for (int i = 0; i < inputShape->numOfPoints; i++) {
+    for (int i = 0; i < inputShape->numOfVectors; i++) {
         for (int j = 0; j < 4; j++) {
             if (compareFloat(expected[i]->element[j], inputShape->points[i]->element[j], 0.000001)) {
                 for (int i = 0; i < 5; i++) {
@@ -476,7 +476,7 @@ int testYRotationHandlesNullMatrix() {
     yRotation();
 
     transformationMatrix = temp;
-    for (int i = 0; i < inputShape->numOfPoints; i++) {
+    for (int i = 0; i < inputShape->numOfVectors; i++) {
         for (int j = 0; j < 4; j++) {
             if (compareFloat(expected[i]->element[j], inputShape->points[i]->element[j], 0.000001)) {
                 for (int i = 0; i < 5; i++) {
@@ -515,7 +515,7 @@ int testYRotationHandlesNullElementOfMatrix() {
     yRotation();
 
     transformationMatrix[0] = temp;
-    for (int i = 0; i < inputShape->numOfPoints; i++) {
+    for (int i = 0; i < inputShape->numOfVectors; i++) {
         for (int j = 0; j < 4; j++) {
             if (compareFloat(expected[i]->element[j], inputShape->points[i]->element[j], 0.000001)) {
                 for (int i = 0; i < 5; i++) {
@@ -557,7 +557,7 @@ int testYRotationHandlesNullPoint() {
     yRotation();
 
     inputShape->points[1] = temp;
-    for (int i = 0; i < inputShape->numOfPoints; i++) {
+    for (int i = 0; i < inputShape->numOfVectors; i++) {
         for (int j = 0; j < 4; j++) {
             if (compareFloat(expected[i]->element[j], inputShape->points[i]->element[j], 0.000001)) {
                 printf("%d %d %f %f\n", i, j, expected[i]->element[j], inputShape->points[i]->element[j]);
@@ -598,7 +598,7 @@ int testYRotationHandlesNullPoints() {
 // ~~~~~~ Other Funcs ~~~~~~ //
 // ~~~~~~~~~~~~~~~~~~~~~~~~~ //
 void setup() {
-    inputShape->numOfPoints = 5;
+    inputShape->numOfVectors = 5;
     inputShape->rotation[1] = 0;
 
     for (int i = 0; i < 5; i++) {

@@ -87,7 +87,7 @@ float getGloalScale() {
 }
 
 float getXScale() {
-    return 0;
+    return inputShape -> scaling[0];
 }
 
 float getYScale() {
@@ -153,6 +153,7 @@ void setGlobalScale(float newGlobalScale) {
 }
 
 void setXScale(float newXScale) {
+  inputShape -> scaling[0] = newXScale;
 }
 
 void setYScale(float newYScale) {
@@ -211,6 +212,20 @@ void multiplyMatrix(struct point* currPoint, float matrix[4][4]) {
     }
 }
 
+//Reset transformation matrix to the identity matrix
+void resetMatrix(){
+  for (int i = 0; i < 4; i++){
+      for (int j = 0; j < 4; j++){
+          if (i == j){
+              transformationMatrix[i][j] = 1;
+          }
+          else{
+              transformationMatrix[i][j] = 0;
+          }
+      }
+  }
+}
+
 void runAllTests() {
     int i;
     inputShape = malloc(sizeof(struct shape));
@@ -233,6 +248,7 @@ void runAllTests() {
     }
 
     // TESTS GO HERE
+    runScalingInXTests();  // Group 3 tests
     runGroup7Tests();  // Group 7 tests
 
     // free

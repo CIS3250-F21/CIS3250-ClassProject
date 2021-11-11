@@ -2,5 +2,6 @@
 #define GROUP_TEST_INCLUDES_H
 
 #include "RotationInY/RotationInYTests.h"
+#include "ScalingInX/ScalingInXTests.h"
 
 #endif

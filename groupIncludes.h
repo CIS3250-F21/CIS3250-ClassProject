@@ -11,7 +11,7 @@
 #include "Group16/Group16.h"
 #include "Group17/Group17.h"
 #include "Group2/Group2.h"
-#include "Group3/Group3.h"
+#include "ScalingInX/ScalingInX.h"
 #include "Group4/Group4.h"
 #include "Group5/Group5.h"
 #include "Group6/Group6.h"

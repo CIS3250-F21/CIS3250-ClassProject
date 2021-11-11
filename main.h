@@ -23,7 +23,8 @@ struct shape* inputShape;
 char* fileName;
 
 //~~~~~~ Global Functions ~~~~~~//
-void multiplyMatrix(struct point* currPoint, float[4][4] matrix);
+void multiplyMatrix(struct point* currPoint, float matrix[4][4]);
+void resetMatrix();
 
 //~~~~~~ Getters ~~~~~~//
 struct point* getPoint(int index);

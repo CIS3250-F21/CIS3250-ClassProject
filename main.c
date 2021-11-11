@@ -60,9 +60,9 @@ int main(int argc, char** argv) {
         void xyzOrthographicProjection();
 
         //~~~~~ Group 17 ~~~~~//
-        int outputVector(struct vector * finalVector, char* filename);
+        int outputPoint(struct point * finalPoint, char* filename);
 
-        free (inputShape);
+        free(inputShape);
     }
     free(fileName);
     return 0;
@@ -70,17 +70,16 @@ int main(int argc, char** argv) {
 
 // ~~~~~~~~~~~~~~~~~ Getters ~~~~~~~~~~~~~~~~~~~ //
 
-struct vector* getVector(int index) {
-    // if the index is less then 0 or greater the the number of vectors, or the vectors are null
-    if ((index < 0) || (index >= inputShape->numOfVectors) || inputShape->vectors == NULL) {
+struct point* getPoint(int index) {
+    // if the index is less then 0 or greater the the number of points, or the points are null
+    if ((index < 0) || (index >= inputShape->numOfPoints) || inputShape->points == NULL) {
         // return null
         return NULL;
     }
 
-    // otherwise return the vector at the index
-    return inputShape->vectors[index];
+    // otherwise return the point at the index
+    return inputShape->points[index];
 }
-
 
 // ~~~~~~~~~~~~~~~~~ GROUP Getters Go HERE ~~~~~~~~~~~~~~~~~~~ //
 float getGloalScale() {
@@ -104,7 +103,7 @@ float getXRotation() {
 }
 
 float getYRotation() {
-  return inputShape->rotation[1];
+    return inputShape->rotation[1];
 }
 
 float getZRotation() {
@@ -135,141 +134,114 @@ float getZSheer() {
     return 0;
 }
 
-
 // ~~~~~~~~~~~~~~~~~ Setters ~~~~~~~~~~~~~~~~~~~ //
-void setVector(int index, struct vector* newVector) {
-    // if the new vector is null, don't set
-    if (newVector == NULL) {
+void setPoint(int index, struct point* newPoint) {
+    // if the new point is null, don't set
+    if (newPoint == NULL) {
         return;
     }
 
-    //Otherwise if index is greater then 0 and is less then the number of vectors we have
-    if ((index >= 0) && (index < inputShape->numOfVectors)) {
-        // set the vector at the index to the new vector.
-        inputShape->vectors[index] = newVector;
+    // Otherwise if index is greater then 0 and is less then the number of points we have
+    if ((index >= 0) && (index < inputShape->numOfPoints)) {
+        // set the point at the index to the new point.
+        inputShape->points[index] = newPoint;
     }
 }
 
 // ~~~~~~~~~~~~~~~~~ GROUP Setters Go HERE ~~~~~~~~~~~~~~~~~~~ //
-void setGlobalScale (float newGlobalScale) {
-
+void setGlobalScale(float newGlobalScale) {
 }
 
-void setXScale (float newXScale) {
-
+void setXScale(float newXScale) {
 }
 
-void setYScale (float newYScale) {
-
+void setYScale(float newYScale) {
 }
 
-void setZScale (float newZScale) {
-
+void setZScale(float newZScale) {
 }
 
-void setXRotation (float newTheta) {
-
+void setXRotation(float newTheta) {
 }
 
 void setYRotation(float angle) {
-  inputShape->rotation[1] = angle;
+    inputShape->rotation[1] = angle;
 }
 
 void setZRotation(float newTheta) {
-
 }
 
-void setXTranslation (float newXTranslation) {
-
+void setXTranslation(float newXTranslation) {
 }
 
-void setYTranslation (float newYTranslation) {
-
+void setYTranslation(float newYTranslation) {
 }
 
-void setZTranslation (float newZTranslation) {
-
+void setZTranslation(float newZTranslation) {
 }
 
-void setXShear (float newXShear) {
-
+void setXShear(float newXShear) {
 }
 
-void setYShear (float newYShear) {
-
+void setYShear(float newYShear) {
 }
 
-void setZShear (float newZShear) {
-
+void setZShear(float newZShear) {
 }
 
-
-void multiplyMatrix(struct vector* currVector, float** matrix) {
+void multiplyMatrix(struct point* currPoint, float matrix[4][4]) {
     // Error checking for NULL paramaters
-    if (currVector == NULL || matrix == NULL) {
+    if (currPoint == NULL) {
         return;
     }
-    // loop through the matrix, if anything is null return and don't change.
-    for (int i = 0; i < 4; i++) {
-        if (matrix[i] == NULL) return;
-    }
 
-    struct vector temp;
+    struct point temp;
 
-    // updating the vectors values
+    // updating the points values
     for (int i = 0; i < 4; i++) {
-        temp.vector[i] = 0;
+        temp.element[i] = 0;
         for (int j = 0; j < 4; j++) {
-            temp.vector[i] += currVector->vector[j] * matrix[j][i];
+            temp.element[i] += currPoint->element[j] * matrix[j][i];
         }
     }
 
     // storing new values into actual point
     for (int i = 0; i < 4; i++) {
-        currVector->vector[i] = temp.vector[i];
+        currPoint->element[i] = temp.element[i];
     }
 }
 
-void runAllTests() { 
+void runAllTests() {
     int i;
     inputShape = malloc(sizeof(struct shape));
 
-    inputShape->numOfVectors = 5;
+    inputShape->numOfPoints = 5;
 
-    //SET YOUR VALUES HERE
+    // SET YOUR VALUES HERE
     setYRotation(0);
 
     // Instantiation of the shape structure
-    inputShape->vectors = malloc(sizeof(struct vector*) * 5);
+    inputShape->points = malloc(sizeof(struct point*) * 5);
 
     for (i = 0; i < 5; i++) {
-        struct vector* temp = malloc(sizeof(struct vector));
+        struct point* temp = malloc(sizeof(struct point));
         for (int j = 0; j < 3; j++) {
-            temp->vector[j] = j + i;
+            temp->element[j] = j + i;
         }
-        temp->vector[3] = 1;
-        inputShape->vectors[i] = temp;
+        temp->element[3] = 1;
+        inputShape->points[i] = temp;
     }
 
-    transformationMatrix = malloc(sizeof(float*) * 4);
-    for (i = 0; i < 4; i++) {
-        transformationMatrix[i] = malloc(sizeof(float) * 4);
-    }
-
-    //TESTS GO HERE
+    // TESTS GO HERE
     runGroup7Tests();  // Group 7 tests
 
+    zPlaneReflectionTests(); // Group 12 tests
 
-
-    //free
+    // free
     for (i = 0; i < 5; i++) {
-        free(inputShape->vectors[i]);
+        free(inputShape->points[i]);
     }
-    free(inputShape->vectors);
+    free(inputShape->points);
 
-    for(i =0; i < 4; i++) {
-        free(transformationMatrix[i]);
-    }
-    free(transformationMatrix);
     free(inputShape);
 }

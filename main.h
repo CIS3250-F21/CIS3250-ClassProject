@@ -5,28 +5,28 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct vector {
-    float vector[4];
+struct point {
+    float element[4];
 };
 
 struct shape {
-    struct vector** vectors;
-    int numOfVectors;
+    struct point** points;
+    int numOfPoints;
     float scaling[4];
     float rotation[3];
     float translation[3];
     float shearing[3];
 };
 
-float** transformationMatrix;
+float transformationMatrix[4][4];
 struct shape* inputShape;
 char* fileName;
 
 //~~~~~~ Global Functions ~~~~~~//
-void multiplyMatrix(struct vector* currVector, float** matrix);
+void multiplyMatrix(struct point* currPoint, float matrix[4][4]);
 
 //~~~~~~ Getters ~~~~~~//
-struct vector* getVector(int index);
+struct point* getPoint(int index);
 float getGloalScale();
 float getXScale();
 float getYScale();
@@ -41,22 +41,21 @@ float getXSheer();
 float getYSheer();
 float getZSheer();
 
-
 //~~~~~~ Setters ~~~~~~//
-void setVector(int index, struct vector* newVector);
-void setGlobalScale (float newGlobalScale);
-void setXScale (float newXScale);
-void setYScale (float newYScale);
-void setZScale (float newZScale);
-void setXRotation (float newTheta);
+void setPoint(int index, struct point* newPoint);
+void setGlobalScale(float newGlobalScale);
+void setXScale(float newXScale);
+void setYScale(float newYScale);
+void setZScale(float newZScale);
+void setXRotation(float newTheta);
 void setYRotation(float newTheta);
 void setZRotation(float newTheta);
-void setXTranslation (float newXTranslation);
-void setYTranslation (float newYTranslation);
-void setZTranslation (float newZTranslation);
-void setXShear (float newXShear);
-void setYShear (float newYShear);
-void setZShear (float newZShear);
+void setXTranslation(float newXTranslation);
+void setYTranslation(float newYTranslation);
+void setZTranslation(float newZTranslation);
+void setXShear(float newXShear);
+void setYShear(float newYShear);
+void setZShear(float newZShear);
 
 //~~~~~ Helpers ~~~~~~//
 void runAllTests();

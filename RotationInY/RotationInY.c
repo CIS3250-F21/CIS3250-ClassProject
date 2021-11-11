@@ -1,31 +1,20 @@
-#include "../main.h"
-#include "Group7.h"
+#include "RotationInY.h"
 
-void yRotation(){
-        generateYRotationMatrix(getYRotation());
-    struct vector * y;
+#include "../main.h"
+
+void yRotation() {
+    generateYRotationMatrix(getYRotation());
+    struct point* y;
     int i = 0;
 
-    while ((y = getVector(i)) != NULL) {
+    while ((y = getPoint(i)) != NULL) {
         multiplyMatrix(y, transformationMatrix);
-        setVector(i, y);
+        setPoint(i, y);
         i++;
     }
 }
 
-
-void generateYRotationMatrix(float newTheta){
-
-    //check if matrix is null first right here
-    if (transformationMatrix == NULL) {
-        return;
-    }
-    
-    for(int i = 0; i < 4; i++) {
-        if(transformationMatrix[i] == NULL) { 
-        return; 
-        }
-    }
+void generateYRotationMatrix(float newTheta) {
 
     transformationMatrix[0][0] = cos(newTheta);
     transformationMatrix[0][1] = 0;

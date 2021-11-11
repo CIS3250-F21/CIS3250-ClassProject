@@ -1,7 +1,7 @@
 CC = clang
 CFLAGS = -std=c99 -Wall -pedantic
 EXECS = main
-O_FILES = Group1/Group1.o Group2/Group2.o Group3/Group3.o Group4/Group4.o Group5/Group5.o Group6/Group6.o RotationInY/RotationInY.o Group8/Group8.o Group9/Group9.o Group10/Group10.o Group11/Group11.o zPlaneReflection/zPlaneReflection.o Group13/Group13.o Group14/Group14.o Group15/Group15.o Group16/Group16.o Group17/Group17.o Group1/Group1Tests.o Group2/Group2Tests.o Group3/Group3Tests.o Group4/Group4Tests.o Group5/Group5Tests.o Group6/Group6Tests.o RotationInY/RotationInYTests.o Group8/Group8Tests.o Group9/Group9Tests.o Group10/Group10Tests.o Group11/Group11Tests.o zPlaneReflection/zPlaneReflectionTests.o Group13/Group13Tests.o Group14/Group14Tests.o Group15/Group15Tests.o Group16/Group16Tests.o Group17/Group17Tests.o
+O_FILES = Group1/Group1.o Group2/Group2.o Group3/Group3.o Group4/Group4.o Group5/Group5.o Group6/Group6.o RotationInY/RotationInY.o Group8/Group8.o Group9/Group9.o Group10/Group10.o Group11/Group11.o zPlaneReflection/zPlaneReflection.o Group13/Group13.o GetYShear/GetYShear.o Group15/Group15.o Group16/Group16.o Group17/Group17.o Group1/Group1Tests.o Group2/Group2Tests.o Group3/Group3Tests.o Group4/Group4Tests.o Group5/Group5Tests.o Group6/Group6Tests.o RotationInY/RotationInYTests.o Group8/Group8Tests.o Group9/Group9Tests.o Group10/Group10Tests.o Group11/Group11Tests.o zPlaneReflection/zPlaneReflectionTests.o Group13/Group13Tests.o GetYShear/GetYShearTests.o Group15/Group15Tests.o Group16/Group16Tests.o Group17/Group17Tests.o
 H_FILES = main.h groupIncludes.h groupTestIncludes.h
 
 all: $(EXECS)
@@ -61,8 +61,8 @@ zPlaneReflection/zPlaneReflection.o: zPlaneReflection/zPlaneReflection.c zPlaneR
 Group13/Group13.o: Group13/Group13.c Group13/Group13.h main.h
 	$(CC) $(CFLAGS) -c Group13/Group13.c -o Group13/Group13.o
 
-Group14/Group14.o: Group14/Group14.c Group14/Group14.h main.h
-	$(CC) $(CFLAGS) -c Group14/Group14.c -o Group14/Group14.o
+GetYShear/GetYShear.o: GetYShear/GetYShear.c GetYShear/GetYShear.h main.h
+	$(CC) $(CFLAGS) -c GetYShear/GetYShear.c -o GetYShear/GetYShear.o
 
 Group15/Group15.o: Group15/Group15.c Group15/Group15.h main.h
 	$(CC) $(CFLAGS) -c Group15/Group15.c -o Group15/Group15.o
@@ -113,8 +113,8 @@ zPlaneReflection/zPlaneReflectionTests.o: zPlaneReflection/zPlaneReflectionTests
 Group13/Group13Tests.o: Group13/Group13Tests.c Group13/Group13Tests.h main.h
 	$(CC) $(CFLAGS) -c Group13/Group13Tests.c -o Group13/Group13Tests.o
 
-Group14/Group14Tests.o: Group14/Group14Tests.c Group14/Group14Tests.h main.h
-	$(CC) $(CFLAGS) -c Group14/Group14Tests.c -o Group14/Group14Tests.o
+GetYShear/GetYShearTests.o: GetYShear/GetYShearTests.c GetYShear/GetYShearTests.h main.h
+	$(CC) $(CFLAGS) -c GetYShear/GetYShearTests.c -o GetYShear/GetYShearTests.o
 
 Group15/Group15Tests.o: Group15/Group15Tests.c Group15/Group15Tests.h main.h
 	$(CC) $(CFLAGS) -c Group15/Group15Tests.c -o Group15/Group15Tests.o

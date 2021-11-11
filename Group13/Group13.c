@@ -1,4 +1,5 @@
 #include "Group13.h"
+#define SHEAR_FLOAT_MAX 34028234600000000000000000000000000000.0
 
 void xShear() {
     if (inputShape == NULL) {
@@ -10,7 +11,7 @@ void xShear() {
     }
 
     for (int i = 0; i < inputShape->numOfPoints; i++) {  // idk why this works on extremely small values but it also works for what you'd expect to need FLOAT_MIN instead
-        if ((FLOAT_MAX / getYShear() < getPoint(i)->element[1]) || (FLOAT_MAX / getZShear() < getPoint(i)->element[2])) {
+        if ((SHEAR_FLOAT_MAX / getYShear() < getPoint(i)->element[1]) || (SHEAR_FLOAT_MAX / getZShear() < getPoint(i)->element[2])) {
             printErr("Magnitude Error: xShear() would have caused an value of infinity if excecuted. Aborted.\n");
             return;
         }

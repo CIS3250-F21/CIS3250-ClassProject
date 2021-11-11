@@ -10,7 +10,7 @@ struct point* createTestpoints();
 
 void cleanTest(struct point* testpoints);
 void testShapeNull();
-void testpointsNull();
+void testPointsNull();
 void testLargeShearValue(struct point* testpoints);
 void testSmallShearValue(struct point* testpoints);
 void testWrongMagnitude(struct point* testpoints);
@@ -20,6 +20,5 @@ int testHelperCompare(struct point vec1, struct point vec2);
 #endif
 
 #ifndef GROUP_13_H
-#define GROUP_13_H
-#include 'Group13.h'
+#include "Group13.h"
 #endif

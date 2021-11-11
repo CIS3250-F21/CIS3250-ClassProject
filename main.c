@@ -122,15 +122,15 @@ float getZTranslation() {
     return 0;
 }
 
-float getXSheer() {
+float getXShear() {
     return 0;
 }
 
-float getYSheer() {
+float getYShear() {
     return 0;
 }
 
-float getZSheer() {
+float getZShear() {
     return 0;
 }
 

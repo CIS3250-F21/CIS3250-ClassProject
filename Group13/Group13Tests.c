@@ -1,7 +1,9 @@
-#include 'Group13Tests.h'
+#include "Group13Tests.h"
+#define SHEAR_FLOAT_MAX 34028234600000000000000000000000000000.0
+#define SHEAR_FLOAT_MIN -1175494351000000000000000000000000000.0
 
-void runGroup13Tests() {  // Calls the tests
-
+void runGroup13Tests() {                       // Calls the tests
+    struct shape* oldInputShape = inputShape;  // Make sure input shape is not modified by test cases.
     if (tstFlag) {
         struct point* testpoints = createTestpoints();  // Creates a common, constant set of pre-defined points for tests to pull from when creating their shape structs
         errorFlag = 0;
@@ -11,7 +13,7 @@ void runGroup13Tests() {  // Calls the tests
         testShapeNull();
 
         errorFlag = 0;
-        testpointsNull();
+        testPointsNull();
 
         errorFlag = 0;
         testLargeShearValue(testpoints);
@@ -25,7 +27,6 @@ void runGroup13Tests() {  // Calls the tests
         xShear();
     }
     inputShape = oldInputShape;
-    return 0;
 }
 
 struct point* createTestpoints() {
@@ -95,7 +96,7 @@ void cleanTest(struct point* testpoints) {
     setPoint(0, &testpoints[0]);
     setPoint(1, &testpoints[1]);
     setPoint(2, &testpoints[2]);
-    inputShape->numOfpoints = 3;
+    inputShape->numOfPoints = 3;
     setYShear(2.0);
     setZShear(2.0);
     xShear();
@@ -122,11 +123,11 @@ void testShapeNull() {
     // If the pointer was dereferenced a segfault will occur, triggering an error message
 }
 
-void testpointsNull() {
+void testPointsNull() {
     // Test gives an existing shape with a NULL point list
     inputShape = malloc(sizeof(struct shape));
     inputShape->points = NULL;
-    inputShape->numOfpoints = 1;
+    inputShape->numOfPoints = 1;
     setYShear(0.0);
     setZShear(0.0);
     xShear();
@@ -145,10 +146,10 @@ void testLargeShearValue(struct point* testpoints) {
     setPoint(0, &testpoints[1]);
     setPoint(1, &testpoints[2]);
     setPoint(2, &testpoints[3]);
-    inputShape->numOfpoints = 3;
+    inputShape->numOfPoints = 3;
 
-    setYShear(FLOAT_MAX);
-    setZShear(FLOAT_MAX);
+    setYShear(SHEAR_FLOAT_MAX);
+    setZShear(SHEAR_FLOAT_MAX);
 
     xShear();
 
@@ -170,10 +171,10 @@ void testSmallShearValue(struct point* testpoints) {
     setPoint(0, &testpoints[1]);
     setPoint(1, &testpoints[2]);
     setPoint(2, &testpoints[3]);
-    inputShape->numOfpoints = 3;
+    inputShape->numOfPoints = 3;
 
-    setYShear(FLOAT_MIN);
-    setZShear(FLOAT_MIN);
+    setYShear(SHEAR_FLOAT_MIN);
+    setZShear(SHEAR_FLOAT_MIN);
 
     xShear();
 
@@ -189,12 +190,12 @@ void testSmallShearValue(struct point* testpoints) {
 }
 
 void testWrongMagnitude(struct point* testpoints) {
-    // Test sets numOfpoints to an inappropriate value
+    // Test uses a vector where the 4th coord is set to an inappropriate value
     inputShape = malloc(sizeof(struct shape));
     inputShape->points = malloc(sizeof(struct point) * 2);
     setPoint(0, &testpoints[1]);
     setPoint(1, &testpoints[4]);
-    inputShape->numOfpoints = 2;
+    inputShape->numOfPoints = 2;
     setYShear(2.0);
     setZShear(2.0);
     xShear();

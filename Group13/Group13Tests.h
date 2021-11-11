@@ -1,8 +1,8 @@
 #ifndef GROUP13_TEST_H
 #define GROUP13_TEST_H
 
-const float FLOAT_MIN = -1175494351000000000000000000000000000.0;
-const float FLOAT_MAX = 34028234600000000000000000000000000000.0;
+int errorFlag;
+int tstFlag;
 
 int main(int argc, char* argv[]);  // Calls the tests
 
@@ -17,4 +17,9 @@ void testWrongMagnitude(struct point* testpoints);
 
 int testHelperCompare(struct point vec1, struct point vec2);
 
+#endif
+
+#ifndef GROUP_13_H
+#define GROUP_13_H
+#include 'Group13.h'
 #endif

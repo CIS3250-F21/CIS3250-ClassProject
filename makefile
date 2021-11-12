@@ -1,7 +1,7 @@
 CC = clang
 CFLAGS = -std=c99 -Wall -pedantic
 EXECS = main
-O_FILES = Group1/Group1.o Group2/Group2.o Group3/Group3.o Group4/Group4.o Group5/Group5.o Group6/Group6.o RotationInY/RotationInY.o Group8/Group8.o Group9/Group9.o Group10/Group10.o Group11/Group11.o zPlaneReflection/zPlaneReflection.o Group13/Group13.o Group14/Group14.o Group15/Group15.o Group16/Group16.o Group17/Group17.o Group1/Group1Tests.o Group2/Group2Tests.o Group3/Group3Tests.o Group4/Group4Tests.o Group5/Group5Tests.o Group6/Group6Tests.o RotationInY/RotationInYTests.o Group8/Group8Tests.o Group9/Group9Tests.o Group10/Group10Tests.o Group11/Group11Tests.o zPlaneReflection/zPlaneReflectionTests.o Group13/Group13Tests.o Group14/Group14Tests.o Group15/Group15Tests.o Group16/Group16Tests.o Group17/Group17Tests.o
+O_FILES = Group1/Group1.o Group2/Group2.o ScalingInX/ScalingInX.o Group4/Group4.o Group5/Group5.o Group6/Group6.o RotationInY/RotationInY.o Group8/Group8.o Group9/Group9.o Group10/Group10.o Group11/Group11.o zPlaneReflection/zPlaneReflection.o Group13/Group13.o Group14/Group14.o Group15/Group15.o Group16/Group16.o Group17/Group17.o Group1/Group1Tests.o Group2/Group2Tests.o ScalingInX/ScalingInXTests.o Group4/Group4Tests.o Group5/Group5Tests.o Group6/Group6Tests.o RotationInY/RotationInYTests.o Group8/Group8Tests.o Group9/Group9Tests.o Group10/Group10Tests.o Group11/Group11Tests.o zPlaneReflection/zPlaneReflectionTests.o Group13/Group13Tests.o Group14/Group14Tests.o Group15/Group15Tests.o Group16/Group16Tests.o Group17/Group17Tests.o
 H_FILES = main.h groupIncludes.h groupTestIncludes.h
 
 all: $(EXECS)
@@ -28,8 +28,8 @@ Group1/Group1.o: Group1/Group1.c Group1/Group1.h main.h
 Group2/Group2.o: Group2/Group2.c Group2/Group2.h main.h
 	$(CC) $(CFLAGS) -c Group2/Group2.c -o Group2/Group2.o
 
-Group3/Group3.o: Group3/Group3.c Group3/Group3.h main.h
-	$(CC) $(CFLAGS) -c Group3/Group3.c -o Group3/Group3.o
+ScalingInX/ScalingInX.o: ScalingInX/ScalingInX.c ScalingInX/ScalingInX.h main.h
+	$(CC) $(CFLAGS) -c ScalingInX/ScalingInX.c -o ScalingInX/ScalingInX.o
 
 Group4/Group4.o: Group4/Group4.c Group4/Group4.h main.h
 	$(CC) $(CFLAGS) -c Group4/Group4.c -o Group4/Group4.o
@@ -80,8 +80,8 @@ Group1/Group1Tests.o: Group1/Group1Tests.c Group1/Group1Tests.h main.h
 Group2/Group2Tests.o: Group2/Group2Tests.c Group2/Group2Tests.h main.h
 	$(CC) $(CFLAGS) -c Group2/Group2Tests.c -o Group2/Group2Tests.o
 
-Group3/Group3Tests.o: Group3/Group3Tests.c Group3/Group3Tests.h main.h
-	$(CC) $(CFLAGS) -c Group3/Group3Tests.c -o Group3/Group3Tests.o
+ScalingInX/ScalingInXTests.o: ScalingInX/ScalingInXTests.c ScalingInX/ScalingInXTests.h main.h
+	$(CC) $(CFLAGS) -c ScalingInX/ScalingInXTests.c -o ScalingInX/ScalingInXTests.o
 
 Group4/Group4Tests.o: Group4/Group4Tests.c Group4/Group4Tests.h main.h
 	$(CC) $(CFLAGS) -c Group4/Group4Tests.c -o Group4/Group4Tests.o

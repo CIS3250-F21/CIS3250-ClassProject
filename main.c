@@ -249,6 +249,11 @@ void runAllTests() {
 
     // TESTS GO HERE
     runGroup7Tests();  // Group 7 tests
+
+    runScalingInXTests(); // Group 3 tests
+
+    zPlaneReflectionTests(); // Group 12 tests
+
     runXPlaneReflectionTests(); // X plane reflection tests
     
     // free

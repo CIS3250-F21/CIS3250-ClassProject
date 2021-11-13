@@ -5,7 +5,7 @@
 #include "Group10/Group10.h"
 #include "Group11/Group11.h"
 #include "zPlaneReflection/zPlaneReflection.h"
-#include "Group13/Group13.h"
+#include "ShearInX/ShearInX.h"
 #include "Group14/Group14.h"
 #include "Group15/Group15.h"
 #include "Group16/Group16.h"

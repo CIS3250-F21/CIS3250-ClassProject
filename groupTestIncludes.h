@@ -3,5 +3,6 @@
 
 #include "RotationInY/RotationInYTests.h"
 #include "zPlaneReflection/zPlaneReflectionTests.h"
+#include "ShearInX/ShearInXTests.h"
 
 #endif

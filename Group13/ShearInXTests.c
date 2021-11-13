@@ -1,8 +1,8 @@
-#include "Group13Tests.h"
+#include "ShearInXTests.h"
 #define SHEAR_FLOAT_MAX 34028234600000000000000000000000000000.0
 #define SHEAR_FLOAT_MIN -1175494351000000000000000000000000000.0
 
-void runGroup13Tests() {                       // Calls the tests
+void runXShearTests() {                       // Calls the tests
     struct shape* oldInputShape = inputShape;  // Make sure input shape is not modified by test cases.
     if (tstFlag) {
         struct point* testpoints = createTestpoints();  // Creates a common, constant set of pre-defined points for tests to pull from when creating their shape structs

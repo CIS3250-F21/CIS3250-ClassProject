@@ -1,10 +1,10 @@
-#ifndef GROUP13_TEST_H
-#define GROUP13_TEST_H
+#ifndef XSHEAR_TEST_H
+#define XSHEAR_TEST_H
 
 int errorFlag;
 int tstFlag;
 
-int main(int argc, char* argv[]);  // Calls the tests
+void runXShearTests();  // Calls the tests
 
 struct point* createTestpoints();
 
@@ -19,6 +19,6 @@ int testHelperCompare(struct point vec1, struct point vec2);
 
 #endif
 
-#ifndef GROUP_13_H
-#include "Group13.h"
+#ifndef XSHEAR_H
+#include "ShearInX.h"
 #endif

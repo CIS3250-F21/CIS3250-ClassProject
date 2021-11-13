@@ -236,6 +236,7 @@ void runAllTests() {
     runGroup7Tests();  // Group 7 tests
 
     zPlaneReflectionTests(); // Group 12 tests
+    runXShearTests();
 
     // free
     for (i = 0; i < 5; i++) {

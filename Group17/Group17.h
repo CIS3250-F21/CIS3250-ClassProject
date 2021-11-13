@@ -3,6 +3,6 @@
 
 #include "../main.h"
 
-int outputVector(struct vector* finalVector, char* filename);
+int outputPoint(struct point* finalPoint, char* filename);
 
 #endif

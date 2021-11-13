@@ -1,5 +1,5 @@
 #include "Group17.h"
 
-int outputVector(struct vector* finalVector, char* filename) {
+int outputPoint(struct point* finalPoint, char* filename) {
     return 0;
 }

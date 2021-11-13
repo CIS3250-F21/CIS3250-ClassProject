@@ -3,8 +3,6 @@
 
 #include <math.h>
 
-struct shape testShape;
-
 void yRotation();
 void generateYRotationMatrix(float theta);
 

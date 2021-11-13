@@ -31,8 +31,8 @@ GlobalScaling/GlobalScaling.o: GlobalScaling/GlobalScaling.c GlobalScaling/Globa
 ScalingInX/ScalingInX.o: ScalingInX/ScalingInX.c ScalingInX/ScalingInX.h main.h
 	$(CC) $(CFLAGS) -c ScalingInX/ScalingInX.c -o ScalingInX/ScalingInX.o
 
-Group4/Group4.o: Group4/Group4.c Group4/Group4.h main.h
-	$(CC) $(CFLAGS) -c Group4/Group4.c -o Group4/Group4.o
+ScalingInY/ScalingInY.o: ScalingInY/ScalingInY.c ScalingInY/ScalingInY.h main.h
+	$(CC) $(CFLAGS) -c ScalingInY/ScalingInY.c -o ScalingInY/ScalingInY.o
 
 Group5/Group5.o: Group5/Group5.c Group5/Group5.h main.h
 	$(CC) $(CFLAGS) -c Group5/Group5.c -o Group5/Group5.o
@@ -82,6 +82,9 @@ GlobalScaling/GlobalScalingTests.o: GlobalScaling/GlobalScalingTests.c GlobalSca
 
 ScalingInX/ScalingInXTests.o: ScalingInX/ScalingInXTests.c ScalingInX/ScalingInXTests.h main.h
 	$(CC) $(CFLAGS) -c ScalingInX/ScalingInXTests.c -o ScalingInX/ScalingInXTests.o
+
+ScalingInY/ScalingInYTests.o: ScalingInY/ScalingInYPreTests.c ScalingInY/ScalingInYPostTests.c main.h
+	$(CC) $(CFLAGS) -c ScalingInX/ScalingInYPreTests.c ScalingInX/ScalingInYPostTests.c -o ScalingInX/ScalingInYTests.o
 
 Group4/Group4Tests.o: Group4/Group4Tests.c Group4/Group4Tests.h main.h
 	$(CC) $(CFLAGS) -c Group4/Group4Tests.c -o Group4/Group4Tests.o

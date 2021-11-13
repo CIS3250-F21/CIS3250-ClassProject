@@ -5,8 +5,6 @@
 
 int main(int argc, char** argv) {
     fileName = "shape.txt";
-    // fileName = malloc(sizeof(char) * 10);
-    // strcpy(fileName, "shape.txt");
 
     // Run tests if need be
     if (argc == 2 && strcmp(argv[1], "-t") == 0) {
@@ -65,7 +63,7 @@ int main(int argc, char** argv) {
 
         free(inputShape);
     }
-    // free(fileName);
+    
     return 0;
 }
 

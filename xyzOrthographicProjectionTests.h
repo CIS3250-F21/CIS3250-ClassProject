@@ -4,8 +4,9 @@
 #include "../main.h"
 #include "xyzOrthographicProjection.h"
 
-void xyzOrthographicProjectionTest1.c();
-void xyzOrthographicProjectionTest2.c();
-void xyzOrthographicProjectionTest3.c();
+void xyzOrthographicProjectionTest1();
+void xyzOrthographicProjectionTest2();
+void xyzOrthographicProjectionTest3();
+void xyzOrthographicProjectionRunTests();
 
 #endif

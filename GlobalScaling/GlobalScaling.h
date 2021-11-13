@@ -1,5 +1,5 @@
-#ifndef GROUP_2_H
-#define GROUP_2_H
+#ifndef GLOBAL_SCALING_H
+#define GLOBAL_SCALING_H
 
 #include "../main.h"
 

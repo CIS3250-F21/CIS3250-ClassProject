@@ -38,12 +38,12 @@ void runGroup17Tests () {
 
     // Call the outputPoints function with the input paramters
     if (outputPoints("output1.1.txt") != 1) {
-        printf("[Test 1.1] Return value is not 1\n");
+        fprintf(stderr, "[Test 17.1.1] Return value is not 1 (%s:%d)\n", __FILE__, __LINE__);
     }
 
     // Check if the file was created and test its values
     if ((fp = fopen("output1.1.txt", "r")) == NULL) {
-        printf("[Test 1.1] File \"output1.1.txt\" does not exist\n");
+        fprintf(stderr, "[Test 17.1.1] File \"output1.1.txt\" does not exist (%s:%d)\n", __FILE__, __LINE__);
     }
     else {
         // read values from file
@@ -51,7 +51,7 @@ void runGroup17Tests () {
         
         // Check if values match
         if (x != testPoint.element[0] || y != testPoint.element[1] || z != testPoint.element[2] || (s - 1.0f) > 0.001) {
-            printf("[Test 1.1] Incorrect point values for test point\n");
+            fprintf(stderr, "[Test 17.1.1] Incorrect point values for test point (%s:%d)\n", __FILE__, __LINE__);
         }
         
         fclose(fp);
@@ -76,7 +76,7 @@ void runGroup17Tests () {
     inputShape->numOfPoints = 0;
     
     if (outputPoints("output2.1.txt") != 0) {
-        printf("[Test 2.1] Return value is not 0\n");
+        fprintf(stderr, "[Test 17.2.1] Return value is not 0 (%s:%d)\n", __FILE__, __LINE__);
     }
 
     // delete file if created
@@ -103,7 +103,7 @@ void runGroup17Tests () {
     
     // call outputMatrix function with filename
     if (outputPoints(NULL) != 0) {
-        printf("[Test 2.2] Return value is not 0\n");
+        fprintf(stderr, "[Test 17.2.2] Return value is not 0 (%s:%d)\n", __FILE__, __LINE__);
     }
     
     /*
@@ -119,7 +119,7 @@ void runGroup17Tests () {
     
     // call outputPoints function with empty string as filename
     if (outputPoints("") != 0) {
-        printf("[Test 2.3] Return value is not 0\n");
+        fprintf(stderr, "[Test 17.2.3] Return value is not 0 (%s:%d)\n", __FILE__, __LINE__);
     }
 
     /*
@@ -139,7 +139,7 @@ void runGroup17Tests () {
 
     // call function with input
     if (outputPoints("output2.4.txt") != 0) {
-        printf("[Test 2.4] Return value was not 0\n");
+        fprintf(stderr, "[Test 17.2.4] Return value was not 0 (%s:%d)\n", __FILE__, __LINE__);
     }
     
     // delete file if exists
@@ -182,7 +182,7 @@ void runGroup17Tests () {
 
     // output first shape to file
     if (outputPoints("output2.5.txt") != 1) {
-        printf("[Test 2.5] Failed to output points 4 and 5\n");
+        fprintf(stderr, "[Test 17.2.5] Failed to output points 4 and 5 (%s:%d)\n", __FILE__, __LINE__);
     }
     
     setPoint(0, &testPoint6);
@@ -190,12 +190,12 @@ void runGroup17Tests () {
 
     // output second shape to file
     if (outputPoints("output2.5.txt") != 1) {
-        printf("[Test 2.5] Failed to output points 6 and 7\n");
+        fprintf(stderr, "[Test 17.2.5] Failed to output points 6 and 7 (%s:%d)\n", __FILE__, __LINE__);
     }
 
     // Check if the file was created and test its values
     if ((fp = fopen("output2.5.txt", "r")) == NULL) {
-        printf("[Test 2.5] File \"output2.5.txt\" does not exist\n");
+        fprintf(stderr, "[Test 17.2.5] File \"output2.5.txt\" does not exist (%s:%d)\n", __FILE__, __LINE__);
     }
     else {
         // read first point from file
@@ -208,7 +208,7 @@ void runGroup17Tests () {
             z != testPoint6.element[2] || 
             (s - 1.0f) > 0.01
         ) {
-            printf("[Test 2.5] Incorrect values for test point 6\n");
+            fprintf(stderr, "[Test 17.2.5] Incorrect values for test point 6 (%s:%d)\n", __FILE__, __LINE__);
         }
         else {
             // read second point from file
@@ -221,7 +221,7 @@ void runGroup17Tests () {
                 z != testPoint7.element[2] || 
                 (s - 1.0f) > 0.01
             ) {
-                printf("[Test 2.5] Incorrect values for test point 7\n");
+                fprintf(stderr, "[Test 17.2.5] Incorrect values for test point 7 (%s:%d)\n", __FILE__, __LINE__);
             }
         }
     }

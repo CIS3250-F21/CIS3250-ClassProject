@@ -1,5 +1,5 @@
-#ifndef GROUP_7_TESTS
-#define GROUP_7_TESTS
+#ifndef ROTATION_Y_TESTS_H
+#define ROTATION_Y_TESTS_H
 
 #include <math.h>
 #include <stdio.h>

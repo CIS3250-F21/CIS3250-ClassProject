@@ -25,8 +25,8 @@ main.o: main.c $(H_FILES)
 Group1/Group1.o: Group1/Group1.c Group1/Group1.h main.h
 	$(CC) $(CFLAGS) -c Group1/Group1.c -o Group1/Group1.o
 
-Group2/Group2.o: Group2/Group2.c Group2/Group2.h main.h
-	$(CC) $(CFLAGS) -c Group2/Group2.c -o Group2/Group2.o
+GlobalScaling/GlobalScaling.o: GlobalScaling/GlobalScaling.c GlobalScaling/GlobalScaling.h main.h
+	$(CC) $(CFLAGS) -c GlobalScaling/GlobalScaling.c -o GlobalScaling/GlobalScaling.o
 
 ScalingInX/ScalingInX.o: ScalingInX/ScalingInX.c ScalingInX/ScalingInX.h main.h
 	$(CC) $(CFLAGS) -c ScalingInX/ScalingInX.c -o ScalingInX/ScalingInX.o

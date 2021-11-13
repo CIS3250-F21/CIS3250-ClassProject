@@ -248,6 +248,8 @@ void runAllTests() {
     }
 
     // TESTS GO HERE
+    // runRotationInXTests(); // RotationInX tests
+
     runGroup7Tests();  // Group 7 tests
 
     runScalingInXTests(); // Group 3 tests

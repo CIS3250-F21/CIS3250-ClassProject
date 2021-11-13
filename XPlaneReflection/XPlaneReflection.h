@@ -1,7 +1,5 @@
-#ifndef GROUP_10_H
-#define GROUP_10_H
-
-#include "../main.h"
+#ifndef X_PLANE_REFLECTION_H
+#define X_PLANE_REFLECTION_H
 
 void xPlaneReflection();
 

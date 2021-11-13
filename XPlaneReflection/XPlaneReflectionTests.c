@@ -11,8 +11,8 @@ int didXReflect( struct point * oldP, struct point * newP ) {
 	}
 	else {
 		fprintf( stderr, "old point x-value: %f, new point x-value: %f\n", oldP->element[0], newP->element[0] );
-		fprintf( stderr, "Error: X value did not reflect correctly. Exiting the program.\n" );
-		exit(1);
+		fprintf( stderr, "Error: X value did not reflect correctly.\n" );
+		return 0;
 	}
 }
 
@@ -24,8 +24,8 @@ int testOtherValuesUnchanged( struct point * oldP, struct point * newP ) {
 	for( int i = 1; i < 4; i++ ) {
 		if( oldP->element[i] != newP->element[i]) {
 		    fprintf( stderr, "old point x-value: %f, new point x-value: %f\n", oldP->element[i], newP->element[i] );
-		    fprintf( stderr, "Error: the values are changed. Exiting the program.\n" );
-		    exit(1);
+		    fprintf( stderr, "Error: X Reflection modified additional values.\n" );
+		    return 0;
 		}
 	}
 	return 1;
@@ -53,8 +53,8 @@ int testTransformationMatrix(){
 		for( int j=0; j<4; j++ ){
 			if( expectedMatrix[i][j]!=transformationMatrix[i][j] ){
 				fprintf( stderr, "Expected: %f, received %f\n", expectedMatrix[i][j], transformationMatrix[i][j] );
-				fprintf( stderr, "Error: unexpected value. Exiting the program.\n" );
-				exit(1);
+				fprintf( stderr, "Error: unexpected value in transformation matrix.\n" );
+				return 0;
 			}
 		}
 	}

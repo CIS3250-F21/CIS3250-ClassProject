@@ -7,7 +7,7 @@
 #include "zPlaneReflection/zPlaneReflection.h"
 #include "Group13/Group13.h"
 #include "Group14/Group14.h"
-#include "Group15/Group15.h"
+#include "ShearInZ/ShearInZ.h"
 #include "Group16/Group16.h"
 #include "Group17/Group17.h"
 #include "GlobalScaling/GlobalScaling.h"

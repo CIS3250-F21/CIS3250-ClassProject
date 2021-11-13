@@ -1,4 +1,4 @@
-#include "XPlaneReflection.h"
+#include "xPlaneReflection.h"
 #include "../main.h"
 
 void xPlaneReflection() {

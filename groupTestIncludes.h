@@ -2,5 +2,6 @@
 #define GROUP_TEST_INCLUDES_H
 
 #include "Group7/Group7Tests.h"
+#include "xPlaneReflection/xPlaneReflectionTests.h"
 
 #endif

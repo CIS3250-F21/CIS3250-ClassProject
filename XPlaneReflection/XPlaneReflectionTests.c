@@ -1,5 +1,5 @@
-#include "XPlaneReflectionTests.h"
-#include "XPlaneReflection.h"
+#include "xPlaneReflectionTests.h"
+#include "xPlaneReflection.h"
 
 /* 
  Tests if the x value was correctly flipped

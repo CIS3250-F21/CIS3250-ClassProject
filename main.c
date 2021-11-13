@@ -15,52 +15,53 @@ int main(int argc, char** argv) {
         inputShape = readInput(fileName);
 
         //~~~~~ Group 2 ~~~~~//
-        void globalScaling();
+        globalScaling();
 
         //~~~~~ Group 3 ~~~~~//
-        void xScaling();
+        xScaling();
 
         //~~~~~ Group 4 ~~~~~//
-        void yScaling();
+        yScaling();
 
         //~~~~~ Group 5 ~~~~~//
-        void zScaling();
+        zScaling();
 
         //~~~~~ Group 6 ~~~~~//
-        void xRotation();
+        xRotation();
 
         //~~~~~ Group 7 ~~~~~//
-        void yRotation();
+        yRotation();
 
         //~~~~~ Group 8 ~~~~~//
-        void zRotation();
+        zRotation();
 
         //~~~~~ Group 9 ~~~~~//
-        void xyzTranslation();
+        xyzTranslation();
 
         //~~~~~ Group 10 ~~~~~//
-        void xPlaneReflection();
+        xPlaneReflection();
 
         //~~~~~ Group 11 ~~~~~//
-        void yPlaneReflection();
+        yPlaneReflection();
 
         //~~~~~ Group 12 ~~~~~//
-        void zPlaneReflection();
+        zPlaneReflection();
 
         //~~~~~ Group 13 ~~~~~//
-        void xShear();
+        xShear();
 
         //~~~~~ Group 14 ~~~~~//
-        void yShear();
+        yShear();
 
         //~~~~~ Group 15 ~~~~~//
-        void zShear();
+        zShear();
 
         //~~~~~ Group 16 ~~~~~//
-        void xyzOrthographicProjection();
+        xyzOrthographicProjection();
 
         //~~~~~ Group 17 ~~~~~//
-        int outputPoint(struct point * finalPoint, char* filename);
+        // TODO: pass finalPoint here
+        // int outputPoint(struct point * finalPoint, fileName);
 
         free(inputShape);
     }

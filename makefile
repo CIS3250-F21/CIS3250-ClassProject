@@ -86,9 +86,6 @@ ScalingInX/ScalingInXTests.o: ScalingInX/ScalingInXTests.c ScalingInX/ScalingInX
 ScalingInY/ScalingInYTests.o: ScalingInY/ScalingInYPreTests.c ScalingInY/ScalingInYPostTests.c main.h
 	$(CC) $(CFLAGS) -c ScalingInX/ScalingInYPreTests.c ScalingInX/ScalingInYPostTests.c -o ScalingInX/ScalingInYTests.o
 
-Group4/Group4Tests.o: Group4/Group4Tests.c Group4/Group4Tests.h main.h
-	$(CC) $(CFLAGS) -c Group4/Group4Tests.c -o Group4/Group4Tests.o
-
 Group5/Group5Tests.o: Group5/Group5Tests.c Group5/Group5Tests.h main.h
 	$(CC) $(CFLAGS) -c Group5/Group5Tests.c -o Group5/Group5Tests.o
 

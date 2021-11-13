@@ -77,8 +77,8 @@ Group17/Group17.o: Group17/Group17.c Group17/Group17.h main.h
 Group1/Group1Tests.o: Group1/Group1Tests.c Group1/Group1Tests.h main.h
 	$(CC) $(CFLAGS) -c Group1/Group1Tests.c -o Group1/Group1Tests.o
 
-Group2/Group2Tests.o: Group2/Group2Tests.c Group2/Group2Tests.h main.h
-	$(CC) $(CFLAGS) -c Group2/Group2Tests.c -o Group2/Group2Tests.o
+GlobalScaling/GlobalScalingTests.o: GlobalScaling/GlobalScalingTests.c GlobalScaling/GlobalScalingTests.h main.h
+	$(CC) $(CFLAGS) -c GlobalScaling/GlobalScalingTests.c -o GlobalScaling/GlobalScalingTests.o
 
 ScalingInX/ScalingInXTests.o: ScalingInX/ScalingInXTests.c ScalingInX/ScalingInXTests.h main.h
 	$(CC) $(CFLAGS) -c ScalingInX/ScalingInXTests.c -o ScalingInX/ScalingInXTests.o

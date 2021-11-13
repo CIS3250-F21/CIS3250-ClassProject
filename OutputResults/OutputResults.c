@@ -1,4 +1,4 @@
-#include "Group17.h"
+#include "OutputResults.h"
 
 int outputPoints(char* filename) {
     FILE* fp;
@@ -42,9 +42,8 @@ int outputPoints(char* filename) {
 
         
         fprintf (
-            fp, "%f %f %f %f\n", 
-            point->element[0], point->element[1], 
-            point->element[2], point->element[3]
+            fp, "%f %f %f\n", 
+            point->element[0], point->element[1], point->element[2]
         );
     }
 

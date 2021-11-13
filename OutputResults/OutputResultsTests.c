@@ -1,6 +1,6 @@
-#include "Group17Tests.h"
+#include "OutputResultsTests.h"
 
-void runGroup17Tests () {
+void runOutputResultsTests () {
     // store prev points
     struct point** oldPoints = inputShape->points;
     int oldNumOfPoints = inputShape->numOfPoints;
@@ -10,7 +10,7 @@ void runGroup17Tests () {
     inputShape->numOfPoints = 0;
 
     FILE* fp;
-    float x, y, z, s;
+    float x, y, z;
   
     // Clean Tests
   
@@ -47,10 +47,10 @@ void runGroup17Tests () {
     }
     else {
         // read values from file
-        fscanf(fp, "%f %f %f %f", &x, &y, &z, &s);
+        fscanf(fp, "%f %f %f", &x, &y, &z);
         
         // Check if values match
-        if (x != testPoint.element[0] || y != testPoint.element[1] || z != testPoint.element[2] || (s - 1.0f) > 0.001) {
+        if (x != testPoint.element[0] || y != testPoint.element[1] || z != testPoint.element[2]) {
             fprintf(stderr, "[Test 17.1.1] Incorrect point values for test point (%s:%d)\n", __FILE__, __LINE__);
         }
         
@@ -199,27 +199,25 @@ void runGroup17Tests () {
     }
     else {
         // read first point from file
-        fscanf(fp, "%f %f %f %f", &x, &y, &z, &s);
+        fscanf(fp, "%f %f %f", &x, &y, &z);
 
         // Check if values match for test point 6
         if (
             x != testPoint6.element[0] || 
             y != testPoint6.element[1] || 
-            z != testPoint6.element[2] || 
-            (s - 1.0f) > 0.01
+            z != testPoint6.element[2]
         ) {
             fprintf(stderr, "[Test 17.2.5] Incorrect values for test point 6 (%s:%d)\n", __FILE__, __LINE__);
         }
         else {
             // read second point from file
-            fscanf(fp, "%f %f %f %f", &x, &y, &z, &s);
+            fscanf(fp, "%f %f %f", &x, &y, &z);
 
             // check if values match for test point 7
             if (
                 x != testPoint7.element[0] ||
                 y != testPoint7.element[1] || 
-                z != testPoint7.element[2] || 
-                (s - 1.0f) > 0.01
+                z != testPoint7.element[2]
             ) {
                 fprintf(stderr, "[Test 17.2.5] Incorrect values for test point 7 (%s:%d)\n", __FILE__, __LINE__);
             }

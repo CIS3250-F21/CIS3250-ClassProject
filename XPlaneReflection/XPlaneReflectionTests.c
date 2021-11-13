@@ -70,7 +70,6 @@ int testSetPoint( struct point * localPoint, int index ) {
 }
 
 void runXPlaneReflectionTests() {
-	struct point * currPoint;
     generateXPlaneReflectionMatrix();
     testTransformationMatrix();
 	testInputNotEmpty();

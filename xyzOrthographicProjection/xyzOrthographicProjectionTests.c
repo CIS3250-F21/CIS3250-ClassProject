@@ -22,7 +22,7 @@ void xyzOrthographicProjectionTest2()
 {
     
     float testElements[4] = {823.2, 3.23, 90.41, 1};
-    struct point * testPoints;
+    struct point * testPoints = NULL;
     struct point ** tempPoints = inputShape->points; //create a copy of the original points struct
     int tempNum = inputShape->numOfPoints; //create a copy of the original number of points
         for (int i = 0 ; i < 4 ; i++)
@@ -30,7 +30,7 @@ void xyzOrthographicProjectionTest2()
             testPoints->element[i] = testElements[i];
         }
     inputShape->numOfPoints = 1;
-    setPoint(testPoints, 0);
+    setPoint(0, testPoints);
     
     xyzOrthographicProjection();
   
@@ -63,7 +63,7 @@ void xyzOrthographicProjectionTest3()
   
     for (int k = 0 ; k < inputShape->numOfPoints ; k++)
     {
-      setPoint(testPoints[k], k);
+      setPoint(k, testPoints[k]);
     }
     xyzOrthographicProjection();
     for (int l = 0 ; l < inputShape->numOfPoints; l++)

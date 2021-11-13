@@ -9,7 +9,7 @@ void xPlaneReflection() {
     while ((p = getPoint(i)) != NULL)
     {
 		multiplyMatrix( p, transformationMatrix );
-		setVector( i, p );
+		setPoint( i, p );
         i++;
 	}
 }

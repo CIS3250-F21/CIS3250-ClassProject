@@ -1,15 +1,16 @@
 #include "XPlaneReflectionTests.h"
+#include "XPlaneReflection.h"
 
 /* 
  Tests if the x value was correctly flipped
  Returns 1 if successful, 0 otherwise
 */
-int didXReflect( struct point * old, struct point * newV ) {
-	if( old->element[0] == -newV->element[0]) {
+int didXReflect( struct point * oldP, struct point * newP ) {
+	if( oldP->element[0] == -newP->element[0]) {
 		return 1;
 	}
 	else {
-		fprintf( stderr, "old point x-value: %f, new point x-value: %f\n", old->element[0], newV->element[0] );
+		fprintf( stderr, "old point x-value: %f, new point x-value: %f\n", oldP->element[0], newP->element[0] );
 		fprintf( stderr, "Error: X value did not reflect correctly. Exiting the program.\n" );
 		exit(1);
 	}
@@ -19,10 +20,10 @@ int didXReflect( struct point * old, struct point * newV ) {
  Tests if the other values in the point are unchanged
  Returns 1 if successful, 0 otherwise
 */
-int testOtherValuesUnchanged( struct point * old, struct point * newV ) {
+int testOtherValuesUnchanged( struct point * oldP, struct point * newP ) {
 	for( int i = 1; i < 4; i++ ) {
-		if( old->element[i] != newV->element[i]) {
-		    fprintf( stderr, "old point x-value: %f, new point x-value: %f\n", old->element[i], newV->element[i] );
+		if( oldP->element[i] != newP->element[i]) {
+		    fprintf( stderr, "old point x-value: %f, new point x-value: %f\n", oldP->element[i], newP->element[i] );
 		    fprintf( stderr, "Error: the values are changed. Exiting the program.\n" );
 		    exit(1);
 		}
@@ -65,7 +66,7 @@ int testTransformationMatrix(){
  Returns 1 on BOTH successes, 0 otherwise
 */
 int testSetPoint( struct point * localPoint, int index ) {
-	return( didXReflect(localPoint, getPoint(index)) && otherValuesUnchanged(localPoint, getPoint(index)) );
+	return( didXReflect(localPoint, getPoint(index)) && testOtherValuesUnchanged(localPoint, getPoint(index)) );
 }
 
 void runXPlaneReflectionTests() {
@@ -74,7 +75,7 @@ void runXPlaneReflectionTests() {
     testTransformationMatrix();
 	testInputNotEmpty();
     testXPlaneReflection();
-    
+
     resetMatrix();
 }
 
@@ -93,7 +94,7 @@ void testXPlaneReflection() {
     // Reflect newP and compare against oldP
     multiplyMatrix( &newP, transformationMatrix );
 	didXReflect( &oldP, &newP );
-	otherValuesUnchanged( &oldP, &newP ); 
+	testOtherValuesUnchanged( &oldP, &newP ); 
 
     resetMatrix();
 }

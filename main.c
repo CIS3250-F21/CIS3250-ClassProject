@@ -249,7 +249,8 @@ void runAllTests() {
 
     // TESTS GO HERE
     runGroup7Tests();  // Group 7 tests
-
+    runXPlaneReflectionTests(); // X plane reflection tests
+    
     // free
     for (i = 0; i < 5; i++) {
         free(inputShape->points[i]);

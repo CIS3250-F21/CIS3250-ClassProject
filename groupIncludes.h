@@ -2,7 +2,7 @@
 #define GROUP_INCLUDES_H
 
 #include "Group1/Group1.h"
-#include "Group10/Group10.h"
+#include "XPlaneReflection/XPlaneReflection.h"
 #include "Group11/Group11.h"
 #include "zPlaneReflection/zPlaneReflection.h"
 #include "Group13/Group13.h"

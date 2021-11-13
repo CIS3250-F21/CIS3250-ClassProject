@@ -16,7 +16,7 @@ void xyzOrthographicProjection()
   transformationMatrix[1][1] = 1; // except for the third column, which will still be all zero's
   transformationMatrix[3][3] = 1;
 
-  for ( index = 0; index < inputShape->numOfVectors; index++)
+  for ( index = 0; index < inputShape->numOfPoints; index++)
   {
     
     tempPoint = getPoint(index); //get vector from global matrix in inputShape

@@ -3,7 +3,7 @@
 void xyzOrthographicProjection() 
 {
   int index;
-  struct * point tempPoint;
+  struct  point * tempPoint;
   int i, j; //begin setting the global tranformationMatrix's values all to 0
   for (i = 0; i < 4; i ++) 
   {

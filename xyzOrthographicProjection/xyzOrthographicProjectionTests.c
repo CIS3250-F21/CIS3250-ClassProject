@@ -1,4 +1,4 @@
-#include xyzOrthographicProjection.h
+#include "xyzOrthographicProjectionTests.h"
 
 //xyzOrthographicProjection clean test with checks the current points
 void xyzOrthographicProjectionTest1()
@@ -21,16 +21,16 @@ void xyzOrthographicProjectionTest1()
 void xyzOrthographicProjectionTest2()
 {
     
-    float testElements = {823.2, 3.23, 90.41, 1};
+    float testElements[4] = {823.2, 3.23, 90.41, 1};
     struct point * testPoints;
     struct point ** tempPoints = inputShape->points; //create a copy of the original points struct
     int tempNum = inputShape->numOfPoints; //create a copy of the original number of points
         for (int i = 0 ; i < 4 ; i++)
         {
-            *testPoints.element[i] = testElements[i];
+            testPoints->element[i] = testElements[i];
         }
     inputShape->numOfPoints = 1;
-    setPoint(testPoint, 0);
+    setPoint(testPoints, 0);
     
     xyzOrthographicProjection();
   
@@ -47,7 +47,7 @@ void xyzOrthographicProjectionTest2()
 // Test with a large amount of points (1000 points)
 void xyzOrthographicProjectionTest3()
 {
-    struct points testPoints[1000][4];
+    struct point * testPoints[1000];
     struct point ** tempPoints = inputShape->points; //create a copy of the original points struct
     int tempNum = inputShape->numOfPoints; //create a copy of the original number of points
     inputShape->numOfPoints = 1000;
@@ -56,7 +56,7 @@ void xyzOrthographicProjectionTest3()
     {
         for (int j = 0 ; j < 4 ; j++)
         {
-            testPoints[i].element[j] = i;
+            testPoints[i]->element[j] = i;
         }
     }
                              

@@ -1,4 +1,4 @@
-#include "Group5.h"
+#include "zScaling.h"
 
 void zScaling(){
 

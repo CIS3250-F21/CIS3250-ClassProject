@@ -1,4 +1,4 @@
-void runGroup5Tests();      //test function
+void runZScalingTests();      //test function
 void correctScale();        //clean
 void zeroMulti();           //dirty 1
 void negativeShapeScale();  //dirty 2

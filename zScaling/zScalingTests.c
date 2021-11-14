@@ -1,5 +1,5 @@
-#include "Group5Tests.h"
-#include "Group5.h"
+#include "zScalingTests.h"
+#include "zScaling.h"
 #include <float.h>
 /* Clean Test */
 
@@ -205,7 +205,7 @@ void incrementedVector()
   }
   inputShape->points -= 2; //reset vector pointer
 }
-void runGroup5Tests()
+void runZScalingTests()
 {
   
   /*Running Clean Test*/

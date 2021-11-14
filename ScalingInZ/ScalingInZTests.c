@@ -183,7 +183,9 @@ void nullPoint()
 void incrementedPoint()
 {
   float zVals[inputShape->numOfPoints];
-  zVals[2] = 6;
+  for (int x = 0; x < inputShape->numOfPoints; x++){
+    zVals[x] = x;
+  }
 
   //Setting only the z values for each point
   for (int z = 0; z < inputShape->numOfPoints; z++)
@@ -199,7 +201,7 @@ void incrementedPoint()
   zScaling();
 
   struct point *newPoint = getPoint(0);
-  if (newPoint->element[2] != 12){
+  if (newPoint->element[2] != 4){
     fprintf(stderr, "Function did not make changes to point \n\n");
   }
   inputShape->points -= 2; //reset point pointer

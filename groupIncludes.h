@@ -13,7 +13,7 @@
 #include "GlobalScaling/GlobalScaling.h"
 #include "ScalingInX/ScalingInX.h"
 #include "Group4/Group4.h"
-#include "zScaling/zScaling.h"
+#include "ScalingInZ/ScalingInZ.h"
 #include "Group6/Group6.h"
 #include "RotationInY/RotationInY.h"
 #include "Group8/Group8.h"

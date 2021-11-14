@@ -4,7 +4,7 @@ void zScaling(){
 
   float vectorScalingValue = getZScale();
   
-  for(int x = 0; x < inputShape->numOfVectors; x++){
+  for(int x = 0; x < inputShape->numOfPoints; x++){
     float zValue;
 
     struct point *newVector = getVector(x);

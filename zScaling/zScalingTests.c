@@ -17,10 +17,10 @@ void correctScale()
 
 //   float tempScale = getZScale(); 
   
-  float zVals[inputShape->numOfVectors]; 
+  float zVals[inputShape->numOfPoints]; 
 
   /* Saving inital z values*/
-  for (int x = 0; x < inputShape->numOfVectors; x++){
+  for (int x = 0; x < inputShape->numOfPoints; x++){
     struct point *newVector = getVector(x);
     zVals[x] = newVector->element[2];
   }
@@ -29,7 +29,7 @@ void correctScale()
   zScaling();// Scaling vectors 
 
   /* Comparing inital z values to newly scaled z values*/
-  for (int y = 0; y < inputShape->numOfVectors; y++)
+  for (int y = 0; y < inputShape->numOfPoints; y++)
   {
 	  struct point *newVector = getVector(y); 
       if (val[y]== newVector->element[2])//If z value didn't scale
@@ -52,7 +52,7 @@ void zeroMulti(){
   float val[] = {1.1, -2.2, 3.3, -4.4, 5.5};//5x5 matrix
 
   //Setting only the z values for each vector
-  for (int z = 0; z < inputShape->numOfVectors; z++)
+  for (int z = 0; z < inputShape->numOfPoints; z++)
   {
     struct point *newVector = getVector(z);
     newVector->element[2] = val[z];
@@ -64,7 +64,7 @@ void zeroMulti(){
   zScaling();
 
   /* Checking newly scaled z values*/
-  for (int y = 0; y < inputShape->numOfVectors; y++)
+  for (int y = 0; y < inputShape->numOfPoints; y++)
   {
       struct point *newVector = getVector(y);
       if (newVector->element[2] != 0)//+ve didn't turn -ve
@@ -83,7 +83,7 @@ void negativeShapeScale()
 {
   float val[] = {-1.1, 2.2, -3.3, 4.4, -5.5};//5x5 matrix
 
-  for (int z = 0; z < inputShape->numOfVectors; z++)
+  for (int z = 0; z < inputShape->numOfPoints; z++)
   {
     struct point *newVector = getVector(z);
     newVector->element[2] = val[z];
@@ -95,7 +95,7 @@ void negativeShapeScale()
   float f_precision = 0.00001; 
   zScaling();
   
-    for (int y = 0; y < inputShape->numOfVectors; y++)
+    for (int y = 0; y < inputShape->numOfPoints; y++)
     {
 		    struct point *newVector = getVector(y);
 
@@ -114,8 +114,8 @@ void negativeShapeScale()
 */ 
 void overflow()
 {
-  float zVals[inputShape->numOfVectors];
-  for (int x = 0; x < inputShape->numOfVectors; x++){
+  float zVals[inputShape->numOfPoints];
+  for (int x = 0; x < inputShape->numOfPoints; x++){
     	zVals[x] = 1;
   }
   zVals[0] = FLT_MAX;
@@ -143,13 +143,13 @@ void overflow()
 */
 void nullVector()
 {
-  float zVals[inputShape->numOfVectors];
-  for (int x = 0; x < inputShape->numOfVectors; x++){
+  float zVals[inputShape->numOfPoints];
+  for (int x = 0; x < inputShape->numOfPoints; x++){
     zVals[x] = x;
   }
 
   //Setting only the z values for each vector
-  for (int z = 0; z < inputShape->numOfVectors; z++)
+  for (int z = 0; z < inputShape->numOfPoints; z++)
   {
     struct point *newVector = getVector(z);
     newVector->element[2] = zVals[z];
@@ -183,11 +183,11 @@ void nullVector()
 */
 void incrementedVector()
 {
-  float zVals[inputShape->numOfVectors];
+  float zVals[inputShape->numOfPoints];
   zVals[2] = 6;
 
   //Setting only the z values for each vector
-  for (int z = 0; z < inputShape->numOfVectors; z++)
+  for (int z = 0; z < inputShape->numOfPoints; z++)
   {
     struct point *newVector = getVector(z);
     newVector->element[2] = zVals[z];

@@ -226,16 +226,12 @@ void resetMatrix(){
   }
 }
 
-void runAllTests() {
+// Instantiates shape struct for testing
+void createTestPoints() {
     int i;
+
     inputShape = malloc(sizeof(struct shape));
-
     inputShape->numOfPoints = 5;
-
-    // SET YOUR VALUES HERE
-    setYRotation(0);
-
-    // Instantiation of the shape structure
     inputShape->points = malloc(sizeof(struct point*) * 5);
 
     for (i = 0; i < 5; i++) {
@@ -246,21 +242,40 @@ void runAllTests() {
         temp->element[3] = 1;
         inputShape->points[i] = temp;
     }
+}
 
-    // TESTS GO HERE
-    runGroup7Tests();  // Group 7 tests
-
-    //runScalingInXTests(); // Group 3 tests
-
-    zPlaneReflectionTests(); // Group 12 tests
-
-    runXPlaneReflectionTests(); // X plane reflection tests
-    
-    // free
+// Frees instantiated shape struct
+void freeTestPoints() {
+    int i;
     for (i = 0; i < 5; i++) {
         free(inputShape->points[i]);
     }
     free(inputShape->points);
 
     free(inputShape);
+}
+
+void runAllTests() {
+
+    /* Rotation in Y Tests */
+    createTestPoints();
+    setYRotation(0);
+    runGroup7Tests();  
+    freeTestPoints();
+
+    /* Scaling in X Tests */
+    createTestPoints();
+    //runScalingInXTests();
+    freeTestPoints();
+
+    /* Z Plane Reflection Tests */
+    createTestPoints();
+    zPlaneReflectionTests();
+    freeTestPoints();
+
+    /* X Plane Reflection Tests */
+    createTestPoints();
+    runXPlaneReflectionTests();
+    freeTestPoints();
+
 }

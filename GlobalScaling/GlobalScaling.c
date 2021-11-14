@@ -1,7 +1,8 @@
 #include "GlobalScaling.h"
 
 void globalScaling(){
-    float globalScaleValue;
+    resetMatrix();
+    float globalScaleValue = 0.0;
     setGlobalScale(globalScaleValue);
 
     for(int i = 0; i < 4; i++){

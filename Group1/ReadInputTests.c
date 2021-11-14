@@ -1,4 +1,4 @@
-#include "Group1Tests.h"
+#include "ReadInputTests.h"
 
 // (CLEAN) Test #1 will compare all the given float values against the expected float values. We expect this test to pass.
 char test1(char testFile[20], char answerFile[20]){

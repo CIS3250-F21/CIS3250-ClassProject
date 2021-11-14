@@ -1,5 +1,5 @@
 
-#include "Group1.h"
+#include "ReadInput.h"
 /*
 Group 1 - Group Implementation
 Zacharias Cymbaluk 1121146 

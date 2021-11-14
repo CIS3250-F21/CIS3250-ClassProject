@@ -20,7 +20,7 @@ void zPlaneReflection() {
         while ((y = getPoint(index)) != NULL) {
             y = getPoint(index);
             for (int o = 0; o < 4; o ++) {
-                if ((y->element[o] != y->element[o]) || y->element[o] < -FLT_MAX || y->element[o] > FLT_MAX) {
+                if (y->element[o] < -FLT_MAX || y->element[o] > FLT_MAX) {
                     good = 1;
                     break;
                 } else if ((y->element[o] < FLT_MIN && y->element[o] > 0) || (y->element[o] > -FLT_MIN && y->element[o] < 0)) {

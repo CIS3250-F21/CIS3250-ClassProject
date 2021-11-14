@@ -6,27 +6,28 @@
 #include <string.h>
 
 struct point {
-    float point[4];
+    float element[4];
 };
 
 struct shape {
-    struct point** vectors;
-    int numOfVectors;
+    struct point** points;
+    int numOfPoints;
     float scaling[4];
     float rotation[3];
     float translation[3];
     float shearing[3];
 };
 
-float** transformationMatrix;
+float transformationMatrix[4][4];
 struct shape* inputShape;
 char* fileName;
 
 //~~~~~~ Global Functions ~~~~~~//
-void multiplyMatrix(struct point* currVector, float** matrix);
+void multiplyMatrix(struct point* currPoint, float matrix[4][4]);
+void resetMatrix();
 
 //~~~~~~ Getters ~~~~~~//
-struct point* getVector(int index);
+struct point* getPoint(int index);
 float getGloalScale();
 float getXScale();
 float getYScale();
@@ -42,7 +43,7 @@ float getYSheer();
 float getZSheer();
 
 //~~~~~~ Setters ~~~~~~//
-void setVector(int index, struct point* newVector);
+void setPoint(int index, struct point* newPoint);
 void setGlobalScale(float newGlobalScale);
 void setXScale(float newXScale);
 void setYScale(float newYScale);

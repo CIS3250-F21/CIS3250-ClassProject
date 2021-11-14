@@ -35,3 +35,9 @@ Please compile using "make" to make sure all of your functions and tests compile
 | Globals      | CAPTITAL_CASE  |
 | Curly Braces | New Line       |
 | File Name    | UpperCamelCase |
+
+## Changes:
+
+1. Changed any mention of Vectors to Points
+2. change transformation matrix to a static array
+3. 

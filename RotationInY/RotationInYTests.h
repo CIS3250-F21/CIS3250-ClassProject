@@ -4,8 +4,9 @@
 #include <math.h>
 #include <stdio.h>
 
-#include "Group7.h"
 #include "../main.h"
+#include "RotationInY.h"
+
 
 int compareFloat(float x, float y, float acceptedDistance);
 
@@ -15,21 +16,21 @@ void group7TestHandler(int (*test)(), char *testString);
 
 void setup();
 
-// getVector Tests
-int testGetVectorReturnsNullWhenIndexIsNeagtive();
+// getPoint Tests
+int testGetPointReturnsNullWhenIndexIsNeagtive();
 
-int testGetVectorReturnsNullWhenIndexIsGreaterThanLength();
+int testGetPointReturnsNullWhenIndexIsGreaterThanLength();
 
-int testGetVectorReturnsMatchingVector();
+int testGetPointReturnsMatchingPoint();
 
-// setVector Tests
-int testSetVectorWhenIndexIsNegative();
+// setPoint Tests
+int testSetPointWhenIndexIsNegative();
 
-int testSetVectorWhenIndexIsGreaterThenLength();
+int testSetPointWhenIndexIsGreaterThenLength();
 
-int testSetVectorIfVectorIsNull();
+int testSetPointIfPointIsNull();
 
-int testSetVectorIfVectorAddedAtIndex();
+int testSetPointIfPointAddedAtIndex();
 
 // getYRotation Tests
 int testGetYRotation();
@@ -49,9 +50,9 @@ int testGenerateYRotationMatrixWhenAngleIsNegative();
 int testGenerateYRotationMatrixWhenAngleIsPositiveGreaterThanTwoPi();
 
 // matrix multiplication Tests (SLICK)
-int testMatrixMultiplicationWhenVectorIsNull();  // pass null
+int testMatrixMultiplicationWhenPointIsNull();  // pass null
 
-int testMatrixMultiplicationWhenVectorIsValid();  //
+int testMatrixMultiplicationWhenPointIsValid();  //
 
 // include some tests for angles here
 
@@ -67,8 +68,8 @@ int testYRotationHandlesNullMatrix();  // Dirty
 
 int testYRotationHandlesNullElementOfMatrix();  // Dirty
 
-int testYRotationHandlesNullVector();  // Dirty
+int testYRotationHandlesNullPoint();  // Dirty
 
-int testYRotationHandlesNullVectors();  // Dirty
+int testYRotationHandlesNullPoints();  // Dirty
 
 #endif

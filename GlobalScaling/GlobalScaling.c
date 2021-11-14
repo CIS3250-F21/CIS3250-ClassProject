@@ -23,4 +23,6 @@ void globalScaling(){
             }
         }
     }
+
+    resetMatrix();
 }

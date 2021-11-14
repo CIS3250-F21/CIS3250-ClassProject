@@ -28,7 +28,7 @@ void resetMatrix();
 
 //~~~~~~ Getters ~~~~~~//
 struct point* getPoint(int index);
-float getGloalScale();
+float getGlobalScale();
 float getXScale();
 float getYScale();
 float getZScale();

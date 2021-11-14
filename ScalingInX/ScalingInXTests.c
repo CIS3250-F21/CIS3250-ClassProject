@@ -29,18 +29,6 @@ bool validIndex (int index) {
   return false;
 }
 
-//Checks if the indices in the point Array are initialized
-//GLOBAL TEST FUNCTION (areVectorsSet - group 1)
-
-/*bool arevectorsInitialized(){
-  for (int i = 0; i < 4; i++){
-    if (arevectorsSet[i] == false){
-      return false;
-    }
-  }
-  return true;
-}*/
-
 // Function testing for null pointers
 // Expecting the pointer to be initialized with a value that is not NULL
 // Fails is the the pointer is equal to NULL
@@ -100,7 +88,7 @@ bool emptyMatrixSet(){
 // Tests if all modified vectors have a 1 as their fourth element
 // Expecting all elements at index 3 for each point to have the value of 1
 // Fails if an element as index 3 does not equal 1
-bool ispointCorrect (float **vectors){
+bool isPointCorrect (float **vectors){
   struct point *temppoint;
   
   //Loop through all the vectors and assign to a temppoint
@@ -108,9 +96,10 @@ bool ispointCorrect (float **vectors){
     temppoint = getPoint(i);
 
     //check if the fourth coordinate of temppoint is equal to 1.
-    if (temppoint -> element[3] != 1)
+    if (temppoint -> element[3] != 1) {
       fprintf(stderr, "ERROR: vectors[%d][3] doesn't equal 1.\n", i);
       return false;
+    }
   }
   return true;
 }
@@ -193,8 +182,9 @@ void zeroTransformationTest () {
   struct point *newPoint[4];
 
   //Assign a random values to the 4 vectors
-  for (int i = 0; i < 4; i++) {
-    for (int j = 0; j < 4; j++) {
+  for (int i = 0; i < inputShape->numOfPoints; i++) {
+    newPoint[i] = getPoint(i); // first 4 points
+    for (int j = 0; j < 3; j++) {
       //puts random numbers in vectors 
       newPoint[i] -> element[j] = (float) (rand() % 100);
     }

@@ -2,7 +2,7 @@
 #include "ScalingInX.h"
 
 
-void runScalingInXTests(struct shape *shape){
+void runScalingInXTests(){
     zeroTransformationTest();
     noTransformationTest();
     doubleTransformationTest();

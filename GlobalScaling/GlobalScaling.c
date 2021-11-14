@@ -1,4 +1,4 @@
-#include "Group2.h"
+#include "GlobalScaling.h"
 
 void globalScaling() {
 }

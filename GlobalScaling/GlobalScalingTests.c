@@ -1,4 +1,19 @@
 #include "GlobalScalingTests.h"
+#include "GlobalScaling.h"
+
+void callAllTestsGroup2(){
+    cleanTest();
+
+    dirtyTest1();
+
+    dirtyTest2();
+
+    dirtyTest3();
+
+    dirtyTest4();
+
+    dirtyTest5(); 
+}
 
 /*
     -First clean test
@@ -18,7 +33,7 @@ void cleanTest(){
     globalScaling();
     for(int i = 0; i < 4; i++){
         for(int j = 0; j < 4; j++){
-            if(matrix->transformationMatrix[i][j] != check){
+            if(transformationMatrix[i][j] != check){
                 printf("\n");
                 printf("Test failed\n");
                 return;
@@ -30,6 +45,7 @@ void cleanTest(){
     printf("\n");
     printf("Test passed\n");
     printf("\n");
+    resetMatrix();
 }
 
 /*
@@ -40,7 +56,7 @@ void cleanTest(){
 void dirtyTest1(){
     for(int i = 0; i < 4; i++){
         for(int j = 0; j < 4; j++){
-            transformationMatrix[i][j];
+            transformationMatrix[i][j] = 1.0;
         }
     }
     printf("*************************Running first dirty test****************************");
@@ -56,6 +72,7 @@ void dirtyTest1(){
             }
         }
     }
+    resetMatrix();
 }
 
 /*
@@ -88,6 +105,7 @@ void dirtyTest2(){
     printf("\n");
     printf("Test successfully broke the code\n");
     printf("\n");
+    resetMatrix();
 }
 
 /*
@@ -98,11 +116,9 @@ void dirtyTest2(){
     -it will print test successfully broke the code
 */
 void dirtyTest3(){
-    struct transformationMatrix *matrix = malloc(sizeof(struct transformationMatrix));
-    (int)matrix->transformationMatrix;
     for(int i = 0; i < 4; i++){
         for(int j = 0; j < 4; j++){
-            matrix->transformationMatrix[i][j] = 1;
+            transformationMatrix[(int)i][(int)j] = 1;
         }
     }
     printf("*************************Running third dirty test****************************");
@@ -123,6 +139,7 @@ void dirtyTest3(){
     printf("\n");
     printf("Test successfully broke the code\n");
     printf("\n");
+    resetMatrix();
 }
 
 /*
@@ -142,7 +159,7 @@ void dirtyTest4(){
     globalScaling();
     for(int i = 0; i < 4; i++){
         for(int j = 0; j < 4; j++){
-            if(matrix->transformationMatrix[i][j] != check){
+            if(transformationMatrix[i][j] != check){
                 printf("\n");
                 printf("Test successfully broke the code\n");
                 printf("\n");
@@ -153,6 +170,7 @@ void dirtyTest4(){
     printf("\n");
     printf("Test successfully broke the code\n");
     printf("\n");
+    resetMatrix();
 }
 
 /*
@@ -172,7 +190,7 @@ void dirtyTest5(){
     globalScaling();
     for(int i = 0; i < 4; i++){
         for(int j = 0; j < 4; j++){
-            if(matrix->transformationMatrix[i][j] != check){
+            if(transformationMatrix[i][j] != check){
                 printf("\n");
                 printf("Test successfully broke the code\n");
                 printf("\n");
@@ -183,4 +201,5 @@ void dirtyTest5(){
     printf("\n");
     printf("Test successfully broke the code\n");
     printf("\n");
+    resetMatrix();
 }

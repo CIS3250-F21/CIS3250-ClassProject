@@ -83,7 +83,7 @@ struct point* getPoint(int index) {
 
 // ~~~~~~~~~~~~~~~~~ GROUP Getters Go HERE ~~~~~~~~~~~~~~~~~~~ //
 float getGlobalScale() {
-    return inputShape -> scaling[4];
+    return inputShape -> scaling[3];
 }
 
 float getXScale() {
@@ -256,6 +256,8 @@ void runAllTests() {
     zPlaneReflectionTests(); // Group 12 tests
 
     runXPlaneReflectionTests(); // X plane reflection tests
+
+    callAllTestsGroup2(); // Group 2 tests
     
     // free
     for (i = 0; i < 5; i++) {

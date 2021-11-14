@@ -249,13 +249,13 @@ void runAllTests() {
     // TESTS GO HERE
     runGroup7Tests();  // Group 7 tests
 
-    runOutputResultsTests(); // Output Results Tests
-
-    runScalingInXTests(); // Group 3 tests
+    //runScalingInXTests(); // Group 3 tests
 
     zPlaneReflectionTests(); // Group 12 tests
 
     runXPlaneReflectionTests(); // X plane reflection tests
+
+    runOutputResultsTests(); // Output Results Tests
     
     // free
     for (i = 0; i < 5; i++) {

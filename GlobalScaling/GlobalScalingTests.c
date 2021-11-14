@@ -1,18 +1,18 @@
 #include "GlobalScalingTests.h"
 #include "GlobalScaling.h"
 
-void callAllTestsGroup2(){
-    cleanTest();
+void runGlobalScalingTests(){
+    globalScalingCleanTest();
 
-    dirtyTest1();
+    globalScalingDirtyTest1();
 
-    dirtyTest2();
+    globalScalingDirtyTest2();
 
-    dirtyTest3();
+    globalScalingDirtyTest3();
 
-    dirtyTest4();
+    globalScalingDirtyTest4();
 
-    dirtyTest5(); 
+    globalScalingDirtyTest5(); 
 }
 
 /*
@@ -22,7 +22,7 @@ void callAllTestsGroup2(){
     -checks each index if the correct value was entered at that index
     -if unsuccessful prints test failed
 */
-void cleanTest(){
+void globalScalingCleanTest(){
     for(int i = 0; i < 4; i++){
         for(int j = 0; j < 4; j++){
             transformationMatrix[i][j] = 1.0;
@@ -35,16 +35,12 @@ void cleanTest(){
         for(int j = 0; j < 4; j++){
             if(transformationMatrix[i][j] != check){
                 printf("\n");
-                printf("Test failed\n");
+                printf("Global scaling: globalScalingCleanTest failed\n");
                 return;
             }
         }
     }
 
-
-    printf("\n");
-    printf("Test passed\n");
-    printf("\n");
     resetMatrix();
 }
 
@@ -53,7 +49,7 @@ void cleanTest(){
     -We pass in a empty matrix to test how our function will perform with no matrix
     -it will print test successfully broke the code
 */
-void dirtyTest1(){
+void globalScalingDirtyTest1(){
     for(int i = 0; i < 4; i++){
         for(int j = 0; j < 4; j++){
             transformationMatrix[i][j] = 1.0;
@@ -65,9 +61,6 @@ void dirtyTest1(){
     for(int i = 0; i < 4; i++){
         for(int j = 0; j < 4; j++){
             if(transformationMatrix[i][j] != check){
-                printf("\n");
-                printf("Test successfully broke the code\n");
-                printf("\n");
                 return;
             }
         }
@@ -82,7 +75,7 @@ void dirtyTest1(){
     -The matrix will be filled with junk values at each index
     -it will print test successfully broke the code
 */
-void dirtyTest2(){
+void globalScalingDirtyTest2(){
     for(int i = 0; i < 4; i++){
         for(int j = 0; j < 4; j++){
             transformationMatrix[i][j] = 1;
@@ -96,15 +89,10 @@ void dirtyTest2(){
     for(int i = 0; i < 4; i++){
         for(int j = 0; j < 4; j++){
             if(transformationMatrix[i][j] != check){
-                printf("\n");
-                printf("Test successfully broke the code\n");
                 return;
             }
         }
     }
-    printf("\n");
-    printf("Test successfully broke the code\n");
-    printf("\n");
     resetMatrix();
 }
 
@@ -115,7 +103,7 @@ void dirtyTest2(){
     -The matrix will be filled with junk values at each index
     -it will print test successfully broke the code
 */
-void dirtyTest3(){
+void globalScalingDirtyTest3(){
     for(int i = 0; i < 4; i++){
         for(int j = 0; j < 4; j++){
             transformationMatrix[(int)i][(int)j] = 1;
@@ -129,16 +117,10 @@ void dirtyTest3(){
     for(int i = 0; i < 4; i++){
         for(int j = 0; j < 4; j++){
             if(transformationMatrix[i][j] != check){
-                printf("\n");
-                printf("Test successfully broke the code\n");
-                printf("\n");
                 return;
             }
         }
     }
-    printf("\n");
-    printf("Test successfully broke the code\n");
-    printf("\n");
     resetMatrix();
 }
 
@@ -148,7 +130,7 @@ void dirtyTest3(){
     -Example: i > 4 insted of i < 4
     -it will print test successfully broke the code
 */
-void dirtyTest4(){
+void globalScalingDirtyTest4(){
     for(int i = 0; i > 4; i++){
         for(int j = 0; j < 4; j++){
             transformationMatrix[i][j] = 1;
@@ -160,16 +142,10 @@ void dirtyTest4(){
     for(int i = 0; i < 4; i++){
         for(int j = 0; j < 4; j++){
             if(transformationMatrix[i][j] != check){
-                printf("\n");
-                printf("Test successfully broke the code\n");
-                printf("\n");
                 return;
             }
         }
     }
-    printf("\n");
-    printf("Test successfully broke the code\n");
-    printf("\n");
     resetMatrix();
 }
 
@@ -179,7 +155,7 @@ void dirtyTest4(){
     -Example, 7x4 instead of a 4x4
     -it will print test successfully broke the code
 */
-void dirtyTest5(){
+void globalScalingDirtyTest5(){
     printf("*************************Running fifth dirty test****************************");
     for(int i = 0; i < 7; i++){
         for(int j = 0; j < 4; j++){
@@ -191,15 +167,9 @@ void dirtyTest5(){
     for(int i = 0; i < 4; i++){
         for(int j = 0; j < 4; j++){
             if(transformationMatrix[i][j] != check){
-                printf("\n");
-                printf("Test successfully broke the code\n");
-                printf("\n");
                 return;
             }
         }
     }
-    printf("\n");
-    printf("Test successfully broke the code\n");
-    printf("\n");
     resetMatrix();
 }

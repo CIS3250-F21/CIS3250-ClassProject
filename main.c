@@ -256,11 +256,8 @@ void runAllTests() {
     zPlaneReflectionTests(); // Group 12 tests
 
     runXPlaneReflectionTests(); // X plane reflection tests
-<<<<<<< HEAD
 
-    callAllTestsGroup2(); // Group 2 tests
-=======
->>>>>>> dfe81b2c1c8eb006150fc734a9d5b1b4eb77f6c9
+    runGlobalScalingTests(); // Group 2 tests
     
     // free
     for (i = 0; i < 5; i++) {

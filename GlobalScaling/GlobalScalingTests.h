@@ -2,18 +2,18 @@
 #define GLOBAL_SCALING_TESTS_H
 #include "../main.h"
 
-void callAllTestsGroup2();
+void runGlobalScalingTests();
 
-void cleanTest();
+void globalScalingCleanTest();
 
-void dirtyTest1();
+void globalScalingDirtyTest1();
 
-void dirtyTest2();
+void globalScalingDirtyTest2();
 
-void dirtyTest3();
+void globalScalingDirtyTest3();
 
-void dirtyTest4();
+void globalScalingDirtyTest4();
 
-void dirtyTest5();
+void globalScalingDirtyTest5();
 
 #endif

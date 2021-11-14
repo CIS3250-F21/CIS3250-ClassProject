@@ -214,16 +214,16 @@ void multiplyMatrix(struct point* currPoint, float matrix[4][4]) {
 
 //Reset transformation matrix to the identity matrix
 void resetMatrix(){
-  for (int i = 0; i < 4; i++){
-      for (int j = 0; j < 4; j++){
-          if (i == j){
-              transformationMatrix[i][j] = 1;
-          }
-          else{
-              transformationMatrix[i][j] = 0;
-          }
-      }
-  }
+    for (int i = 0; i < 4; i++){
+        for (int j = 0; j < 4; j++){
+            if (i == j){
+                transformationMatrix[i][j] = 1;
+            }
+            else{
+                transformationMatrix[i][j] = 0;
+            }
+        }
+    }
 }
 
 void runAllTests() {
@@ -250,7 +250,7 @@ void runAllTests() {
     // TESTS GO HERE
     runGroup7Tests();  // Group 7 tests
 
-    //runScalingInXTests(); // Group 3 tests
+    runScalingInXTests(inputShape); // Group 3 tests
 
     zPlaneReflectionTests(); // Group 12 tests
 

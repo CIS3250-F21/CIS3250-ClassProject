@@ -4,7 +4,7 @@
 #include "../main.h"
 #include <stdbool.h>
 
-void runScalingInXTests();
+void runScalingInXTests(struct shape *shape);
 void zeroTransformationTest();
 void noTransformationTest();
 void doubleTransformationTest();

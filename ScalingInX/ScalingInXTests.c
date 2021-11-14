@@ -2,16 +2,12 @@
 #include "ScalingInX.h"
 
 
-void runScalingInXTests(){
+void runScalingInXTests(struct shape *shape){
     zeroTransformationTest();
     noTransformationTest();
     doubleTransformationTest();
     isScaleChanged();
     transformationTest();
-    bool err = emptyMatrixSet();
-    if (err == true){
-        fprintf(stderr, "ERROR: Matrix is empty\n");
-    }
 }
 
 
@@ -34,7 +30,7 @@ bool validIndex (int index) {
 // Fails is the the pointer is equal to NULL
 bool isNull (void *pointer) {
   if (pointer == NULL) {
-    fprintf(stderr, "ERROR: Pointer vectors to NULL.\n");
+    fprintf(stderr, "ERROR: Pointer points to NULL.\n");
     return true; // returns error value if null
   }
 
@@ -57,47 +53,19 @@ bool isScaleChanged(){
   return true;
 }
 
-//Function tries to assign an empty matrix to the transformation matrix.
-//returns false
-bool emptyMatrixSet(){
-  float ** garbageMatrix;
-
-  //assigns memory to tmpMatrix but doesn't assign values
-  float ** tmpMatrix = malloc(sizeof(float *) * 4);
-  for (int i = 0; i < 4; i++) {
-    tmpMatrix[i] = malloc(sizeof(float) * 4);
-  }
-
-  //Gets the empty matrix
-  garbageMatrix = tmpMatrix;
-  //loop through matrix
-  for (int i = 0; i < 4; i++){
-    for (int j = 0; j < 4; j++){
-      //if the matrix is not made up of all zeros, there
-      //are garbage values
-      if (garbageMatrix[i][j] != 0){
-        //Matrix will not work
-        return false;
-      }
-    }
-  }
-  //Matrix will work
-  return false;
-}
-
-// Tests if all modified vectors have a 1 as their fourth element
+// Tests if all modified points have a 1 as their fourth element
 // Expecting all elements at index 3 for each point to have the value of 1
 // Fails if an element as index 3 does not equal 1
-bool isPointCorrect (float **vectors){
-  struct point *temppoint;
+bool isPointCorrect (float **points){
+  struct point *tempPoint;
   
-  //Loop through all the vectors and assign to a temppoint
+  //Loop through all the points and assign to a tempPoint
   for (int i = 0; i < inputShape -> numOfPoints; i++){
-    temppoint = getPoint(i);
+    tempPoint = getPoint(i);
 
-    //check if the fourth coordinate of temppoint is equal to 1.
-    if (temppoint -> element[3] != 1) {
-      fprintf(stderr, "ERROR: vectors[%d][3] doesn't equal 1.\n", i);
+    //check if the fourth coordinate of tempPoint is equal to 1.
+    if (tempPoint -> element[3] != 1) {
+      fprintf(stderr, "ERROR: points[%d][3] doesn't equal 1.\n", i);
       return false;
     }
   }
@@ -106,7 +74,7 @@ bool isPointCorrect (float **vectors){
 
 // Function testing for proper transformation
 bool xAffected() {
-  //If scale = 1, transformation matrix will not change vectors
+  //If scale = 1, transformation matrix will not change points
   if(getXScale() == 1) {
     return false;
   }
@@ -119,39 +87,28 @@ bool xAffected() {
 // Expecting transformation of x values with unchanged y and z values
 // Fails if the y or z values do not match the y or z values prior to the transformation 
 void transformationTest() {
-  int numOfPoints = 6;
-  struct point *points[numOfPoints];
-  //Creates vectors array struct as well as a double pointer float to hold the temporary vectors
-  float **tempvectors = malloc(sizeof(float *) * numOfPoints);
+  float newPoint[inputShape->numOfPoints][4]; 
+  struct point *currentPoint;
 
-  //gets the vectors from 
-  for (int i = 0; i < numOfPoints; i++) {
-    points[i] = getPoint(i); //vectors
-  }
-
-  //Assigns the vectors gotten from the shape structure to the tempvectors
+  //Assigns the points gotten from the shape structure to the tempPoints
   for (int i = 0; i < inputShape->numOfPoints; i++) {
-    tempvectors[i] = malloc(sizeof(float) * 4);
+    currentPoint = getPoint(i);
     for (int j = 0; j < 4; j++) {
-      tempvectors[i][j] = points[i] -> element[j];
+      newPoint[i][j] = currentPoint -> element[j];
     }
   }
 
-  //run function with vectors and matrix 
+  //run function with points and matrix 
   setXScale(3.5);
   xScaling();
-
-  //update vectors after transformation
-  for (int i = 0; i < inputShape->numOfPoints; i++) {
-    points[i] = getPoint(i);
-  }
 
   //Makes sure scaling is not 1
   if (xAffected()) {
     //loop through each point
     for(int i = 0; i < inputShape->numOfPoints; i++){
+      currentPoint = getPoint(i);
       //if x values match despite scaling affecting it, it did not transform
-      if(points[i] -> element[0] == tempvectors[i][0]){
+      if(currentPoint -> element[0] == newPoint[i][0]){
           fprintf(stderr, "'TransformationTest' function failed:\n\telement at %d,0 is incorrect\n", i);
           return;
       }
@@ -159,7 +116,7 @@ void transformationTest() {
       //if y and z values do not match after transforming only the x coordinates, it did not transform correctly
       for(int j = 1; j < 4; j++){
         //y or z values do not match after transformation
-        if(points[i] -> element[j] != tempvectors[i][j]){
+        if(currentPoint -> element[j] != newPoint[i][j]){
           printf("'TransformationTest' function failed:\n\telement at %d,%d is incorrect\n", i,j);
           return;
         }
@@ -167,40 +124,35 @@ void transformationTest() {
     }
   }
 
-  //Free all coordinates, vectors, and tempvectors
-  for (int i = 0; i < inputShape->numOfPoints; i++) {
-    free(tempvectors[i]);
-  }
-  free(tempvectors);
   resetMatrix();
 }
 
 // Testing a transformation with an x transformation factor of 0 for correct values
-// Expecting the transformed vectors to have a x value (index of [0]) of 0 after the transformation
-// Fails if the transformed vectors do not have x values (index of [0]) that are 0   
+// Expecting the transformed points to have a x value (index of [0]) of 0 after the transformation
+// Fails if the transformed points do not have x values (index of [0]) that are 0   
 void zeroTransformationTest () {
-  struct point *newPoint[4];
+  struct point *currentPoint;
 
-  //Assign a random values to the 4 vectors
+  //Assign a random values to the 4 points
   for (int i = 0; i < inputShape->numOfPoints; i++) {
-    newPoint[i] = getPoint(i); // first 4 points
+    currentPoint = getPoint(i); 
     for (int j = 0; j < 3; j++) {
-      //puts random numbers in vectors 
-      newPoint[i] -> element[j] = (float) (rand() % 100);
+      //puts random numbers in points 
+      currentPoint -> element[j] = (float) (rand() % 100);
     }
 
-    //Set the matrix and the vectors, assigning the last coordinate to one
-    newPoint[i] -> element[3] = 1;
-    setPoint (i, newPoint[i]);
+    //Set the matrix and the points, assigning the last coordinate to one
+    currentPoint -> element[3] = 1;
+    setPoint (i, currentPoint);
   }
 
   setXScale(0);
   xScaling();
 
   for (int i = 0; i < inputShape->numOfPoints; i++) {
-    newPoint[i] = getPoint(i);
-    //Ensure that modified vectors x-value is equal to 0
-    if (newPoint[i] -> element[0] != 0 ) {
+    currentPoint = getPoint(i);
+    //Ensure that modified points x-value is equal to 0
+    if (currentPoint -> element[0] != 0 ) {
       fprintf(stderr, "ERROR: Zero multiplication test failed: multiplying x value of point %d by 0 resulted in a non zero value\n", i);
       return;
     }
@@ -210,37 +162,36 @@ void zeroTransformationTest () {
 }
 
 // Testing a transformation with an x transformation factor of 1 for correct values
-// Expecting the transformed vectors to have the same x value (index of [0]) after the transformation
-// Fails if the transformed vectors do not have x values (index of [0]) that are the same as the original vectors  
+// Expecting the transformed points to have the same x value (index of [0]) after the transformation
+// Fails if the transformed points do not have x values (index of [0]) that are the same as the original points  
 void noTransformationTest () {
-  float **matrix = malloc(sizeof (float *) * 4);
-  struct point *newPoint[4], *currentpoint;
-  //Assign a 0 value to the number of vectors
-  //initializeLength();
+  float newPoint[inputShape->numOfPoints][4]; 
+  struct point *currentPoint;
 
-  //loop through the matrix
-  for (int i = 0; i < 4; i++) {
-    matrix[i] = malloc(sizeof(float) * 4);
+  //loop through the points and set them to random values
+  for (int i = 0; i < inputShape -> numOfPoints; i++) {
+    currentPoint = getPoint(i);
 
-    for (int j = 0; j < 4; j++) {
-      //puts random numbers in vectors
-      newPoint[i] -> element[j] = (float) (rand() % 100); 
+    for (int j = 0; j < 3; j++) {
+      //puts random numbers in points
+      currentPoint -> element[j] = newPoint[i][j] = (float) (rand() % 100); 
+
     }
-    //Set vectors (ensuring 1 is last coordinate)
-    newPoint[i] -> element[3] = 1;
-    setPoint (i, newPoint[i]);
+    //Set points (ensuring 1 is last coordinate)
+    currentPoint -> element[3] = newPoint[i][3] = 1;
+    setPoint (i, currentPoint);
   }
   
   setXScale(1);
   xScaling();
 
-  //Assigns transformed vectors to currentpoint
+  //Assigns transformed points to currentPoint
   for (int i = 0; i < inputShape->numOfPoints; i++) {
-    currentpoint = getPoint(i);
+    currentPoint = getPoint(i);
 
-    //if the vectors before and transformations are not equal, there is an error
-    if (newPoint[i] -> element[0] != currentpoint -> element[0]) {
-      fprintf(stderr, "ERROR: No transformation test failed: X value of point %d multiplied by 1 gave a different result: %f.\n", i, currentpoint -> element[0]);
+    //if the points before and transformations are not equal, there is an error
+    if (newPoint[i][0] != currentPoint -> element[0]) {
+      fprintf(stderr, "ERROR: No transformation test failed: X value of point %d multiplied by 1 gave a different result: %f.\n", i, currentPoint -> element[0]);
       return;
     }
   }
@@ -249,39 +200,36 @@ void noTransformationTest () {
 }
 
 // Testing a transformation with an x transformation factor of 2 for correct values
-// Expecting the transformed vectors to have a double x value (index of [0]) after the transformation
-// Fails if the transformed vectors do not have x values (index of [0]) that are double the original vectors  
+// Expecting the transformed points to have a double x value (index of [0]) after the transformation
+// Fails if the transformed points do not have x values (index of [0]) that are double the original points  
 void doubleTransformationTest () {
-  float **matrix = malloc(sizeof (float *) * 4);
-  struct point *newPoint[4], *currentpoint;
-  //Assign a 0 value to the number of vectors
-  //initializeLength();
+  float newPoint[inputShape->numOfPoints][4]; 
+  struct point *currentPoint;
+  //Assign a 0 value to the number of points
+
   //loop through the matrix
-  for (int i = 0; i < 4; i++) {
-    matrix[i] = malloc(sizeof(float) * 4);
-
-    for (int j = 0; j < 4; j++) {
-      //puts random numbers in vectors
-      newPoint[i] -> element[j] = (float) (rand() % 100); 
+  for (int i = 0; i < inputShape->numOfPoints; i++) {
+    currentPoint = getPoint(i);
+    for (int j = 0; j < 3; j++) {
+      //puts random numbers in points
+      currentPoint -> element[j] = newPoint[i][j] = (float) (rand() % 100); 
     }
-
-    // Sets point and matrix
-    // setMatrix(matrix);
-    newPoint[i] -> element[3] = 1;
-    setPoint (i, newPoint[i]);
+  
+    currentPoint -> element[3] = newPoint[i][3] = 1;
+    setPoint (i, currentPoint);
   }
   
-  //Transforms vectors by a factor of 2
+  //Transforms points by a factor of 2
   setXScale(2);
   xScaling();
 
-  //Assigns transformed vectors to currentpoint
+  //Assigns transformed points to currentPoint
   for (int i = 0; i < inputShape->numOfPoints; i++) {
-    currentpoint = getPoint(i);
+    currentPoint = getPoint(i);
 
     //if the modified point's x coordinate's are not halved, there is an error
-    if (newPoint[i] -> element[0] != currentpoint -> element[0] * 0.5) {
-      fprintf(stderr, "ERROR: Double transformation test failed: X value (%f) of point %d multiplied by 2 gave a wrong result: %f.\n", newPoint[i] -> element[0], i, currentpoint -> element[0]);
+    if (currentPoint -> element[0] != (newPoint[i][0] * 2)) {
+      fprintf(stderr, "ERROR: Double transformation test failed: X value (%f) of point %d multiplied by 2 gave a wrong result: %f.\n", newPoint[i][0], i, currentPoint -> element[0]);
       return;
     }
   }

@@ -6,16 +6,16 @@ void xScaling() {
   //set the first coordinate to x scale 
   transformationMatrix[0][0] = getXScale();
 
-  //Use the transformation matrix and multiply the vectors 
-  struct point **currentVector = NULL;
+  //Use the transformation matrix and multiply the Points 
+  struct point *currentPoint = NULL;
   
   //loop through the number of points
   for (int k = 0; k < inputShape -> numOfPoints; k++) {
-    *currentVector = getPoint(k);
-    multiplyMatrix(*currentVector, transformationMatrix);
+    currentPoint = getPoint(k);
+    multiplyMatrix(currentPoint, transformationMatrix);
 
     //set point at index k to new transformed point
-    setPoint(k, *currentVector);
+    setPoint(k, currentPoint);
   }
   
 

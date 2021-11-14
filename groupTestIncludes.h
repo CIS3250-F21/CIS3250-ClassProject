@@ -6,5 +6,6 @@
 #include "zPlaneReflection/zPlaneReflectionTests.h"
 #include "GlobalScaling/GlobalScalingTests.h"
 #include "ShearInZ/ShearInZ.h"
+#include "XPlaneReflection/XPlaneReflectionTests.h"
 
 #endif

@@ -11,19 +11,13 @@ void globalScaling(){
         }
     }
 
-    for(int i = 0; i < 4; i++){
-        for(int j = 0; j < 4; j++){
-            if(j == 3){
-                float fourthValue;
-                for(int i = 0; i < 4; i++) {
-                    fourthValue = transformationMatrix[i][3];
+    float fourthValue;
+    for(int i = 0; i < 4; i++) {
+        fourthValue = transformationMatrix[i][3];
 
-                    if( fourthValue != 1) {
-                        for(int j = 3; j >= 0; j--) {
-                            transformationMatrix[i][j] /= fourthValue;
-                        }
-                    }
-                }   
+        if( fourthValue != 1) {
+            for(int j = 3; j >= 0; j--) {
+                transformationMatrix[i][j] /= fourthValue;
             }
         }
     }

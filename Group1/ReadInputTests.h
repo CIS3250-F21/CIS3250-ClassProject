@@ -1,5 +1,5 @@
 #include "../main.h"
-#include "Group1.h"
+#include "ReadInput.h"
 
 char test1(char testFile[20], char answerFile[20]);
 

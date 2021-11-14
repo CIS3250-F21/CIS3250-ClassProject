@@ -95,7 +95,7 @@ float getYScale() {
 }
 
 float getZScale() {
-    return 0;
+    return inputShape->scaling[2];
 }
 
 float getXRotation() {
@@ -160,6 +160,7 @@ void setYScale(float newYScale) {
 }
 
 void setZScale(float newZScale) {
+    inputShape->scaling[2] = newZScale; 
 }
 
 void setXRotation(float newTheta) {
@@ -249,6 +250,7 @@ void runAllTests() {
 
     // TESTS GO HERE
     runGroup7Tests();  // Group 7 tests
+    runGroup5Tests(); 
 
     //runScalingInXTests(); // Group 3 tests
 

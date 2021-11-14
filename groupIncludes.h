@@ -13,7 +13,7 @@
 #include "Group2/Group2.h"
 #include "Group3/Group3.h"
 #include "Group4/Group4.h"
-#include "Group5/Group5.h"
+#include "zScaling/zScaling.h"
 #include "Group6/Group6.h"
 #include "RotationInY/RotationInY.h"
 #include "Group8/Group8.h"

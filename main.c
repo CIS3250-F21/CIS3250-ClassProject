@@ -122,16 +122,16 @@ float getZTranslation() {
     return 0;
 }
 
-float getXSheer() {
-    return 0;
+float getXShear() {
+    return inputShape->shearing[0];
 }
 
-float getYSheer() {
-    return 0;
+float getYShear() {
+    return inputShape->shearing[1];
 }
 
-float getZSheer() {
-    return 0;
+float getZShear() {
+    return inputShape->shearing[2];
 }
 
 // ~~~~~~~~~~~~~~~~~ Setters ~~~~~~~~~~~~~~~~~~~ //

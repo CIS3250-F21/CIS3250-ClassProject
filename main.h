@@ -39,7 +39,7 @@ float getXTranslation();
 float getYTranslation();
 float getZTranslation();
 float getXSheer();
-float getYSheer();
+float getYShear();
 float getZSheer();
 
 //~~~~~~ Setters ~~~~~~//

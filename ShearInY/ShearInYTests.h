@@ -1,5 +1,5 @@
-#ifndef GROUP_14_TESTS
-#define GROUP_14_TESTS
+#ifndef Y_SHEAR_TESTS
+#define Y_SHEAR_TESTS
 
 void emptyYShearValue ();
 void inputRange ();

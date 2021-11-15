@@ -1,5 +1,5 @@
-#ifndef GROUP_14_H
-#define GROUP_14_H
+#ifndef Y_SHEAR_H
+#define Y_SHEAR_H
 
 #include "../main.h"
 

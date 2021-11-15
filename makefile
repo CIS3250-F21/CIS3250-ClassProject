@@ -1,7 +1,7 @@
 CC = clang
 CFLAGS = -std=c99 -Wall -pedantic
 EXECS = main
-O_FILES = Group1/Group1.o GlobalScaling/GlobalScaling.o ScalingInX/ScalingInX.o Group4/Group4.o Group5/Group5.o Group6/Group6.o RotationInY/RotationInY.o Group8/Group8.o Group9/Group9.o XPlaneReflection/XPlaneReflection.o Group11/Group11.o zPlaneReflection/zPlaneReflection.o Group13/Group13.o GetYShear/GetYShear.o ShearInZ/ShearInZ.o Group16/Group16.o Group17/Group17.o Group1/Group1Tests.o GlobalScaling/GlobalScalingTests.o ScalingInX/ScalingInXTests.o Group4/Group4Tests.o Group5/Group5Tests.o Group6/Group6Tests.o RotationInY/RotationInYTests.o Group8/Group8Tests.o Group9/Group9Tests.o XPlaneReflection/XPlaneReflectionTests.o Group11/Group11Tests.o zPlaneReflection/zPlaneReflectionTests.o Group13/Group13Tests.o GetYShear/GetYShearTests.o ShearInZ/ShearInZTests.o Group16/Group16Tests.o Group17/Group17Tests.o
+O_FILES = Group1/Group1.o GlobalScaling/GlobalScaling.o ScalingInX/ScalingInX.o Group4/Group4.o Group5/Group5.o Group6/Group6.o RotationInY/RotationInY.o Group8/Group8.o Group9/Group9.o XPlaneReflection/XPlaneReflection.o Group11/Group11.o zPlaneReflection/zPlaneReflection.o Group13/Group13.o ShearInY/ShearInY.o ShearInZ/ShearInZ.o Group16/Group16.o Group17/Group17.o Group1/Group1Tests.o GlobalScaling/GlobalScalingTests.o ScalingInX/ScalingInXTests.o Group4/Group4Tests.o Group5/Group5Tests.o Group6/Group6Tests.o RotationInY/RotationInYTests.o Group8/Group8Tests.o Group9/Group9Tests.o XPlaneReflection/XPlaneReflectionTests.o Group11/Group11Tests.o zPlaneReflection/zPlaneReflectionTests.o Group13/Group13Tests.o ShearInY/ShearInYTests.o ShearInZ/ShearInZTests.o Group16/Group16Tests.o Group17/Group17Tests.o
 H_FILES = main.h groupIncludes.h groupTestIncludes.h
 
 all: $(EXECS)
@@ -61,8 +61,8 @@ zPlaneReflection/zPlaneReflection.o: zPlaneReflection/zPlaneReflection.c zPlaneR
 Group13/Group13.o: Group13/Group13.c Group13/Group13.h main.h
 	$(CC) $(CFLAGS) -c Group13/Group13.c -o Group13/Group13.o
 
-GetYShear/GetYShear.o: GetYShear/GetYShear.c GetYShear/GetYShear.h main.h
-	$(CC) $(CFLAGS) -c GetYShear/GetYShear.c -o GetYShear/GetYShear.o
+ShearInY/ShearInY.o: ShearInY/ShearInY.c ShearInY/ShearInY.h main.h
+	$(CC) $(CFLAGS) -c ShearInY/ShearInY.c -o ShearInY/ShearInY.o
 
 ShearInZ/ShearInZ.o: ShearInZ/ShearInZ.c ShearInZ/ShearInZ.h main.h
 	$(CC) $(CFLAGS) -c ShearInZ/ShearInZ.c -o ShearInZ/ShearInZ.o
@@ -113,8 +113,8 @@ zPlaneReflection/zPlaneReflectionTests.o: zPlaneReflection/zPlaneReflectionTests
 Group13/Group13Tests.o: Group13/Group13Tests.c Group13/Group13Tests.h main.h
 	$(CC) $(CFLAGS) -c Group13/Group13Tests.c -o Group13/Group13Tests.o
   
-GetYShear/GetYShearTests.o: GetYShear/GetYShearTests.c GetYShear/GetYShearTests.h main.h
-	$(CC) $(CFLAGS) -c GetYShear/GetYShearTests.c -o GetYShear/GetYShearTests.o
+ShearInY/ShearInYTests.o: ShearInY/ShearInYTests.c ShearInY/ShearInYTests.h main.h
+	$(CC) $(CFLAGS) -c ShearInY/ShearInYTests.c -o ShearInY/ShearInYTests.o
 
 ShearInZ/ShearInZTests.o: ShearInZ/ShearInZTests.c ShearInZ/ShearInZTests.h main.h
 	$(CC) $(CFLAGS) -c ShearInZ/ShearInZTests.c -o ShearInZ/ShearInZTests.o

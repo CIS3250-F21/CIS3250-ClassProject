@@ -35,6 +35,7 @@ void runOutputResultsTests () {
     // add point to shape
     inputShape->numOfPoints = 1;
     setPoint(0, &testPoint);
+    inputShape->points[1] = NULL; // directly set end of array
 
     // Call the outputPoints function with the input paramters
     if (outputPoints("output1.1.txt") != 1) {
@@ -51,7 +52,7 @@ void runOutputResultsTests () {
         
         // Check if values match
         if (x != testPoint.element[0] || y != testPoint.element[1] || z != testPoint.element[2]) {
-            fprintf(stderr, "[Test 17.1.1] Incorrect point values for test point (%s:%d)\n", __FILE__, __LINE__);
+                        fprintf(stderr, "[Test 17.1.1] Incorrect point values for test point (%s:%d)\n", __FILE__, __LINE__);
         }
         
         fclose(fp);
@@ -69,21 +70,63 @@ void runOutputResultsTests () {
      *  - Filename: "output2.1.txt"
      *
      * Expected Output:
-     *  - This function returns 0 because the input shape does  
-     *    not contain any values
+     *  - This function returns 1
+     *  - A file "output2.1.txt" should be created which contains no data
      */
 
+    // remove testPoint 1
+    inputShape->points[0] = NULL;
     inputShape->numOfPoints = 0;
     
-    if (outputPoints("output2.1.txt") != 0) {
-        fprintf(stderr, "[Test 17.2.1] Return value is not 0 (%s:%d)\n", __FILE__, __LINE__);
+    
+    if (outputPoints("output2.1.txt") != 1) {
+        fprintf(stderr, "[Test 17.2.1] Return value is not 1 (%s:%d)\n", __FILE__, __LINE__);
+    }
+
+    if ((fp = fopen("output2.1.txt", "r")) == NULL) {
+        fprintf(stderr, "[Test 17.2.1] File \"output2.1.txt\" does not exist (%s:%d)\n", __FILE__, __LINE__);
+    }
+    else {
+        // move to the end of the file
+        fseek(fp, 0, SEEK_END);
+
+        // check if the end of the file is at location 0
+        if (ftell(fp) != 0) {
+            fprintf(stderr, "[Test 17.2.1] Expected empty file but file has data (%s:%d)\n", __FILE__, __LINE__);
+        }
+
+        fclose(fp);
     }
 
     // delete file if created
     remove("output2.1.txt");
 
     /*
-     * Test Case 2.2 - Passing an NULL pointer as the filename
+     * Test Case 2.2 - Outputing a NULL Point
+     *
+     * Input:
+     *  - Point: NULL 
+     *  - filename: "output2.2.txt"
+     *
+     * Expected Output:
+     *  - The function should return 1 and output an empty file
+     *    since output stops at the first NULL point
+     */
+
+    // set number of points to 1
+    inputShape->numOfPoints = 1;
+    // point 0 is NULL from previous test
+
+    // call function with input
+    if (outputPoints("output2.2.txt") != 1) {
+        fprintf(stderr, "[Test 17.2.2] Return value was not 1 (%s:%d)\n", __FILE__, __LINE__);
+    }
+
+    // remove output2.2.txt if created
+    remove("output2.2.txt");
+
+    /*
+     * Test Case 2.3 - Passing an NULL pointer as the filename
      *
      * Input:
      * - Point: [2.0, 1.0, 3.0, 1.0] 
@@ -100,14 +143,16 @@ void runOutputResultsTests () {
     // add point to shape
     inputShape->numOfPoints = 1;
     setPoint(0, &testPoint2);
+    inputShape->points[1] = NULL; // directly set end of array
     
     // call outputMatrix function with filename
     if (outputPoints(NULL) != 0) {
-        fprintf(stderr, "[Test 17.2.2] Return value is not 0 (%s:%d)\n", __FILE__, __LINE__);
+        fprintf(stderr, "[Test 17.2.3] Return value is not 0 (%s:%d)\n", __FILE__, __LINE__);
     }
     
+    
     /*
-     * Test Case 2.3 - Passing an empty string as the filename
+     * Test Case 2.4 - Passing an empty string as the filename
      *
      * Input:
      *  - Point: [2.0, 1.0, 3.0, 1.0] 
@@ -119,31 +164,9 @@ void runOutputResultsTests () {
     
     // call outputPoints function with empty string as filename
     if (outputPoints("") != 0) {
-        fprintf(stderr, "[Test 17.2.3] Return value is not 0 (%s:%d)\n", __FILE__, __LINE__);
+        fprintf(stderr, "[Test 17.2.4] Return value is not 0 (%s:%d)\n", __FILE__, __LINE__);
     }
 
-    /*
-     * Test Case 2.4 - Outputing a NULL Point
-     *
-     * Input:
-     *  - Point: NULL 
-     *  - filename: "output2.4.txt"
-     *
-     * Expected Output:
-     *  - The function should return 0
-     */
-
-    // add point to shape
-    inputShape->numOfPoints = 1;
-    inputShape->points[0] = NULL;
-
-    // call function with input
-    if (outputPoints("output2.4.txt") != 0) {
-        fprintf(stderr, "[Test 17.2.4] Return value was not 0 (%s:%d)\n", __FILE__, __LINE__);
-    }
-    
-    // delete file if exists
-    remove("output2.4.txt");
 
     /*
      * Test Case 2.5 - Outputting to a file multiple times
@@ -158,7 +181,7 @@ void runOutputResultsTests () {
      *    values of the last shape output.
      */  
     
-    // initialize two matrices with different values
+    // initialize 4 points with different values
     struct point testPoint4 = {
         .element = {255.0f, 255.0f, 255.0f, 1.0f}
     };
@@ -175,8 +198,10 @@ void runOutputResultsTests () {
         .element = {132.0f, 1.0f, -13.0f, 1.0f}
     };
 
-
+    // add points 4 and 5 to the inputShape
     inputShape->numOfPoints = 2;
+    inputShape->points[2] = NULL; // set end of array
+
     setPoint(0, &testPoint4);
     setPoint(1, &testPoint5);
 
@@ -185,6 +210,7 @@ void runOutputResultsTests () {
         fprintf(stderr, "[Test 17.2.5] Failed to output points 4 and 5 (%s:%d)\n", __FILE__, __LINE__);
     }
     
+    // replace points 4 and 5 with 6 and 7 respectively
     setPoint(0, &testPoint6);
     setPoint(1, &testPoint7);
 
@@ -199,20 +225,25 @@ void runOutputResultsTests () {
     }
     else {
         // read first point from file
-        fscanf(fp, "%f %f %f", &x, &y, &z);
-
-        // Check if values match for test point 6
-        if (
-            x != testPoint6.element[0] || 
-            y != testPoint6.element[1] || 
-            z != testPoint6.element[2]
-        ) {
-            fprintf(stderr, "[Test 17.2.5] Incorrect values for test point 6 (%s:%d)\n", __FILE__, __LINE__);
+        if(fscanf(fp, "%f %f %f", &x, &y, &z) != 3) {
+            fprintf(stderr, "[Test 17.2.5] Error reading values for test point 6 (%s:%d)\n", __FILE__, __LINE__);
         }
         else {
-            // read second point from file
-            fscanf(fp, "%f %f %f", &x, &y, &z);
+            // Check if values match for test point 6
+            if (
+                x != testPoint6.element[0] || 
+                y != testPoint6.element[1] || 
+                z != testPoint6.element[2]
+            ) {
+                fprintf(stderr, "[Test 17.2.5] Incorrect values for test point 6 (%s:%d)\n", __FILE__, __LINE__);
+            }
+        }
 
+        // read second point from file
+        if(fscanf(fp, "%f %f %f", &x, &y, &z) != 3) {
+            fprintf(stderr, "[Test 17.2.5] Error reading values for test point 7 (%s:%d)\n", __FILE__, __LINE__);
+        }
+        else {
             // check if values match for test point 7
             if (
                 x != testPoint7.element[0] ||
@@ -222,10 +253,11 @@ void runOutputResultsTests () {
                 fprintf(stderr, "[Test 17.2.5] Incorrect values for test point 7 (%s:%d)\n", __FILE__, __LINE__);
             }
         }
+
+        fclose(fp);
     }
-    
-    fclose(fp);
-    // delete file
+
+    // delete file if created
     remove("output2.5.txt");
 
     // free temp points

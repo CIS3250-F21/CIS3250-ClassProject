@@ -46,7 +46,7 @@ RotationInY/RotationInY.o: RotationInY/RotationInY.c RotationInY/RotationInY.h m
 Group8/Group8.o: Group8/Group8.c Group8/Group8.h main.h
 	$(CC) $(CFLAGS) -c Group8/Group8.c -o Group8/Group8.o
 
-Group9/Group9.o: Group9/Group9.c Group9/Group9.h main.h
+XYZTranslation/XYZTranslation.o: XYZTranslation/XYZTranslation.c XYZTranslation/XYZTranslation.h main.h
 	$(CC) $(CFLAGS) -c Group9/Group9.c -o Group9/Group9.o
 
 XPlaneReflection/XPlaneReflection.o: XPlaneReflection/XPlaneReflection.c XPlaneReflection/XPlaneReflection.h main.h

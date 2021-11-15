@@ -42,6 +42,8 @@ void xyzOrthographicProjectionTest2()
         }
     inputShape->numOfPoints = tempNum; //restore the original number of points
     inputShape->points = tempPoints; //restore the original points struct
+    free(testPoints);
+    free(tempPoints);
 }
 
 // Test with a large amount of points (1000 points)
@@ -78,6 +80,8 @@ void xyzOrthographicProjectionTest3()
     }
     inputShape->numOfPoints = tempNum; //restore the original number of points
     inputShape->points = tempPoints; //restore the original points struct
+    free(testPoints);
+    free(tempPoints);
 }
 
 //Function for running all tests

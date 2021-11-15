@@ -5,5 +5,4 @@
 #include "../main.h"
 
 void ZPlaneReflection();
-
 #endif

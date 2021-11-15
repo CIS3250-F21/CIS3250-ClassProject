@@ -3,7 +3,7 @@
 
 #include "../main.h"
 #include "ZPlaneReflection.h"
-
+void ZPlaneReflectionTests();
 void ZPlaneReflectionTest1();
 void ZPlaneReflectionTest2();
 void ZPlaneReflectionTest3();

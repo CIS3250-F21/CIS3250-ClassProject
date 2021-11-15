@@ -255,6 +255,8 @@ void runAllTests() {
     zPlaneReflectionTests(); // Group 12 tests
 
     runXPlaneReflectionTests(); // X plane reflection tests
+
+    runYPlaneReflectionTests(); // Group 11 tests
     
     // free
     for (i = 0; i < 5; i++) {

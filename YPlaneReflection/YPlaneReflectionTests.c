@@ -2,7 +2,7 @@
 #include "YPlaneReflection.h"
 
 /* 
- Tests if the x value was correctly flipped
+ Tests if the y value was correctly flipped
  Returns 1 if successful, 0 otherwise
 */
 int didYReflect( struct point * oldPoint, struct point * newPoint ) {
@@ -44,7 +44,7 @@ int testInputNotEmpty() {
 }
 
 /*
- Tests if the transformation matrix is set to the correct values for reflection in X
+ Tests if the transformation matrix is set to the correct values for reflection in y
  Returns 1 on success, 0 otherwise
 */
 int testTransformationMatrix(){
@@ -83,14 +83,14 @@ void testYPlaneReflection() {
 
     generateXPlaneReflectionMatrix();
 
-    // Initialize oldP with sample values and copy into newP
+    // Initialize oldPoint with sample values and copy into newPoint
     oldPoint.element[0] = 1;
     oldPoint.element[1] = 2;
     oldPoint.element[2] = 3;
     oldPoint.element[3] = 1;
     newPoint = oldPoint;
 
-    // Reflect newP and compare against oldP
+    // Reflect newPoint and compare against oldPoint
     multiplyMatrix( &newPoint, transformationMatrix );
 	didXReflect( &oldPoint, &newPoint );
 	testOtherValuesUnchanged( &oldPoint, &newPoint ); 

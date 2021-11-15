@@ -98,8 +98,8 @@ RotationInY/RotationInYTests.o: RotationInY/RotationInYTests.c RotationInY/Rotat
 Group8/Group8Tests.o: Group8/Group8Tests.c Group8/Group8Tests.h main.h
 	$(CC) $(CFLAGS) -c Group8/Group8Tests.c -o Group8/Group8Tests.o
 
-Group9/Group9Tests.o: Group9/Group9Tests.c Group9/Group9Tests.h main.h
-	$(CC) $(CFLAGS) -c Group9/Group9Tests.c -o Group9/Group9Tests.o
+Group9/Group9Tests.o: XYZTranslation/XYZTranslation.c XYZTranslation/XYZTranslation.h main.h
+	$(CC) $(CFLAGS) -c XYZTranslation/XYZTranslation.c -o XYZTranslation/XYZTranslation.o
 
 XPlaneReflection/XPlaneReflectionTests.o: XPlaneReflection/XPlaneReflectionTests.c XPlaneReflection/XPlaneReflectionTests.h main.h
 	$(CC) $(CFLAGS) -c XPlaneReflection/XPlaneReflectionTests.c -o XPlaneReflection/XPlaneReflectionTests.o

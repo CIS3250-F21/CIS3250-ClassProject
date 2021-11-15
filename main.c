@@ -111,15 +111,15 @@ float getZRotation() {
 }
 
 float getXTranslation() {
-    return 0;
+    return inputShape->translation[0];
 }
 
 float getYTranslation() {
-    return 0;
+    return inputShape->translation[1];
 }
 
 float getZTranslation() {
-    return 0;
+    return inputShape->translation[2];
 }
 
 float getXSheer() {
@@ -173,12 +173,15 @@ void setZRotation(float newTheta) {
 }
 
 void setXTranslation(float newXTranslation) {
+    inputShape->translation[0] = newXTranslation;
 }
 
 void setYTranslation(float newYTranslation) {
+    inputShape->translation[1] = newYTranslation;
 }
 
 void setZTranslation(float newZTranslation) {
+    inputShape->translation[2] = newZTranslation;
 }
 
 void setXShear(float newXShear) {

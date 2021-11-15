@@ -102,24 +102,68 @@ void runOutputResultsTests () {
     remove("output2.1.txt");
 
     /*
-     * Test Case 2.2 - Outputing a NULL Point
+     * Test Case 2.2 - Outputing with NULL between two points
      *
      * Input:
-     *  - Point: NULL 
+     *  - Points
+            - Point 0: [32.0, -45.0, 0.0, 1.0]
+            - Point 1: NULL
+            - Point 2: [-255.0, 45.0, 100.0, 1.0]
      *  - filename: "output2.2.txt"
      *
      * Expected Output:
-     *  - The function should return 1 and output an empty file
-     *    since output stops at the first NULL point
+     *  - The function should return 1.
+     *  - A file "output2.2.txt" should be generated which stores
+     *    the X, Y, Z information for the first point only
      */
 
     // set number of points to 1
-    inputShape->numOfPoints = 1;
-    // point 0 is NULL from previous test
+    inputShape->numOfPoints = 3;
+
+    struct point testPoint2 = {
+        .element = {32.0f -45.0f, 0.0f, 1.0f}
+    };
+
+    struct point testPoint3 = {
+        .element = {-255.0f, 45.0f, 100.0f, 1.0f}
+    };
+
+    // add points to shape
+    setPoint(0, &testPoint2);
+    // point 1 is NULL from previous test
+    setPoint(2, &testPoint3);
 
     // call function with input
     if (outputPoints("output2.2.txt") != 1) {
         fprintf(stderr, "[Test 17.2.2] Return value was not 1 (%s:%d)\n", __FILE__, __LINE__);
+    }
+
+    // open file
+    if((fp = fopen("output2.2.txt", "r")) == NULL) {
+        fprintf(stderr, "[Test 17.2.2] Error file \"output2.2.txt\" does not exist (%s:%d)\n", __FILE__, __LINE__);
+    }
+    else {
+        // read first point
+        if ((fscanf(fp,"%f %f %f\n", &x, &y, &z)) != 3) {
+            fprintf(stderr, "[Test 17.2.2] Error reading points from file (%s:%d)\n", __FILE__, __LINE__);
+        }
+        else {
+            // check if the points match testPoint2
+            if (
+                x != testPoint2.element[0] ||
+                y != testPoint2.element[1] ||
+                z != testPoint2.element[2]
+            ) {
+                fprintf(stderr, "[Test 17.2.2] Error points do not match test point 2 (%s:%d)\n", __FILE__, __LINE__);
+            }
+
+            // check if end of file
+            if (!feof(fp)) {
+                fprintf(stderr, "[Test 17.2.2] Error expected one point but found multiple (%s:%d)\n", __FILE__, __LINE__);
+            }
+        }
+
+        fclose(fp);
     }
 
     // remove output2.2.txt if created
@@ -136,13 +180,13 @@ void runOutputResultsTests () {
      * - The function should return 0 since the filename is NULL
      */
 
-    struct point testPoint2 = {
+    struct point testPoint4 = {
         .element = {2.0f, 1.0f, 3.0f, 1.0f}
     };
 
     // add point to shape
     inputShape->numOfPoints = 1;
-    setPoint(0, &testPoint2);
+    setPoint(0, &testPoint4);
     inputShape->points[1] = NULL; // directly set end of array
     
     // call outputMatrix function with filename
@@ -172,8 +216,11 @@ void runOutputResultsTests () {
      * Test Case 2.5 - Outputting to a file multiple times
      *
      * Input:
-     *  - Point 1: [255.0, 255.0, 255.0, 1.0] 
-     *  - Point 2: [1.0, 2.0, 3.0, 1.0] 
+     *  - Points:
+     *      - Point 1: [255.0, 255.0, 255.0, 1.0] 
+     *      - Point 2: [1.0, 2.0, 3.0, 1.0] 
+     *      - Point 3: [-255.0, 0.0, 121.0, 1.0]
+     *      - Point 4: [132.0, 1.0, -13.0, 1.0]
      *  - Filename: "output2.5.txt"
      *
      * Expected Outcome:
@@ -182,41 +229,41 @@ void runOutputResultsTests () {
      */  
     
     // initialize 4 points with different values
-    struct point testPoint4 = {
+    struct point testPoint5 = {
         .element = {255.0f, 255.0f, 255.0f, 1.0f}
     };
 
-    struct point testPoint5 = {
+    struct point testPoint6 = {
         .element = {1.0f, 2.0f, 3.0f, 1.0f}
     };
 
-    struct point testPoint6 = {
+    struct point testPoint7 = {
         .element = {-255.0f, 0.0f, 121.0f, 1.0f}
     };
 
-    struct point testPoint7 = {
+    struct point testPoint8 = {
         .element = {132.0f, 1.0f, -13.0f, 1.0f}
     };
 
-    // add points 4 and 5 to the inputShape
+    // add points 5 and 6 to the inputShape
     inputShape->numOfPoints = 2;
     inputShape->points[2] = NULL; // set end of array
 
-    setPoint(0, &testPoint4);
-    setPoint(1, &testPoint5);
+    setPoint(0, &testPoint5);
+    setPoint(1, &testPoint6);
 
     // output first shape to file
     if (outputPoints("output2.5.txt") != 1) {
-        fprintf(stderr, "[Test 17.2.5] Failed to output points 4 and 5 (%s:%d)\n", __FILE__, __LINE__);
+        fprintf(stderr, "[Test 17.2.5] Failed to output points 5 and 6 (%s:%d)\n", __FILE__, __LINE__);
     }
     
-    // replace points 4 and 5 with 6 and 7 respectively
-    setPoint(0, &testPoint6);
-    setPoint(1, &testPoint7);
+    // replace points 5 and 6 with 7 and 8 respectively
+    setPoint(0, &testPoint7);
+    setPoint(1, &testPoint8);
 
     // output second shape to file
     if (outputPoints("output2.5.txt") != 1) {
-        fprintf(stderr, "[Test 17.2.5] Failed to output points 6 and 7 (%s:%d)\n", __FILE__, __LINE__);
+        fprintf(stderr, "[Test 17.2.5] Failed to output points 7 and 8 (%s:%d)\n", __FILE__, __LINE__);
     }
 
     // Check if the file was created and test its values
@@ -226,31 +273,31 @@ void runOutputResultsTests () {
     else {
         // read first point from file
         if(fscanf(fp, "%f %f %f", &x, &y, &z) != 3) {
-            fprintf(stderr, "[Test 17.2.5] Error reading values for test point 6 (%s:%d)\n", __FILE__, __LINE__);
+            fprintf(stderr, "[Test 17.2.5] Error reading values for test point 7 (%s:%d)\n", __FILE__, __LINE__);
         }
         else {
-            // Check if values match for test point 6
+            // Check if values match for test point 7
             if (
-                x != testPoint6.element[0] || 
-                y != testPoint6.element[1] || 
-                z != testPoint6.element[2]
+                x != testPoint7.element[0] || 
+                y != testPoint7.element[1] || 
+                z != testPoint7.element[2]
             ) {
-                fprintf(stderr, "[Test 17.2.5] Incorrect values for test point 6 (%s:%d)\n", __FILE__, __LINE__);
+                fprintf(stderr, "[Test 17.2.5] Incorrect values for test point 7 (%s:%d)\n", __FILE__, __LINE__);
             }
         }
 
         // read second point from file
         if(fscanf(fp, "%f %f %f", &x, &y, &z) != 3) {
-            fprintf(stderr, "[Test 17.2.5] Error reading values for test point 7 (%s:%d)\n", __FILE__, __LINE__);
+            fprintf(stderr, "[Test 17.2.5] Error reading values for test point 8 (%s:%d)\n", __FILE__, __LINE__);
         }
         else {
-            // check if values match for test point 7
+            // check if values match for test point 8
             if (
-                x != testPoint7.element[0] ||
-                y != testPoint7.element[1] || 
-                z != testPoint7.element[2]
+                x != testPoint8.element[0] ||
+                y != testPoint8.element[1] || 
+                z != testPoint8.element[2]
             ) {
-                fprintf(stderr, "[Test 17.2.5] Incorrect values for test point 7 (%s:%d)\n", __FILE__, __LINE__);
+                fprintf(stderr, "[Test 17.2.5] Incorrect values for test point 8 (%s:%d)\n", __FILE__, __LINE__);
             }
         }
 

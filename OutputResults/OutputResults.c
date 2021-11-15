@@ -4,14 +4,6 @@ int outputPoints(char* filename) {
     FILE* fp;
     struct point* point;
 
-    // check if there are points to print
-    if (inputShape->numOfPoints <= 0) {
-        #ifdef DEBUG
-            printf("ERROR no points to print\n");
-        #endif
-        return 0;
-    }
-
     // check for valid filename
     if (filename == NULL) {
         #ifdef DEBUG
@@ -29,23 +21,19 @@ int outputPoints(char* filename) {
     }
 
     // output points to file
-    for (int i = 0; i < inputShape->numOfPoints; i++) {
-        point = getPoint(i);
-
-        if (point == NULL) {
-            #ifdef DEBUG
-                printf("ERROR null point\n");
-            #endif
-            fclose(fp);
-            return 0;
-        }
-
-        
+    int i = 0;
+    point = getPoint(0);
+    while (point != NULL) {
         fprintf (
             fp, "%f %f %f\n", 
             point->element[0], point->element[1], point->element[2]
         );
+        point = getPoint(++i);
     }
+
+    #ifdef DEBUG
+        printf("Output %d points to %s\n", i, filename);
+    #endif
 
     fclose(fp);
     return 1;

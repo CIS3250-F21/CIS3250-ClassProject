@@ -20,7 +20,7 @@ int didYReflect( struct point * oldPoint, struct point * newPoint ) {
  Tests if the other values in the point are unchanged
  Returns 1 if successful, 0 otherwise
 */
-int testOtherValuesUnchanged( struct point * oldPoint, struct point * newPoint ) {
+int testOtherValuesUnchangedY( struct point * oldPoint, struct point * newPoint ) {
 	for( int i = 1; i < 4; i++ ) {
 		if( oldPoint->element[i] != newPoint->element[i]) {
 		    fprintf( stderr, "old point y-value: %f, new point y-value: %f\n", oldPoint->element[i], newPoint->element[i] );
@@ -35,7 +35,7 @@ int testOtherValuesUnchanged( struct point * oldPoint, struct point * newPoint )
  Tests if the input given is empty
  Returns 0 if empty, 1 otherwise
 */
-int testInputNotEmpty() {
+int testInputNotEmptyY() {
 	if ( inputShape->points == NULL ) {
 		fprintf( stderr, "Error: input is empty.\n" );
 		return 0;
@@ -47,7 +47,7 @@ int testInputNotEmpty() {
  Tests if the transformation matrix is set to the correct values for reflection in y
  Returns 1 on success, 0 otherwise
 */
-int testTransformationMatrix(){
+int testTransformationMatrixY(){
 	float expectedMatrix [4][4] = {{1,0,0,0},{0,-1,0,0},{0,0,1,0},{0,0,0,1}};
 	for( int i=0; i<4; i++ ){
 		for( int j=0; j<4; j++ ){
@@ -65,12 +65,15 @@ int testTransformationMatrix(){
  Tests if the point was correctly saved in the inputShape struct.
  Returns 1 on BOTH successes, 0 otherwise
 */
-int testSetPoint( struct point * localPoint, int index ) {
+int testSetPointY( struct point * localPoint, int index ) {
 	return( didYReflect(localPoint, getPoint(index)) && testOtherValuesUnchanged(localPoint, getPoint(index)) );
 }
 
 void runYPlaneReflectionTests() {
-    generateYPlaneReflectionMatrix();
+    transformationMatrix[0][0] = 1;
+	transformationMatrix[1][1] = -1;
+	transformationMatrix[2][2] = 1;
+	transformationMatrix[3][3] = 1;
     testTransformationMatrix();
 	testInputNotEmpty();
     testYPlaneReflection();
@@ -81,7 +84,10 @@ void runYPlaneReflectionTests() {
 void testYPlaneReflection() {
     struct point oldPoint, newPoint;
 
-    generateXPlaneReflectionMatrix();
+    transformationMatrix[0][0] = 1;
+	transformationMatrix[1][1] = -1;
+	transformationMatrix[2][2] = 1;
+	transformationMatrix[3][3] = 1;
 
     // Initialize oldPoint with sample values and copy into newPoint
     oldPoint.element[0] = 1;
@@ -92,8 +98,8 @@ void testYPlaneReflection() {
 
     // Reflect newPoint and compare against oldPoint
     multiplyMatrix( &newPoint, transformationMatrix );
-	didXReflect( &oldPoint, &newPoint );
-	testOtherValuesUnchanged( &oldPoint, &newPoint ); 
+	didYReflect( &oldPoint, &newPoint );
+	testOtherValuesUnchangedY( &oldPoint, &newPoint ); 
 
     resetMatrix();
 }

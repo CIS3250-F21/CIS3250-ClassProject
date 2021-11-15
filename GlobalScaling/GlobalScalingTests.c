@@ -57,6 +57,11 @@ void globalScalingDirtyTest1(){
     globalScaling();
     for(int i = 0; i < 3; i++){
         for(int j = 0; j < 3; j++){
+            transformationMatrix[i][j] = 0.0;
+        }
+    }
+    for(int i = 0; i < 3; i++){
+        for(int j = 0; j < 3; j++){
             if(transformationMatrix[i][j] != check){
                 printf("Global scaling: globalScalingDirtyTest1 failed\n");
                 return;
@@ -102,15 +107,14 @@ void globalScalingDirtyTest2(){
     -it will print test successfully broke the code
 */
 void globalScalingDirtyTest3(){
+
+    float check = 1.0;
+    globalScaling();
     for(int i = 0; i < 3; i++){
         for(int j = 0; j < 3; j++){
             transformationMatrix[(int)i][(int)j] = 1;
         }
     }
-    float check = 1.0;
-    int testInt = 2;
-    setGlobalScale(testInt);
-    globalScaling();
     for(int i = 0; i < 4; i++){
         for(int j = 0; j < 4; j++){
             if(transformationMatrix[i][j] != check){
@@ -129,13 +133,14 @@ void globalScalingDirtyTest3(){
     -it will print test successfully broke the code
 */
 void globalScalingDirtyTest4(){
+
+    float check = 1.0;
+    globalScaling();
     for(int i = 0; i > 3; i++){
         for(int j = 0; j < 3; j++){
             transformationMatrix[i][j] = 1;
         }
     }
-    float check = 1.0;
-    globalScaling();
     for(int i = 0; i < 3; i++){
         for(int j = 0; j < 3; j++){
             if(transformationMatrix[i][j] != check){\
@@ -154,13 +159,13 @@ void globalScalingDirtyTest4(){
     -it will print test successfully broke the code
 */
 void globalScalingDirtyTest5(){
+    float check = 1.0;
+    globalScaling();
     for(int i = 0; i < 7; i++){
         for(int j = 0; j < 3; j++){
             transformationMatrix[i][j] = 1;
         }
     }
-    float check = 1.0;
-    globalScaling();
     for(int i = 0; i < 3; i++){
         for(int j = 0; j < 3; j++){
             if(transformationMatrix[i][j] != check){

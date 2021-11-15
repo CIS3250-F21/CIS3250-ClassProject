@@ -206,6 +206,7 @@ void incrementedPoint()
   }
   inputShape->points -= 2; //reset point pointer
 }
+
 void runZScalingTests()
 {
   
@@ -219,7 +220,7 @@ void runZScalingTests()
 
   zeroMulti();
 
-  incrementedPoint();
+  //incrementedPoint();
 
   nullPoint();
 

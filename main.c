@@ -96,7 +96,7 @@ float getYScale() {
 }
 
 float getZScale() {
-    return 0;
+    return inputShape->scaling[2];
 }
 
 float getXRotation() {
@@ -112,15 +112,15 @@ float getZRotation() {
 }
 
 float getXTranslation() {
-    return 0;
+    return inputShape->translation[0];
 }
 
 float getYTranslation() {
-    return 0;
+    return inputShape->translation[1];
 }
 
 float getZTranslation() {
-    return 0;
+    return inputShape->translation[2];
 }
 
 float getXSheer() {
@@ -161,6 +161,7 @@ void setYScale(float newYScale) {
 }
 
 void setZScale(float newZScale) {
+    inputShape->scaling[2] = newZScale; 
 }
 
 void setXRotation(float newTheta) {
@@ -174,12 +175,15 @@ void setZRotation(float newTheta) {
 }
 
 void setXTranslation(float newXTranslation) {
+    inputShape->translation[0] = newXTranslation;
 }
 
 void setYTranslation(float newYTranslation) {
+    inputShape->translation[1] = newYTranslation;
 }
 
 void setZTranslation(float newZTranslation) {
+    inputShape->translation[2] = newZTranslation;
 }
 
 void setXShear(float newXShear) {
@@ -250,11 +254,17 @@ void runAllTests() {
 
     // TESTS GO HERE
     runGroup7Tests();  // Group 7 tests
+    
+    //runZScalingTests(); 
 
-    runScalingInXTests(); // Group 3 tests
+    //runScalingInXTests(); // Group 3 tests
 
     zPlaneReflectionTests(); // Group 12 tests
 
+    // runXYZTranslationTest();
+
+    runXPlaneReflectionTests(); // X plane reflection tests
+    
     // free
     for (i = 0; i < 5; i++) {
         free(inputShape->points[i]);

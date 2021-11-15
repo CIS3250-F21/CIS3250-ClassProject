@@ -2,7 +2,7 @@
 #define GROUP_INCLUDES_H
 
 #include "Group1/Group1.h"
-#include "Group10/Group10.h"
+#include "XPlaneReflection/XPlaneReflection.h"
 #include "Group11/Group11.h"
 #include "zPlaneReflection/zPlaneReflection.h"
 #include "Group13/Group13.h"
@@ -13,10 +13,10 @@
 #include "GlobalScaling/GlobalScaling.h"
 #include "ScalingInX/ScalingInX.h"
 #include "ScalingInY/ScalingInY.h"
-#include "Group5/Group5.h"
+#include "ScalingInZ/ScalingInZ.h"
 #include "Group6/Group6.h"
 #include "RotationInY/RotationInY.h"
 #include "Group8/Group8.h"
-#include "Group9/Group9.h"
+#include "XYZTranslation/XYZTranslation.h"
 
 #endif

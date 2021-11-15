@@ -2,13 +2,13 @@
 #define Z_PLANE_REFLECTION_TESTS_H
 
 #include "../main.h"
-#include "zPlaneReflection.h"
+#include "ZPlaneReflection.h"
 
-void zPlaneReflectionTest1();
-void zPlaneReflectionTest2();
-void zPlaneReflectionTest3();
-void zPlaneReflectionTest4();
-void zPlaneReflectionTest5();
-void zPlaneReflectionTests();
+void ZPlaneReflectionTest1();
+void ZPlaneReflectionTest2();
+void ZPlaneReflectionTest3();
+void ZPlaneReflectionTest4();
+void ZPlaneReflectionTest5();
+void ZPlaneReflectionTests();
 
 #endif

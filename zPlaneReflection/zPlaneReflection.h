@@ -4,6 +4,6 @@
 #include <float.h>
 #include "../main.h"
 
-void zPlaneReflection();
+void ZPlaneReflection();
 
 #endif

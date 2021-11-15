@@ -22,7 +22,16 @@ void runGroup8Tests() {
             index[3][3] = 1
 
     */
-    float expected[4][4] = {0};
+    float expected[4][4];
+
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            expected [i][j] = 0;
+        }
+    }
+
     expected[2][2] = 1;
     expected[3][3] = 1;
 
@@ -82,13 +91,13 @@ void runGroup8Tests() {
         // If the function works properly, these values will change to match the expected vector
     setZRotation(3.14/2);
 
-    struct vector tempVector;
-    tempVector.vector[0] = 1;
-    tempVector.vector[1] = 4;
-    tempVector.vector[2] = 2;
-    tempVector.vector[3] = 1;
+    struct point tempVector;
+    tempVector.element[0] = 1;
+    tempVector.element[1] = 4;
+    tempVector.element[2] = 2;
+    tempVector.element[3] = 1;
 
-    setVector(0, tempVector);
+    setPoint(0, &tempVector);
 
     // Initializing the values of the expected vector and then testing the zRotation on the vector [1, 4, 2 , 1] and the angle 3.14/2
     // The expected vector after rotation should have values of {4, -1, 2, 1}
@@ -136,8 +145,6 @@ void testValidAngles (float expectedTransformationMatrix[4][4], float theta) {
     }    
 }
 
-/*
-
 
 /*
 
@@ -154,11 +161,12 @@ void testValidVectors (float expectedVector [4]) {
 
     for (int i = 0 ; i < 4 ; i++) {
 
-        if ((fabs ((getVector(0).vector[i]) - expectedVector[i])) > 0.001) {
+        if ((fabs ((getPoint(0) -> element[i]) - expectedVector[i])) > 0.001) {
 
-            printf ("\nVALID VECTOR TEST FAILED:\nExpected index[%d] = %f\nActual index[%d] = %f\n", i, expectedVector[i], i, (getVector(0)).vector[i]);
+            printf ("\nVALID VECTOR TEST FAILED:\nExpected index[%d] = %f\nActual index[%d] = %f\n", i, expectedVector[i], i, (getPoint(0)) -> element[i]);
 
         }
     }
+
 
 }

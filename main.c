@@ -250,7 +250,7 @@ void runAllTests() {
     // TESTS GO HERE
     runGroup7Tests();  // Group 7 tests
 
-    runScalingInXTests(inputShape); // Group 3 tests
+    runScalingInXTests(); // Group 3 tests
 
     zPlaneReflectionTests(); // Group 12 tests
 

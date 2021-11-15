@@ -150,7 +150,7 @@ void setPoint(int index, struct point* newPoint) {
 
 // ~~~~~~~~~~~~~~~~~ GROUP Setters Go HERE ~~~~~~~~~~~~~~~~~~~ //
 void setGlobalScale(float newGlobalScale) {
-    newGlobalScale = getGlobalScale();
+    inputShape -> scaling[3] = newGlobalScale;
 }
 
 void setXScale(float newXScale) {
@@ -257,6 +257,7 @@ void runAllTests() {
 
     runXPlaneReflectionTests(); // X plane reflection tests
 
+    setGlobalScale(1);
     runGlobalScalingTests(); // Group 2 tests
     
     // free

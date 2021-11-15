@@ -1,5 +1,5 @@
-#ifndef GROUP_9_H
-#define GROUP_9_H
+#ifndef XYZ_TRANSLATION_H
+#define XYZ_TRANSLATION_H
 
 #include "../main.h"
 

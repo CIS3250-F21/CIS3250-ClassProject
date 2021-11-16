@@ -316,7 +316,7 @@ void runAllTests() {
     // TESTS GO HERE
     // runRotationInXTests(); // RotationInX tests
 
-    runGroup7Tests();  // Group 7 tests
+    runRotationInYTests();  // RotationInY tests
     
     //runZScalingTests(); 
 

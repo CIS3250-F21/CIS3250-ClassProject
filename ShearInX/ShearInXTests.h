@@ -1,20 +1,18 @@
 #ifndef XSHEAR_TEST_H
 #define XSHEAR_TEST_H
 
-int errorFlag;
-int tstFlag;
-
 void runXShearTests();  // Calls the tests
 
-struct point* createTestpoints();
+struct point** createTestPoints();
 
-void cleanTest(struct point* testpoints);
+void cleanTest(struct point** testPoints);
 void testShapeNull();
 void testPointsNull();
-void testLargeShearValue(struct point* testpoints);
-void testSmallShearValue(struct point* testpoints);
-void testWrongMagnitude(struct point* testpoints);
+void testLargeShearValue(struct point** testPoints);
+void testSmallShearValue(struct point** testPoints);
+void testWrongMagnitude(struct point** testPoints);
 
+void printPoint(struct point toPrint);
 int testHelperCompare(struct point vec1, struct point vec2);
 
 #endif

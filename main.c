@@ -348,7 +348,7 @@ void runAllTests() {
     /* Rotation in Y Tests */
     createTestPoints();
     setYRotation(0);
-    runGroup7Tests();  
+    runRotationInYTests(); 
     freeTestPoints();
   
   

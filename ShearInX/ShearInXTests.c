@@ -5,7 +5,7 @@
 void runXShearTests() {                        // Calls the tests
     struct shape* oldInputShape = inputShape;  // Make sure input shape is not modified by test cases.
 
-    struct point** testPoints = createTestPoints();  // Creates a common, constant set of pre-defined points for tests to pull from when creating their shape structs
+    struct point** testPoints = createXShearTestPoints();  // Creates a common, constant set of pre-defined points for tests to pull from when creating their shape structs
 
     errorFlag = -1;
     cleanTest(testPoints);
@@ -26,7 +26,7 @@ void runXShearTests() {                        // Calls the tests
         free(testPoints[i]);
     }
     free(testPoints);
-    testPoints = createTestPoints();  // Refresh modified values
+    testPoints = createXShearTestPoints();  // Refresh modified values
 
     errorFlag = -1;
     testWrongMagnitude(testPoints);
@@ -38,7 +38,7 @@ void runXShearTests() {                        // Calls the tests
     free(testPoints);
 }
 
-struct point** createTestPoints() {
+struct point** createXShearTestPoints() {
     struct point** testPoints = malloc(sizeof(struct point*) * 10);
     for (int i = 0; i < 10; i++) {
         testPoints[i] = malloc(sizeof(struct point));

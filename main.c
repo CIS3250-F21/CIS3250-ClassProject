@@ -4,14 +4,36 @@
 #include "groupTestIncludes.h"
 
 int main(int argc, char** argv) {
-    fileName = "shape.txt";
+    fileName = malloc(sizeof(char) * 10);
+    strcpy(fileName, "shape.txt");
 
     // Run tests if need be
     if (argc == 2 && strcmp(argv[1], "-t") == 0) {
         runAllTests();
-    } else {
+    } else if (argc == 2) {
+    //else if (argc == 3) {
+        //fileName = malloc(sizeof(char) * BUFSIZ);
+        //strncpy(fileName, argv[1], BUFSIZ);
+        
+        outputFileName = malloc(sizeof(char) * BUFSIZ);
+        strncpy(outputFileName, argv[1], BUFSIZ);
+
         //~~~~~ Group 1 ~~~~~//
         inputShape = readInput(fileName);
+
+        // Instantiate Temporary Points //
+        // FIXME: REMOVE AFTER GROUP 1 IMPLEMENTATION //
+        inputShape->points = malloc(sizeof(struct point*) * 1);
+        inputShape->numOfPoints = 1;
+
+        struct point* temp = malloc(sizeof(struct point));
+        
+        temp->element[0] = 1.0f;
+        temp->element[1] = 1.0f;
+        temp->element[2] = 1.0f;
+        temp->element[3] = 1.0f;
+
+        setPoint(0, temp);
 
         //~~~~~ Group 2 ~~~~~//
         void globalScaling();
@@ -59,11 +81,28 @@ int main(int argc, char** argv) {
         void xyzOrthographicProjection();
 
         //~~~~~ Group 17 ~~~~~//
-        outputPoints(fileName);
+        outputPoints(outputFileName);
 
+        // free all non null points
+        for (int i = 0; i < inputShape->numOfPoints; i++) {
+            if (inputShape->points[i] != NULL) {
+                free(inputShape->points[i]);
+            }
+        }
+        
+        // free points array
+        free(inputShape->points);
+
+        // free shape
         free(inputShape);
     }
-    
+    else {
+        // fprintf(stderr, "Format %s <input file> <output file>", argv[0]);
+        fprintf(stderr, "Format: %s <output file>", argv[0]);
+        return 1;
+    }
+    free(outputFileName);
+    free(fileName);
     return 0;
 }
 

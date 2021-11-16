@@ -346,13 +346,14 @@ void runAllTests() {
     zPlaneReflectionTests();
     freeTestPoints();
 
-    /* Z Plane Reflection Tests */
+    /* XYZ Translation Tests */
     createTestPoints();
-    runXPlaneReflectionTests();
+    // runXYZTranslationTest();
     freeTestPoints();
 
-    /* Z Plane Reflection Tests */
+    /* Output Results Tests */
     createTestPoints();
     runOutputResultsTests();
     freeTestPoints();
+
 }

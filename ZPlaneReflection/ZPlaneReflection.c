@@ -1,6 +1,6 @@
-#include "zPlaneReflection.h"
+#include "ZPlaneReflection.h"
 
-void zPlaneReflection() {
+void ZPlaneReflection() {
     // z plane reflection matrix
     if (!(inputShape == NULL)){
     //sets transformation matrix

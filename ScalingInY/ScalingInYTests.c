@@ -13,11 +13,11 @@
 //- Helper functions
 
 /* This function initializes the Y values for the first 5 points in the point
-  * array found in the 'points' field in inputShape. Values used (in the order
-  * of array index) are 0, 1, -1, 100, -100 */
+ * array found in the 'points' field in inputShape. Values used (in the order
+ * of array index) are 0, 1, -1, 100, -100 */
 void initialisePoints() {
-    inputShape->points = malloc(sizeof(struct point*) * 5);
-    //x, z, global all = 1
+    inputShape->points = malloc(sizeof(struct point *) * 5);
+    // x, z, global all = 1
     float yValues[5] = {0, 1, -1, 100, -100};
     for (int i = 0; i < inputShape->numOfPoints; i++) {
         struct point *newPoint = malloc(sizeof(struct point));
@@ -52,9 +52,9 @@ void testExpectedValues(char *testName, float *expectedValues) {
 //- Test functions
 
 /* This test will attempt to run the yScaling function with an initialized scale
-  * value but no initialized points. It is expected that the function will catch
-  * the uninitialized value and return 0, indicating that the scale operation
-  * could not be performed. */
+ * value but no initialized points. It is expected that the function will catch
+ * the uninitialized value and return 0, indicating that the scale operation
+ * could not be performed. */
 void uninitialisedYPointTest() {
     float yScaleValue = 42.0;  // Y-scale value chosen for the test
     int expectedResult = 0;    // The expected result of the yScaling function

@@ -4,17 +4,16 @@ void yShear() {
 
   //get shear values
   float xShearVal = getXShear();
-  float yShearVal = getYShear();
   float zShearVal = getZShear();
 
   //reset matrix
   resetMatrix();
 
   //change col 1, row 0
-  transformationMatrix [0] [1] = xShearVal;
+  transformationMatrix [0] [1] = 1 + xShearVal * transformationMatrix [0] [1];
 
   //change col 1, row 2
-  transformationMatrix [2] [1] =  zShearVal;
+  transformationMatrix [2] [1] =  1 + zShearVal * transformationMatrix [2] [1] ;
 
   //multply points by matrix
   struct point* temp;
@@ -31,5 +30,4 @@ void yShear() {
     setPoint(i, temp);
 
     }
-
 }

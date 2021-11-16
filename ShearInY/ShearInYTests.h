@@ -5,7 +5,7 @@ void emptyYShearValue ();
 void inputRange ();
 void uninitializedStruct();
 void uninitializedMatrixMultiplication();
-void emptyInput ();
+void dependentGroupShearValues ();
 void correctTest ();
 
 #endif

@@ -74,7 +74,7 @@ int testSetPointY( struct point * localPoint, int index ) {
 
 void runYPlaneReflectionTests() {
 	generateYPlaneReflectionMatrix();
-    testTransformationMatrix();
+    testTransformationMatrixY();
 	testYPlaneReflection();
 	testInputNotEmpty();
 

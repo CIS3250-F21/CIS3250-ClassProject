@@ -325,8 +325,6 @@ void runAllTests() {
     runXPlaneReflectionTests(); // X plane reflection tests
 
     runGlobalScalingTests(); // Group 2 tests
-    setGlobalScale(1);
-    //runGlobalScalingTests(); // Group 2 tests
     
     // free
     for (i = 0; i < 5; i++) {

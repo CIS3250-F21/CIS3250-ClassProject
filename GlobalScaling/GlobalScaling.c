@@ -22,7 +22,6 @@ void globalScaling(){
         setPoint( i, p );
         i++;
     }
-    
 
     resetMatrix();
 }

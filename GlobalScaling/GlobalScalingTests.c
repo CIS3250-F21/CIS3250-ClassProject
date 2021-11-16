@@ -3,29 +3,29 @@
 
 void runGlobalScalingTests(){
     makeTestPoint(0);
-    checkIfVectorPointsWereScaledCorrectly();
+    checkIfScaledCorrectly();
 
     makeTestPoint(0);
-    checkIfVectorPointsWereScaledCorrectlyWithZeroGlobalScaleValue();
+    checkIfWithZero();
 
     makeTestPoint(0);
-    checkIfVectorPointsWereScaledCorrectlyWithInts();
+    checkIfScaledCorrectlyWithInts();
 
     makeTestPoint(0);
-    checkIfVectorPointsWereScaledCorrectlyWhenVectorpointsWhereDoubled();
+    checkVectorPoints();
 
     makeTestPoint(0);
-    checkIfVectorPointsWereScaledCorrectlyWhenPassedNullPointers();
+    checkIfScaledWithNullPoints();
 
     makeTestPoint(0);
-    checkIfVectorPointsWereScaledCorrectlyWithNegativeNumberGlobalScaleValue();
+    checkIfScaledWithNegativeNumber();
 }
 
 /*
     -calls globalscaling
     -checks each index in point to see if globalScaling has scaled proeprly 
 */
-void checkIfVectorPointsWereScaledCorrectly(){
+void checkIfScaledCorrectly(){
 
     struct point* comparPoint;
     // Saves pointer to old address for freeing later
@@ -71,7 +71,7 @@ void checkIfVectorPointsWereScaledCorrectly(){
     -we call global scaling 
     -each point will now equal 0
 */
-void checkIfVectorPointsWereScaledCorrectlyWithZeroGlobalScaleValue(){
+void checkIfWithZero(){
     struct point * comparPoint;
 
     setGlobalScale(0);
@@ -100,7 +100,7 @@ void checkIfVectorPointsWereScaledCorrectlyWithZeroGlobalScaleValue(){
     -we call global scaling 
     -The points will be scaled according to the global scale value
 */
-void checkIfVectorPointsWereScaledCorrectlyWithInts(){
+void checkIfScaledCorrectlyWithInts(){
     struct point * comparPoint;
 
     setGlobalScale(2);
@@ -128,7 +128,7 @@ void checkIfVectorPointsWereScaledCorrectlyWithInts(){
     -after the vector has been scaled we multiply each point by 2 
     -This will break it as each point will now contain a incorrect value
 */
-void checkIfVectorPointsWereScaledCorrectlyWhenVectorpointsWhereDoubled(){
+void checkVectorPoints(){
     struct point * comparPoint;
 
     setGlobalScale(1);
@@ -158,7 +158,7 @@ void checkIfVectorPointsWereScaledCorrectlyWhenVectorpointsWhereDoubled(){
     -we call global scaling 
     -Each point will not be scaled as it was passed a null pointer to each point
 */
-void checkIfVectorPointsWereScaledCorrectlyWhenPassedNullPointers(){
+void checkIfScaledWithNullPoints(){
     struct point* comparPoint;
 
     setGlobalScale(1);
@@ -188,7 +188,7 @@ void checkIfVectorPointsWereScaledCorrectlyWhenPassedNullPointers(){
     -we call global scaling 
     -The vectors points will all be negitive but the the 4th point in the vector will stay as 1
 */
-void checkIfVectorPointsWereScaledCorrectlyWithNegativeNumberGlobalScaleValue(){
+void checkIfScaledWithNegativeNumber(){
     struct point* comparPoint;
 
     setGlobalScale(-1);

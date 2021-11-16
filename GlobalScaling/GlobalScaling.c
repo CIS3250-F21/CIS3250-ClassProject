@@ -17,6 +17,7 @@ void globalScaling(){
  
     float fourthValue;
     while((p = getPoint(i)) != NULL){
+        negativeScale = 0;
         multiplyMatrix( p, transformationMatrix );
         
         fourthValue = p->element[3];

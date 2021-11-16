@@ -297,6 +297,8 @@ void runAllTests() {
 
     //runScalingInXTests(); // Group 3 tests
 
+    runYPlaneReflectionTests();
+
     zPlaneReflectionTests(); // Group 12 tests
 
     // runXYZTranslationTest();

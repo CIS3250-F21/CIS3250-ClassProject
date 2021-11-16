@@ -98,7 +98,7 @@ int main(int argc, char** argv) {
     }
     else {
         // fprintf(stderr, "Format %s <input file> <output file>", argv[0]);
-        fprintf(stderr, "Format: %s <output file>", argv[0]);
+        fprintf(stderr, "Format: %s <output file>\n", argv[0]);
         return 1;
     }
     free(outputFileName);

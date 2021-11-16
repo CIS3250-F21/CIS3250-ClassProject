@@ -35,53 +35,67 @@ int main(int argc, char** argv) {
 
         setPoint(0, temp);
 
+        //GROUP 1 WILL IMPLEMENT THIS
+        setXScale(1);
+        setYScale(1);
+        setZScale(1);
+        setXRotation(0);
+        setYRotation(0);
+        setZRotation(0);
+        setXTranslation(0);
+        setYTranslation(0);
+        setZTranslation(0);
+
+
+
         //~~~~~ Group 2 ~~~~~//
-        void globalScaling();
+        globalScaling();
 
         //~~~~~ Group 3 ~~~~~//
-        void xScaling();
+        xScaling();
 
         //~~~~~ Group 4 ~~~~~//
-        void yScaling();
+        yScaling();
 
         //~~~~~ Group 5 ~~~~~//
-        void zScaling();
+        zScaling();
 
         //~~~~~ Group 6 ~~~~~//
-        void xRotation();
+        xRotation();
 
         //~~~~~ Group 7 ~~~~~//
-        void yRotation();
+        yRotation();
 
         //~~~~~ Group 8 ~~~~~//
-        void zRotation();
+        zRotation();
 
         //~~~~~ Group 9 ~~~~~//
-        void xyzTranslation();
+        xyzTranslation();
 
         //~~~~~ Group 10 ~~~~~//
-        void xPlaneReflection();
+        xPlaneReflection();
 
         //~~~~~ Group 11 ~~~~~//
-        void yPlaneReflection();
+        yPlaneReflection();
 
         //~~~~~ Group 12 ~~~~~//
-        void ZPlaneReflection();
+        ZPlaneReflection();
 
         //~~~~~ Group 13 ~~~~~//
-        void xShear();
+        xShear();
 
         //~~~~~ Group 14 ~~~~~//
-        void yShear();
+        yShear();
 
         //~~~~~ Group 15 ~~~~~//
-        void zShear();
+        zShear();
 
         //~~~~~ Group 16 ~~~~~//
-        void xyzOrthographicProjection();
+        xyzOrthographicProjection();
 
         //~~~~~ Group 17 ~~~~~//
         outputPoints(outputFileName);
+
 
         // free all non null points
         for (int i = 0; i < inputShape->numOfPoints; i++) {
@@ -130,7 +144,7 @@ float getXScale() {
 }
 
 float getYScale() {
-    return 0;
+    return inputShape->scaling[1];
 }
 
 float getZScale() {
@@ -196,6 +210,7 @@ void setXScale(float newXScale) {
 }
 
 void setYScale(float newYScale) {
+    inputShape->scaling[1] = newYScale;
 }
 
 void setZScale(float newZScale) {
@@ -291,11 +306,15 @@ void runAllTests() {
     }
 
     // TESTS GO HERE
+    // runRotationInXTests(); // RotationInX tests
+
     runGroup7Tests();  // Group 7 tests
     
     //runZScalingTests(); 
 
     runScalingInXTests(); // Group 3 tests
+
+    runScalingInYTests();
 
     ZPlaneReflectionTests(); // Group 12 tests
 

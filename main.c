@@ -10,60 +10,116 @@ int main(int argc, char** argv) {
     // Run tests if need be
     if (argc == 2 && strcmp(argv[1], "-t") == 0) {
         runAllTests();
-    } else {
+    } else if (argc == 2) {
+    //else if (argc == 3) {
+        //fileName = malloc(sizeof(char) * BUFSIZ);
+        //strncpy(fileName, argv[1], BUFSIZ);
+        
+        outputFileName = malloc(sizeof(char) * BUFSIZ);
+        strncpy(outputFileName, argv[1], BUFSIZ);
+
         //~~~~~ Group 1 ~~~~~//
         inputShape = readInput(fileName);
 
+        // Instantiate Temporary Points //
+        // FIXME: REMOVE AFTER GROUP 1 IMPLEMENTATION //
+        inputShape->points = malloc(sizeof(struct point*) * 1);
+        inputShape->numOfPoints = 1;
+
+        struct point* temp = malloc(sizeof(struct point));
+        
+        temp->element[0] = 1.0f;
+        temp->element[1] = 1.0f;
+        temp->element[2] = 1.0f;
+        temp->element[3] = 1.0f;
+
+        setPoint(0, temp);
+
+        //GROUP 1 WILL IMPLEMENT THIS
+        setXScale(1);
+        setYScale(1);
+        setZScale(1);
+        setXRotation(0);
+        setYRotation(0);
+        setZRotation(0);
+        setXTranslation(0);
+        setYTranslation(0);
+        setZTranslation(0);
+        setXShear(0);
+        setYShear(0);
+        setZShear(0);
+
+
+
         //~~~~~ Group 2 ~~~~~//
-        void globalScaling();
+        globalScaling();
 
         //~~~~~ Group 3 ~~~~~//
-        void xScaling();
+        xScaling();
 
         //~~~~~ Group 4 ~~~~~//
-        void yScaling();
+        yScaling();
 
         //~~~~~ Group 5 ~~~~~//
-        void zScaling();
+        zScaling();
 
         //~~~~~ Group 6 ~~~~~//
-        void xRotation();
+        xRotation();
 
         //~~~~~ Group 7 ~~~~~//
-        void yRotation();
+        yRotation();
 
         //~~~~~ Group 8 ~~~~~//
-        void zRotation();
+        zRotation();
 
         //~~~~~ Group 9 ~~~~~//
-        void xyzTranslation();
+        xyzTranslation();
 
         //~~~~~ Group 10 ~~~~~//
-        void xPlaneReflection();
+        xPlaneReflection();
 
         //~~~~~ Group 11 ~~~~~//
-        void yPlaneReflection();
+        yPlaneReflection();
 
         //~~~~~ Group 12 ~~~~~//
-        void zPlaneReflection();
+        ZPlaneReflection();
 
         //~~~~~ Group 13 ~~~~~//
-        void xShear();
+        xShear();
 
         //~~~~~ Group 14 ~~~~~//
-        void yShear();
+        yShear();
 
         //~~~~~ Group 15 ~~~~~//
-        void zShear();
+        zShear();
 
         //~~~~~ Group 16 ~~~~~//
-        void xyzOrthographicProjection();
+        xyzOrthographicProjection();
 
         //~~~~~ Group 17 ~~~~~//
-        int outputVector(struct point * finalVector, char* filename);
+        outputPoints(outputFileName);
 
+
+        // free all non null points
+        for (int i = 0; i < inputShape->numOfPoints; i++) {
+            if (inputShape->points[i] != NULL) {
+                free(inputShape->points[i]);
+            }
+        }
+        
+        // free points array
+        free(inputShape->points);
+
+        // free shape
         free(inputShape);
     }
+    else {
+        // fprintf(stderr, "Format %s <input file> <output file>", argv[0]);
+        fprintf(stderr, "Format: %s <output file>\n", argv[0]);
+        free(fileName);
+        return 1;
+    }
+    free(outputFileName);
     free(fileName);
     return 0;
 }
@@ -71,13 +127,13 @@ int main(int argc, char** argv) {
 // ~~~~~~~~~~~~~~~~~ Getters ~~~~~~~~~~~~~~~~~~~ //
 
 struct point* getPoint(int index) {
-    // if the index is less then 0 or greater the the number of vectors, or the vectors are null
-    if ((index < 0) || (index >= inputShape->numOfVectors) || inputShape->points == NULL) {
+    // if the index is less then 0 or greater the the number of points, or the points are null
+    if ((index < 0) || (index >= inputShape->numOfPoints) || inputShape->points == NULL) {
         // return null
         return NULL;
     }
 
-    // otherwise return the vector at the index
+    // otherwise return the point at the index
     return inputShape->points[index];
 }
 
@@ -87,15 +143,15 @@ float getGloalScale() {
 }
 
 float getXScale() {
-    return 0;
+    return inputShape -> scaling[0];
 }
 
 float getYScale() {
-    return 0;
+    return inputShape->scaling[1];
 }
 
 float getZScale() {
-    return 0;
+    return inputShape->scaling[2];
 }
 
 float getXRotation() {
@@ -111,39 +167,39 @@ float getZRotation() {
 }
 
 float getXTranslation() {
-    return 0;
+    return inputShape->translation[0];
 }
 
 float getYTranslation() {
-    return 0;
+    return inputShape->translation[1];
 }
 
 float getZTranslation() {
-    return 0;
+    return inputShape->translation[2];
 }
 
-float getXSheer() {
-    return 0;
+float getXShear() {
+    return inputShape->shearing[0];
 }
 
-float getYSheer() {
-    return 0;
+float getYShear() {
+    return inputShape->shearing[1];
 }
 
-float getZSheer() {
-    return 0;
+float getZShear() {
+    return inputShape->shearing[2];
 }
 
 // ~~~~~~~~~~~~~~~~~ Setters ~~~~~~~~~~~~~~~~~~~ //
 void setPoint(int index, struct point* newPoint) {
-    // if the new vector is null, don't set
+    // if the new point is null, don't set
     if (newPoint == NULL) {
         return;
     }
 
-    // Otherwise if index is greater then 0 and is less then the number of vectors we have
-    if ((index >= 0) && (index < inputShape->numOfVectors)) {
-        // set the vector at the index to the new vector.
+    // Otherwise if index is greater then 0 and is less then the number of points we have
+    if ((index >= 0) && (index < inputShape->numOfPoints)) {
+        // set the point at the index to the new point.
         inputShape->points[index] = newPoint;
     }
 }
@@ -153,12 +209,15 @@ void setGlobalScale(float newGlobalScale) {
 }
 
 void setXScale(float newXScale) {
+  inputShape -> scaling[0] = newXScale;
 }
 
 void setYScale(float newYScale) {
+    inputShape->scaling[1] = newYScale;
 }
 
 void setZScale(float newZScale) {
+    inputShape->scaling[2] = newZScale; 
 }
 
 void setXRotation(float newTheta) {
@@ -172,21 +231,27 @@ void setZRotation(float newTheta) {
 }
 
 void setXTranslation(float newXTranslation) {
+    inputShape->translation[0] = newXTranslation;
 }
 
 void setYTranslation(float newYTranslation) {
+    inputShape->translation[1] = newYTranslation;
 }
 
 void setZTranslation(float newZTranslation) {
+    inputShape->translation[2] = newZTranslation;
 }
 
 void setXShear(float newXShear) {
+    inputShape->shearing[0] = newXShear;
 }
 
 void setYShear(float newYShear) {
+    inputShape->shearing[1] = newYShear;
 }
 
 void setZShear(float newZShear) {
+    inputShape->shearing[2] = newZShear;
 }
 
 void multiplyMatrix(struct point* currPoint, float matrix[4][4]) {
@@ -197,7 +262,7 @@ void multiplyMatrix(struct point* currPoint, float matrix[4][4]) {
 
     struct point temp;
 
-    // updating the vectors values
+    // updating the points values
     for (int i = 0; i < 4; i++) {
         temp.element[i] = 0;
         for (int j = 0; j < 4; j++) {
@@ -211,11 +276,25 @@ void multiplyMatrix(struct point* currPoint, float matrix[4][4]) {
     }
 }
 
+//Reset transformation matrix to the identity matrix
+void resetMatrix(){
+    for (int i = 0; i < 4; i++){
+        for (int j = 0; j < 4; j++){
+            if (i == j){
+                transformationMatrix[i][j] = 1;
+            }
+            else{
+                transformationMatrix[i][j] = 0;
+            }
+        }
+    }
+}
+
 void runAllTests() {
     int i;
     inputShape = malloc(sizeof(struct shape));
 
-    inputShape->numOfVectors = 5;
+    inputShape->numOfPoints = 5;
 
     // SET YOUR VALUES HERE
     setYRotation(0);
@@ -233,8 +312,24 @@ void runAllTests() {
     }
 
     // TESTS GO HERE
-    runGroup7Tests();  // Group 7 tests
+    // runRotationInXTests(); // RotationInX tests
 
+    runGroup7Tests();  // Group 7 tests
+    
+    //runZScalingTests(); 
+
+    runScalingInXTests(); // Group 3 tests
+
+    runScalingInYTests();
+
+    ZPlaneReflectionTests(); // Group 12 tests
+
+    // runXYZTranslationTest();
+
+    runXPlaneReflectionTests(); // X plane reflection tests
+
+    runOutputResultsTests(); // Output Results Tests
+    
     // free
     for (i = 0; i < 5; i++) {
         free(inputShape->points[i]);

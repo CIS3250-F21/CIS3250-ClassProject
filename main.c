@@ -36,6 +36,7 @@ int main(int argc, char** argv) {
         setPoint(0, temp);
 
         //GROUP 1 WILL IMPLEMENT THIS
+        setGlobalScale(1);
         setXScale(1);
         setYScale(1);
         setZScale(1);
@@ -45,6 +46,9 @@ int main(int argc, char** argv) {
         setXTranslation(0);
         setYTranslation(0);
         setZTranslation(0);
+        setXShear(0);
+        setYShear(0);
+        setZShear(0);
 
 
 
@@ -135,8 +139,8 @@ struct point* getPoint(int index) {
 }
 
 // ~~~~~~~~~~~~~~~~~ GROUP Getters Go HERE ~~~~~~~~~~~~~~~~~~~ //
-float getGloalScale() {
-    return 0;
+float getGlobalScale() {
+    return inputShape -> scaling[3];
 }
 
 float getXScale() {
@@ -175,16 +179,16 @@ float getZTranslation() {
     return inputShape->translation[2];
 }
 
-float getXSheer() {
-    return 0;
+float getXShear() {
+    return inputShape->shearing[0];
 }
 
-float getYSheer() {
-    return 0;
+float getYShear() {
+    return inputShape->shearing[1];
 }
 
-float getZSheer() {
-    return 0;
+float getZShear() {
+    return inputShape->shearing[2];
 }
 
 // ~~~~~~~~~~~~~~~~~ Setters ~~~~~~~~~~~~~~~~~~~ //
@@ -203,6 +207,7 @@ void setPoint(int index, struct point* newPoint) {
 
 // ~~~~~~~~~~~~~~~~~ GROUP Setters Go HERE ~~~~~~~~~~~~~~~~~~~ //
 void setGlobalScale(float newGlobalScale) {
+    inputShape -> scaling[3] = newGlobalScale;
 }
 
 void setXScale(float newXScale) {
@@ -240,12 +245,15 @@ void setZTranslation(float newZTranslation) {
 }
 
 void setXShear(float newXShear) {
+    inputShape->shearing[0] = newXShear;
 }
 
 void setYShear(float newYShear) {
+    inputShape->shearing[1] = newYShear;
 }
 
 void setZShear(float newZShear) {
+    inputShape->shearing[2] = newZShear;
 }
 
 void multiplyMatrix(struct point* currPoint, float matrix[4][4]) {
@@ -309,18 +317,17 @@ void freeTestPoints() {
         free(inputShape->points[i]);
     }
     free(inputShape->points);
-
     free(inputShape);
 }
 
 void runAllTests() {
-
-    /* Rotation in Y Tests */
+  
+    
+    /* Global Scaling Tests */
     createTestPoints();
-    setYRotation(0);
-    runGroup7Tests();  
+    runGlobalScalingTests();  
     freeTestPoints();
-
+  
     /* Scaling in X Tests */
     createTestPoints();
     runScalingInXTests();
@@ -335,25 +342,48 @@ void runAllTests() {
     createTestPoints();
     //runZScalingTests(); 
     freeTestPoints();
-
+  
+  
+  
+    /* Rotation in Y Tests */
+    createTestPoints();
+    setYRotation(0);
+    runGroup7Tests();  
+    freeTestPoints();
+  
+  
+  
     /* X Plane Reflection Tests */
     createTestPoints();
     runXPlaneReflectionTests();
     freeTestPoints();
+  
+  
 
     /* Z Plane Reflection Tests */
     createTestPoints();
-    zPlaneReflectionTests();
+    ZPlaneReflectionTests();
     freeTestPoints();
 
     /* XYZ Translation Tests */
     createTestPoints();
     // runXYZTranslationTest();
     freeTestPoints();
+  
+    /* X Shear Tests */
+    createTestPoints();
+    runXShearTests();
+    freeTestPoints();
+  
+    /* Y Shear Tests */
+    createTestPoints();
+    //runYShearTests(); //still need to get a testrunner
+    freeTestPoints();
 
     /* Output Results Tests */
     createTestPoints();
     runOutputResultsTests();
     freeTestPoints();
+
 
 }

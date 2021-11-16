@@ -8,5 +8,8 @@
 #include "ShearInZ/ShearInZ.h"
 #include "XPlaneReflection/XPlaneReflectionTests.h"
 #include "YPlaneReflection/YPlaneReflectionTests.h"
+#include "XYZTranslation/XYZTranslationTests.h"
+#include "ScalingInZ/ScalingInZTests.h"
+#include "OutputResults/OutputResultsTests.h"
 
 #endif

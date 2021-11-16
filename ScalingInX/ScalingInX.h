@@ -1,5 +1,5 @@
-#ifndef GROUP_3_H
-#define GROUP_3_H
+#ifndef SCALINGINX_H
+#define SCALINGINX_H
 
 #include "../main.h"
 

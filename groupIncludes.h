@@ -5,7 +5,7 @@
 #include "XPlaneReflection/XPlaneReflection.h"
 #include "Group11/Group11.h"
 #include "ZPlaneReflection/ZPlaneReflection.h"
-#include "Group13/Group13.h"
+#include "ShearInX/ShearInX.h"
 #include "ShearInY/ShearInY.h"
 #include "ShearInZ/ShearInZ.h"
 #include "Group16/Group16.h"

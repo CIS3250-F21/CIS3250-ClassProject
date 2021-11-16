@@ -1,7 +1,9 @@
 CC = clang
 CFLAGS = -std=c99 -Wall -pedantic
 EXECS = main
-O_FILES = Group1/Group1.o GlobalScaling/GlobalScaling.o ScalingInX/ScalingInX.o ScalingInY/ScalingInY.o ScalingInZ/ScalingInZ.o RotationInX/RotationInX.o RotationInY/RotationInY.o Group8/Group8.o XYZTranslation/XYZTranslation.o XPlaneReflection/XPlaneReflection.o Group11/Group11.o ZPlaneReflection/ZPlaneReflection.o Group13/Group13.o ShearInY/ShearInY.o ShearInZ/ShearInZ.o Group16/Group16.o OutputResults/OutputResults.o Group1/Group1Tests.o GlobalScaling/GlobalScalingTests.o ScalingInX/ScalingInXTests.o ScalingInY/ScalingInYTests.o ScalingInZ/ScalingInZTests.o RotationInX/RotationInXTests.o RotationInY/RotationInYTests.o Group8/Group8Tests.o XYZTranslation/XYZTranslationTests.o XPlaneReflection/XPlaneReflectionTests.o Group11/Group11Tests.o ZPlaneReflection/ZPlaneReflectionTests.o Group13/Group13Tests.o ShearInY/ShearInYTests.o ShearInZ/ShearInZTests.o Group16/Group16Tests.o OutputResults/OutputResultsTests.o
+
+O_FILES = Group1/Group1.o GlobalScaling/GlobalScaling.o ScalingInX/ScalingInX.o ScalingInY/ScalingInY.o ScalingInZ/ScalingInZ.o RotationInX/RotationInX.o RotationInY/RotationInY.o Group8/Group8.o XYZTranslation/XYZTranslation.o XPlaneReflection/XPlaneReflection.o Group11/Group11.o ZPlaneReflection/ZPlaneReflection.o ShearInX/ShearInX.o ShearInY/ShearInY.o ShearInZ/ShearInZ.o Group16/Group16.o OutputResults/OutputResults.o Group1/Group1Tests.o GlobalScaling/GlobalScalingTests.o ScalingInX/ScalingInXTests.o ScalingInY/ScalingInYTests.o ScalingInZ/ScalingInZTests.o RotationInX/RotationInXTests.o RotationInY/RotationInYTests.o Group8/Group8Tests.o XYZTranslation/XYZTranslationTests.o XPlaneReflection/XPlaneReflectionTests.o Group11/Group11Tests.o ZPlaneReflection/ZPlaneReflectionTests.o ShearInX/ShearInXTests.o ShearInY/ShearInYTests.o ShearInZ/ShearInZTests.o Group16/Group16Tests.o OutputResults/OutputResultsTests.o
+
 H_FILES = main.h groupIncludes.h groupTestIncludes.h
 
 all: $(EXECS)
@@ -58,8 +60,8 @@ Group11/Group11.o: Group11/Group11.c Group11/Group11.h main.h
 ZPlaneReflection/ZPlaneReflection.o: ZPlaneReflection/ZPlaneReflection.c ZPlaneReflection/ZPlaneReflection.h main.h
 	$(CC) $(CFLAGS) -c ZPlaneReflection/ZPlaneReflection.c -o ZPlaneReflection/ZPlaneReflection.o
 
-Group13/Group13.o: Group13/Group13.c Group13/Group13.h main.h
-	$(CC) $(CFLAGS) -c Group13/Group13.c -o Group13/Group13.o
+ShearInX/ShearInX.o: ShearInX/ShearInX.c ShearInX/ShearInX.h main.h
+	$(CC) $(CFLAGS) -c ShearInX/ShearInX.c -o ShearInX/ShearInX.o
 
 ShearInY/ShearInY.o: ShearInY/ShearInY.c ShearInY/ShearInY.h main.h
 	$(CC) $(CFLAGS) -c ShearInY/ShearInY.c -o ShearInY/ShearInY.o
@@ -110,8 +112,8 @@ Group11/Group11Tests.o: Group11/Group11Tests.c Group11/Group11Tests.h main.h
 ZPlaneReflection/ZPlaneReflectionTests.o: ZPlaneReflection/ZPlaneReflectionTests.c ZPlaneReflection/ZPlaneReflectionTests.h main.h
 	$(CC) $(CFLAGS) -c ZPlaneReflection/ZPlaneReflectionTests.c -o ZPlaneReflection/ZPlaneReflectionTests.o
 
-Group13/Group13Tests.o: Group13/Group13Tests.c Group13/Group13Tests.h main.h
-	$(CC) $(CFLAGS) -c Group13/Group13Tests.c -o Group13/Group13Tests.o
+ShearInX/ShearInXTests.o: ShearInX/ShearInXTests.c ShearInX/ShearInXTests.h main.h
+	$(CC) $(CFLAGS) -c ShearInX/ShearInXTests.c -o ShearInX/ShearInXTests.o
   
 ShearInY/ShearInYTests.o: ShearInY/ShearInYTests.c ShearInY/ShearInYTests.h main.h
 	$(CC) $(CFLAGS) -c ShearInY/ShearInYTests.c -o ShearInY/ShearInYTests.o

@@ -321,11 +321,11 @@ void runAllTests() {
     //runZScalingTests(); 
 
     runScalingInXTests(); // Group 3 tests
-
+  
     runScalingInYTests();
 
     ZPlaneReflectionTests(); // Group 12 tests
-
+    runXShearTests();
     // runXYZTranslationTest();
 
     runXPlaneReflectionTests(); // X plane reflection tests

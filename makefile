@@ -122,11 +122,6 @@ ShearInZ/ShearInZTests.o: ShearInZ/ShearInZTests.c ShearInZ/ShearInZTests.h main
 Group16/Group16Tests.o: Group16/Group16Tests.c Group16/Group16Tests.h main.h
 	$(CC) $(CFLAGS) -c Group16/Group16Tests.c -o Group16/Group16Tests.o
 
-<<<<<<< HEAD
 OutputResults/OutputResultsTests.o: OutputResults/OutputResultsTests.c OutputResults/OutputResultsTests.h main.h
 	$(CC) $(CFLAGS) -c OutputResults/OutputResultsTests.c -o OutputResults/OutputResultsTests.o
-=======
-Group17/Group17Tests.o: Group17/Group17Tests.c Group17/Group17Tests.h main.h
-	$(CC) $(CFLAGS) -c Group17/Group17Tests.c -o Group17/Group17Tests.o
 
->>>>>>> 1af4c61619523c3046cced5c59a1559e07f64358

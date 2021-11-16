@@ -83,8 +83,8 @@ GlobalScaling/GlobalScalingTests.o: GlobalScaling/GlobalScalingTests.c GlobalSca
 ScalingInX/ScalingInXTests.o: ScalingInX/ScalingInXTests.c ScalingInX/ScalingInXTests.h main.h
 	$(CC) $(CFLAGS) -c ScalingInX/ScalingInXTests.c -o ScalingInX/ScalingInXTests.o
 
-ScalingInY/ScalingInYTests.o: ScalingInY/ScalingInYPreTests.c ScalingInY/ScalingInYPostTests.c main.h
-	$(CC) $(CFLAGS) -c ScalingInY/ScalingInYPreTests.c ScalingInY/ScalingInYPostTests.c -o ScalingInY/ScalingInYTests.o
+ScalingInY/ScalingInYTests.o: ScalingInY/ScalingInYTests.c ScalingInY/ScalingInYTests.h main.h
+	$(CC) $(CFLAGS) -c ScalingInY/ScalingInYTests.c -o ScalingInY/ScalingInYTests.o
 
 ScalingInZ/ScalingInZTests.o: ScalingInZ/ScalingInZTests.c ScalingInZ/ScalingInZTests.h main.h
 	$(CC) $(CFLAGS) -c ScalingInZ/ScalingInZTests.c -o ScalingInZ/ScalingInZTests.o

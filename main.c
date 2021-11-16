@@ -92,7 +92,7 @@ float getXScale() {
 }
 
 float getYScale() {
-    return 0;
+    return inputShape->scaling[1];
 }
 
 float getZScale() {
@@ -158,6 +158,7 @@ void setXScale(float newXScale) {
 }
 
 void setYScale(float newYScale) {
+    inputShape->scaling[1] = newYScale;
 }
 
 void setZScale(float newZScale) {
@@ -258,6 +259,8 @@ void runAllTests() {
     //runZScalingTests(); 
 
     //runScalingInXTests(); // Group 3 tests
+
+    runScalingInYTests();
 
     zPlaneReflectionTests(); // Group 12 tests
 

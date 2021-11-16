@@ -323,11 +323,7 @@ void runAllTests() {
 
     runXPlaneReflectionTests(); // X plane reflection tests
 
-<<<<<<< HEAD
     runGlobalScalingTests(); // Group 2 tests
-=======
-    runOutputResultsTests(); // Output Results Tests
->>>>>>> 32a3e11a2954975362a8f983bb8df73681869dff
     
     // free
     for (i = 0; i < 5; i++) {

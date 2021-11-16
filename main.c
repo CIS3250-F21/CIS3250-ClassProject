@@ -45,6 +45,9 @@ int main(int argc, char** argv) {
         setXTranslation(0);
         setYTranslation(0);
         setZTranslation(0);
+        setXShear(0);
+        setYShear(0);
+        setZShear(0);
 
 
 
@@ -240,12 +243,15 @@ void setZTranslation(float newZTranslation) {
 }
 
 void setXShear(float newXShear) {
+    inputShape->shearing[0] = newXShear;
 }
 
 void setYShear(float newYShear) {
+    inputShape->shearing[1] = newYShear;
 }
 
 void setZShear(float newZShear) {
+    inputShape->shearing[2] = newZShear;
 }
 
 void multiplyMatrix(struct point* currPoint, float matrix[4][4]) {

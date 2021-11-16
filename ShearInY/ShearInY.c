@@ -10,10 +10,10 @@ void yShear() {
   resetMatrix();
 
   //change col 1, row 0
-  transformationMatrix [0] [1] = 1 + xShearVal * transformationMatrix [0] [1];
+  transformationMatrix[0][1] = xShearVal;
 
   //change col 1, row 2
-  transformationMatrix [2] [1] =  1 + zShearVal * transformationMatrix [2] [1] ;
+  transformationMatrix[2][1] = zShearVal;
 
   //multply points by matrix
   struct point* temp;

@@ -22,7 +22,7 @@ void xyzOrthographicProjectionTest2()
 {
     
     float testElements[4] = {823.2, 3.23, 90.41, 1};
-    struct point * testPoints = NULL;
+    struct point * testPoints = malloc (sizeof(struct point*));
     struct point ** tempPoints = inputShape->points; //create a copy of the original points struct
     int tempNum = inputShape->numOfPoints; //create a copy of the original number of points
         for (int i = 0 ; i < 4 ; i++)
@@ -49,7 +49,7 @@ void xyzOrthographicProjectionTest2()
 // Test with a large amount of points (1000 points)
 void xyzOrthographicProjectionTest3()
 {
-    struct point * testPoints[1000];
+    struct point * testPoints[1000] = malloc (sizeof(struct point**));
     struct point ** tempPoints = inputShape->points; //create a copy of the original points struct
     int tempNum = inputShape->numOfPoints; //create a copy of the original number of points
     inputShape->numOfPoints = 1000;

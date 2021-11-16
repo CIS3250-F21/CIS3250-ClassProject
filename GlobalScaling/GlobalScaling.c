@@ -9,26 +9,32 @@ void globalScaling(){
 
     transformationMatrix[3][3] = globalScaleValue;
 
-    int negativeScale = 0;
-    if(globalScaleValue < 0){
-        globalScaleValue *= -1;
-        negativeScale = 1;
-    }
- 
     float fourthValue;
     while((p = getPoint(i)) != NULL){
-        negativeScale = 0;
+        int negativeScale = 0;
         multiplyMatrix( p, transformationMatrix );
         
         fourthValue = p->element[3];
-        if( fourthValue  != 1 || fourthValue != -1) {
-            for(int j = 3; j >= 0; j--) {
-                p->element[j] /= fourthValue;
+        if(globalScaleValue > 0){
+            if( fourthValue  != 1) {
+                for(int j = 3; j >= 0; j--) {
+                    p->element[j] /= fourthValue;
+                }
             }
         }
+        else if(globalScaleValue < 0){
+            if( fourthValue  != -1) {
+                for(int j = 3; j >= 0; j--) {
+                    p->element[j] /= fourthValue;
+                }
+                negativeScale = 1;
+            }
+        }
+        
         if(negativeScale){
             p->element[3] *= -1;
         }
+        
         setPoint( i, p );
         i++;
     }

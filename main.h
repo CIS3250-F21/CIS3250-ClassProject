@@ -39,9 +39,9 @@ float getZRotation();
 float getXTranslation();
 float getYTranslation();
 float getZTranslation();
-float getXSheer();
+float getXShear();
 float getYShear();
-float getZSheer();
+float getZShear();
 
 //~~~~~~ Setters ~~~~~~//
 void setPoint(int index, struct point* newPoint);

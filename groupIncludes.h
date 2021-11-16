@@ -14,7 +14,7 @@
 #include "ScalingInX/ScalingInX.h"
 #include "ScalingInY/ScalingInY.h"
 #include "ScalingInZ/ScalingInZ.h"
-#include "Group6/Group6.h"
+#include "RotationInX/RotationInX.h"
 #include "RotationInY/RotationInY.h"
 #include "Group8/Group8.h"
 #include "XYZTranslation/XYZTranslation.h"

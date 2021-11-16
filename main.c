@@ -10,9 +10,30 @@ int main(int argc, char** argv) {
     // Run tests if need be
     if (argc == 2 && strcmp(argv[1], "-t") == 0) {
         runAllTests();
-    } else {
+    } else if (argc == 2) {
+    //else if (argc == 3) {
+        //fileName = malloc(sizeof(char) * BUFSIZ);
+        //strncpy(fileName, argv[1], BUFSIZ);
+        
+        outputFileName = malloc(sizeof(char) * BUFSIZ);
+        strncpy(outputFileName, argv[1], BUFSIZ);
+
         //~~~~~ Group 1 ~~~~~//
         inputShape = readInput(fileName);
+
+        // Instantiate Temporary Points //
+        // FIXME: REMOVE AFTER GROUP 1 IMPLEMENTATION //
+        inputShape->points = malloc(sizeof(struct point*) * 1);
+        inputShape->numOfPoints = 1;
+
+        struct point* temp = malloc(sizeof(struct point));
+        
+        temp->element[0] = 1.0f;
+        temp->element[1] = 1.0f;
+        temp->element[2] = 1.0f;
+        temp->element[3] = 1.0f;
+
+        setPoint(0, temp);
 
         //~~~~~ Group 2 ~~~~~//
         void globalScaling();
@@ -45,7 +66,7 @@ int main(int argc, char** argv) {
         void yPlaneReflection();
 
         //~~~~~ Group 12 ~~~~~//
-        void zPlaneReflection();
+        void ZPlaneReflection();
 
         //~~~~~ Group 13 ~~~~~//
         void xShear();
@@ -60,10 +81,27 @@ int main(int argc, char** argv) {
         void xyzOrthographicProjection();
 
         //~~~~~ Group 17 ~~~~~//
-        int outputPoint(struct point * finalPoint, char* filename);
+        outputPoints(outputFileName);
 
+        // free all non null points
+        for (int i = 0; i < inputShape->numOfPoints; i++) {
+            if (inputShape->points[i] != NULL) {
+                free(inputShape->points[i]);
+            }
+        }
+        
+        // free points array
+        free(inputShape->points);
+
+        // free shape
         free(inputShape);
     }
+    else {
+        // fprintf(stderr, "Format %s <input file> <output file>", argv[0]);
+        fprintf(stderr, "Format: %s <output file>\n", argv[0]);
+        return 1;
+    }
+    free(outputFileName);
     free(fileName);
     return 0;
 }
@@ -95,7 +133,7 @@ float getYScale() {
 }
 
 float getZScale() {
-    return 0;
+    return inputShape->scaling[2];
 }
 
 float getXRotation() {
@@ -111,15 +149,15 @@ float getZRotation() {
 }
 
 float getXTranslation() {
-    return 0;
+    return inputShape->translation[0];
 }
 
 float getYTranslation() {
-    return 0;
+    return inputShape->translation[1];
 }
 
 float getZTranslation() {
-    return 0;
+    return inputShape->translation[2];
 }
 
 float getXSheer() {
@@ -160,6 +198,7 @@ void setYScale(float newYScale) {
 }
 
 void setZScale(float newZScale) {
+    inputShape->scaling[2] = newZScale; 
 }
 
 void setXRotation(float newTheta) {
@@ -173,12 +212,15 @@ void setZRotation(float newTheta) {
 }
 
 void setXTranslation(float newXTranslation) {
+    inputShape->translation[0] = newXTranslation;
 }
 
 void setYTranslation(float newYTranslation) {
+    inputShape->translation[1] = newYTranslation;
 }
 
 void setZTranslation(float newZTranslation) {
+    inputShape->translation[2] = newZTranslation;
 }
 
 void setXShear(float newXShear) {
@@ -214,16 +256,16 @@ void multiplyMatrix(struct point* currPoint, float matrix[4][4]) {
 
 //Reset transformation matrix to the identity matrix
 void resetMatrix(){
-  for (int i = 0; i < 4; i++){
-      for (int j = 0; j < 4; j++){
-          if (i == j){
-              transformationMatrix[i][j] = 1;
-          }
-          else{
-              transformationMatrix[i][j] = 0;
-          }
-      }
-  }
+    for (int i = 0; i < 4; i++){
+        for (int j = 0; j < 4; j++){
+            if (i == j){
+                transformationMatrix[i][j] = 1;
+            }
+            else{
+                transformationMatrix[i][j] = 0;
+            }
+        }
+    }
 }
 
 void runAllTests() {
@@ -251,11 +293,19 @@ void runAllTests() {
     // runRotationInXTests(); // RotationInX tests
 
     runGroup7Tests();  // Group 7 tests
+    
+    //runZScalingTests(); 
 
     runScalingInXTests(); // Group 3 tests
 
-    zPlaneReflectionTests(); // Group 12 tests
+    ZPlaneReflectionTests(); // Group 12 tests
 
+    // runXYZTranslationTest();
+
+    runXPlaneReflectionTests(); // X plane reflection tests
+
+    runOutputResultsTests(); // Output Results Tests
+    
     // free
     for (i = 0; i < 5; i++) {
         free(inputShape->points[i]);

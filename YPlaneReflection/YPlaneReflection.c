@@ -29,17 +29,6 @@ void yPlaneReflection() {
 }
 
 void generateYPlaneReflectionMatrix() {
-	for ( int i = 0; i < 4; i++ ){
-		for ( int j = 0; j < 4; j++ ){
-		    if ( i == j ){
-			    transformationMatrix[i][j] = 1;
-                if( i==1 ){
-                    transformationMatrix[i][j] = -1;
-                }	
-		    }
-		    else {
-			    transformationMatrix[i][j] = 0;
-		    }
-		}
-	}
+    resetMatrix();
+        transformationMatrix[1][1] = -1;
 }

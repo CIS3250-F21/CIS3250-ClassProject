@@ -66,7 +66,7 @@ int main(int argc, char** argv) {
         yPlaneReflection();
 
         //~~~~~ Group 12 ~~~~~//
-        zPlaneReflection();
+        void ZPlaneReflection();
 
         //~~~~~ Group 13 ~~~~~//
         xShear();
@@ -301,7 +301,7 @@ void runAllTests() {
 
     runScalingInYTests();
 
-    zPlaneReflectionTests(); // Group 12 tests
+    ZPlaneReflectionTests(); // Group 12 tests
 
     // runXYZTranslationTest();
 

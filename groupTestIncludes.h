@@ -4,7 +4,7 @@
 #include "RotationInY/RotationInYTests.h"
 #include "ScalingInX/ScalingInXTests.h"
 #include "ScalingInY/ScalingInYTests.h"
-#include "zPlaneReflection/zPlaneReflectionTests.h"
+#include "ZPlaneReflection/ZPlaneReflectionTests.h"
 #include "GlobalScaling/GlobalScalingTests.h"
 #include "ShearInZ/ShearInZ.h"
 #include "XPlaneReflection/XPlaneReflectionTests.h"

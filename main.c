@@ -36,6 +36,7 @@ int main(int argc, char** argv) {
         setPoint(0, temp);
 
         //GROUP 1 WILL IMPLEMENT THIS
+        setGlobalScale(1);
         setXScale(1);
         setYScale(1);
         setZScale(1);
@@ -324,7 +325,7 @@ void runAllTests() {
     runXPlaneReflectionTests(); // X plane reflection tests
 
     setGlobalScale(1);
-    runGlobalScalingTests(); // Group 2 tests
+    //runGlobalScalingTests(); // Group 2 tests
     
     // free
     for (i = 0; i < 5; i++) {

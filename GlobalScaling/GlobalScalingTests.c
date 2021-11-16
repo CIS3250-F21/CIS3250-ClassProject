@@ -4,7 +4,7 @@
 void runGlobalScalingTests(){
     globalScalingCleanTest();
 
-    globalScalingDirtyTest1();
+    // globalScalingDirtyTest1();
 
     globalScalingDirtyTest2();
 

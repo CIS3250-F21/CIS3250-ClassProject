@@ -358,7 +358,10 @@ void runAllTests() {
     runXPlaneReflectionTests();
     freeTestPoints();
   
-  
+    /* Y Plane Reflection Tests */
+    createTestPoints();
+    runYPlaneReflectionTests();
+    freeTestPoints();
 
     /* Z Plane Reflection Tests */
     createTestPoints();

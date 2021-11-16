@@ -3,7 +3,7 @@
 
 #include "Group1/Group1.h"
 #include "XPlaneReflection/XPlaneReflection.h"
-#include "Group11/Group11.h"
+#include "YPlaneReflection/YPlaneReflection.h"
 #include "ZPlaneReflection/ZPlaneReflection.h"
 #include "ShearInX/ShearInX.h"
 #include "ShearInY/ShearInY.h"

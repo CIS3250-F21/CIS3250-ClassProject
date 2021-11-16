@@ -135,8 +135,8 @@ struct point* getPoint(int index) {
 }
 
 // ~~~~~~~~~~~~~~~~~ GROUP Getters Go HERE ~~~~~~~~~~~~~~~~~~~ //
-float getGloalScale() {
-    return 0;
+float getGlobalScale() {
+    return inputShape -> scaling[3];
 }
 
 float getXScale() {
@@ -203,6 +203,7 @@ void setPoint(int index, struct point* newPoint) {
 
 // ~~~~~~~~~~~~~~~~~ GROUP Setters Go HERE ~~~~~~~~~~~~~~~~~~~ //
 void setGlobalScale(float newGlobalScale) {
+    inputShape -> scaling[3] = newGlobalScale;
 }
 
 void setXScale(float newXScale) {
@@ -322,7 +323,8 @@ void runAllTests() {
 
     runXPlaneReflectionTests(); // X plane reflection tests
 
-    runOutputResultsTests(); // Output Results Tests
+    setGlobalScale(1);
+    runGlobalScalingTests(); // Group 2 tests
     
     // free
     for (i = 0; i < 5; i++) {

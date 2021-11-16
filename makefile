@@ -7,7 +7,7 @@ H_FILES = main.h groupIncludes.h groupTestIncludes.h
 all: $(EXECS)
 
 clean:
-	rm $(EXECS) $(O_FILES) main.o
+	rm $(EXECS) **/*.o
 
 %: %.o
 %: %.c

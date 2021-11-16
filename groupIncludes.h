@@ -12,7 +12,7 @@
 #include "OutputResults/OutputResults.h"
 #include "GlobalScaling/GlobalScaling.h"
 #include "ScalingInX/ScalingInX.h"
-#include "Group4/Group4.h"
+#include "ScalingInY/ScalingInY.h"
 #include "ScalingInZ/ScalingInZ.h"
 #include "RotationInX/RotationInX.h"
 #include "RotationInY/RotationInY.h"

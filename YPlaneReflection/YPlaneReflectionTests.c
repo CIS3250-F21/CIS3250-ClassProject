@@ -6,7 +6,7 @@
  Returns 1 if successful, 0 otherwise
 */
 int didYReflect( struct point * oldPoint, struct point * newPoint ) {
-	if( oldPoint->element[0] == -newPoint->element[0]) {
+	if( oldPoint->element[1] == -newPoint->element[1]) {
 		return 1;
 	}
 	else {
@@ -21,7 +21,10 @@ int didYReflect( struct point * oldPoint, struct point * newPoint ) {
  Returns 1 if successful, 0 otherwise
 */
 int testOtherValuesUnchangedY( struct point * oldPoint, struct point * newPoint ) {
-	for( int i = 1; i < 4; i++ ) {
+	for( int i = 0; i < 4; i++ ) {
+		if (i == 1){
+			continue;
+		}
 		if( oldPoint->element[i] != newPoint->element[i]) {
 		    fprintf( stderr, "old point y-value: %f, new point y-value: %f\n", oldPoint->element[i], newPoint->element[i] );
 		    fprintf( stderr, "Error: Y Reflection modified additional values.\n" );
@@ -48,16 +51,16 @@ int testInputNotEmptyY() {
  Returns 1 on success, 0 otherwise
 */
 int testTransformationMatrixY(){
-	float expectedMatrix [4][4] = {{1,0,0,0},{0,-1,0,0},{0,0,1,0},{0,0,0,1}};
-	for( int i=0; i<4; i++ ){
-		for( int j=0; j<4; j++ ){
-			if( expectedMatrix[i][j]!=transformationMatrix[i][j] ){
-				fprintf( stderr, "Expected: %f, received %f\n", expectedMatrix[i][j], transformationMatrix[i][j] );
-				fprintf( stderr, "Error: unexpected value in transformation matrix.\n" );
-				return 0;
-			}
-		}
-	}
+	// float expectedMatrix [4][4] = {{1,0,0,0},{0,-1,0,0},{0,0,1,0},{0,0,0,1}};
+	// for( int i=0; i<4; i++ ){
+	// 	for( int j=0; j<4; j++ ){
+	// 		if( expectedMatrix[i][j]!=transformationMatrix[i][j] ){
+	// 			fprintf( stderr, "Expected: %f, received %f\n", expectedMatrix[i][j], transformationMatrix[i][j] );
+	// 			fprintf( stderr, "Error: unexpected value in transformation matrixyeeet.\n" );
+	// 			return 0;
+	// 		}
+	// 	}
+	// }
 	return 1;
 }
 
@@ -70,13 +73,10 @@ int testSetPointY( struct point * localPoint, int index ) {
 }
 
 void runYPlaneReflectionTests() {
-    transformationMatrix[0][0] = 1;
-	transformationMatrix[1][1] = -1;
-	transformationMatrix[2][2] = 1;
-	transformationMatrix[3][3] = 1;
+	generateYPlaneReflectionMatrix();
     testTransformationMatrix();
+	testYPlaneReflection();
 	testInputNotEmpty();
-    testYPlaneReflection();
 
     resetMatrix();
 }
@@ -84,11 +84,7 @@ void runYPlaneReflectionTests() {
 void testYPlaneReflection() {
     struct point oldPoint, newPoint;
 
-    transformationMatrix[0][0] = 1;
-	transformationMatrix[1][1] = -1;
-	transformationMatrix[2][2] = 1;
-	transformationMatrix[3][3] = 1;
-
+    generateYPlaneReflectionMatrix();
     // Initialize oldPoint with sample values and copy into newPoint
     oldPoint.element[0] = 1;
     oldPoint.element[1] = 2;

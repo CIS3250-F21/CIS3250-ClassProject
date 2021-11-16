@@ -8,7 +8,7 @@ int didYReflect( struct point * old, struct point * newV ); // Tests if x reflec
 int testOtherValuesUnchanged( struct point * old, struct point * newV ); // Tests if x,z,1 are unchanged
 int testInputNotEmpty();   // Tests if the point list initialized
 int testTransformationMatrix(); // Tests if the transformation matrix matches our pattern
-void runYPlaneReflectionTests(); // Calls each test function
+void runYPlaneReflectionTests(); // Calls each test functio
 void testYPlaneReflection(); // Tests y plane reflection with sample value
 
 #endif

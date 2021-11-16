@@ -1,22 +1,9 @@
 #include "YPlaneReflection.h"
 
 void yPlaneReflection() {
-
-	// edit the global float ** matrix
-	int i, j;
-	for (i = 0; i < 4; i++) {
-		for (j = 0; j < 4; j++) {
-			transformationMatrix[i][j] = 0.0;
-		}
-	}
-
-	transformationMatrix[0][0] = 1;
-	transformationMatrix[1][1] = -1;
-	transformationMatrix[2][2] = 1;
-	transformationMatrix[3][3] = 1;
-
-	// define local vector structure for storing the product of the matrix multiplication
+	generateYPlaneReflectionMatrix();
 	struct point* vect;
+	int j = 1;
 
 	int index = 0;
 
@@ -37,6 +24,22 @@ void yPlaneReflection() {
 			setPoint(index, vect);
 			// increment index
 			index++;
+		}
+	}
+}
+
+void generateYPlaneReflectionMatrix() {
+	for ( int i = 0; i < 4; i++ ){
+		for ( int j = 0; j < 4; j++ ){
+		    if ( i == j ){
+			    transformationMatrix[i][j] = 1;
+                if( i==1 ){
+                    transformationMatrix[i][j] = -1;
+                }	
+		    }
+		    else {
+			    transformationMatrix[i][j] = 0;
+		    }
 		}
 	}
 }

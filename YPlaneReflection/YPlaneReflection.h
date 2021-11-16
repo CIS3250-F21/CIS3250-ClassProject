@@ -4,5 +4,6 @@
 #include "../main.h"
 
 void yPlaneReflection();
+void generateYPlaneReflectionMatrix();
 
 #endif

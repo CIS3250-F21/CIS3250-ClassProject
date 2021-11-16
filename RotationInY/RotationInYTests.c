@@ -400,84 +400,6 @@ int testYRotationWhenAngleIsPositiveGreaterThanTwoPi() {
     free(expected);
     return 1;
 }
-/*
-// Dirty Test
-// Tests when a Null Matrix is found that nothing is changed for the points
-int testYRotationHandlesNullMatrix() {
-    float **temp = transformationMatrix;
-    transformationMatrix = NULL;
-    struct point **expected = malloc(sizeof(struct point *) * 5);
-    inputShape->rotation[1] = 0;
-
-    // instantiating the expected result
-    for (int i = 0; i < 5; i++) {
-        expected[i] = malloc(sizeof(struct point));
-        for (int j = 0; j < 3; j++) {
-            expected[i]->element[j] = j + i;
-        }
-        expected[i]->element[3] = 1;
-    }
-
-    yRotation();
-
-    transformationMatrix = temp;
-    for (int i = 0; i < inputShape->numOfPoints; i++) {
-        for (int j = 0; j < 4; j++) {
-            if (compareFloat(expected[i]->element[j], inputShape->points[i]->element[j], 0.000001)) {
-                for (int i = 0; i < 5; i++) {
-                    free(expected[i]);
-                }
-                free(expected);
-                return 0;
-            }
-        }
-    }
-
-    for (int i = 0; i < 5; i++) {
-        free(expected[i]);
-    }
-    free(expected);
-    return 1;
-}
-
-// Dirty Test
-// Tests when a Null Element of a Matrix is found that nothing is changed for the points
-int testYRotationHandlesNullElementOfMatrix() {
-    float *temp = transformationMatrix[0];
-    transformationMatrix[0] = NULL;
-    struct point **expected = malloc(sizeof(struct point *) * 5);
-    inputShape->rotation[1] = 0;
-
-    // instantiating the expected result
-    for (int i = 0; i < 5; i++) {
-        expected[i] = malloc(sizeof(struct point));
-        for (int j = 0; j < 3; j++) {
-            expected[i]->element[j] = j + i;
-        }
-        expected[i]->element[3] = 1;
-    }
-
-    yRotation();
-
-    transformationMatrix[0] = temp;
-    for (int i = 0; i < inputShape->numOfPoints; i++) {
-        for (int j = 0; j < 4; j++) {
-            if (compareFloat(expected[i]->element[j], inputShape->points[i]->element[j], 0.000001)) {
-                for (int i = 0; i < 5; i++) {
-                    free(expected[i]);
-                }
-                free(expected);
-                return 0;
-            }
-        }
-    }
-
-    for (int i = 0; i < 5; i++) {
-        free(expected[i]);
-    }
-    free(expected);
-    return 1;
-}
 
 // Dirty Test
 // Tests when a Null Matrix is found that nothing is changed for the points after the Null
@@ -521,7 +443,7 @@ int testYRotationHandlesNullPoint() {
     free(expected);
     return 1;
 }
-*/
+
 // Dirty
 // Tests when all points are Null that nothing changes foir the value
 int testYRotationHandlesNullPoints() {
@@ -596,13 +518,10 @@ void runRotationInYTests() {
 
     rotationInYTestHandler(testGetYRotation, "Test Get Y Rotation");
 
-    // setYRotation Tests
+    // setYRotation Tests //
     rotationInYTestHandler(testSetYRotationWhenAngleIsValid, "Test Set Y Rotation When Angle Is valid");
 
-    // generateYRotationMatrix tests
-    // rotationInYTestHandler(testGenerateYRotationMatrixWhenTransformationMatrixIsNull, "Test Generate Y Rotation Matrix When Transformation Matrix is Null");
-
-    // rotationInYTestHandler(testGenerateYRotationMatrixWhenElementOfTransformationMatrixIsNull, "Test Generate Y Rotation Matrix When Element Of Transformation Matrix Is Null");
+    // generateYRotationMatrix tests //
 
     rotationInYTestHandler(testGenerateYRotationMatrixWhenAngleIs0, "Test Generate Y Rotation Matrix When Angle Is 0");
 
@@ -621,11 +540,7 @@ void runRotationInYTests() {
     // Dirty YRotation Tests
     rotationInYTestHandler(testYRotationHandlesNullPoints, "Test Y Rotation Handles Null Points ");
 
-    // rotationInYTestHandler(testYRotationHandlesNullPoint, "Test Y Rotation Handles Null Point ");
-
-    // rotationInYTestHandler(testYRotationHandlesNullMatrix, "Test Y Rotation Handles Null Matrix ");
-
-    // rotationInYTestHandler(testYRotationHandlesNullElementOfMatrix, "Test Y Rotation Handles Null Element Of Matrix ");
+    rotationInYTestHandler(testYRotationHandlesNullPoint, "Test Y Rotation Handles Null Point ");
 
     rotationInYTestHandler(testYRotationWhenAngleIsPositiveGreaterThanTwoPi, "Test Y Rotation When Angle Is Positive Greater Than Two Pi ");
 

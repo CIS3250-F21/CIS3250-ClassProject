@@ -36,52 +36,53 @@ int main(int argc, char** argv) {
         setPoint(0, temp);
 
         //~~~~~ Group 2 ~~~~~//
-        void globalScaling();
+        globalScaling();
 
         //~~~~~ Group 3 ~~~~~//
-        void xScaling();
+        xScaling();
 
         //~~~~~ Group 4 ~~~~~//
-        void yScaling();
+        yScaling();
 
         //~~~~~ Group 5 ~~~~~//
-        void zScaling();
+        zScaling();
 
         //~~~~~ Group 6 ~~~~~//
-        void xRotation();
+        xRotation();
 
         //~~~~~ Group 7 ~~~~~//
-        void yRotation();
+        yRotation();
 
         //~~~~~ Group 8 ~~~~~//
-        void zRotation();
+        zRotation();
 
         //~~~~~ Group 9 ~~~~~//
-        void xyzTranslation();
+        xyzTranslation();
 
         //~~~~~ Group 10 ~~~~~//
-        void xPlaneReflection();
+        xPlaneReflection();
 
         //~~~~~ Group 11 ~~~~~//
-        void yPlaneReflection();
+        yPlaneReflection();
 
         //~~~~~ Group 12 ~~~~~//
-        void zPlaneReflection();
+        zPlaneReflection();
 
         //~~~~~ Group 13 ~~~~~//
-        void xShear();
+        xShear();
 
         //~~~~~ Group 14 ~~~~~//
-        void yShear();
+        yShear();
 
         //~~~~~ Group 15 ~~~~~//
-        void zShear();
+        zShear();
 
         //~~~~~ Group 16 ~~~~~//
-        void xyzOrthographicProjection();
+        xyzOrthographicProjection();
 
         //~~~~~ Group 17 ~~~~~//
         outputPoints(outputFileName);
+
 
         // free all non null points
         for (int i = 0; i < inputShape->numOfPoints; i++) {
@@ -129,7 +130,7 @@ float getXScale() {
 }
 
 float getYScale() {
-    return 0;
+    return inputShape->scaling[1];
 }
 
 float getZScale() {
@@ -195,6 +196,7 @@ void setXScale(float newXScale) {
 }
 
 void setYScale(float newYScale) {
+    inputShape->scaling[1] = newYScale;
 }
 
 void setZScale(float newZScale) {
@@ -295,6 +297,8 @@ void runAllTests() {
     //runZScalingTests(); 
 
     //runScalingInXTests(); // Group 3 tests
+
+    runScalingInYTests();
 
     zPlaneReflectionTests(); // Group 12 tests
 

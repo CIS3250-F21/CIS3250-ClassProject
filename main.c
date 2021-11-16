@@ -322,7 +322,11 @@ void runAllTests() {
 
     runXPlaneReflectionTests(); // X plane reflection tests
 
+
+    xyzOrthographicProjectionRunTests();
+
     runOutputResultsTests(); // Output Results Tests
+
     
     // free
     for (i = 0; i < 5; i++) {

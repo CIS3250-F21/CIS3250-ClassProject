@@ -8,7 +8,7 @@
 #include "Group13/Group13.h"
 #include "Group14/Group14.h"
 #include "ShearInZ/ShearInZ.h"
-#include "Group16/Group16.h"
+#include "xyzOrthographicProjection/xyzOrthographicProjection.h"
 #include "OutputResults/OutputResults.h"
 #include "GlobalScaling/GlobalScaling.h"
 #include "ScalingInX/ScalingInX.h"

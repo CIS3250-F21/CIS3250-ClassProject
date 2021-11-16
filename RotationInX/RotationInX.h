@@ -1,5 +1,5 @@
-#ifndef GROUP_6_H
-#define GROUP_6_H
+#ifndef ROTATIONINX_H
+#define ROTATIONINX_H
 
 #include "../main.h"
 

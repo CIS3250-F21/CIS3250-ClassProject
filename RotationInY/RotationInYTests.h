@@ -10,9 +10,9 @@
 
 int compareFloat(float x, float y, float acceptedDistance);
 
-void runGroup7Tests();
+void runRotationInYTests();
 
-void group7TestHandler(int (*test)(), char *testString);
+void rotationInYTestHandler(int (*test)(), char *testString);
 
 void setup();
 

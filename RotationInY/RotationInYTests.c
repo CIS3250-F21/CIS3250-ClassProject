@@ -1,10 +1,10 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 //~~~~~~~~~~~~~ Group 7 ~~~~~~~~~~~~~~~//
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
-//~~~~ Eric Morse (1141504)        ~~~~//
-//~~~~ Cavaari Taylor (1159034)    ~~~~//
+//~~~~    Eric Morse (1141504)     ~~~~//
+//~~~~  Cavaari Taylor (1159034)   ~~~~//
 //~~~~ Andrew Linington (1060878)  ~~~~//
-//~~~~ Syed Ahmed (1135518)        ~~~~//
+//~~~~    Syed Ahmed (1135518)     ~~~~//
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 
 #include "RotationInYTests.h"
@@ -164,57 +164,6 @@ int testSetYRotationWhenAngleIsValid() {
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 // ~~~~~~ generateYRotationMatrix Tests ~~~~~~ //
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
-/*
-// Will test generate Y rotation matrix when the matrix was null before running the func.
-int testGenerateYRotationMatrixWhenTransformationMatrixIsNull() {
-    float **oldMatrix = transformationMatrix;
-    float theta = 0;
-
-    // set the matrix to null
-    transformationMatrix = NULL;
-    // test generate
-    generateYRotationMatrix(theta);
-
-    // set the matrix back
-    transformationMatrix = oldMatrix;
-
-    // return 1 because it didn't crash. yay!
-    return 1;
-}
-
-// Will test generate y rotaion matrix when some of the elements are null before running the func.
-int testGenerateYRotationMatrixWhenElementOfTransformationMatrixIsNull() {
-    float oldMatrix[4][4];
-    float theta = 0;
-
-    // copy the matrix to save it for later
-    for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 4; j++) {
-            oldMatrix[i][j] = transformationMatrix[i][j];
-        }
-    }
-
-    // preserve column 2 so we don't segfault later
-    float *col2 = transformationMatrix[2];
-
-    // set a column to null then test the program, the revert the column back
-    transformationMatrix[2] = NULL;
-    generateYRotationMatrix(theta);
-    transformationMatrix[2] = col2;
-
-    // loop through the matrices
-    for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 4; j++) {
-            // if something has changed, return 0
-            if (transformationMatrix[i][j] != oldMatrix[i][j]) {
-                return 0;
-            }
-        }
-    }
-
-    return 1;
-}
-*/
 // Will test generate y rotaiton matrix with theta 0.
 int testGenerateYRotationMatrixWhenAngleIs0() {
     float theta = 0;
@@ -611,7 +560,7 @@ void setup() {
     }
 }
 
-void group7TestHandler(int (*test)(), char *testString) {
+void rotationInYTestHandler(int (*test)(), char *testString) {
     // fixes any values that may have been changed from previous test
     setup();
 
@@ -620,68 +569,68 @@ void group7TestHandler(int (*test)(), char *testString) {
     }
 }
 
-void runGroup7Tests() {
+void runRotationInYTests() {
     // getPoint Tests //
 
     // Dirty Tests
-    group7TestHandler(testGetPointReturnsNullWhenIndexIsNeagtive, "Test Get Point Returns Null When Index Is Negative");
+    rotationInYTestHandler(testGetPointReturnsNullWhenIndexIsNeagtive, "Test Get Point Returns Null When Index Is Negative");
 
-    group7TestHandler(testGetPointReturnsNullWhenIndexIsGreaterThanLength, "Test Get Point Returns Null When Index Is Greater Then Length");
+    rotationInYTestHandler(testGetPointReturnsNullWhenIndexIsGreaterThanLength, "Test Get Point Returns Null When Index Is Greater Then Length");
 
     // Clean Tests
-    group7TestHandler(testGetPointReturnsMatchingPoint, "Test Get Point Returns Matching Point ");
+    rotationInYTestHandler(testGetPointReturnsMatchingPoint, "Test Get Point Returns Matching Point ");
 
     // setPoint Tests //
 
     // Dirty Tests
-    group7TestHandler(testSetPointReturn0WhenIndexIsNegative, "Test Set Point If Returns 0 When Index Negative.");
+    rotationInYTestHandler(testSetPointReturn0WhenIndexIsNegative, "Test Set Point If Returns 0 When Index Negative.");
 
-    group7TestHandler(testSetPointReturn0WhenIndexIsGreaterThenLength, "Test Set Point If Returns 0 When Index Greater Than Length.");
+    rotationInYTestHandler(testSetPointReturn0WhenIndexIsGreaterThenLength, "Test Set Point If Returns 0 When Index Greater Than Length.");
 
-    group7TestHandler(testSetPointReturn0IfPointIsNull, "Test Set Point If Returns 0 When Point is Null");
+    rotationInYTestHandler(testSetPointReturn0IfPointIsNull, "Test Set Point If Returns 0 When Point is Null");
 
     // Clean Tests
-    group7TestHandler(testSetPointIfPointAddedAtIndex, "Test Set Point If Point Added At Index");
+    rotationInYTestHandler(testSetPointIfPointAddedAtIndex, "Test Set Point If Point Added At Index");
 
     // getYRotation Tests //
 
-    group7TestHandler(testGetYRotation, "Test Get Y Rotation");
+    rotationInYTestHandler(testGetYRotation, "Test Get Y Rotation");
 
     // setYRotation Tests
-    group7TestHandler(testSetYRotationWhenAngleIsValid, "Test Set Y Rotation When Angle Is valid");
+    rotationInYTestHandler(testSetYRotationWhenAngleIsValid, "Test Set Y Rotation When Angle Is valid");
 
     // generateYRotationMatrix tests
-    // group7TestHandler(testGenerateYRotationMatrixWhenTransformationMatrixIsNull, "Test Generate Y Rotation Matrix When Transformation Matrix is Null");
+    // rotationInYTestHandler(testGenerateYRotationMatrixWhenTransformationMatrixIsNull, "Test Generate Y Rotation Matrix When Transformation Matrix is Null");
 
-    // group7TestHandler(testGenerateYRotationMatrixWhenElementOfTransformationMatrixIsNull, "Test Generate Y Rotation Matrix When Element Of Transformation Matrix Is Null");
+    // rotationInYTestHandler(testGenerateYRotationMatrixWhenElementOfTransformationMatrixIsNull, "Test Generate Y Rotation Matrix When Element Of Transformation Matrix Is Null");
 
-    group7TestHandler(testGenerateYRotationMatrixWhenAngleIs0, "Test Generate Y Rotation Matrix When Angle Is 0");
+    rotationInYTestHandler(testGenerateYRotationMatrixWhenAngleIs0, "Test Generate Y Rotation Matrix When Angle Is 0");
 
-    group7TestHandler(testGenerateYRotationMatrixWhenAngleIsNegative, "Test Generate Y Rotation Matrix When Angle Is Negative");
+    rotationInYTestHandler(testGenerateYRotationMatrixWhenAngleIsNegative, "Test Generate Y Rotation Matrix When Angle Is Negative");
 
-    group7TestHandler(testGenerateYRotationMatrixWhenAngleIsPositiveGreaterThanTwoPi, "Test Generate Y Rotation Matrix When Angle Is Positive Greater Then Two Pi");
+    rotationInYTestHandler(testGenerateYRotationMatrixWhenAngleIsPositiveGreaterThanTwoPi, "Test Generate Y Rotation Matrix When Angle Is Positive Greater Then Two Pi");
 
     // Matrix Multiplication Tests //
 
     // Dirty tests
-    group7TestHandler(testMatrixMultiplicationWhenPointIsNull, "Test Matrix Multiplication To Check For NULL Point ");
+    rotationInYTestHandler(testMatrixMultiplicationWhenPointIsNull, "Test Matrix Multiplication To Check For NULL Point ");
 
     // Clean tests
-    group7TestHandler(testMatrixMultiplicationWhenPointIsValid, "Test Matrix Multiplication Points Are Valid ");
+    rotationInYTestHandler(testMatrixMultiplicationWhenPointIsValid, "Test Matrix Multiplication Points Are Valid ");
 
     // Dirty YRotation Tests
-    group7TestHandler(testYRotationHandlesNullPoints, "Test Y Rotation Handles Null Points ");
+    rotationInYTestHandler(testYRotationHandlesNullPoints, "Test Y Rotation Handles Null Points ");
 
-    // group7TestHandler(testYRotationHandlesNullPoint, "Test Y Rotation Handles Null Point ");
+    // rotationInYTestHandler(testYRotationHandlesNullPoint, "Test Y Rotation Handles Null Point ");
 
-    // group7TestHandler(testYRotationHandlesNullMatrix, "Test Y Rotation Handles Null Matrix ");
+    // rotationInYTestHandler(testYRotationHandlesNullMatrix, "Test Y Rotation Handles Null Matrix ");
 
-    // group7TestHandler(testYRotationHandlesNullElementOfMatrix, "Test Y Rotation Handles Null Element Of Matrix ");
+    // rotationInYTestHandler(testYRotationHandlesNullElementOfMatrix, "Test Y Rotation Handles Null Element Of Matrix ");
 
-    group7TestHandler(testYRotationWhenAngleIsPositiveGreaterThanTwoPi, "Test Y Rotation When Angle Is Positive Greater Than Two Pi ");
+    rotationInYTestHandler(testYRotationWhenAngleIsPositiveGreaterThanTwoPi, "Test Y Rotation When Angle Is Positive Greater Than Two Pi ");
 
-    group7TestHandler(testYRotationWhenAngleIsNegative, "Test Y Rotation When Angle Is Negative ");
+    rotationInYTestHandler(testYRotationWhenAngleIsNegative, "Test Y Rotation When Angle Is Negative ");
 
     // Clean YRotation Tests
-    group7TestHandler(testYRotationWhenAngleIs0, "Test Y Rotation When Angle Is 0 ");
+    rotationInYTestHandler(testYRotationWhenAngleIs0, "Test Y Rotation When Angle Is 0 ");
 }

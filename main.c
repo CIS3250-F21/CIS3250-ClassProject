@@ -292,16 +292,12 @@ void resetMatrix(){
     }
 }
 
-void runAllTests() {
+// Instantiates shape struct for testing
+void createTestPoints() {
     int i;
+
     inputShape = malloc(sizeof(struct shape));
-
     inputShape->numOfPoints = 5;
-
-    // SET YOUR VALUES HERE
-    setYRotation(0);
-
-    // Instantiation of the shape structure
     inputShape->points = malloc(sizeof(struct point*) * 5);
 
     for (i = 0; i < 5; i++) {
@@ -312,31 +308,82 @@ void runAllTests() {
         temp->element[3] = 1;
         inputShape->points[i] = temp;
     }
+}
 
-    // TESTS GO HERE
-    // runRotationInXTests(); // RotationInX tests
-
-    runRotationInYTests();  // RotationInY tests
-    
-    //runZScalingTests(); 
-
-    runScalingInXTests(); // Group 3 tests
-  
-    runScalingInYTests();
-
-    ZPlaneReflectionTests(); // Group 12 tests
-    runXShearTests();
-    // runXYZTranslationTest();
-
-    runXPlaneReflectionTests(); // X plane reflection tests
-
-    runGlobalScalingTests(); // Group 2 tests
-    
-    // free
+// Frees instantiated shape struct
+void freeTestPoints() {
+    int i;
     for (i = 0; i < 5; i++) {
         free(inputShape->points[i]);
     }
     free(inputShape->points);
-
     free(inputShape);
+}
+
+void runAllTests() {
+  
+    
+    /* Global Scaling Tests */
+    createTestPoints();
+    runGlobalScalingTests();  
+    freeTestPoints();
+  
+    /* Scaling in X Tests */
+    createTestPoints();
+    runScalingInXTests();
+    freeTestPoints();
+
+    /* Scaling in Y Tests */
+    createTestPoints();
+    runScalingInXTests();
+    freeTestPoints();
+
+    /* Scaling in Z Tests */
+    createTestPoints();
+    //runZScalingTests(); 
+    freeTestPoints();
+  
+  
+  
+    /* Rotation in Y Tests */
+    createTestPoints();
+    setYRotation(0);
+    runRotationInYTests(); 
+    freeTestPoints();
+  
+  
+  
+    /* X Plane Reflection Tests */
+    createTestPoints();
+    runXPlaneReflectionTests();
+    freeTestPoints();
+  
+  
+
+    /* Z Plane Reflection Tests */
+    createTestPoints();
+    ZPlaneReflectionTests();
+    freeTestPoints();
+
+    /* XYZ Translation Tests */
+    createTestPoints();
+    // runXYZTranslationTest();
+    freeTestPoints();
+  
+    /* X Shear Tests */
+    createTestPoints();
+    runXShearTests();
+    freeTestPoints();
+  
+    /* Y Shear Tests */
+    createTestPoints();
+    //runYShearTests(); //still need to get a testrunner
+    freeTestPoints();
+
+    /* Output Results Tests */
+    createTestPoints();
+    runOutputResultsTests();
+    freeTestPoints();
+
+
 }

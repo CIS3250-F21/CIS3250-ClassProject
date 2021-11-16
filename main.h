@@ -60,6 +60,8 @@ void setYShear(float newYShear);
 void setZShear(float newZShear);
 
 //~~~~~ Helpers ~~~~~~//
+void createTestPoints();
+void freeTestPoints();
 void runAllTests();
 
 #endif

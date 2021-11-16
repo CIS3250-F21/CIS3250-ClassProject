@@ -9,6 +9,7 @@
 #include "XPlaneReflection/XPlaneReflectionTests.h"
 #include "XYZTranslation/XYZTranslationTests.h"
 #include "ScalingInZ/ScalingInZTests.h"
+#include "OutputResults/OutputResultsTests.h"
 
 
 #endif

@@ -10,6 +10,6 @@
 #include "XYZTranslation/XYZTranslationTests.h"
 #include "ScalingInZ/ScalingInZTests.h"
 #include "OutputResults/OutputResultsTests.h"
-
+#include "ShearInY/ShearInYTests.h"
 
 #endif

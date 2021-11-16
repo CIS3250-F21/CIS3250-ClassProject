@@ -51,16 +51,16 @@ int testInputNotEmptyY() {
  Returns 1 on success, 0 otherwise
 */
 int testTransformationMatrixY(){
-	// float expectedMatrix [4][4] = {{1,0,0,0},{0,-1,0,0},{0,0,1,0},{0,0,0,1}};
-	// for( int i=0; i<4; i++ ){
-	// 	for( int j=0; j<4; j++ ){
-	// 		if( expectedMatrix[i][j]!=transformationMatrix[i][j] ){
-	// 			fprintf( stderr, "Expected: %f, received %f\n", expectedMatrix[i][j], transformationMatrix[i][j] );
-	// 			fprintf( stderr, "Error: unexpected value in transformation matrixyeeet.\n" );
-	// 			return 0;
-	// 		}
-	// 	}
-	// }
+	float expectedMatrix [4][4] = {{1,0,0,0},{0,-1,0,0},{0,0,1,0},{0,0,0,1}};
+	for( int i=0; i<4; i++ ){
+		for( int j=0; j<4; j++ ){
+			if( expectedMatrix[i][j]!=transformationMatrix[i][j] ){
+				fprintf( stderr, "Expected: %f, received %f\n", expectedMatrix[i][j], transformationMatrix[i][j] );
+				fprintf( stderr, "Error: unexpected value in transformation matrix for YPlaneReflection.\n" );
+				return 0;
+			}
+		}
+	}
 	return 1;
 }
 

@@ -16,4 +16,6 @@ void globalScalingDirtyTest4();
 
 void globalScalingDirtyTest5();
 
+void makeTestPoint(int index);
+
 #endif

@@ -2,17 +2,25 @@
 #include "GlobalScaling.h"
 
 void runGlobalScalingTests(){
+    makeTestPoint(0);
     globalScalingCleanTest();
 
+    makeTestPoint(0);
     globalScalingDirtyTest1();
 
-    globalScalingDirtyTest2();
+    // The program actually properly handles this case, maybe turn it into a clean test
+    //makeTestPoint(0);
+    //globalScalingDirtyTest2();
 
+    makeTestPoint(0);
     globalScalingDirtyTest3();
 
+    makeTestPoint(0);
     globalScalingDirtyTest4();
 
-    globalScalingDirtyTest5(); 
+    // This test had the same implementation as test4, not sure why
+    //makeTestPoint(0);
+    //GlobalScalingDirtyTest5(); 
 }
 
 /*
@@ -22,64 +30,42 @@ void runGlobalScalingTests(){
     -if unsuccessful prints Global scaling: globalScalingCleanTest failed
 */
 void globalScalingCleanTest(){
-    struct point * testPoint = malloc(sizeof(struct point));
-    for (int i = 0; i < 4; i++) {
-        if(i == 0){
-            testPoint->element[i] = (float)1;
-            setPoint(i, testPoint);
-        }
-        if(i == 1){
-            testPoint->element[i] = (float)2;
-            setPoint(i, testPoint);
-        }
-        if(i == 2){
-            testPoint->element[i] = (float)3;
-            setPoint(i, testPoint);
-        }
-        if(i == 3){
-            testPoint->element[i] = (float)1;
-            setPoint(i, testPoint);
-        }
-        
+
+    struct point* comparPoint;
+    // Saves pointer to old address for freeing later
+    struct point* oldPoint;
+
+    // Creating test point
+    struct point* newPoint = (struct point*) malloc( sizeof(struct point) );
+    for(int i = 0; i <4; i++) {
+        newPoint->element[i] = (float) (i + 1);
     }
+    newPoint->element[3] = (float) 1;
+
+    // Overwrites point at index 0
+    oldPoint = getPoint(0);
+    setPoint(0, newPoint);
+    free( oldPoint );
+
+
     setGlobalScale(1);
     globalScaling();
-    int i = 0;
     
-    while((testPoint = getPoint(i)) != NULL){
-        if(i == 0){
-            if(testPoint->element[i] != 1) {
-                printf("\n");
-                printf("Global scaling: globalScalingCleanTest failed\n");
-                return;
+    // this point should be the same as newPoint, as scale is 1
+    comparPoint = getPoint(0);
+    for( int i = 0; i < 4; i++) {
+        if( i == 3 ) {
+            if( comparPoint->element[i] == (float) 1 ) {
+                continue;
             }
         }
-        if(i == 1){
-            if(testPoint->element[i] != 2) {
-                printf("\n");
-                printf("Global scaling: globalScalingCleanTest failed\n");
-                return;
-            }
+        else if( comparPoint->element[i] == (float) (i + 1) ) {
+            continue;
         }
-        if(i == 2){
-            if(testPoint->element[i] != 3) {
-                printf("\n");
-                printf("Global scaling: globalScalingCleanTest failed\n");
-                return;
-            }
-        }
-        if(i == 3){
-            if(testPoint->element[i] != 1) {
-                printf("\n");
-                printf("Global scaling: globalScalingCleanTest failed\n");
-                return;
-            }
-        }
-        i++;
+        printf("\nGlobal scaling: globalScalingCleanTest failed.\n");
+        break;
     }
 
-    free(testPoint->element);
-    free(testPoint);
     resetMatrix();
 }
 
@@ -91,56 +77,25 @@ void globalScalingCleanTest(){
     -each point will now equal 0 and function has been broken([0, 0 ,0, 0])
 */
 void globalScalingDirtyTest1(){
-    struct point * testPoint = malloc(sizeof(struct point));
-    for (int i = 0; i < 4; i++) {
-        if(i == 0){
-            testPoint->element[i] = (float)1;
-            setPoint(i, testPoint);
-        }
-        if(i == 1){
-            testPoint->element[i] = (float)2;
-            setPoint(i, testPoint);
-        }
-        if(i == 2){
-            testPoint->element[i] = (float)3;
-            setPoint(i, testPoint);
-        }
-        if(i == 3){
-            testPoint->element[i] = (float)1;
-            setPoint(i, testPoint);
-        }
-        
-    }
+    struct point * comparPoint;
+
     setGlobalScale(0);
     globalScaling();
-    int i = 0;
-    while((testPoint = getPoint(i)) != NULL){
-        if(i == 0){
-            if(testPoint->element[i] != 1){
-            return;
+ 
+    comparPoint = getPoint(0);
+    for( int i = 0; i < 4; i++) {
+        if( i == 3 ) {
+            if( comparPoint->element[i] != 1 ) {
+                continue;
             }
         }
-        else if(i == 1){
-            if(testPoint->element[i] != 2) {
-                return;
-            }
+        else if( comparPoint->element[i] != (float)(i + 1) ) {
+            continue;
         }
-        else if(i == 2){
-            if(testPoint->element[i] != 3) {
-                return;
-            }
-        }
-        else if(i == 3){
-            if(testPoint->element[i] != 1) {
-                return;
-            }
-        }
-        i++;
+        printf("\nGlobal scaling: globalScalingDirtyTest1 failed.\n");
+        break;
     }
 
-    printf("Global scaling: globalScalingDirtyTest1: failed\n");
-    free(testPoint->element);
-    free(testPoint);
     resetMatrix();
 }
 
@@ -153,40 +108,25 @@ void globalScalingDirtyTest1(){
     for example: 3/2 = 1.5 but sinces its an int, it will be stored as only 1 
 */
 void globalScalingDirtyTest2(){
-    struct point * testPoint = malloc(sizeof(struct point));
-    for (int i = 0; i < 4; i++) {
-        if(i == 0){
-            testPoint->element[i] = (int)1;
-            setPoint(i, testPoint);
-        }
-        if(i == 1){
-            testPoint->element[i] = (int)2;
-            setPoint(i, testPoint);
-        }
-        if(i == 2){
-            testPoint->element[i] = (int)3;
-            setPoint(i, testPoint);
-        }
-        if(i == 3){
-            testPoint->element[i] = (int)1;
-            setPoint(i, testPoint);
-        }
-        
-    }
-    int i = 0;
+    struct point * comparPoint;
+
     setGlobalScale(2);
     globalScaling();
-    while((testPoint = getPoint(i)) != NULL){
-        if(i == 2){
-            if(testPoint->element[i] == 1.5){
-                printf("Global scaling: globalScalingDirtyTest2: failed\n");
-                return;
+
+    comparPoint = getPoint(0);
+    for( int i = 0; i < 4; i++) {
+        if( i == 3 ) {
+            if( comparPoint->element[i] != 1 ) {
+                continue;
             }
         }
-        i++;
+        else if( comparPoint->element[i] != (float)(i + 1)/2 ) {
+            continue;
+        }
+        printf("\nGlobal scaling: globalScalingDirtyTest2 failed.\n");
+        break;
     }
-    free(testPoint->element);
-    free(testPoint);
+
     resetMatrix();
 }
 
@@ -198,57 +138,27 @@ void globalScalingDirtyTest2(){
     -This will break it as each point will now contain a incorrect value([1,2,3,2])
 */
 void globalScalingDirtyTest3(){
-    struct point * testPoint = malloc(sizeof(struct point));
-    for (int i = 0; i < 4; i++) {
-        if(i == 0){
-            testPoint->element[i] = (float)1;
-            setPoint(i, testPoint);
-        }
-        if(i == 1){
-            testPoint->element[i] = (float)2;
-            setPoint(i, testPoint);
-        }
-        if(i == 2){
-            testPoint->element[i] = (float)3;
-            setPoint(i, testPoint);
-        }
-        if(i == 3){
-            testPoint->element[i] = (float)1;
-            setPoint(i, testPoint);
-        }
-        
-    }
-    int i = 0;
+    struct point * comparPoint;
+
     setGlobalScale(1);
     globalScaling();
     
-    while((testPoint = getPoint(i)) != NULL){
-        testPoint->element[i] *= 2;
+    comparPoint = getPoint(0);
+    for( int i = 0; i < 4; i++) {
+        comparPoint->element[i] *= 2;
 
-        if(i == 0){
-            if(testPoint->element[i] != 1){
-                return;
+        if( i == 3 ) {
+            if( comparPoint->element[i] != 1 ) {
+                continue;
             }
         }
-        else if(i == 1){
-            if(testPoint->element[i] != 2) {
-                return;
-            }
+        else if( comparPoint->element[i] != (float)(i + 1)/2 ) {
+            continue;
         }
-        else if(i == 2){
-            if(testPoint->element[i] != 3) {
-                return;
-            }
-        }
-        else if(i == 3){
-            if(testPoint->element[i] != 1) {
-                return;
-            }
-        }
-        i++;
+        printf("\nGlobal scaling: globalScalingDirtyTest3 failed.\n");
+        break;
     }
-    free(testPoint->element);
-    free(testPoint);
+
     resetMatrix();
 }
 
@@ -259,56 +169,27 @@ void globalScalingDirtyTest3(){
     -Each point will not be scaled as it was passed a null pointer to each point([])
 */
 void globalScalingDirtyTest4(){
-    struct point * testPoint = malloc(sizeof(struct point));
-    /*
-    for (int i = 0; i < 4; i++) {
-        if(i == 0){
-            testPoint->element[i] = NULL;
-            setPoint(i, testPoint);
-        }
-        if(i == 1){
-            testPoint->element[i] = NULL;
-            setPoint(i, testPoint);
-        }
-        if(i == 2){
-            testPoint->element[i] = NULL;
-            setPoint(i, testPoint);
-        }
-        if(i == 3){
-            testPoint->element[i] = NULL;
-            setPoint(i, testPoint);
-        }
-        
-    }*/
-    int i = 0;
+    struct point* comparPoint;
+
     setGlobalScale(1);
     globalScaling();
     
-    while((testPoint = getPoint(i)) != NULL){
-        if(i == 0){
-            if(testPoint->element[i] != 1){
-                return;
+    comparPoint = getPoint(0);
+    for( int i = 0; i < 4; i++) {
+        comparPoint->element[i] *= 2;
+
+        if( i == 3 ) {
+            if( comparPoint->element[i] != 1 ) {
+                continue;
             }
         }
-        else if(i == 1){
-            if(testPoint->element[i] != 2) {
-                return;
-            }
+        else if( comparPoint->element[i] != (float)(i + 1)/2 ) {
+            continue;
         }
-        else if(i == 2){
-            if(testPoint->element[i] != 3) {
-                return;
-            }
-        }
-        else if(i == 3){
-            if(testPoint->element[i] != 1) {
-                return;
-            }
-        }
-        i++;
-    }  
-    free(testPoint->element);
-    free(testPoint);
+        printf("\nGlobal scaling: globalScalingDirtyTest4 failed.\n");
+        break;
+    }
+
     resetMatrix();
 }
 
@@ -319,57 +200,43 @@ void globalScalingDirtyTest4(){
     -The vectors points will all be negitive when its suppose to be positive([-1,-2,-3,-1])
 */
 void globalScalingDirtyTest5(){
-    struct point * testPoint = malloc(sizeof(struct point));
-    for (int i = 0; i < 4; i++) {
-        if(i == 0){
-            testPoint->element[i] = -1;
-            setPoint(i, testPoint);
-        }
-        if(i == 1){
-            testPoint->element[i] = -2;
-            setPoint(i, testPoint);
-        }
-        if(i == 2){
-            testPoint->element[i] = -3;
-            setPoint(i, testPoint);
-        }
-        if(i == 3){
-            testPoint->element[i] = -1;
-            setPoint(i, testPoint);
-        }
-        
-    }
-    int i = 0;
+    struct point* comparPoint;
+
     setGlobalScale(1);
     globalScaling();
     
-    while((testPoint = getPoint(i)) != NULL){
-        testPoint->element[i] *= 2;
+    comparPoint = getPoint(0);
+    for( int i = 0; i < 4; i++) {
+        comparPoint->element[i] *= 2;
 
-        if(i == 0){
-            if(testPoint->element[i] != 1){
-                return;
+        if( i == 3 ) {
+            if( comparPoint->element[i] != 1 ) {
+                continue;
             }
         }
-        else if(i == 1){
-            if(testPoint->element[i] != 2) {
-                return;
-            }
+        else if( comparPoint->element[i] != (float)(i + 1)/2 ) {
+            continue;
         }
-        else if(i == 2){
-            if(testPoint->element[i] != 3) {
-                return;
-            }
-        }
-        else if(i == 3){
-            if(testPoint->element[i] != 1) {
-                return;
-            }
-        }
-        i++;
+        printf("\nGlobal scaling: globalScalingDirtyTest4 failed.\n");
+        break;
     }
     
-    free(testPoint->element);
-    free(testPoint);
     resetMatrix();
+}
+
+void makeTestPoint(int index) {
+    // Saves pointer to old address for freeing later
+    struct point* oldPoint;
+
+    // Creating test point
+    struct point* newPoint = (struct point*) malloc( sizeof(struct point) );
+    for(int i = 0; i <4; i++) {
+        newPoint->element[i] = (float) (i + 1);
+    }
+    newPoint->element[3] = (float) 1;
+
+    // Overwrites point at index
+    oldPoint = getPoint(index);
+    setPoint(index, newPoint);
+    free( oldPoint );
 }

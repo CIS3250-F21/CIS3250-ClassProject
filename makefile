@@ -1,7 +1,6 @@
 CC = clang
 CFLAGS = -std=c99 -Wall -pedantic
 EXECS = main
-
 O_FILES = Group1/Group1.o GlobalScaling/GlobalScaling.o ScalingInX/ScalingInX.o ScalingInY/ScalingInY.o ScalingInZ/ScalingInZ.o Group6/Group6.o RotationInY/RotationInY.o Group8/Group8.o XYZTranslation/XYZTranslation.o XPlaneReflection/XPlaneReflection.o Group11/Group11.o ZPlaneReflection/ZPlaneReflection.o Group13/Group13.o Group14/Group14.o ShearInZ/ShearInZ.o Group16/Group16.o OutputResults/OutputResults.o Group1/Group1Tests.o GlobalScaling/GlobalScalingTests.o ScalingInX/ScalingInXTests.o ScalingInY/ScalingInYTests.o ScalingInZ/ScalingInZTests.o Group6/Group6Tests.o RotationInY/RotationInYTests.o Group8/Group8Tests.o XYZTranslation/XYZTranslationTests.o XPlaneReflection/XPlaneReflectionTests.o Group11/Group11Tests.o ZPlaneReflection/ZPlaneReflectionTests.o Group13/Group13Tests.o Group14/Group14Tests.o ShearInZ/ShearInZTests.o Group16/Group16Tests.o OutputResults/OutputResultsTests.o
 H_FILES = main.h groupIncludes.h groupTestIncludes.h
 

@@ -368,6 +368,7 @@ void globalScalingDirtyTest5(){
         }
         i++;
     }
+    
     free(testPoint->element);
     free(testPoint);
     resetMatrix();

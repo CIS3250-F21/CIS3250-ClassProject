@@ -47,7 +47,7 @@ Please compile using "make" to make sure all of your functions and tests compile
 - The input and output files are in csv Format
   - The first line in the file is a header "X,Y,Z,L" which describes what each value in the subsequent lines represents.
   - Each remaining line contains a set of 4 values separated by commas representing the X, Y and Z values and
-    the global scalar of the point.
+    the scalar of the point.
 
 ## How to Run
 

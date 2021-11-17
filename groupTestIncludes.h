@@ -9,7 +9,7 @@
 #include "ZPlaneReflection/ZPlaneReflectionTests.h"
 #include "GlobalScaling/GlobalScalingTests.h"
 #include "ShearInX/ShearInXTests.h"
-#include "ShearInZ/ShearInZ.h"
+#include "ShearInZ/ShearInZTests.h"
 #include "XPlaneReflection/XPlaneReflectionTests.h"
 #include "YPlaneReflection/YPlaneReflectionTests.h"
 #include "XYZTranslation/XYZTranslationTests.h"

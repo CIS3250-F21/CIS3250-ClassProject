@@ -383,10 +383,13 @@ void runAllTests() {
     //runYShearTests(); //still need to get a testrunner
     freeTestPoints();
 
+    /* X Shear Tests */
+    createTestPoints();
+    runZShearTests();
+    freeTestPoints();
+
     /* Output Results Tests */
     createTestPoints();
     runOutputResultsTests();
     freeTestPoints();
-
-
 }

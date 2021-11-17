@@ -1,5 +1,5 @@
-#ifndef GROUP_3_TESTS_H
-#define GROUP_3_TESTS_H
+#ifndef SCALINGINX_TESTS_H
+#define SCALINGINX_TESTS_H
 
 #include "../main.h"
 #include <stdbool.h>

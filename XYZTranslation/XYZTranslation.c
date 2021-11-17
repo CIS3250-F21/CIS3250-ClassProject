@@ -3,7 +3,6 @@
 void xyzTranslation() {
     // Variable Declarations
     int index = 0;
-    float x = 0, y = 0, z = 0;
     struct point *resultPoint;
     
     // Set initial values to 0
@@ -32,4 +31,3 @@ void xyzTranslation() {
         index++;
     }
 }
-    

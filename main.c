@@ -20,37 +20,6 @@ int main(int argc, char** argv) {
         //~~~~~ Group 1 ~~~~~//
         inputShape = readInput(inputFileName, transformationFileName);
 
-        // // Instantiate Temporary Points //
-        // // FIXME: REMOVE AFTER GROUP 1 IMPLEMENTATION //
-        // inputShape->points = malloc(sizeof(struct point*) * 1);
-        // inputShape->numOfPoints = 1;
-
-        // struct point* temp = malloc(sizeof(struct point));
-        
-        // temp->element[0] = 1.0f;
-        // temp->element[1] = 1.0f;
-        // temp->element[2] = 1.0f;
-        // temp->element[3] = 1.0f;
-
-        // setPoint(0, temp);
-
-        // //GROUP 1 WILL IMPLEMENT THIS
-        // setGlobalScale(1);
-        // setXScale(1);
-        // setYScale(1);
-        // setZScale(1);
-        // setXRotation(0);
-        // setYRotation(0);
-        // setZRotation(0);
-        // setXTranslation(0);
-        // setYTranslation(0);
-        // setZTranslation(0);
-        // setXShear(0);
-        // setYShear(0);
-        // setZShear(0);
-
-
-
         //~~~~~ Group 2 ~~~~~//
         globalScaling();
 

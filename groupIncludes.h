@@ -3,10 +3,10 @@
 
 #include "Group1/Group1.h"
 #include "XPlaneReflection/XPlaneReflection.h"
-#include "Group11/Group11.h"
+#include "YPlaneReflection/YPlaneReflection.h"
 #include "ZPlaneReflection/ZPlaneReflection.h"
-#include "Group13/Group13.h"
-#include "Group14/Group14.h"
+#include "ShearInX/ShearInX.h"
+#include "ShearInY/ShearInY.h"
 #include "ShearInZ/ShearInZ.h"
 #include "Group16/Group16.h"
 #include "OutputResults/OutputResults.h"

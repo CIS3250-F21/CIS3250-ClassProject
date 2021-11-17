@@ -3,7 +3,7 @@
 //shape->points[i]->element[0]
 
 // (CLEAN) Test #1 will compare all the given float values against the expected float values. We expect this test to pass.
-char test1(char testFile[20], char answerFile[20], char inputfile2[20]) {
+char ReadInputTest1(char testFile[20], char answerFile[20], char inputfile2[20]) {
     struct shape *input = readInput(testFile, inputfile2);
     FILE *fp = fopen(answerFile, "r");
     int lines = 0;
@@ -28,7 +28,7 @@ char test1(char testFile[20], char answerFile[20], char inputfile2[20]) {
 }  // END OF TEST 1
 
 //Dirty test 1 - incorrect input format(characters found in the input file)
-int test2(char *testFile, char *orgFile, char inputfile2[20]) {
+int ReadInputTest2(char *testFile, char *orgFile, char inputfile2[20]) {
     float *test, *answers;
     //printf("pass readinput1\n");
     struct shape *original = readInput(orgFile, inputfile2);  //Read the "correct" original input file
@@ -57,7 +57,7 @@ int test2(char *testFile, char *orgFile, char inputfile2[20]) {
 }  // END OF TEST 2
 
 //Dirty test 2 - incorrect inputs format more than 4 values on each line in the input file)
-int test3(char *testFile, char *orgFile, char inputfile2[20]) {
+int ReadInputTest3(char *testFile, char *orgFile, char inputfile2[20]) {
     float *test, *answers;
     struct shape *original = readInput(orgFile, inputfile2);    //Read the "correct" original input file
     struct shape *testInput = readInput(testFile, inputfile2);  //Read from input file with more than 3 values on each line
@@ -78,7 +78,7 @@ int test3(char *testFile, char *orgFile, char inputfile2[20]) {
 }  // END OF TEST 3
 
 //Dirty test 3 - incorrect inputs (incomplete matrix in the input file)
-int test4(char *testFile, char *orgFile, char inputfile2[20]) {
+int ReadInputTest4(char *testFile, char *orgFile, char inputfile2[20]) {
     float *test, *answers;
     struct shape *original = readInput(orgFile, inputfile2);    //Read the "correct" original input file
     struct shape *testInput = readInput(testFile, inputfile2);  //Read from "incomplete" input file
@@ -99,7 +99,7 @@ int test4(char *testFile, char *orgFile, char inputfile2[20]) {
 }  // END OF TEST 4
 
 //Dirty test 4 - Incorrect file name passed, fails to read because filereader == NULL.
-int test5(char answerFile[20], char inputfile2[20]) {
+int ReadInputTest5(char answerFile[20], char inputfile2[20]) {
     struct shape *original = readInput(answerFile, inputfile2);  //Call the function with an incorrect file name
 
     if (original == NULL) {
@@ -111,7 +111,7 @@ int test5(char answerFile[20], char inputfile2[20]) {
 }  // END OF TEST 5
 
 // Dirty Test 5 - Attempts to add all floats contained in both txt files and compare the values. (Index is wrong...)
-int test6(char testFile[20], char answerFile[20], char inputfile2[20]) {
+int ReadInputTest6(char testFile[20], char answerFile[20], char inputfile2[20]) {
     float runningTotalExpected = 0;
     float runningTotalSecond = 0;
 

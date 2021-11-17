@@ -78,8 +78,9 @@ void checkIfWithZero(){
     globalScaling();
     comparPoint = getPoint(0);
     for( int i = 0; i < 4; i++) {
-        if( i == 1 ) {
-            if( comparPoint->element[i] == 0 ) {
+        comparPoint->element[i] *= 0;
+        if( i == 3 ) {
+            if( comparPoint->element[i] != 1 ) {
                 continue;
             }
         }

@@ -12,23 +12,13 @@ void globalScaling(){
     float fourthValue;
     while((p = getPoint(i)) != NULL){
         multiplyMatrix( p, transformationMatrix );
-        
+
         fourthValue = p->element[3];
-        if(globalScaleValue >= 0){
-            if( fourthValue  != 1) {
-                for(int j = 3; j >= 0; j--) {
-                    p->element[j] /= fourthValue;
-                }
+        if( fourthValue  != 1) {
+            for(int j = 3; j >= 0; j--) {
+                p->element[j] /= fourthValue;
             }
         }
-        else if(globalScaleValue < 0){
-            if( fourthValue  != -1) {
-                for(int j = 3; j >= 0; j--) {
-                    p->element[j] /= fourthValue;
-                }
-            }
-        }
-        
         setPoint( i, p );
         i++;
     }

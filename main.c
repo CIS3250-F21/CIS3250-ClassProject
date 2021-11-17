@@ -292,7 +292,6 @@ void resetMatrix(){
         }
     }
 }
-
 // Instantiates shape struct for testing
 void createTestPoints() {
     int i;
@@ -385,7 +384,7 @@ void runAllTests() {
   
     /* Y Shear Tests */
     createTestPoints();
-    //runYShearTests(); //still need to get a testrunner
+    runYShearTests();
     freeTestPoints();
 
     /* Z Shear Tests */

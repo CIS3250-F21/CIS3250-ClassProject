@@ -7,5 +7,6 @@ void uninitializedStruct();
 void uninitializedMatrixMultiplication();
 void dependentGroupShearValues ();
 void correctTest ();
+void runYShearTests ();
 
 #endif

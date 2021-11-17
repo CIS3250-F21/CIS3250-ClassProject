@@ -119,3 +119,14 @@ void uninitializedMatrixMultiplication(){
 }
 
 
+void runYShearTests () {
+  correctTest();
+  dependentGroupShearValues();
+  uninitializedMatrixMultiplication();
+  uninitializedStruct();
+  emptyYShearValue();
+  inputRange();
+}
+
+
+

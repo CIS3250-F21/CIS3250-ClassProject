@@ -1,7 +1,7 @@
 #include "../main.h"
 #include "ReadInput.h"
 
-char test1(char* , char*, char*);
+char test1(char *, char *, char *);
 
 int test2(char *, char *, char[20]);
 

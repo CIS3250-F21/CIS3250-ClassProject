@@ -3,6 +3,8 @@
 
 #include "../main.h"
 #include <float.h>
+#include "../RotationInY/RotationInYTests.h"
+
 
 void runZShearTests();
 void validTest();

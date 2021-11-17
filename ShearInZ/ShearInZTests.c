@@ -41,13 +41,13 @@ void validTest() {
     setXShear(xShear);
     setYShear(yShear);
     zShear();
-    
-    if(getPoint(0)->element[0] != pointExpected->element[0] || getPoint(1)->element[1] != pointExpected->element[1]) {
+    //compareFloat(float x, float y, float acceptedDistance)
+    if(compareFloat(getPoint(0)->element[0], pointExpected->element[0], 0.001) || compareFloat(getPoint(0)->element[1], pointExpected->element[1],0.00001) ) {
+    //if(getPoint(0)->element[0] != pointExpected->element[0] || getPoint(1)->element[1] != pointExpected->element[1]) {
+        printf("expected = %f, got = %f\n", pointExpected->element[0], getPoint(0)->element[0]);
+        printf("expected = %f, got = %f\n", pointExpected->element[1], getPoint(0)->element[1]);
         fprintf(stderr, "Test1 Failed: Expected point does not match test point\n");
-    } else {
-        printf("Test1 Passed\n");
     }
-
     free(pointExpected);
 }
 

@@ -69,26 +69,26 @@ void checkIfScaledCorrectly(){
     -We set each point in the vector to a float value of [1,2,3,1]
     -set the global scale value to 0 
     -we call global scaling 
-    -each point will now equal 0
+    -each point will now equal 0 and each point will stay the same
 */
 void checkIfWithZero(){
     struct point * comparPoint;
 
     setGlobalScale(0);
     globalScaling();
- 
     comparPoint = getPoint(0);
     for( int i = 0; i < 4; i++) {
+        comparPoint->element[i] *= 0;
         if( i == 3 ) {
-            if( comparPoint->element[i] != 1 ) {
+            if( comparPoint->element[i] != 0 ) {
+                printf("Global scaling: checkIfVectorPointsWereScaledCorrectlyWithZeroGlobalScaleValue failed.\n");
                 continue;
             }
         }
-        else if( comparPoint->element[i] != (float)(i + 1) ) {
+        else if( comparPoint->element[i] == (float)(i + 1) ) {
             continue;
         }
         break;
-        printf("\nGlobal scaling: checkIfVectorPointsWereScaledCorrectlyWithZeroGlobalScaleValue failed.\n");
     }
     resetMatrix();
 }

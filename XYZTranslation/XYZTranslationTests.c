@@ -3,8 +3,8 @@
 // Run tests
 void XYZTranslationTests() {
   TestingExpectedPointWithXYZTranslation();
-  XYZTranslationLargeValueOutOfBounds()
-  XYZTranslationSmallValueOutOfBounds()
+  XYZTranslationLargeValueOutOfBounds();
+  XYZTranslationSmallValueOutOfBounds();
   PassingEmptyShapeStruct();
 
 }

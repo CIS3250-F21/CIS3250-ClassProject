@@ -439,7 +439,7 @@ int testXRotationClean() {
   return 1;
 } 
 
-int runTests() {
+int runRotationInXTests() {
 
 	int totalFail = 0;
 

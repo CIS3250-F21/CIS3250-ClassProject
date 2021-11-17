@@ -44,6 +44,6 @@ int testXRotationIncorrectNumOfVectors();
 
 int testXRotationClean();
 
-int runTests();
+int runRotationInXTests();
 
 #endif

@@ -156,7 +156,7 @@ float getZScale() {
 }
 
 float getXRotation() {
-    return 0;
+    return inputShape->rotation[0];
 }
 
 float getYRotation() {
@@ -223,6 +223,7 @@ void setZScale(float newZScale) {
 }
 
 void setXRotation(float newTheta) {
+    inputShape->rotation[0] = newTheta;
 }
 
 void setYRotation(float angle) {
@@ -343,7 +344,11 @@ void runAllTests() {
     //runZScalingTests(); 
     freeTestPoints();
   
-  
+    /* Rotation in X Tests */
+    createTestPoints();
+    setXRotation(0);
+    runRotationInXTests(); 
+    freeTestPoints();
   
     /* Rotation in Y Tests */
     createTestPoints();

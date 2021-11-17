@@ -13,7 +13,7 @@ When making a pull request please try and make it the final version of your code
 
 Please compile using "make" to make sure all of your functions and tests compile properly. Please also run a Valgrind check and make sure there are no memory leaks/uninitialized jumps. The command is below.
 
-> valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./main
+> valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./main test.txt
 
 ## Group File
 
@@ -41,3 +41,8 @@ Please compile using "make" to make sure all of your functions and tests compile
 1. Changed any mention of Vectors to Points
 2. change transformation matrix to a static array
 3. 
+
+## How to Run
+run make
+run ./main with the following structure:
+./main outputfile

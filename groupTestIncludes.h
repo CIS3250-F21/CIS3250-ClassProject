@@ -1,8 +1,10 @@
 #ifndef GROUP_TEST_INCLUDES_H
 #define GROUP_TEST_INCLUDES_H
 
+#include "RotationInX/RotationInXTests.h"
 #include "RotationInY/RotationInYTests.h"
 #include "ScalingInX/ScalingInXTests.h"
+#include "ScalingInY/ScalingInYTests.h"
 #include "ZPlaneReflection/ZPlaneReflectionTests.h"
 #include "GlobalScaling/GlobalScalingTests.h"
 #include "ShearInZ/ShearInZ.h"

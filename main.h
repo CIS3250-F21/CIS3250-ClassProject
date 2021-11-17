@@ -39,9 +39,9 @@ float getZRotation();
 float getXTranslation();
 float getYTranslation();
 float getZTranslation();
-float getXSheer();
-float getYSheer();
-float getZSheer();
+float getXShear();
+float getYShear();
+float getZShear();
 
 //~~~~~~ Setters ~~~~~~//
 void setPoint(int index, struct point* newPoint);
@@ -60,6 +60,8 @@ void setYShear(float newYShear);
 void setZShear(float newZShear);
 
 //~~~~~ Helpers ~~~~~~//
+void createTestPoints();
+void freeTestPoints();
 void runAllTests();
 
 #endif

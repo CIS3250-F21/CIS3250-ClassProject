@@ -4,6 +4,7 @@
 
 #include "RotationInX/RotationInXTests.h"
 #include "RotationInY/RotationInYTests.h"
+#include "RotationInZ/RotationInZTests.h"
 #include "ScalingInX/ScalingInXTests.h"
 #include "ScalingInY/ScalingInYTests.h"
 #include "ZPlaneReflection/ZPlaneReflectionTests.h"

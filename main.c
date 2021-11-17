@@ -164,7 +164,7 @@ float getYRotation() {
 }
 
 float getZRotation() {
-    return 0;
+    return inputShape->rotation[2];
 }
 
 float getXTranslation() {
@@ -230,6 +230,7 @@ void setYRotation(float angle) {
 }
 
 void setZRotation(float newTheta) {
+    inputShape->rotation[2] = newTheta;
 }
 
 void setXTranslation(float newXTranslation) {
@@ -351,6 +352,8 @@ void runAllTests() {
     runRotationInYTests(); 
     freeTestPoints();
   
+    /* Rotation in Z Tests */
+    runRotationInZTests ();
   
   
     /* X Plane Reflection Tests */

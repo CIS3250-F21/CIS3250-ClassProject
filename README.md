@@ -43,11 +43,14 @@ Please compile using "make" to make sure all of your functions and tests compile
 3. Changed ScalingInY to return an int (1 if successfully transforms, 0 if it fails any)
 
 ## Input/Output File Format
+
 - The input and output files are in csv Format
-    - The first line in the file is a header "X,Y,Z" which describes what each value in the subsequent lines represents.
-    - Each remaining line contains a set of 3 values separated by commas representing the X, Y and Z values of a point.
+  - The first line in the file is a header "X,Y,Z,L" which describes what each value in the subsequent lines represents.
+  - Each remaining line contains a set of 4 values separated by commas representing the X, Y and Z values and
+    the global scalar of the point.
 
 ## How to Run
+
 run make
 run ./main with the following structure:
 ./main outputfile

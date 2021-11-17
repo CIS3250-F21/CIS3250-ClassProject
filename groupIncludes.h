@@ -1,7 +1,7 @@
 #ifndef GROUP_INCLUDES_H
 #define GROUP_INCLUDES_H
 
-#include "Group1/Group1.h"
+#include "ReadInput/ReadInput.h"
 #include "XPlaneReflection/XPlaneReflection.h"
 #include "YPlaneReflection/YPlaneReflection.h"
 #include "ZPlaneReflection/ZPlaneReflection.h"

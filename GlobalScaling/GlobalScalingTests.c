@@ -87,10 +87,9 @@ void checkIfWithZero(){
         else if( comparPoint->element[i] != (float)(i + 1) ) {
             continue;
         }
-        printf("\nGlobal scaling: checkIfVectorPointsWereScaledCorrectlyWithZeroGlobalScaleValue failed.\n");
         break;
+        printf("\nGlobal scaling: checkIfVectorPointsWereScaledCorrectlyWithZeroGlobalScaleValue failed.\n");
     }
-
     resetMatrix();
 }
 

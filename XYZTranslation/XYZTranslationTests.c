@@ -1,40 +1,61 @@
 #include "XYZTranslationTests.h"
 
+// Run tests
+void XYZTranslationTests() {
+  cleanTest();
+  dirtyTestOne();
+  dirtyTestTwo();
+  dirtyTestThree();
+
+}
 //Test ensure proper function of xyzTranslation()
-/*void cleanTest() {
-  struct point **expected = malloc(sizeof(struct point *) * inputShape->numOfPoints);
+void cleanTest() {
+
   float x;
   float y;
   float z;
 
-  for(int i = 0; i < inputShape->numOfPoints; i++) {
-    for(int j = 0; j < 4; j++) {
-      expected[i][j] = inputShape->points[i][j];
+  struct point expected;
+
+  expected.element[0] = 4;
+  expected.element[1] = 6;
+  expected.element[2] = 8;
+  expected.element[3] = 1;
+
+    // Set initial values to 0
+    for(int i = 0; i < 4; i++) {
+        for(int j = 0; j < 4; j++) {
+            transformationMatrix[i][j] = 0.0;
+      }
     }
-  }
+  // Create the translation matrix
+  transformationMatrix[0][0] = 1.0;
+  transformationMatrix[1][1] = 1.0;
+  transformationMatrix[2][2] = 1.0;
+  transformationMatrix[3][3] = 1.0;
 
   x = getXTranslation();
   y = getYTranslation();
   z = getZTranslation();
-  setXTranslation(0.0);
-  setYTranslation(0.0);
-  setZTranslation(0.0);
+
+  setXTranslation(3);
+  setYTranslation(4); 
+  setZTranslation(5); 
+
   xyzTranslation();
+
   setXTranslation(x);
   setYTranslation(y);
   setZTranslation(z);
 
-  for(int i = 0; i < inputShape->numOfPoints; i++) {
-    for(int j = 0; j < 4; j++) {
-      if(expected[i]->element[j] != inputShape->points[i][j]) {
-        printf("Clean Test Failed\n");
-      }
+  for (int i = 0; i < 3; i++) {
+    if (inputShape->points[inputShape->numOfPoints - 1]->element[i] != expected.element[i]) {
+      printf("Clean test failed: Expected vector did not match the result\n");
     }
   }
-  free(expected);
-}*/
+}
 
-//Resulting matrix will be out of bounds unless multiplied by the points
+// Resulting matrix will be out of bounds unless multiplied by the points and produce logical error
 void dirtyTestOne() {
   float x;
   float y;
@@ -47,12 +68,13 @@ void dirtyTestOne() {
   setYTranslation(FLT_MAX * 2);
   setZTranslation(FLT_MAX * 2);
   xyzTranslation();
+  printf("Logical Error: Size out of bounds\n");
   setXTranslation(x);
   setYTranslation(y);
   setZTranslation(z);
 }
 
-//Resulting matrix will be out of bounds unless multiplied by the points
+// Resulting matrix will be out of bounds unless multiplied by the points and produce logical error
 void dirtyTestTwo() {
   float x;
   float y;
@@ -65,6 +87,7 @@ void dirtyTestTwo() {
   setYTranslation(FLT_MIN * 2);
   setZTranslation(FLT_MIN * 2);
   xyzTranslation();
+  printf("Logical Error: Size out of bounds\n");
   setXTranslation(x);
   setYTranslation(y);
   setZTranslation(z);

@@ -69,7 +69,7 @@ void checkIfScaledCorrectly(){
     -We set each point in the vector to a float value of [1,2,3,1]
     -set the global scale value to 0 
     -we call global scaling 
-    -each point will now equal 0
+    -each point will now equal 0 and each point will stay the same
 */
 void checkIfWithZero(){
     struct point * comparPoint;

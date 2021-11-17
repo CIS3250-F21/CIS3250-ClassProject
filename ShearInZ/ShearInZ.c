@@ -2,7 +2,7 @@
 
 void zShear() {
     // Use the transformation matrix and multiply the vectors 
-    struct point *currentVector;;
+    struct point *currentVector;
 
     // Reset transformation matrix before use
     resetMatrix();

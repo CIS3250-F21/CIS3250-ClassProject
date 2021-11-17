@@ -211,7 +211,7 @@ void setGlobalScale(float newGlobalScale) {
 }
 
 void setXScale(float newXScale) {
-  inputShape -> scaling[0] = newXScale;
+    inputShape -> scaling[0] = newXScale;
 }
 
 void setYScale(float newYScale) {
@@ -383,10 +383,13 @@ void runAllTests() {
     //runYShearTests(); //still need to get a testrunner
     freeTestPoints();
 
+    /* Z Shear Tests */
+    createTestPoints();
+    //runZShearTests();
+    freeTestPoints();
+
     /* Output Results Tests */
     createTestPoints();
     runOutputResultsTests();
     freeTestPoints();
-
-
 }

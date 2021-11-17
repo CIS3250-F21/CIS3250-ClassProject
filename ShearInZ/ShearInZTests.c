@@ -162,8 +162,8 @@ void maximumFloatShearValueTest() {
  *  Expected point: {1,4,6,1}
  */
 void uninitializedShearValueTest() {
-    float xShear; 
-    float yShear; 
+    float xShear = 0; //todo: need to fix this test
+    float yShear = 0;  
 
     setXShear(xShear);
     setYShear(yShear);

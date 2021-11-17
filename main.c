@@ -211,7 +211,7 @@ void setGlobalScale(float newGlobalScale) {
 }
 
 void setXScale(float newXScale) {
-  inputShape -> scaling[0] = newXScale;
+    inputShape -> scaling[0] = newXScale;
 }
 
 void setYScale(float newYScale) {

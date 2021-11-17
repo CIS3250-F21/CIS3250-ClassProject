@@ -1,14 +1,16 @@
 #include "../main.h"
 #include "ReadInput.h"
 
-char test1(char testFile[20], char answerFile[20]);
+char test1(char* , char*, char*);
 
-int test2(char *testFile, char *orgFile);
+int test2(char *, char *, char[20]);
 
-int test3(char *testFile, char *orgFile);
+int test3(char *, char *orgFile, char[20]);
 
-int test4(char *testFile, char *orgFile);
+int test4(char *, char *orgFile, char[20]);
 
-int test5(char answerFile[20]);
+int test5(char[20], char[20]);
 
-int test6(char testFile[20], char answerFile[20]);
+int test6(char[20], char[20], char[20]);
+
+void freeShape(struct shape *);

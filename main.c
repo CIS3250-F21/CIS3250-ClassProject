@@ -257,6 +257,8 @@ void runAllTests() {
 
     zPlaneReflectionTests(); // Group 12 tests
 
+    ShearInZTests(); //Group 15 tests
+
     // free
     for (i = 0; i < 5; i++) {
         free(inputShape->points[i]);

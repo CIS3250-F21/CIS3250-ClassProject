@@ -4,6 +4,6 @@
 #include "RotationInY/RotationInYTests.h"
 #include "ScalingInX/ScalingInXTests.h"
 #include "zPlaneReflection/zPlaneReflectionTests.h"
-#include "ShearInZ/ShearInZ.h"
+#include "ShearInZ/ShearInZTests.h"
 
 #endif

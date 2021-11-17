@@ -17,12 +17,14 @@
  * of array index) are 0, 1, -1, 100, -100 */
 void initialisePoints() 
 {
-    inputShape->points = malloc(sizeof(struct point *) * 5);
+    //inputShape->points = malloc(sizeof(struct point *) * 5);
+    //struct point *newPoint = malloc(sizeof(struct point));
     // x, z, global all = 1
+    //inputShape->numOfPoints = 5;
     float yValues[5] = {0, 1, -1, 100, -100};
     for (int i = 0; i < inputShape->numOfPoints; i++) 
     {
-        struct point *newPoint = malloc(sizeof(struct point));
+        struct point * newPoint = getPoint(i);
         for (int j = 0; j < 4; j++) 
         {
             newPoint->element[j] = 1;
@@ -30,6 +32,7 @@ void initialisePoints()
         newPoint->element[1] = yValues[i];
         setPoint(i, newPoint);
     }
+    //free(newPoint);
 }
 
 void testExpectedValues(char *testName, float *expectedValues) 
@@ -65,6 +68,7 @@ void uninitialisedYPointTest()
 {
     float yScaleValue = 42.0;  // Y-scale value chosen for the test
     int expectedResult = 0;    // The expected result of the yScaling function
+    struct point ** tempPoints = inputShape->points;
     inputShape->points = NULL;
 
     // Setup for test
@@ -78,6 +82,8 @@ void uninitialisedYPointTest()
         printf("- Expected: %5d\n", expectedResult);
         printf("-   Actual: %5d\n\n", result);
     }
+
+    inputShape->points = tempPoints;
 }
 
 /* This test will confirm that the yScaling function correctly computes and sets
@@ -152,8 +158,7 @@ void testFractionScale()
 }
 
 void runScalingInYTests() 
-{
-    // We show an error here; we should really indicate success.
+{   
     uninitialisedYPointTest();
     testNegativeScale();
     testZeroScale();

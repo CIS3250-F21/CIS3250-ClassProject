@@ -10,7 +10,7 @@ void runOutputResultsTests () {
     inputShape->numOfPoints = 0;
 
     FILE* fp;
-    float x, y, z;
+    float x, y, z, l;
     char buffer[BUFSIZ];
   
     // Clean Tests
@@ -51,10 +51,10 @@ void runOutputResultsTests () {
         // read header
         fgets(buffer, BUFSIZ, fp);
         // read values from file
-        fscanf(fp, "%f,%f,%f", &x, &y, &z);
+        fscanf(fp, "%f,%f,%f,%f", &x, &y, &z, &l);
         
         // Check if values match
-        if (x != testPoint.element[0] || y != testPoint.element[1] || z != testPoint.element[2]) {
+        if (x != testPoint.element[0] || y != testPoint.element[1] || z != testPoint.element[2] || l != testPoint.element[3]) {
             fprintf(stderr, "[Test 17.1.1] Incorrect point values for test point (%s:%d)\n", __FILE__, __LINE__);
         }
         
@@ -150,7 +150,7 @@ void runOutputResultsTests () {
         fgets(buffer, BUFSIZ, fp);
 
         // read first point
-        if ((fscanf(fp,"%f,%f,%f\n", &x, &y, &z)) != 3) {
+        if ((fscanf(fp,"%f,%f,%f,%f\n", &x, &y, &z, &l)) != 4) {
             fprintf(stderr, "[Test 17.2.2] Error reading points from file (%s:%d)\n", __FILE__, __LINE__);
         }
         else {
@@ -158,7 +158,8 @@ void runOutputResultsTests () {
             if (
                 x != testPoint2.element[0] ||
                 y != testPoint2.element[1] ||
-                z != testPoint2.element[2]
+                z != testPoint2.element[2] ||
+                l != testPoint2.element[3]
             ) {
                 fprintf(stderr, "[Test 17.2.2] Error points do not match test point 2 (%s:%d)\n", __FILE__, __LINE__);
             }
@@ -281,7 +282,7 @@ void runOutputResultsTests () {
         fgets(buffer, BUFSIZ, fp);
 
         // read first point from file
-        if(fscanf(fp, "%f,%f,%f\n", &x, &y, &z) != 3) {
+        if(fscanf(fp, "%f,%f,%f,%f\n", &x, &y, &z, &l) != 4) {
             fprintf(stderr, "[Test 17.2.5] Error reading values for test point 7 (%s:%d)\n", __FILE__, __LINE__);
         }
         else {
@@ -289,14 +290,15 @@ void runOutputResultsTests () {
             if (
                 x != testPoint7.element[0] || 
                 y != testPoint7.element[1] || 
-                z != testPoint7.element[2]
+                z != testPoint7.element[2] ||
+                l != testPoint7.element[3]
             ) {
                 fprintf(stderr, "[Test 17.2.5] Incorrect values for test point 7 (%s:%d)\n", __FILE__, __LINE__);
             }
         }
 
         // read second point from file
-        if(fscanf(fp, "%f,%f,%f\n", &x, &y, &z) != 3) {
+        if(fscanf(fp, "%f,%f,%f,%f\n", &x, &y, &z, &l) != 4) {
             fprintf(stderr, "[Test 17.2.5] Error reading values for test point 8 (%s:%d)\n", __FILE__, __LINE__);
         }
         else {
@@ -304,7 +306,8 @@ void runOutputResultsTests () {
             if (
                 x != testPoint8.element[0] ||
                 y != testPoint8.element[1] || 
-                z != testPoint8.element[2]
+                z != testPoint8.element[2] ||
+                l != testPoint8.element[3]
             ) {
                 fprintf(stderr, "[Test 17.2.5] Incorrect values for test point 8 (%s:%d)\n", __FILE__, __LINE__);
             }

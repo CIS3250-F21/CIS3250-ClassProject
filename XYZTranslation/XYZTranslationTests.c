@@ -2,14 +2,14 @@
 
 // Run tests
 void XYZTranslationTests() {
-  cleanTest();
-  dirtyTestOne();
-  dirtyTestTwo();
-  dirtyTestThree();
+  TestingExpectedPointWithXYZTranslation();
+  LargeValueOutOfBounds();
+  SmallValueOutOfBounds();
+  PassingEmptyShapeStruct();
 
 }
 //Test ensure proper function of xyzTranslation()
-void cleanTest() {
+void TestingExpectedPointWithXYZTranslation() {
 
   float x;
   float y;
@@ -55,8 +55,8 @@ void cleanTest() {
   }
 }
 
-// Resulting matrix will be out of bounds unless multiplied by the points and produce logical error
-void dirtyTestOne() {
+// Resulting matrix will be out of bounds unless multiplied by the points and produce logical error caught by the program
+void LargeValueOutOfBounds() {
   float x;
   float y;
   float z;
@@ -64,18 +64,19 @@ void dirtyTestOne() {
   x = getXTranslation();
   y = getYTranslation();
   z = getZTranslation();
+
   setXTranslation(FLT_MAX * 2);
   setYTranslation(FLT_MAX * 2);
   setZTranslation(FLT_MAX * 2);
+
   xyzTranslation();
-  printf("Logical Error: Size out of bounds\n");
   setXTranslation(x);
   setYTranslation(y);
   setZTranslation(z);
 }
 
-// Resulting matrix will be out of bounds unless multiplied by the points and produce logical error
-void dirtyTestTwo() {
+// Resulting matrix will be out of bounds unless multiplied by the points and produce logical error caught by the program
+void SmallValueOutOfBounds() {
   float x;
   float y;
   float z;
@@ -83,18 +84,19 @@ void dirtyTestTwo() {
   x = getXTranslation();
   y = getYTranslation();
   z = getZTranslation();
+
   setXTranslation(FLT_MIN * 2);
   setYTranslation(FLT_MIN * 2);
   setZTranslation(FLT_MIN * 2);
   xyzTranslation();
-  printf("Logical Error: Size out of bounds\n");
+ 
   setXTranslation(x);
   setYTranslation(y);
   setZTranslation(z);
 }
 
 //Testing an empty shape struct
-void dirtyTestThree() {
+void PassingEmptyShapeStruct() {
     struct point **originalPoints = malloc(sizeof(struct point *) * inputShape->numOfPoints);
 
   for(int i = 0; i < inputShape->numOfPoints; i++) {
@@ -107,7 +109,7 @@ void dirtyTestThree() {
   xyzTranslation();
 
   if(inputShape->points != NULL) {
-    printf("Failed dirty test 3. Should not have intialized anything\n");
+    printf("Failed Dirty Test. Should not have intialized anything\n");
   }
 
   for(int i = 0; i < inputShape->numOfPoints; i++) {

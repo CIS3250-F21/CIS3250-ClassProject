@@ -216,7 +216,12 @@ void OneShapeScale()
   }
 
 }
+<<<<<<< HEAD
 void RunScalingInZTests()
+=======
+
+void runZScalingTests()
+>>>>>>> 024ee200a106550a3eb0b9bf32163541d103f107
 {
   
   /*Running Clean Test*/
@@ -229,7 +234,11 @@ void RunScalingInZTests()
 
   ZeroMulti();
 
+<<<<<<< HEAD
   OneShapeScale();
+=======
+  //incrementedPoint();
+>>>>>>> 024ee200a106550a3eb0b9bf32163541d103f107
 
   NullPoint();
 

@@ -80,14 +80,14 @@ void checkIfWithZero(){
     for( int i = 0; i < 4; i++) {
         comparPoint->element[i] *= 0;
         if( i == 3 ) {
-            if( comparPoint->element[i] != 1 ) {
+            if( comparPoint->element[i] != 0 ) {
+                printf("Global scaling: checkIfVectorPointsWereScaledCorrectlyWithZeroGlobalScaleValue failed.\n");
                 continue;
             }
         }
-        else if( comparPoint->element[i] != (float)(i + 1) ) {
+        else if( comparPoint->element[i] == (float)(i + 1) ) {
             continue;
         }
-        printf("Global scaling: checkIfVectorPointsWereScaledCorrectlyWithZeroGlobalScaleValue failed.\n");
         break;
     }
     resetMatrix();

@@ -9,6 +9,6 @@ void validTest();
 void nullPointTest();
 void minimumFloatShearValueTest();
 void maximumFloatShearValueTest();
-void uninitializedShearValueTest();
+void uninitializedShapeStructTest();
 
 #endif

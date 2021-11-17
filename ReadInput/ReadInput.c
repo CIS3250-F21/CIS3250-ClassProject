@@ -52,39 +52,39 @@ struct shape *readInput(char *fileName, char *fileName2) {  // readInput manuall
     //uncoment for other groups when .h file is included
     
 	
-	char line2[40];
-	const char s[2] = "=";
-	char *token;
+	// char line2[40];
+	// const char s[2] = "=";
+	// char *token;
 	
-	int functCallNums[13];
-	i = 0;
-	fgets(line2, 40, fp2);
+	// int functCallNums[13];
+	// i = 0;
+	// fgets(line2, 40, fp2);
 
-	do{
-		token = strtok(line2, s);
-		token = strtok(NULL, s);
-		//printf("token: %s\n", token);
+	// do{
+	// 	token = strtok(line2, s);
+	// 	token = strtok(NULL, s);
+	// 	//printf("token: %s\n", token);
 
-		functCallNums[i] = atoi(token);
-		//printf("functNum: %d\n", functCallNums[i]);
+	// 	functCallNums[i] = atoi(token);
+	// 	//printf("functNum: %d\n", functCallNums[i]);
 
-		i++;
-	} while(fgets(line2, 40, fp2));
+	// 	i++;
+	// } while(fgets(line2, 40, fp2));
 
 
-	setGlobalScale(functCallNums[0]);
-	setXScale(functCallNums[1]);
-  	setYScale(functCallNums[2]);
-  	setZScale(functCallNums[3]);
-  	setXRotation(functCallNums[4]);
-  	setYRotation(functCallNums[5]);
-  	setZRotation(functCallNums[6]);
-  	setXTranslation(functCallNums[7]);
-  	setYTranslation(functCallNums[8]);
-  	setZTranslation(functCallNums[9]);
-    setXShear(functCallNums[10]);
-    setYShear(functCallNums[11]);
-    setZShear(functCallNums[12]);
+	// setGlobalScale(functCallNums[0]);
+	// setXScale(functCallNums[1]);
+  	// setYScale(functCallNums[2]);
+  	// setZScale(functCallNums[3]);
+  	// setXRotation(functCallNums[4]);
+  	// setYRotation(functCallNums[5]);
+  	// setZRotation(functCallNums[6]);
+  	// setXTranslation(functCallNums[7]);
+  	// setYTranslation(functCallNums[8]);
+  	// setZTranslation(functCallNums[9]);
+    // setXShear(functCallNums[10]);
+    // setYShear(functCallNums[11]);
+    // setZShear(functCallNums[12]);
 	
 
     fclose(fp);

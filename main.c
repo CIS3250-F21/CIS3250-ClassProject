@@ -289,7 +289,8 @@ void freeTestPoints() {
 
 void runAllTests() {
   
-    
+    /*Read Input Tests*/
+
     /* Global Scaling Tests */
     createTestPoints();
     runGlobalScalingTests();  

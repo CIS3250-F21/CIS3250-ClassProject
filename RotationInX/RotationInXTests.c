@@ -158,20 +158,22 @@ fails - getPoint returns 1 in the 4th value in point
 */
 int testGetpointClean(){
   int testIndex = inputShape->numOfPoints-1;
-  struct point *testpoint = malloc(sizeof(struct point)) ;
+  struct point *testpoint = malloc(sizeof(struct point));
+  struct point *tempPoint = getPoint (testIndex);
 	for (int i = 0; i < 4; i ++) {
 		testpoint->element[i] = (float)1;
 	}
-  inputShape->points[testIndex] = testpoint;
+  setPoint(inputShape->numOfPoints - 1, testpoint);
   struct point *nulltest = getPoint(testIndex);
   
+  free (tempPoint);
+
   for(int i=0; i<4;i++){
     if(nulltest->element[i] != testpoint->element[i]){
-
       return 0;
     }
   }
-    return 1;
+  return 1;
 }
 
 // testing for generateXRotation

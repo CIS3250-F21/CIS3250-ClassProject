@@ -5,11 +5,11 @@
 #include <float.h>
 
 void ShearInZTests();
-void test1();
-void test2();
-void test3();
-void test4();
-void test5();
+void cleanTest();
+void nullPointTest();
+void minimumFloatShearValueTest();
+void maximumFloatShearValueTest();
+void uninitializedShearValueTest();
 
 #endif
 

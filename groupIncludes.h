@@ -16,7 +16,7 @@
 #include "ScalingInZ/ScalingInZ.h"
 #include "RotationInX/RotationInX.h"
 #include "RotationInY/RotationInY.h"
-#include "Group8/Group8.h"
+#include "RotationInZ/RotationInZ.h"
 #include "XYZTranslation/XYZTranslation.h"
 
 #endif

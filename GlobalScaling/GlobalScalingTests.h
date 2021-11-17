@@ -4,17 +4,17 @@
 
 void runGlobalScalingTests();
 
-void globalScalingCleanTest();
+void checkIfScaledCorrectly();
 
-void globalScalingDirtyTest1();
+void checkIfWithZero();
 
-void globalScalingDirtyTest2();
+void checkIfScaledCorrectlyWithInts();
 
-void globalScalingDirtyTest3();
+void checkVectorPoints();
 
-void globalScalingDirtyTest4();
+void checkIfScaledWithNullPoints();
 
-void globalScalingDirtyTest5();
+void checkIfScaledWithNegativeNumber();
 
 void makeTestPoint(int index);
 

@@ -1,9 +1,7 @@
 CC = clang
 CFLAGS = -std=c99 -Wall -pedantic
 EXECS = main
-
-O_FILES = Group1/Group1.o GlobalScaling/GlobalScaling.o ScalingInX/ScalingInX.o ScalingInY/ScalingInY.o ScalingInZ/ScalingInZ.o RotationInX/RotationInX.o RotationInY/RotationInY.o Group8/Group8.o XYZTranslation/XYZTranslation.o XPlaneReflection/XPlaneReflection.o YPlaneReflection/YPlaneReflection.o ZPlaneReflection/ZPlaneReflection.o ShearInX/ShearInX.o ShearInY/ShearInY.o ShearInZ/ShearInZ.o xyzOrthographicProjection/xyzOrthographicProjection.o OutputResults/OutputResults.o Group1/Group1Tests.o GlobalScaling/GlobalScalingTests.o ScalingInX/ScalingInXTests.o ScalingInY/ScalingInYTests.o ScalingInZ/ScalingInZTests.o RotationInX/RotationInXTests.o RotationInY/RotationInYTests.o Group8/Group8Tests.o XYZTranslation/XYZTranslationTests.o XPlaneReflection/XPlaneReflectionTests.o YPlaneReflection/YPlaneReflectionTests.o ZPlaneReflection/ZPlaneReflectionTests.o ShearInX/ShearInXTests.o ShearInY/ShearInYTests.o ShearInZ/ShearInZTests.o xyzOrthographicProjection/xyzOrthographicProjectionTests.o OutputResults/OutputResultsTests.o
-
+O_FILES = Group1/Group1.o GlobalScaling/GlobalScaling.o ScalingInX/ScalingInX.o ScalingInY/ScalingInY.o ScalingInZ/ScalingInZ.o RotationInX/RotationInX.o RotationInY/RotationInY.o RotationInZ/RotationInZ.o XYZTranslation/XYZTranslation.o XPlaneReflection/XPlaneReflection.o YPlaneReflection/YPlaneReflection.o ZPlaneReflection/ZPlaneReflection.o ShearInX/ShearInX.o ShearInY/ShearInY.o ShearInZ/ShearInZ.o xyzOrthographicProjection/xyzOrthographicProjection.o OutputResults/OutputResults.o Group1/Group1Tests.o GlobalScaling/GlobalScalingTests.o ScalingInX/ScalingInXTests.o ScalingInY/ScalingInYTests.o ScalingInZ/ScalingInZTests.o RotationInX/RotationInXTests.o RotationInY/RotationInYTests.o RotationInZ/RotationInZTests.o XYZTranslation/XYZTranslationTests.o XPlaneReflection/XPlaneReflectionTests.o YPlaneReflection/YPlaneReflectionTests.o ZPlaneReflection/ZPlaneReflectionTests.o ShearInX/ShearInXTests.o ShearInY/ShearInYTests.o ShearInZ/ShearInZTests.o xyzOrthographicProjection/xyzOrthographicProjectionTests.o OutputResults/OutputResultsTests.o
 H_FILES = main.h groupIncludes.h groupTestIncludes.h
 
 all: $(EXECS)
@@ -45,8 +43,8 @@ RotationInX/RotationInX.o: RotationInX/RotationInX.c RotationInX/RotationInX.h m
 RotationInY/RotationInY.o: RotationInY/RotationInY.c RotationInY/RotationInY.h main.h
 	$(CC) $(CFLAGS) -c RotationInY/RotationInY.c -o RotationInY/RotationInY.o
 
-Group8/Group8.o: Group8/Group8.c Group8/Group8.h main.h
-	$(CC) $(CFLAGS) -c Group8/Group8.c -o Group8/Group8.o
+RotationInZ/RotationInZ.o: RotationInZ/RotationInZ.c RotationInZ/RotationInZ.h main.h
+	$(CC) $(CFLAGS) -c RotationInZ/RotationInZ.c -o RotationInZ/RotationInZ.o
 
 XYZTranslation/XYZTranslation.o: XYZTranslation/XYZTranslation.c XYZTranslation/XYZTranslation.h main.h
 	$(CC) $(CFLAGS) -c XYZTranslation/XYZTranslation.c -o XYZTranslation/XYZTranslation.o
@@ -97,8 +95,8 @@ RotationInX/RotationInXTests.o: RotationInX/RotationInXTests.c RotationInX/Rotat
 RotationInY/RotationInYTests.o: RotationInY/RotationInYTests.c RotationInY/RotationInYTests.h main.h
 	$(CC) $(CFLAGS) -c RotationInY/RotationInYTests.c -o RotationInY/RotationInYTests.o
 
-Group8/Group8Tests.o: Group8/Group8Tests.c Group8/Group8Tests.h main.h
-	$(CC) $(CFLAGS) -c Group8/Group8Tests.c -o Group8/Group8Tests.o
+RotationInZ/RotationInZTests.o: RotationInZ/RotationInZTests.c RotationInZ/RotationInZTests.h main.h
+	$(CC) $(CFLAGS) -c RotationInZ/RotationInZTests.c -o RotationInZ/RotationInZTests.o
 
 XYZTranslation/XYZTranslationTests.o: XYZTranslation/XYZTranslationTests.c XYZTranslation/XYZTranslationTests.h main.h
 	$(CC) $(CFLAGS) -c XYZTranslation/XYZTranslationTests.c -o XYZTranslation/XYZTranslationTests.o

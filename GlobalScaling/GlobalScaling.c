@@ -14,7 +14,7 @@ void globalScaling(){
         multiplyMatrix( p, transformationMatrix );
         
         fourthValue = p->element[3];
-        if(globalScaleValue > 0){
+        if(globalScaleValue >= 0){
             if( fourthValue  != 1) {
                 for(int j = 3; j >= 0; j--) {
                     p->element[j] /= fourthValue;

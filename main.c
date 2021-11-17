@@ -86,7 +86,7 @@ int main(int argc, char** argv) {
         free(outputFileName);
     }
     else {
-        fprintf(stderr, "Format %s <input file> <transformation file> <output file>", argv[0]);
+        fprintf(stderr, "Format %s <input file> <transformation file> <output file>\n", argv[0]);
         return 1;
     }
     return 0;

@@ -56,7 +56,7 @@ struct shape *readInput(char *fileName, char *fileName2) {  // readInput manuall
 	const char s[2] = "=";
 	char *token;
 	
-	int functCallNums[10];
+	int functCallNums[13];
 	i = 0;
 	fgets(line2, 40, fp2);
 
@@ -82,6 +82,9 @@ struct shape *readInput(char *fileName, char *fileName2) {  // readInput manuall
   	setXTranslation(functCallNums[7]);
   	setYTranslation(functCallNums[8]);
   	setZTranslation(functCallNums[9]);
+    setXShear(functCallNums[10]);
+    setYShear(functCallNums[11]);
+    setZShear(functCallNums[12]);
 	
 
     fclose(fp);

@@ -1,5 +1,5 @@
-#ifndef GROUP_7_H
-#define GROUP_7_H
+#ifndef ROTATION_Y_H
+#define ROTATION_Y_H
 
 #include <math.h>
 

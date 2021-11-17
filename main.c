@@ -340,7 +340,7 @@ void runAllTests() {
 
     /* Scaling in Z Tests */
     createTestPoints();
-    //runZScalingTests(); 
+    RunScalingInZTests();
     freeTestPoints();
   
   

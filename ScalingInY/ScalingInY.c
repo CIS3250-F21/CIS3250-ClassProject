@@ -21,7 +21,7 @@ int yScaling() {
 
         if (curPoint == NULL) {
             // point at this index is not initialised
-            fprintf(stderr, "ERROR: Could not perform yScaling function as point at index %d was NULL.\n", curIndex);
+            //fprintf(stderr, "ERROR: Could not perform yScaling function as point at index %d was NULL.\n", curIndex);
             return 0;
         }
 

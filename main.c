@@ -353,7 +353,9 @@ void runAllTests() {
     freeTestPoints();
   
     /* Rotation in Z Tests */
+    createTestPoints();
     runRotationInZTests ();
+    freeTestPoints();
   
   
     /* X Plane Reflection Tests */

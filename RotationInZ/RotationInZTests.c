@@ -87,21 +87,13 @@ void runRotationInZTests() {
     */
 
 
-        // The value of the global vector is initialized to match the vector that is being tested by the zRotation function
-        // If the function works properly, these values will change to match the expected vector
+    // The value of the global vector is initialized to match the vector that is being tested by the zRotation function
+    // If the function works properly, these values will change to match the expected vector
     setZRotation(3.14/2);
 
-    struct point tempVector;
-    tempVector.element[0] = 1;
-    tempVector.element[1] = 4;
-    tempVector.element[2] = 2;
-    tempVector.element[3] = 1;
-
-    setPoint(0, &tempVector);
-
-    // Initializing the values of the expected vector and then testing the zRotation on the vector [1, 4, 2 , 1] and the angle 3.14/2
-    // The expected vector after rotation should have values of {4, -1, 2, 1}
-    float expectedVector[4] = {-4, 1.0032, 2, 1};
+    // Initializing the values of the expected vector and then testing the zRotation on the vector [0, 1, 2, 1] and the angle 3.14/2
+    // The expected vector after rotation should have values of {0.9999, 0.0008, 2, 1}
+    float expectedVector[4] = {0.9999, 0.0008, 2, 1};
     testValidVectors (expectedVector);
 
     //Finished valid vectors testing

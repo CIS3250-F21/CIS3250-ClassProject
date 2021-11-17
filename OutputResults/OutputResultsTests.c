@@ -55,7 +55,7 @@ void runOutputResultsTests () {
         
         // Check if values match
         if (x != testPoint.element[0] || y != testPoint.element[1] || z != testPoint.element[2]) {
-                        fprintf(stderr, "[Test 17.1.1] Incorrect point values for test point (%s:%d)\n", __FILE__, __LINE__);
+            fprintf(stderr, "[Test 17.1.1] Incorrect point values for test point (%s:%d)\n", __FILE__, __LINE__);
         }
         
         fclose(fp);

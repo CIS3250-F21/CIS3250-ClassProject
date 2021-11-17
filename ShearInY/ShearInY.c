@@ -15,7 +15,6 @@ void yShear() {
   //change col 1, row 2
   transformationMatrix[1][2] = zShearVal;
 
-
   //multply points by matrix
   struct point* currentVector;
 

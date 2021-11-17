@@ -21,90 +21,90 @@ int testSetXRotationWithValidTheta(){
 
 /* setPoint Testing */
 
-/* Dirty test, index is negative
-pass - return 1, setPoint sets the error point at index
-fail - return 0, setPoint does not set the error point at index 
-*/  
-int testSetpointifIndexIsNeg() {
-    struct point testpoint; 
-    int index = -1;
-    for (int i = 0; i < 4; i ++) {
-      testpoint.element[i] = (float)1;
-    }
-    setPoint(index, &testpoint);
+// /* Dirty test, index is negative
+// pass - return 1, setPoint sets the error point at index
+// fail - return 0, setPoint does not set the error point at index 
+// */  
+// int testSetpointifIndexIsNeg() {
+//     struct point *testpoint = malloc (sizeof (struct point)); 
+//     int index = -1;
+//     for (int i = 0; i < 4; i ++) {
+//       testpoint->element[i] = (float)1;
+//     }
+//     setPoint(index, testpoint);
 
-		struct point *result = getPoint(index);
+// 		if (testpoint == NULL) {
+//       free (testpoint);
+// 			return 1;
+// 		}
 
-		if (result->element[3] == 0) {
-			return 1;
-		}
-
-    return 0;
-}
+//     free (testpoint);
+//     return 0;
+// }
 
 
-/* Dirty test, index is too big
-pass - return 1, setPoint sets the error point at index
-fail - return 0, setPoint does not set the error point at index 
-*/   
-int testSetpointIndexIsnumOfPoints() {
-    struct point *testpoint =malloc(sizeof(struct point)) ; 
-    int index = inputShape->numOfPoints;
-    for (int i = 0; i < 4; i ++) {
-      testpoint->element[i] = (float)1;
-    }
+// /* Dirty test, index is too big
+// pass - return 1, setPoint sets the error point at index
+// fail - return 0, setPoint does not set the error point at index 
+// */   
+// int testSetpointIndexIsnumOfPoints() {
+//     struct point *testpoint =malloc(sizeof(struct point)) ; 
+//     int index = inputShape->numOfPoints;
+//     for (int i = 0; i < 4; i ++) {
+//       testpoint->element[i] = (float)1;
+//     }
 
-    setPoint(index, testpoint);
+//     setPoint(index, testpoint);
     
-    if (testpoint ==NULL) {
-        free(testpoint);
-        return 1;
-    }
+//     if (testpoint ==NULL) {
+//         free(testpoint);
+//         return 1;
+//     }
 
-    free(testpoint);
-    return 0;
-}
+//     free(testpoint);
+//     return 0;
+// }
 
-/* Dirty test, point is unintialized
-pass - return 1, setPoint sets the error point at index
-fail - return 0, setPoint does not set the error point at index 
-*/  
-int testSetpointIfpointIsUninitialized() {
-    struct point *testpoint =malloc(sizeof(struct point)) ; 
-    int index = inputShape->numOfPoints -1;
+// /* Dirty test, point is unintialized
+// pass - return 1, setPoint sets the error point at index
+// fail - return 0, setPoint does not set the error point at index 
+// */  
+// int testSetpointIfpointIsUninitialized() {
+//     struct point *testpoint =malloc(sizeof(struct point)) ; 
+//     int index = inputShape->numOfPoints -1;
         
-    setPoint(index, testpoint);
+//     setPoint(index, testpoint);
     
-    if (testpoint ==NULL) {
-        free(testpoint);
-        return 1;
-    }
+//     if (testpoint ==NULL) {
+//         free(testpoint);
+//         return 1;
+//     }
 
-    free(testpoint);
-    return 0;
-}  
+//     free(testpoint);
+//     return 0;
+// }  
 
-/* Clean test
-pass - return 1, testpoint is set correctly
-fail - return 0, testpoint is not set correctly
-*/
-int testSetpointIsDefinedAndIndexIsPositiveExNumofpoint() {
-    struct point testpoint;
-	for (int i = 0; i < 4; i ++) {
-		testpoint.element[i] = (float)1;
-	} 
+// /* Clean test
+// pass - return 1, testpoint is set correctly
+// fail - return 0, testpoint is not set correctly
+// */
+// int testSetpointIsDefinedAndIndexIsPositiveExNumofpoint() {
+//     struct point testpoint;
+// 	for (int i = 0; i < 4; i ++) {
+// 		testpoint.element[i] = (float)1;
+// 	} 
 
-  int testIndex = inputShape->numOfPoints -1;
-  setPoint(testIndex, &testpoint);
-  struct point *checkpoint = getPoint(testIndex);
+//   int testIndex = inputShape->numOfPoints -1;
+//   setPoint(testIndex, &testpoint);
+//   struct point *checkpoint = getPoint(testIndex);
 
-  for (int i = 0; i < 4; i++) {
-        if(checkpoint->element[i] != testpoint.element[i]) {
-            return 0; //failure
-        }
-    }   
-    return 1;
-}
+//   for (int i = 0; i < 4; i++) {
+//         if(checkpoint->element[i] != testpoint.element[i]) {
+//             return 0; //failure
+//         }
+//     }   
+//     return 1;
+// }
 
 
 /* 		Get Functions Testing		 	*/
@@ -132,7 +132,7 @@ fails - getPoint returns 1 in the 4th value in point
 */
 int testGetpointNegativeIndex(){
 	struct point *nulltest = getPoint(-1);
-	if (nulltest->element[3] != 1) {
+	if (nulltest == NULL) {
 		return 1;
 	}
   
@@ -144,8 +144,8 @@ pass  - getPoint does not return 1 in the 4th value in point
 fails - getPoint returns 1 in the 4th value in point 
 */
 int testGetpointIndexIsnumOfPoints(){
-  struct point *nulltest = getPoint(inputShape->numOfPoints);
-  if(nulltest->element[3] != 1){
+  struct point *nullTest = getPoint(inputShape->numOfPoints);
+  if(nullTest == NULL){
     return 1;
   }
   
@@ -216,29 +216,29 @@ int testGenerateXRotationClean(){
   pass - return 1
   fail - return 0 if the transformation matrix is different than checkMatrix
  */
-int testGenerateXRotationUninitializedTheta(){ 
+// int testGenerateXRotationUninitializedTheta(){ 
 
-	float *theta = malloc (sizeof (float)); //in radians
+// 	float *theta = malloc (sizeof (float)); //in radians
 
-	float checkMatrix[4][4]={
-		{1 , 0 , 0 , 0},
-		{0 , cos(*theta) , (- (sin(*theta))) , 0},
-		{0 , sin(*theta) , cos(*theta) , 0},
-		{0 , 0 , 0 , 1}
-	}; 
+// 	float checkMatrix[4][4]={
+// 		{1 , 0 , 0 , 0},
+// 		{0 , cos(*theta) , (- (sin(*theta))) , 0},
+// 		{0 , sin(*theta) , cos(*theta) , 0},
+// 		{0 , 0 , 0 , 1}
+// 	}; 
 
-	generateXRotationMatrix(*theta);
+// 	generateXRotationMatrix(*theta);
 
-	for (int i = 0; i < 4; i++) { //check if they host same values 
-		for (int j = 0; j < 4; j++) {
-			if(checkMatrix[i][j] != transformationMatrix[i][j]) {
+// 	for (int i = 0; i < 4; i++) { //check if they host same values 
+// 		for (int j = 0; j < 4; j++) {
+// 			if(checkMatrix[i][j] != transformationMatrix[i][j]) {
 			
-				return 0; //failure
-			}
-		}
-	}
-  return 1; //pass
-}
+// 				return 0; //failure
+// 			}
+// 		}
+// 	}
+//   return 1; //pass
+// }
 
 /*
   dirty test for generateXRotationMatrix
@@ -443,31 +443,31 @@ int runRotationInXTests() {
 
 	int totalFail = 0;
 
-  if(testSetXRotationWithValidTheta() ==0) {
-      fprintf(stderr, "Set X rotation failed to set the correct theta\n");
-      totalFail ++;
-  }
+  // if(testSetXRotationWithValidTheta() ==0) {
+  //     fprintf(stderr, "Set X rotation failed to set the correct theta\n");
+  //     totalFail ++;
+  // }
 		                                                        
-	if(testSetpointifIndexIsNeg() == 0) { 
-    fprintf(stderr, "Set point failed to set error point\n"); 
-    totalFail ++;
-  }					
+	// if(testSetpointifIndexIsNeg() == 0) { 
+  //   fprintf(stderr, "Set point failed to set error point\n"); 
+  //   totalFail ++;
+  // }					
 
-	if(testSetpointIndexIsnumOfPoints()==0) {
-    fprintf(stderr, "Set point failed to set error point\n"); 
-    totalFail ++;
-  }																										
+	// if(testSetpointIndexIsnumOfPoints()==0) {
+  //   fprintf(stderr, "Set point failed to set error point\n"); 
+  //   totalFail ++;
+  // }																										
 
-  if(testSetpointIfpointIsUninitialized()==0) {
-    fprintf(stderr, "Set point failed to set error point\n"); 
-    totalFail ++;
-  }	
+  // if(testSetpointIfpointIsUninitialized()==0) {
+  //   fprintf(stderr, "Set point failed to set error point\n"); 
+  //   totalFail ++;
+  // }	
 																																														
 	
-  if(testSetpointIsDefinedAndIndexIsPositiveExNumofpoint()==0) { 
-    fprintf(stderr,"Incorrect computation of generate x rotation matrix\n");
-    totalFail ++;
-  }	
+  // if(testSetpointIsDefinedAndIndexIsPositiveExNumofpoint()==0) { 
+  //   fprintf(stderr,"Incorrect computation of generate x rotation matrix\n");
+  //   totalFail ++;
+  // }	
 																																												
 	
 	if(testGetXRotation()==0) {
@@ -486,8 +486,8 @@ int runRotationInXTests() {
   }																																																	
 	
 	if(testGetpointClean()==0) {
-       fprintf(stderr, "Get point returned incorrect value\n");
-       totalFail ++;
+    fprintf(stderr, "Get point returned incorrect value\n");
+    totalFail ++;
   }																																																										
 	
   if(testGenerateXRotationClean()==0) {
@@ -497,10 +497,10 @@ int runRotationInXTests() {
 																																				
 	
 
-	if(testGenerateXRotationUninitializedTheta()==0) {
-       fprintf(stderr, "incorrect computational input caused failure\n");
-       totalFail ++;
-  }																				
+	// if(testGenerateXRotationUninitializedTheta()==0) {
+  //      fprintf(stderr, "incorrect computational input caused failure\n");
+  //      totalFail ++;
+  // }																				
 																																														
 	
 	// if(testGenerateXRotationWhenMatrixIsNULL()==0) {

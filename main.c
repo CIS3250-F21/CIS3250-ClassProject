@@ -250,7 +250,7 @@ void runAllTests() {
 
     // TESTS GO HERE
     runGroup7Tests();  // Group 7 tests
-    runZScalingTests(); 
+    RunScalingInZTests(); 
 
     //runScalingInXTests(); // Group 3 tests
 

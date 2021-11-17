@@ -1,4 +1,5 @@
 #include "ScalingInZ.h"
+#include <float.h>
 
 void zScaling(){
 
@@ -12,15 +13,14 @@ void zScaling(){
     float zValue;
     zValue = newPoint->element[2];
     zValue *= pointScalingValue;
+    if(zValue >=FLT_MAX)
+    {
+      return;
+    }
     newPoint->element[2] = zValue;
     setPoint(x, newPoint);
     x++; 
   }
-
-  // if (!newPoint){ //checks that there is a valid point at the index location
-  //     fprintf(stderr, "zScaling(): ERROR: No point at given location\n");
-  //     return;
-  // }
   
   return;
 }

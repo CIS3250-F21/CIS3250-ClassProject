@@ -1,38 +1,38 @@
 #include "ScalingInZTests.h"
 #include "ScalingInZ.h"
 #include <float.h>
+#include <math.h>
 /* Clean Test */
 
 /*
   The values in the matrix are compared before and after 
   they're scaled by the z scalar to check for accurracy and 
   overall correctness.
+  Test Pass -> All z Values are scaled by the appropriate z scalar
+  Test Fail -> One or more z Values are not scaled by the appropriate z scalar
 */
 /* Combination of test functions */ 
 
-void correctScale()
+void CorrectScale()
 {
-  float val[] = {1.1,2.1,3.1,4.1,5.1};//5x5 matrix
-
-
-//   float tempScale = getZScale(); 
+  float zVals[] = {1.1,2.1,3.1,4.1,5.1};//Simulates the z values in a 5x5 vector
   
-  float zVals[inputShape->numOfPoints]; 
-
-  /* Saving inital z values*/
-  for (int x = 0; x < inputShape->numOfPoints; x++){
-    struct point *newPoint = getPoint(x);
-    zVals[x] = newPoint->element[2];
+  /* setting only z values in each vector*/
+  for (int z = 0; z < inputShape->numOfPoints; z++)
+  {
+    struct point *newPoint = getPoint(z);
+    newPoint->element[2] = zVals[z];
+    setPoint(z, newPoint);
   }
-  setZScale(2.0);//Setting only the z values for each point
+  setZScale(2.0);
 
   zScaling();// Scaling points 
 
   /* Comparing inital z values to newly scaled z values*/
   for (int y = 0; y < inputShape->numOfPoints; y++)
   {
-	  struct point *newPoint = getPoint(y); 
-      if (val[y]== newPoint->element[2])//If z value didn't scale
+	    struct point *newPoint = getPoint(y); 
+      if (newPoint->element[2] == zVals[y])//If a z value didn't scale
       {
         fprintf(stderr, "ERROR: Issue with Z values\n");
         return;
@@ -44,18 +44,18 @@ void correctScale()
 
 /* 
   Tests the ability of the zScaling function in handling multiplication by 0.
-  Upon successful completion, all z values should be set to 0 otherwise an error message 
-  will follow.
+  Test Pass -> Each vector should have a z value of 0
+  Test Fail -> Vector(s) have a z value other than 0
 */
-void zeroMulti(){
+void ZeroMulti(){
 
-  float val[] = {1.1, -2.2, 3.3, -4.4, 5.5};//5x5 matrix
+  float zVals[] = {1.1, -2.2, 3.3, -4.4, 5.5};//Simulates the z values in a 5x5 vector
 
   //Setting only the z values for each point
   for (int z = 0; z < inputShape->numOfPoints; z++)
   {
     struct point *newPoint = getPoint(z);
-    newPoint->element[2] = val[z];
+    newPoint->element[2] = zVals[z];
     setPoint(z, newPoint);
   }
 
@@ -67,7 +67,7 @@ void zeroMulti(){
   for (int y = 0; y < inputShape->numOfPoints; y++)
   {
       struct point *newPoint = getPoint(y);
-      if (newPoint->element[2] != 0)//+ve didn't turn -ve
+      if (newPoint->element[2] != 0)
       {
         fprintf(stderr, "ERROR: Improper scaling with Z scalar of 0\n\n");
         return; 
@@ -77,31 +77,33 @@ void zeroMulti(){
 }
 /*
   Test to see if zScaling can handle negative multipliers
-  Previously negative floats should be positive and vice versa. 
+  Test Pass-> Previously negative z values should be now be positive + scaled and vice versa
+  Test Fail-> Previously negative z values are still negative and/or are not scaled after scaling and vice versa
 */
-void negativeShapeScale()
+void NegativeShapeScale()
 {
-  float val[] = {-1.1, 2.2, -3.3, 4.4, -5.5};//5x5 matrix
+  float zVals[] = {-1.1, 2.2, -3.3, 4.4, -5.5};//Simulates the z values in a 5x5 vector
 
   for (int z = 0; z < inputShape->numOfPoints; z++)
   {
     struct point *newPoint = getPoint(z);
-    newPoint->element[2] = val[z];
+    newPoint->element[2] = zVals[z];
     setPoint(z, newPoint);
   }
     
   setZScale(-3.0);
   
   float f_precision = 0.00001; 
+
   zScaling();
   
     for (int y = 0; y < inputShape->numOfPoints; y++)
     {
 		    struct point *newPoint = getPoint(y);
 
-        if (val[y] * getZScale() - f_precision >= newPoint->element[2] && val[y] * -3.0 + getZScale() <= newPoint->element[2])
+        if (zVals[y] * getZScale() - f_precision >= newPoint->element[2] && zVals[y] * getZScale() + f_precision <= newPoint->element[2])
         {
-          fprintf(stderr, "ERROR: Improper scaling of using a -ve scalar\n\n");
+          fprintf(stderr, "ERROR: Improper scaling using a -ve scalar\n\n");
           return;
         }
     }
@@ -109,44 +111,52 @@ void negativeShapeScale()
 
 
 /*
-  Test the function's ability to handle overflow. 
-  Signed overflow should occur as a result of scaling by the max floating value. 
+  Test the function's ability to handle float max value
+  Test Pass -> Program catches the float maximum and doesn't scale it
+  Test Fail -> Large value trying to be scaled isn't caught and is scaled leading to
+               the infinity value is left being left within the vector structure
 */ 
-void overflow()
+void Overflow()
 {
-  float zVals[inputShape->numOfPoints];
-  for (int x = 0; x < inputShape->numOfPoints; x++){
-    	zVals[x] = 1;
+  float zVals[] = {FLT_MAX,2,3,4,5};//Simulates the z values in a 5x5 vector
+
+  int infFlag = 0; 
+
+  for (int z = 0; z < inputShape->numOfPoints; z++)
+  {
+    struct point *newPoint = getPoint(z);
+    newPoint->element[2] = zVals[z];
+    setPoint(z, newPoint);
   }
-  zVals[0] = FLT_MAX;
 
-   //Setting the z value for the first point to 0
-  struct point *newPoint = getPoint(0);
-  newPoint->element[2] = zVals[0];
-  setPoint(0, newPoint);
+  setZScale(20);
 
-  setZScale(2.0);
   zScaling();//Scaling z values 
 
-  newPoint = getPoint(0);
-  
-  if (newPoint->element[2] < 0)//max float should wrap around to -ve
+  for (int x = 0; x < inputShape->numOfPoints; x++)
   {
-    fprintf(stderr, "ERROR: Overflow has occurred\n\n");
+    struct point * newPoint = getPoint(x);
+    if (newPoint->element[2] >= FLT_MAX)
+    {
+      infFlag = 1;
+    }
   }
-
+  if (infFlag!=1)
+  {
+    fprintf(stderr, "Error: Infinity not caught within the vector structure");
+    return;
+  }
 }
 
 /*
   Tests the function's ability to handle a NULL point.
-  Flags an error if the function returns a valid point and did not have a segmentation fault.
+  Test Pass -> Main function should flag an error indicating that program is trying to 
+               scale a Null vector
+  Test Fail -> Main Program tries to scale a null vector and causes a segmentation fault
 */
-void nullPoint()
+void NullPoint()
 {
-  float zVals[inputShape->numOfPoints];
-  for (int x = 0; x < inputShape->numOfPoints; x++){
-    zVals[x] = x;
-  }
+  float zVals[] = {1.0,2.0,3.0,4.0,5.0};//Simulates the z values in a 5x5 vector
 
   //Setting only the z values for each point
   for (int z = 0; z < inputShape->numOfPoints; z++)
@@ -173,19 +183,14 @@ void nullPoint()
 }
 
 /*
-  Test to observe function's ability to handle points outside
-  of the expected bounds.
-  The test should still be able to correctly handle the points
-  that are inside the expected bounds. If the ZScaling() function
-  returns and has successfully modified the points within bounds
-  the test has passed.
+  Tests the function's ability to handle a float scalar of 1
+  Test Pass -> None of the scaled values are different from the pre-scaled values
+  Test Fail -> Scaled z values differ from pre-scaled z values 
 */
-void incrementedPoint()
+void OneShapeScale()
 {
-  float zVals[inputShape->numOfPoints];
-  for (int x = 0; x < inputShape->numOfPoints; x++){
-    zVals[x] = x;
-  }
+  //initializing the vectors
+  float zVals[] = {-1.1, 2.2, -3.3, 4.4, -5.5};//5x5 matrix
 
   //Setting only the z values for each point
   for (int z = 0; z < inputShape->numOfPoints; z++)
@@ -195,32 +200,37 @@ void incrementedPoint()
     setPoint(z, newPoint);
   }
 
-  setZScale(2);
-  inputShape->points += 2;
+  setZScale(1.0);
 
   zScaling();
 
-  struct point *newPoint = getPoint(0);
-  if (newPoint->element[2] != 4){
-    fprintf(stderr, "Function did not make changes to point \n\n");
+  for (int x = 0; x < inputShape->numOfPoints; x++)
+  {
+      struct point *newPoint = getPoint(x);
+
+      //Directly comparing "scaled  z values" to originally set z values
+      if (newPoint->element[2] != zVals[x])
+      {
+        fprintf(stderr, "Error: Z values scaled by value other than 1\n\n");
+      }
   }
-  inputShape->points -= 2; //reset point pointer
+
 }
-void runZScalingTests()
+void RunScalingInZTests()
 {
   
   /*Running Clean Test*/
-  correctScale();
+  CorrectScale();
 
   /*Running Dirty Tests*/
-  overflow();
+  Overflow();
 
-  negativeShapeScale();
+  NegativeShapeScale();
 
-  zeroMulti();
+  ZeroMulti();
 
-  incrementedPoint();
+  OneShapeScale();
 
-  nullPoint();
+  NullPoint();
 
 }

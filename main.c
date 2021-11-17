@@ -164,7 +164,7 @@ float getYRotation() {
 }
 
 float getZRotation() {
-    return 0;
+    return inputShape->rotation[2];
 }
 
 float getXTranslation() {
@@ -211,7 +211,7 @@ void setGlobalScale(float newGlobalScale) {
 }
 
 void setXScale(float newXScale) {
-  inputShape -> scaling[0] = newXScale;
+    inputShape -> scaling[0] = newXScale;
 }
 
 void setYScale(float newYScale) {
@@ -230,6 +230,7 @@ void setYRotation(float angle) {
 }
 
 void setZRotation(float newTheta) {
+    inputShape->rotation[2] = newTheta;
 }
 
 void setXTranslation(float newXTranslation) {
@@ -351,6 +352,10 @@ void runAllTests() {
     runRotationInYTests(); 
     freeTestPoints();
   
+    /* Rotation in Z Tests */
+    createTestPoints();
+    runRotationInZTests ();
+    freeTestPoints();
   
   
     /* X Plane Reflection Tests */
@@ -383,10 +388,13 @@ void runAllTests() {
     //runYShearTests(); //still need to get a testrunner
     freeTestPoints();
 
+    /* Z Shear Tests */
+    createTestPoints();
+    //runZShearTests();
+    freeTestPoints();
+
     /* Output Results Tests */
     createTestPoints();
     runOutputResultsTests();
     freeTestPoints();
-
-
 }

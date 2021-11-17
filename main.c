@@ -389,9 +389,7 @@ void runAllTests() {
     freeTestPoints();
 
     createTestPoints();
-    xyzOrthographicProjectionRunTests();
+   // xyzOrthographicProjectionRunTests();
     freeTestPoints();
-
-    runOutputResultsTests(); // Output Results Tests
 
 }

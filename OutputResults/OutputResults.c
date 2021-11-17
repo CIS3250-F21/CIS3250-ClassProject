@@ -21,7 +21,7 @@ int outputPoints(char* filename) {
     }
 
     // output header
-    fprintf(fp, "x,y,z\n");
+    fprintf(fp, "X,Y,Z\n");
 
     // output points to file
     int i = 0;

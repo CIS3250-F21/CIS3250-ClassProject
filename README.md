@@ -42,6 +42,11 @@ Please compile using "make" to make sure all of your functions and tests compile
 2. change transformation matrix to a static array
 3. 
 
+## Input/Output File Format
+- The input and output files are in csv Format
+    - The first line in the file is a header "X,Y,Z" which describes what each value in the subsequent lines represents.
+    - Each remaining line contains a set of 3 values separated by commas representing the X, Y and Z values of a point.
+
 ## How to Run
 run make
 run ./main with the following structure:

@@ -3,14 +3,17 @@
 
 void xRotation() {
 
+    // call generateXRotationMatrix on our rotation theta
     generateXRotationMatrix(getXRotation());
     
     struct point* currPoint;
 
+    // call multiplyMatrix on each point in inputShape
     for (int i = 0; i < inputShape -> numOfPoints; i++) {
 		
         currPoint = getPoint(i);
 		
+        // exit if point at i doesn't exist
         if (currPoint == NULL) {
           return;
         }
@@ -22,6 +25,8 @@ void xRotation() {
 
 void generateXRotationMatrix(float theta) {
 
+  // apply the rotation matrix formula to the transformationMatrix 
+  // with the given theta
   transformationMatrix[0][0] = 1;
   transformationMatrix[0][1] = 0;
   transformationMatrix[0][2] = 0;

@@ -12,6 +12,7 @@
 #include "ShearInX/ShearInXTests.h"
 #include "ShearInZ/ShearInZTests.h"
 #include "XPlaneReflection/XPlaneReflectionTests.h"
+#include "xyzOrthographicProjection/xyzOrthographicProjectionTests.h"
 #include "YPlaneReflection/YPlaneReflectionTests.h"
 #include "XYZTranslation/XYZTranslationTests.h"
 #include "ScalingInZ/ScalingInZTests.h"

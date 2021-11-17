@@ -17,12 +17,12 @@ Please compile using "make" to make sure all of your functions and tests compile
 
 ## Group File
 
-1. Put all of your group specific functions in your spesific files. Change them from Group# to what you see fit.
+1. Put all of your group specific functions in your specific files. Change them from Group# to what you see fit.
 2. We already have you getters and setters defined, please put your code inside of the functions, and **_do not_** change anything else inside of main.c or main.h.
 
 ## Tests
 
-1. Your test functions can go in your testing files, inside your folder. Rename them form Group# to what you see fit.
+1. Your test functions can go in your testing files, inside your folder. Rename them from Group# to what you see fit.
 2. Please name the function that runs all of your tests runGroup#Tests()
 3. If you have a test handler, rename it to group#TestHandler()
 
@@ -39,8 +39,8 @@ Please compile using "make" to make sure all of your functions and tests compile
 ## Changes:
 
 1. Changed any mention of Vectors to Points
-2. change transformation matrix to a static array
-3. 
+2. Changed transformation matrix to a static array
+3. Changed ScalingInY to return an int (1 if successfully transforms, 0 if it fails any)
 
 ## Input/Output File Format
 - The input and output files are in csv Format

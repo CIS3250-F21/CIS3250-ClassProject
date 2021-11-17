@@ -336,7 +336,7 @@ void runAllTests() {
 
     /* Scaling in Y Tests */
     createTestPoints();
-    runScalingInXTests();
+    runScalingInYTests();
     freeTestPoints();
 
     /* Scaling in Z Tests */

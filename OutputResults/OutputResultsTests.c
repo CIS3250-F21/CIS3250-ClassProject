@@ -10,7 +10,8 @@ void runOutputResultsTests () {
     inputShape->numOfPoints = 0;
 
     FILE* fp;
-    float x, y, z;
+    float x, y, z, l;
+    char buffer[BUFSIZ];
   
     // Clean Tests
   
@@ -47,12 +48,14 @@ void runOutputResultsTests () {
         fprintf(stderr, "[Test 17.1.1] File \"output1.1.txt\" does not exist (%s:%d)\n", __FILE__, __LINE__);
     }
     else {
+        // read header
+        fgets(buffer, BUFSIZ, fp);
         // read values from file
-        fscanf(fp, "%f %f %f", &x, &y, &z);
+        fscanf(fp, "%f,%f,%f,%f", &x, &y, &z, &l);
         
         // Check if values match
-        if (x != testPoint.element[0] || y != testPoint.element[1] || z != testPoint.element[2]) {
-                        fprintf(stderr, "[Test 17.1.1] Incorrect point values for test point (%s:%d)\n", __FILE__, __LINE__);
+        if (x != testPoint.element[0] || y != testPoint.element[1] || z != testPoint.element[2] || l != testPoint.element[3]) {
+            fprintf(stderr, "[Test 17.1.1] Incorrect point values for test point (%s:%d)\n", __FILE__, __LINE__);
         }
         
         fclose(fp);
@@ -87,11 +90,11 @@ void runOutputResultsTests () {
         fprintf(stderr, "[Test 17.2.1] File \"output2.1.txt\" does not exist (%s:%d)\n", __FILE__, __LINE__);
     }
     else {
-        // move to the end of the file
-        fseek(fp, 0, SEEK_END);
+        // read the header
+        fgets(buffer, BUFSIZ, fp);
 
-        // check if the end of the file is at location 0
-        if (ftell(fp) != 0) {
+        // check if the end of the file
+        if (fgetc(fp) != EOF) {
             fprintf(stderr, "[Test 17.2.1] Expected empty file but file has data (%s:%d)\n", __FILE__, __LINE__);
         }
 
@@ -143,8 +146,11 @@ void runOutputResultsTests () {
         fprintf(stderr, "[Test 17.2.2] Error file \"output2.2.txt\" does not exist (%s:%d)\n", __FILE__, __LINE__);
     }
     else {
+        // read header
+        fgets(buffer, BUFSIZ, fp);
+
         // read first point
-        if ((fscanf(fp,"%f %f %f\n", &x, &y, &z)) != 3) {
+        if ((fscanf(fp,"%f,%f,%f,%f\n", &x, &y, &z, &l)) != 4) {
             fprintf(stderr, "[Test 17.2.2] Error reading points from file (%s:%d)\n", __FILE__, __LINE__);
         }
         else {
@@ -152,7 +158,8 @@ void runOutputResultsTests () {
             if (
                 x != testPoint2.element[0] ||
                 y != testPoint2.element[1] ||
-                z != testPoint2.element[2]
+                z != testPoint2.element[2] ||
+                l != testPoint2.element[3]
             ) {
                 fprintf(stderr, "[Test 17.2.2] Error points do not match test point 2 (%s:%d)\n", __FILE__, __LINE__);
             }
@@ -271,8 +278,11 @@ void runOutputResultsTests () {
         fprintf(stderr, "[Test 17.2.5] File \"output2.5.txt\" does not exist (%s:%d)\n", __FILE__, __LINE__);
     }
     else {
+        // read header
+        fgets(buffer, BUFSIZ, fp);
+
         // read first point from file
-        if(fscanf(fp, "%f %f %f", &x, &y, &z) != 3) {
+        if(fscanf(fp, "%f,%f,%f,%f\n", &x, &y, &z, &l) != 4) {
             fprintf(stderr, "[Test 17.2.5] Error reading values for test point 7 (%s:%d)\n", __FILE__, __LINE__);
         }
         else {
@@ -280,14 +290,15 @@ void runOutputResultsTests () {
             if (
                 x != testPoint7.element[0] || 
                 y != testPoint7.element[1] || 
-                z != testPoint7.element[2]
+                z != testPoint7.element[2] ||
+                l != testPoint7.element[3]
             ) {
                 fprintf(stderr, "[Test 17.2.5] Incorrect values for test point 7 (%s:%d)\n", __FILE__, __LINE__);
             }
         }
 
         // read second point from file
-        if(fscanf(fp, "%f %f %f", &x, &y, &z) != 3) {
+        if(fscanf(fp, "%f,%f,%f,%f\n", &x, &y, &z, &l) != 4) {
             fprintf(stderr, "[Test 17.2.5] Error reading values for test point 8 (%s:%d)\n", __FILE__, __LINE__);
         }
         else {
@@ -295,10 +306,16 @@ void runOutputResultsTests () {
             if (
                 x != testPoint8.element[0] ||
                 y != testPoint8.element[1] || 
-                z != testPoint8.element[2]
+                z != testPoint8.element[2] ||
+                l != testPoint8.element[3]
             ) {
                 fprintf(stderr, "[Test 17.2.5] Incorrect values for test point 8 (%s:%d)\n", __FILE__, __LINE__);
             }
+        }
+
+        // check if only 2 points
+        if (!feof(fp)) {
+            fprintf(stderr, "[Test 17.2.5] Expected end of file (%s:%d)\n", __FILE__, __LINE__);
         }
 
         fclose(fp);

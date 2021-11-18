@@ -4,54 +4,22 @@
 #include "groupTestIncludes.h"
 
 int main(int argc, char** argv) {
-    fileName = malloc(sizeof(char) * 10);
-    strcpy(fileName, "shape.txt");
-
     // Run tests if need be
     if (argc == 2 && strcmp(argv[1], "-t") == 0) {
         runAllTests();
-    } else if (argc == 2) {
-    //else if (argc == 3) {
-        //fileName = malloc(sizeof(char) * BUFSIZ);
-        //strncpy(fileName, argv[1], BUFSIZ);
+    } else if (argc == 4) {
+        inputFileName = malloc(sizeof(char) * BUFSIZ);
+        strncpy(inputFileName, argv[1], BUFSIZ);
+
+        transformationFileName = malloc(sizeof(char) * BUFSIZ); 
+        strncpy(transformationFileName, argv[2], BUFSIZ);
         
         outputFileName = malloc(sizeof(char) * BUFSIZ);
-        strncpy(outputFileName, argv[1], BUFSIZ);
 
-        //~~~~~ Reading file input ~~~~~//
-        inputShape = readInput(fileName);
-
-        // Instantiate Temporary Points //
-        // FIXME: REMOVE AFTER GROUP 1 IMPLEMENTATION //
-        inputShape->points = malloc(sizeof(struct point*) * 1);
-        inputShape->numOfPoints = 1;
-
-        struct point* temp = malloc(sizeof(struct point));
+        strncpy(outputFileName, argv[3], BUFSIZ);
         
-        temp->element[0] = 1.0f;
-        temp->element[1] = 1.0f;
-        temp->element[2] = 1.0f;
-        temp->element[3] = 1.0f;
-
-        setPoint(0, temp);
-
-        //GROUP 1 WILL IMPLEMENT THIS
-        // Set values in inputShape
-        setGlobalScale(1);
-        setXScale(1);
-        setYScale(1);
-        setZScale(1);
-        setXRotation(0);
-        setYRotation(0);
-        setZRotation(0);
-        setXTranslation(0);
-        setYTranslation(0);
-        setZTranslation(0);
-        setXShear(0);
-        setYShear(0);
-        setZShear(0);
-
-
+        //~~~~~ Reading file input ~~~~~//
+        readInput(inputFileName, transformationFileName);
 
         //~~~~~ Global scaling ~~~~~//
         globalScaling();
@@ -114,15 +82,14 @@ int main(int argc, char** argv) {
 
         // free shape
         free(inputShape);
+        
+        free(inputFileName);
+        free(outputFileName);
     }
     else {
-        // fprintf(stderr, "Format %s <input file> <output file>", argv[0]);
-        fprintf(stderr, "Format: %s <output file>\n", argv[0]);
-        free(fileName);
+        fprintf(stderr, "Format %s <input file> <transformation file> <output file>\n", argv[0]);
         return 1;
     }
-    free(outputFileName);
-    free(fileName);
     return 0;
 }
 
@@ -165,7 +132,7 @@ float getYRotation() {
 }
 
 float getZRotation() {
-    return 0;
+    return inputShape->rotation[2];
 }
 
 float getXTranslation() {
@@ -212,7 +179,7 @@ void setGlobalScale(float newGlobalScale) {
 }
 
 void setXScale(float newXScale) {
-  inputShape -> scaling[0] = newXScale;
+    inputShape -> scaling[0] = newXScale;
 }
 
 void setYScale(float newYScale) {
@@ -231,6 +198,7 @@ void setYRotation(float angle) {
 }
 
 void setZRotation(float newTheta) {
+    inputShape->rotation[2] = newTheta;
 }
 
 void setXTranslation(float newXTranslation) {
@@ -323,7 +291,8 @@ void freeTestPoints() {
 
 void runAllTests() {
   
-    
+    /*Read Input Tests*/
+
     /* Global Scaling Tests */
     createTestPoints();
     runGlobalScalingTests();  
@@ -352,6 +321,10 @@ void runAllTests() {
     runRotationInYTests(); 
     freeTestPoints();
   
+    /* Rotation in Z Tests */
+    createTestPoints();
+    runRotationInZTests ();
+    freeTestPoints();
   
   
     /* X Plane Reflection Tests */
@@ -384,10 +357,20 @@ void runAllTests() {
     //runYShearTests(); //still need to get a testrunner
     freeTestPoints();
 
+    /* Z Shear Tests */
+    createTestPoints();
+    runZShearTests();
+    freeTestPoints();
+  
+    createTestPoints();
+    // xyzOrthographicProjectionRunTests();
+    freeTestPoints();
+
     /* Output Results Tests */
     createTestPoints();
     runOutputResultsTests();
     freeTestPoints();
 
+   
 
 }

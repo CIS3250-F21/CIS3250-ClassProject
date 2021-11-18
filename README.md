@@ -46,3 +46,6 @@ Please compile using "make" to make sure all of your functions and tests compile
 run make
 run ./main with the following structure:
 ./main outputfile
+
+## yScaling (ScalingInY.c) Functionality
+Retrives the yScale value. Using a loop to cycle through the points, yScaling retrieves a point, multiplies the y value (index 1 of the point) by yScale, and stores the new value.

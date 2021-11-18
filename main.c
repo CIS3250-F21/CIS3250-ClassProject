@@ -171,6 +171,10 @@ float getZShear() {
     return inputShape->shearing[2];
 }
 
+float getOrthographic() {
+    return inputShape->orthographic;
+}
+
 // ~~~~~~~~~~~~~~~~~ Setters ~~~~~~~~~~~~~~~~~~~ //
 void setPoint(int index, struct point* newPoint) {
     // if the new point is null, don't set
@@ -248,6 +252,10 @@ void setYShear(float newYShear) {
 
 void setZShear(float newZShear) {
     inputShape->shearing[2] = newZShear;
+}
+
+void setOrthographic(float newOrthographic) {
+    inputShape->orthographic = newOrthographic;
 }
 
 void multiplyMatrix(struct point* currPoint, float matrix[4][4]) {

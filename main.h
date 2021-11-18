@@ -17,6 +17,7 @@ struct shape {
     float translation[3];
     float reflection[3];
     float shearing[3];
+    float orthographic;
 };
 
 float transformationMatrix[4][4];
@@ -47,6 +48,7 @@ float getZReflection();
 float getXShear();
 float getYShear();
 float getZShear();
+float getOrthographic();
 
 //~~~~~~ Setters ~~~~~~//
 void setPoint(int index, struct point* newPoint);
@@ -66,6 +68,7 @@ void setZReflection(float newZReflection);
 void setXShear(float newXShear);
 void setYShear(float newYShear);
 void setZShear(float newZShear);
+void setOrthographic(float newOrthographic);
 
 //~~~~~ Helpers ~~~~~~//
 void createTestPoints();

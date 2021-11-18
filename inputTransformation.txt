@@ -14,3 +14,4 @@ setZReflection=0
 setXshear=0
 setYshear=0
 setZshear=0
+setOrthographic=0

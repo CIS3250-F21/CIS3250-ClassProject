@@ -82,7 +82,7 @@ int main(int argc, char** argv) {
 
         // free shape
         free(inputShape);
-        
+        free(transformationFileName);
         free(inputFileName);
         free(outputFileName);
     }
@@ -124,7 +124,7 @@ float getZScale() {
 }
 
 float getXRotation() {
-    return 0;
+    return inputShape->rotation[0];
 }
 
 float getYRotation() {
@@ -191,6 +191,7 @@ void setZScale(float newZScale) {
 }
 
 void setXRotation(float newTheta) {
+    inputShape->rotation[0] = newTheta;
 }
 
 void setYRotation(float angle) {
@@ -318,7 +319,11 @@ void runAllTests() {
     RunScalingInZTests();
     freeTestPoints();
   
-  
+    /* Rotation in X Tests */
+    createTestPoints();
+    setXRotation(0);
+    runRotationInXTests(); 
+    freeTestPoints();
   
     /* Rotation in Y Tests */
     createTestPoints();

@@ -57,7 +57,7 @@ int main(int argc, char** argv) {
 
         //~~~~~ Reflection on the z plane ~~~~~//
         if( getZReflection() == 1) {
-            zPlaneReflection();
+            ZPlaneReflection();
         }
 
         //~~~~~ x shearing ~~~~~//

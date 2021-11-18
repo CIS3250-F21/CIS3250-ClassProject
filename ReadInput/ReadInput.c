@@ -67,25 +67,25 @@ struct shape *readInput(char *fileName, char *fileName2) {  // readInput manuall
 		//printf("token: %s\n", token);
 
 		functCallNums[i] = atof(token);
-		//printf("functNum: %d\n", functCallNums[i]);
+		// //printf("functNum: %d\n", functCallNums[i]);
 
 		i++;
 	} while(fgets(line2, 40, fp2));
 
 
-	setGlobalScale(functCallNums[0]);
-	setXScale(functCallNums[1]);
-  	setYScale(functCallNums[2]);
-  	setZScale(functCallNums[3]);
-  	setXRotation(functCallNums[4]);
-  	setYRotation(functCallNums[5]);
-  	setZRotation(functCallNums[6]);
-  	setXTranslation(functCallNums[7]);
-  	setYTranslation(functCallNums[8]);
-  	setZTranslation(functCallNums[9]);
-    setXShear(functCallNums[10]);
-    setYShear(functCallNums[11]);
-    setZShear(functCallNums[12]);
+	// setGlobalScale(functCallNums[0]);
+	// setXScale(functCallNums[1]);
+  	// setYScale(functCallNums[2]);
+  	// setZScale(functCallNums[3]);
+  	// setXRotation(functCallNums[4]);
+  	// setYRotation(functCallNums[5]);
+  	// setZRotation(functCallNums[6]);
+  	// setXTranslation(functCallNums[7]);
+  	// setYTranslation(functCallNums[8]);
+  	// setZTranslation(functCallNums[9]);
+    // setXShear(functCallNums[10]);
+    // setYShear(functCallNums[11]);
+    // setZShear(functCallNums[12]);
 	
 
     fclose(fp);

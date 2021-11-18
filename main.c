@@ -46,13 +46,19 @@ int main(int argc, char** argv) {
         xyzTranslation();
 
         //~~~~~ Reflection on the x plane ~~~~~//
-        xPlaneReflection();
+        if( getXReflection() == 1 ) {
+            xPlaneReflection();
+        }
 
         //~~~~~ Reflection on the y plane ~~~~~//
-        yPlaneReflection();
+        if( getYReflection() == 1 ) {
+            yPlaneReflection();
+        }
 
         //~~~~~ Reflection on the z plane ~~~~~//
-        ZPlaneReflection();
+        if( getZReflection() == 1) {
+            zPlaneReflection();
+        }
 
         //~~~~~ x shearing ~~~~~//
         xShear();
@@ -64,7 +70,9 @@ int main(int argc, char** argv) {
         zShear();
 
         //~~~~~ Orthographic projection ~~~~~//
-        xyzOrthographicProjection();
+        if( getOrthographic() == 1 ) {
+            xyzOrthographicProjection();
+        }
 
         //~~~~~ Writing output file ~~~~~//
         outputPoints(outputFileName);

@@ -2,19 +2,16 @@
 #include "../main.h"
 
 void xPlaneReflection() {
-    // If X Reflection was selected in transformation file
-    if( getXReflection() != 0 ) {
-        generateXPlaneReflectionMatrix();
-        struct point* p;
-        int i = 0;
+    generateXPlaneReflectionMatrix();
+    struct point* p;
+    int i = 0;
 
-        // Loop through each point negating x-values
-        while ((p = getPoint(i)) != NULL)
-        {
-            multiplyMatrix( p, transformationMatrix );
-            setPoint( i, p );
-            i++;
-        }
+    // Loop through each point negating x-values
+    while ((p = getPoint(i)) != NULL)
+    {
+        multiplyMatrix( p, transformationMatrix );
+        setPoint( i, p );
+        i++;
     }
 }
 

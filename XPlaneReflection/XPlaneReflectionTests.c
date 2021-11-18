@@ -70,6 +70,7 @@ int testSetPoint( struct point * localPoint, int index ) {
 }
 
 void runXPlaneReflectionTests() {
+	
     generateXPlaneReflectionMatrix();
     testTransformationMatrix();
 	testInputNotEmpty();
@@ -78,6 +79,10 @@ void runXPlaneReflectionTests() {
     resetMatrix();
 }
 
+/* 
+ Tests if a point was multiplied successfully
+ Returns 1 on if reflected successfully, 0 otherwise
+*/
 void testXPlaneReflection() {
     struct point oldP, newP;
 

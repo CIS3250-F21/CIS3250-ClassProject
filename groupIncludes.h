@@ -8,7 +8,7 @@
 #include "ShearInX/ShearInX.h"
 #include "ShearInY/ShearInY.h"
 #include "ShearInZ/ShearInZ.h"
-#include "Group16/Group16.h"
+#include "xyzOrthographicProjection/xyzOrthographicProjection.h"
 #include "OutputResults/OutputResults.h"
 #include "GlobalScaling/GlobalScaling.h"
 #include "ScalingInX/ScalingInX.h"
@@ -16,7 +16,7 @@
 #include "ScalingInZ/ScalingInZ.h"
 #include "RotationInX/RotationInX.h"
 #include "RotationInY/RotationInY.h"
-#include "Group8/Group8.h"
+#include "RotationInZ/RotationInZ.h"
 #include "XYZTranslation/XYZTranslation.h"
 
 #endif

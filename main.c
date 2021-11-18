@@ -11,7 +11,7 @@ int main(int argc, char** argv) {
         inputFileName = malloc(sizeof(char) * BUFSIZ);
         strncpy(inputFileName, argv[1], BUFSIZ);
 
-        transformationFileName = malloc(sizeof(char) * BUFSIZ);
+        transformationFileName = malloc(sizeof(char) * BUFSIZ); 
         strncpy(transformationFileName, argv[2], BUFSIZ);
         
         outputFileName = malloc(sizeof(char) * BUFSIZ);
@@ -81,7 +81,7 @@ int main(int argc, char** argv) {
 
         // free shape
         free(inputShape);
-        free(transformationFileName);
+        
         free(inputFileName);
         free(outputFileName);
     }
@@ -190,7 +190,6 @@ void setZScale(float newZScale) {
 }
 
 void setXRotation(float newTheta) {
-    inputShape->rotation[0] = newTheta;
 }
 
 void setYRotation(float angle) {
@@ -198,7 +197,6 @@ void setYRotation(float angle) {
 }
 
 void setZRotation(float newTheta) {
-    inputShape->rotation[2] = newTheta;
 }
 
 void setXTranslation(float newXTranslation) {

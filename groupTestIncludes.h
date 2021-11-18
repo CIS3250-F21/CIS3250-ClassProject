@@ -2,6 +2,7 @@
 #ifndef GROUP_TEST_INCLUDES_H
 #define GROUP_TEST_INCLUDES_H
 
+#include "ReadInput/ReadInputTests.h"
 #include "RotationInX/RotationInXTests.h"
 #include "RotationInY/RotationInYTests.h"
 #include "RotationInZ/RotationInZTests.h"

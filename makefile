@@ -1,5 +1,5 @@
 CC = clang
-CFLAGS = -std=c99 -Wall -pedantic
+CFLAGS = -std=c99 -Wall -pedantic -g
 EXECS = main
 O_FILES = ReadInput/ReadInput.o GlobalScaling/GlobalScaling.o ScalingInX/ScalingInX.o ScalingInY/ScalingInY.o ScalingInZ/ScalingInZ.o RotationInX/RotationInX.o RotationInY/RotationInY.o RotationInZ/RotationInZ.o XYZTranslation/XYZTranslation.o XPlaneReflection/XPlaneReflection.o YPlaneReflection/YPlaneReflection.o ZPlaneReflection/ZPlaneReflection.o ShearInX/ShearInX.o ShearInY/ShearInY.o ShearInZ/ShearInZ.o xyzOrthographicProjection/xyzOrthographicProjection.o OutputResults/OutputResults.o ReadInput/ReadInputTests.o GlobalScaling/GlobalScalingTests.o ScalingInX/ScalingInXTests.o ScalingInY/ScalingInYTests.o ScalingInZ/ScalingInZTests.o RotationInX/RotationInXTests.o RotationInY/RotationInYTests.o RotationInZ/RotationInZTests.o XYZTranslation/XYZTranslationTests.o XPlaneReflection/XPlaneReflectionTests.o YPlaneReflection/YPlaneReflectionTests.o ZPlaneReflection/ZPlaneReflectionTests.o ShearInX/ShearInXTests.o ShearInY/ShearInYTests.o ShearInZ/ShearInZTests.o xyzOrthographicProjection/xyzOrthographicProjectionTests.o OutputResults/OutputResultsTests.o
 H_FILES = main.h groupIncludes.h groupTestIncludes.h

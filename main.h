@@ -62,6 +62,7 @@ void setZShear(float newZShear);
 
 //~~~~~ Helpers ~~~~~~//
 void createTestPoints();
+void createNTestPoints(int numOfPoints);
 void freeTestPoints();
 void runAllTests();
 

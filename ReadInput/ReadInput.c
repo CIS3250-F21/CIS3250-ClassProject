@@ -1,4 +1,5 @@
 #include "ReadInput.h"
+
 //include .h file for other groups functions then uncomment lower lines
 
 /*
@@ -42,7 +43,7 @@ struct shape *readInput(char *fileName, char *fileName2) {  // readInput manuall
 
         newShape->points[i] = points;
 
-        newShape->numOfPoints = newShape->numOfPoints + 1;
+        newShape->numOfPoints += 1;
 
         //printf("%f, %f, %f, %f\n", points->element[0], points->element[1], points->element[2], points->element[3]);
 
@@ -56,7 +57,7 @@ struct shape *readInput(char *fileName, char *fileName2) {  // readInput manuall
 	const char s[2] = "=";
 	char *token;
 	
-	int functCallNums[13];
+	float functCallNums[13];
 	i = 0;
 	fgets(line2, 40, fp2);
 
@@ -65,7 +66,7 @@ struct shape *readInput(char *fileName, char *fileName2) {  // readInput manuall
 		token = strtok(NULL, s);
 		//printf("token: %s\n", token);
 
-		functCallNums[i] = atoi(token);
+		functCallNums[i] = atof(token);
 		//printf("functNum: %d\n", functCallNums[i]);
 
 		i++;

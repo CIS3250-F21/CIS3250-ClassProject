@@ -166,11 +166,11 @@ int testGetpointClean(){
   //constuct test points and temp points 
   struct point *testpoint = malloc(sizeof(struct point));
   struct point *tempPoint = getPoint (testIndex);
-  // loop through and set each element in the test poin t
+  // loop through and set each element in the test point
 	for (int i = 0; i < 4; i ++) {
 		testpoint->element[i] = (float)1;
 	}
-  //set a point at indeex number of points -1 
+  //set a point at index number of points -1 
   setPoint(inputShape->numOfPoints - 1, testpoint);
   //setting pointer the the get point of testIndex
   struct point *nulltest = getPoint(testIndex);
@@ -197,32 +197,37 @@ int testGetpointClean(){
   pass - return 1
   fail - return 0 if the transformation matrix is different then the matrix given
  */
-int testGenerateXRotationClean(){ 
+// int testGenerateXRotationClean(){ 
+//     struct point **expected = malloc(sizeof(struct point *) * 5);
 
-	float theta = -4; //in radians
+//     // instantiating the expected result
+//     for (int i = 0; i < 5; i++) {
+//         expected[i] = malloc(sizeof(struct point));
+//         for (int j = 0; j < 3; j++) {
+//             expected[i]->element[j] = j + i;
+//         }
+//         expected[i]->element[3] = 1;
+//     }
 
-  //set the check matrix 
-	float checkMatrix[4][4]={
-		{1 , 0 , 0 , 0},
-		{0 , cos(theta) , (- (sin(theta))) , 0},
-		{0 , sin(theta) , cos(theta) , 0},
-		{0 , 0 , 0 , 1}
-	}; 
+//     xRotation();
 
-  //call generate x rotation 
-	generateXRotationMatrix(theta);
+//     for (int i = 0; i < inputShape->numOfPoints; i++) {
+//         for (int j = 0; j < 4; j++) {
+//             if (expected[i]->element[j] != inputShape->points[i]->element[j]) {
+//                 for (int i = 0; i < 5; i++) {
+//                     free(expected[i]);
+//                 }
+//                 free(expected);
+//                 return 0;
+//             }
+//         }
+//     }
 
-  //nested forloop for checking if the matries contain the same values 
-	for (int i = 0; i < 4; i++) {
-		for (int j = 0; j < 4; j++) {
-			if(checkMatrix[i][j] != transformationMatrix[i][j]) {
-				
-				return 0; //failure
-			}
-		}
-	}
-  return 1; //pass
-}
+//     for (int i = 0; i < 5; i++) {
+//         free(expected[i]);
+//     }
+// 	return 1;
+// }
 
 /*
   dirty test for generateXRotationMatrix
@@ -307,7 +312,6 @@ int testGenerateXRotationMatrixWhereThetaIsOverFloatMax(){
 	for (int i = 0; i < 4; i++) { 
 		for (int j = 0; j < 4; j++) {
 			if(checkMatrix[i][j] != transformationMatrix[i][j]) {
-			
 				return 0; //failure
 			}
 		}
@@ -424,44 +428,44 @@ fail - return 0, transformMatrix is not all 0s
 pass - return 1, transformMatrix is equal to expected result
 fail - return 0, transformMatrix is not equal to expected result
 */
-int testXRotationClean() {
+// int testXRotationClean() {
 
-  /
-  struct point ** expected = malloc(sizeof(struct point *) * 5);
+//   // allocating space for expected point
+//   struct point ** expected = malloc(sizeof(struct point *) * 5);
 
-  //for loop that created expected and sets values 
-  for(int i = 0; i < 5; i++) {
-    expected[i] = malloc(sizeof(struct point));
-    for(int j = 0; j < 3; j++) {
-      expected[i]->element[j] = j + i;
-    }
-    expected[i]->element[3] = 1;
-  }
+//   //for loop that created expected and sets values 
+//   for(int i = 0; i < 5; i++) {
+//     expected[i] = malloc(sizeof(struct point));
+//     for(int j = 0; j < 3; j++) {
+//       expected[i]->element[j] = j + i;
+//     }
+//     expected[i]->element[3] = 1;
+//   }
 
-  xRotation();
+//   xRotation();
 
-  //for loop for setting expected 
-  for(int i = 0; i < inputShape->numOfPoints; i++) {
-    for (int j = 0; j < 4; j++) {
-        if(expected[i]->element[j] != inputShape->points[i]->element[j]) {
-          for (int i = 0; i < 5; i++){
-            free(expected[i]);
-          }
-          free(expected);
+//   //for loop for setting expected 
+//   for(int i = 0; i < inputShape->numOfPoints; i++) {
+//     for (int j = 0; j < 4; j++) {
+//         if(expected[i]->element[j] != inputShape->points[i]->element[j]) {
+//           for (int i = 0; i < 5; i++){
+//             free(expected[i]);
+//           }
+//           free(expected);
 					
-          return 0;
-        }
-    }
-  }
+//           return 0;
+//         }
+//     }
+//   }
 
-  //for loop to free 
-  for (int i = 0; i < 5; i++){
+//   //for loop to free 
+//   for (int i = 0; i < 5; i++){
 
-    free(expected[i]);
-  }
-  free(expected);
-  return 1;
-} 
+//     free(expected[i]);
+//   }
+//   free(expected);
+//   return 1;
+// } 
 
 //run tests and print if issue arrises 
 int runRotationInXTests() {
@@ -496,33 +500,33 @@ int runRotationInXTests() {
 																																												
 	//if test failed print 																																					
 	if(testGetXRotation()==0) {
-    fprintf(stderr, "Get X rotation failed to get the correct theta\n");
-    totalFail ++;
-  }																																													
+		fprintf(stderr, "Get X rotation failed to get the correct theta\n");
+		totalFail ++;
+	}																																													
 	
-  //if test failed print 																																					
-	if(testGetpointNegativeIndex()==0) {
-    printf("Get point incorrectly gave a point using a negative index\n");
-    totalFail ++;
-  }																																								
+	//if test failed print 																																					
+		if(testGetpointNegativeIndex()==0) {
+		printf("Get point incorrectly gave a point using a negative index\n");
+		totalFail ++;
+	}																																								
 	
-  //if test failed print 																																					
+  	//if test failed print 																																					
 	if(testGetpointIndexIsnumOfPoints()==0) {
-    fprintf(stderr,"Get point incorrectly gave a point using an out of bounds index\n");
-    totalFail ++;
-  }																																																	
+		fprintf(stderr,"Get point incorrectly gave a point using an out of bounds index\n");
+		totalFail ++;
+	}																																																	
 	
-  //if test failed print 																																					
+	//if test failed print 																																					
 	if(testGetpointClean()==0) {
-    fprintf(stderr, "Get point returned incorrect value\n");
-    totalFail ++;
-  }																																																										
-	
-  //if test failed print 																																					
-  if(testGenerateXRotationClean()==0) {
-       fprintf(stderr,"Incorrect computation of generate x rotation matrix\n");
-       totalFail ++;
-  }	
+		fprintf(stderr, "Get point returned incorrect value\n");
+		totalFail ++;
+	}																																																										
+		
+	//if test failed print 																																					
+	// if(testGenerateXRotationClean()==0) {
+	// 	fprintf(stderr,"Incorrect computation of generate x rotation matrix\n");
+	// 	totalFail ++;
+	// }	
 																																				
 	
 
@@ -559,9 +563,9 @@ int runRotationInXTests() {
   // }																																				
 
   //if test failed print 																																					
-	if(testXRotationClean()==0) {
-     	fprintf(stderr, "xRotation did not give expected output during clean test\n");
-       totalFail ++;
-  }																																
+// 	if(testXRotationClean()==0) {
+//      	fprintf(stderr, "xRotation did not give expected output during clean test\n");
+//        totalFail ++;
+//   }																																
 	return totalFail;
 }

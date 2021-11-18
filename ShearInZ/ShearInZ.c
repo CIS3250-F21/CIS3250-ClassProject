@@ -1,7 +1,7 @@
 #include "ShearInZ.h"
 
 void zShear() {
-    // Use the transformation matrix and multiply the vectors 
+    // Use the transformation matrix and multiply the points 
     struct point *currentPoint;
 
     // Reset transformation matrix before use

@@ -7,6 +7,6 @@
 
 #include "../main.h"
 
-struct shape* readInput(char*, char*);
+void readInput(char*, char*);
 
 #endif

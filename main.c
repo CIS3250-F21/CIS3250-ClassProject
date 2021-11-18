@@ -18,57 +18,57 @@ int main(int argc, char** argv) {
         strncpy(outputFileName, argv[3], BUFSIZ);
         
         //~~~~~ Group 1 ~~~~~//
-        inputShape = readInput(inputFileName, transformationFileName);
-/*
-        // //~~~~~ Group 2 ~~~~~//
-        // globalScaling();
+        readInput(inputFileName, transformationFileName);
 
-        // //~~~~~ Group 3 ~~~~~//
-        // xScaling();
+        //~~~~~ Group 2 ~~~~~//
+        globalScaling();
 
-        // //~~~~~ Group 4 ~~~~~//
-        // yScaling();
+        //~~~~~ Group 3 ~~~~~//
+        xScaling();
 
-        // //~~~~~ Group 5 ~~~~~//
-        // zScaling();
+        //~~~~~ Group 4 ~~~~~//
+        yScaling();
 
-        // //~~~~~ Group 6 ~~~~~//
-        // xRotation();
+        //~~~~~ Group 5 ~~~~~//
+        zScaling();
 
-        // //~~~~~ Group 7 ~~~~~//
-        // yRotation();
+        //~~~~~ Group 6 ~~~~~//
+        xRotation();
 
-        // //~~~~~ Group 8 ~~~~~//
-        // zRotation();
+        //~~~~~ Group 7 ~~~~~//
+        yRotation();
 
-        // //~~~~~ Group 9 ~~~~~//
-        // xyzTranslation();
+        //~~~~~ Group 8 ~~~~~//
+        zRotation();
 
-        // //~~~~~ Group 10 ~~~~~//
-        // xPlaneReflection();
+        //~~~~~ Group 9 ~~~~~//
+        xyzTranslation();
 
-        // //~~~~~ Group 11 ~~~~~//
-        // yPlaneReflection();
+        //~~~~~ Group 10 ~~~~~//
+        xPlaneReflection();
 
-        // //~~~~~ Group 12 ~~~~~//
-        // ZPlaneReflection();
+        //~~~~~ Group 11 ~~~~~//
+        yPlaneReflection();
 
-        // //~~~~~ Group 13 ~~~~~//
-        // xShear();
+        //~~~~~ Group 12 ~~~~~//
+        ZPlaneReflection();
 
-        // //~~~~~ Group 14 ~~~~~//
-        // yShear();
+        //~~~~~ Group 13 ~~~~~//
+        xShear();
 
-        // //~~~~~ Group 15 ~~~~~//
-        // zShear();
+        //~~~~~ Group 14 ~~~~~//
+        yShear();
 
-        // //~~~~~ Group 16 ~~~~~//
-        // xyzOrthographicProjection();
+        //~~~~~ Group 15 ~~~~~//
+        zShear();
 
-        // //~~~~~ Group 17 ~~~~~//
-        // outputPoints(outputFileName);
+        //~~~~~ Group 16 ~~~~~//
+        xyzOrthographicProjection();
 
-*/
+        //~~~~~ Group 17 ~~~~~//
+        outputPoints(outputFileName);
+
+
         // free all non null points
         for (int i = 0; i < inputShape->numOfPoints; i++) {
             if (inputShape->points[i] != NULL) {
@@ -190,6 +190,7 @@ void setZScale(float newZScale) {
 }
 
 void setXRotation(float newTheta) {
+    inputShape->rotation[0] = newTheta;
 }
 
 void setYRotation(float angle) {
@@ -197,6 +198,7 @@ void setYRotation(float angle) {
 }
 
 void setZRotation(float newTheta) {
+    inputShape->rotation[2] = newTheta;
 }
 
 void setXTranslation(float newXTranslation) {

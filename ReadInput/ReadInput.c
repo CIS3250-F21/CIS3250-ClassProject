@@ -10,20 +10,20 @@ Valmik Dixon 1124060
 Jesse Varkul 1139803
 */
 
-struct shape *readInput(char *fileName, char *fileName2) {  // readInput manually creates an "expected" file read that would be what we expect from the "real function". Since the TDD is not expected to actually read the real text file, we do not get into file reading here.
-    struct shape *newShape = malloc(sizeof(struct shape));
+void readInput(char *fileName, char *fileName2) {  // readInput manually creates an "expected" file read that would be what we expect from the "real function". Since the TDD is not expected to actually read the real text file, we do not get into file reading here.
+    inputShape = malloc(sizeof(struct shape));
     FILE *fp = fopen(fileName, "r");
     FILE *fp2 = fopen(fileName2, "r");
 
     if (fp == NULL) {
-        return NULL;
+        return;
     }
     if (fp2 == NULL) {
-        return NULL;
+        return;
     }
 
-    newShape->numOfPoints = 0;
-    newShape->points = NULL;
+    inputShape->numOfPoints = 0;
+    inputShape->points = NULL;
     char line[40];
     struct point *points;
     int i = 0;
@@ -38,12 +38,12 @@ struct shape *readInput(char *fileName, char *fileName2) {  // readInput manuall
         }
 
         //printf("Pass1\n");
-        newShape->points = realloc(newShape->points, (sizeof(struct point *) * (i + 1)));
+        inputShape->points = realloc(inputShape->points, (sizeof(struct point *) * (i + 1)));
         //printf("Pass2\n");
 
-        newShape->points[i] = points;
+        inputShape->points[i] = points;
 
-        newShape->numOfPoints += 1;
+        inputShape->numOfPoints += 1;
 
         //printf("%f, %f, %f, %f\n", points->element[0], points->element[1], points->element[2], points->element[3]);
 
@@ -64,32 +64,29 @@ struct shape *readInput(char *fileName, char *fileName2) {  // readInput manuall
 	do{
 		token = strtok(line2, s);
 		token = strtok(NULL, s);
-		//printf("token: %s\n", token);
+		// printf("token: %f\n", atof(token));
 
 		functCallNums[i] = atof(token);
-		// //printf("functNum: %d\n", functCallNums[i]);
+		// printf("functNum: %f\n", functCallNums[i]);
 
 		i++;
 	} while(fgets(line2, 40, fp2));
-
-
-	// setGlobalScale(functCallNums[0]);
-	// setXScale(functCallNums[1]);
-  	// setYScale(functCallNums[2]);
-  	// setZScale(functCallNums[3]);
-  	// setXRotation(functCallNums[4]);
-  	// setYRotation(functCallNums[5]);
-  	// setZRotation(functCallNums[6]);
-  	// setXTranslation(functCallNums[7]);
-  	// setYTranslation(functCallNums[8]);
-  	// setZTranslation(functCallNums[9]);
-    // setXShear(functCallNums[10]);
-    // setYShear(functCallNums[11]);
-    // setZShear(functCallNums[12]);
+    
+	setGlobalScale(functCallNums[0]);
+	setXScale(functCallNums[1]);
+  	setYScale(functCallNums[2]);
+  	setZScale(functCallNums[3]);
+  	setXRotation(functCallNums[4]);
+  	setYRotation(functCallNums[5]);
+  	setZRotation(functCallNums[6]);
+  	setXTranslation(functCallNums[7]);
+  	setYTranslation(functCallNums[8]);
+  	setZTranslation(functCallNums[9]);
+    setXShear(functCallNums[10]);
+    setYShear(functCallNums[11]);
+    setZShear(functCallNums[12]);
 	
 
     fclose(fp);
     fclose(fp2);
-
-    return newShape;
 }

@@ -263,13 +263,18 @@ void resetMatrix() {
 
 // Instantiates shape struct for testing
 void createTestPoints() {
+    createNTestPoints(5);
+}
+
+// Creates new inputShape with variable amt of testPoints
+void createNTestPoints(int numOfPoints) {
     int i;
 
     inputShape = malloc(sizeof(struct shape));
-    inputShape->numOfPoints = 5;
-    inputShape->points = malloc(sizeof(struct point*) * 5);
+    inputShape->numOfPoints = numOfPoints;
+    inputShape->points = malloc(sizeof(struct point*) * numOfPoints);
 
-    for (i = 0; i < 5; i++) {
+    for (i = 0; i < numOfPoints; i++) {
         struct point* temp = malloc(sizeof(struct point));
         for (int j = 0; j < 3; j++) {
             temp->element[j] = j + i;
@@ -282,7 +287,7 @@ void createTestPoints() {
 // Frees instantiated shape struct
 void freeTestPoints() {
     int i;
-    for (i = 0; i < 5; i++) {
+    for (i = 0; i < inputShape->numOfPoints; i++) {
         free(inputShape->points[i]);
     }
     free(inputShape->points);
@@ -361,9 +366,10 @@ void runAllTests() {
     createTestPoints();
     runZShearTests();
     freeTestPoints();
-  
+    
+    /* XYZ Orthographic Projection Tests */
     createTestPoints();
-    // xyzOrthographicProjectionRunTests();
+    xyzOrthographicProjectionRunTests();
     freeTestPoints();
 
     /* Output Results Tests */

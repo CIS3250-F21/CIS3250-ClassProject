@@ -1,7 +1,7 @@
 #include "ReadInputTests.h"
 
 //shape->points[i]->element[0]
-
+/*
 // (CLEAN) Test #1 will compare all the given float values against the expected float values. We expect this test to pass.
 char ReadInputTest1(char testFile[20], char answerFile[20], char inputfile2[20]) {
     struct shape *input = readInput(testFile, inputfile2);
@@ -155,3 +155,4 @@ void freeShape(struct shape *test) {
     free(test->points);
     free(test);
 }
+*/

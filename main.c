@@ -46,13 +46,19 @@ int main(int argc, char** argv) {
         xyzTranslation();
 
         //~~~~~ Reflection on the x plane ~~~~~//
-        xPlaneReflection();
+        if( getXReflection() == 1 ) {
+            xPlaneReflection();
+        }
 
         //~~~~~ Reflection on the y plane ~~~~~//
-        yPlaneReflection();
+        if( getYReflection() == 1 ) {
+            yPlaneReflection();
+        }
 
         //~~~~~ Reflection on the z plane ~~~~~//
-        ZPlaneReflection();
+        if( getZReflection() == 1) {
+            ZPlaneReflection();
+        }
 
         //~~~~~ x shearing ~~~~~//
         xShear();
@@ -64,7 +70,9 @@ int main(int argc, char** argv) {
         zShear();
 
         //~~~~~ Orthographic projection ~~~~~//
-        xyzOrthographicProjection();
+        if( getOrthographic() == 1 ) {
+            xyzOrthographicProjection();
+        }
 
         //~~~~~ Writing output file ~~~~~//
         outputPoints(outputFileName);
@@ -147,6 +155,18 @@ float getZTranslation() {
     return inputShape->translation[2];
 }
 
+float getXReflection() {
+    return inputShape->reflection[0];
+}
+
+float getYReflection() {
+    return inputShape->reflection[1];
+}
+
+float getZReflection() {
+    return inputShape->reflection[2];
+}
+
 float getXShear() {
     return inputShape->shearing[0];
 }
@@ -157,6 +177,10 @@ float getYShear() {
 
 float getZShear() {
     return inputShape->shearing[2];
+}
+
+float getOrthographic() {
+    return inputShape->orthographic;
 }
 
 // ~~~~~~~~~~~~~~~~~ Setters ~~~~~~~~~~~~~~~~~~~ //
@@ -214,6 +238,18 @@ void setZTranslation(float newZTranslation) {
     inputShape->translation[2] = newZTranslation;
 }
 
+void setXReflection(float newXReflection) {
+    inputShape->reflection[0] = newXReflection;
+}
+
+void setYReflection(float newYReflection) {
+    inputShape->reflection[1] = newYReflection;
+}
+
+void setZReflection(float newZReflection) {
+    inputShape->reflection[2] = newZReflection;
+}
+
 void setXShear(float newXShear) {
     inputShape->shearing[0] = newXShear;
 }
@@ -224,6 +260,10 @@ void setYShear(float newYShear) {
 
 void setZShear(float newZShear) {
     inputShape->shearing[2] = newZShear;
+}
+
+void setOrthographic(float newOrthographic) {
+    inputShape->orthographic = newOrthographic;
 }
 
 void multiplyMatrix(struct point* currPoint, float matrix[4][4]) {

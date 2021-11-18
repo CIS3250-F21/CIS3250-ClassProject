@@ -64,10 +64,10 @@ struct shape *readInput(char *fileName, char *fileName2) {  // readInput manuall
 	do{
 		token = strtok(line2, s);
 		token = strtok(NULL, s);
-		//printf("token: %s\n", token);
+		printf("token: %s\n", token);
 
 		functCallNums[i] = atof(token);
-		// //printf("functNum: %d\n", functCallNums[i]);
+		// printf("functNum: %d\n", functCallNums[i]);
 
 		i++;
 	} while(fgets(line2, 40, fp2));

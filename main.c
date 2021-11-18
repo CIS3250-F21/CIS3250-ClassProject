@@ -11,7 +11,7 @@ int main(int argc, char** argv) {
         inputFileName = malloc(sizeof(char) * BUFSIZ);
         strncpy(inputFileName, argv[1], BUFSIZ);
 
-        transformationFileName = malloc(sizeof(char) * BUFSIZ); 
+        transformationFileName = malloc(sizeof(char) * BUFSIZ);
         strncpy(transformationFileName, argv[2], BUFSIZ);
         
         outputFileName = malloc(sizeof(char) * BUFSIZ);

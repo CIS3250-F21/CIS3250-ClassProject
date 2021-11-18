@@ -15,57 +15,58 @@ int main(int argc, char** argv) {
         strncpy(transformationFileName, argv[2], BUFSIZ);
         
         outputFileName = malloc(sizeof(char) * BUFSIZ);
+
         strncpy(outputFileName, argv[3], BUFSIZ);
         
-        //~~~~~ Group 1 ~~~~~//
+        //~~~~~ Reading file input ~~~~~//
         readInput(inputFileName, transformationFileName);
 
-        //~~~~~ Group 2 ~~~~~//
+        //~~~~~ Global scaling ~~~~~//
         globalScaling();
 
-        //~~~~~ Group 3 ~~~~~//
+        //~~~~~ Scaling in the x axis ~~~~~//
         xScaling();
 
-        //~~~~~ Group 4 ~~~~~//
+        //~~~~~ Scaling in the y axis ~~~~~//
         yScaling();
 
-        //~~~~~ Group 5 ~~~~~//
+        //~~~~~ Scaling in the z axis ~~~~~//
         zScaling();
 
-        //~~~~~ Group 6 ~~~~~//
+        //~~~~~ Rotate in the x axis ~~~~~//
         xRotation();
 
-        //~~~~~ Group 7 ~~~~~//
+        //~~~~~ Rotate in the x axis ~~~~~//
         yRotation();
 
-        //~~~~~ Group 8 ~~~~~//
+        //~~~~~ Rotate in the x axis ~~~~~//
         zRotation();
 
-        //~~~~~ Group 9 ~~~~~//
+        //~~~~~ Translation ~~~~~//
         xyzTranslation();
 
-        //~~~~~ Group 10 ~~~~~//
+        //~~~~~ Reflection on the x plane ~~~~~//
         xPlaneReflection();
 
-        //~~~~~ Group 11 ~~~~~//
+        //~~~~~ Reflection on the y plane ~~~~~//
         yPlaneReflection();
 
-        //~~~~~ Group 12 ~~~~~//
+        //~~~~~ Reflection on the z plane ~~~~~//
         ZPlaneReflection();
 
-        //~~~~~ Group 13 ~~~~~//
+        //~~~~~ x shearing ~~~~~//
         xShear();
 
-        //~~~~~ Group 14 ~~~~~//
+        //~~~~~ y shearing ~~~~~//
         yShear();
 
-        //~~~~~ Group 15 ~~~~~//
+        //~~~~~ z shearing ~~~~~//
         zShear();
 
-        //~~~~~ Group 16 ~~~~~//
+        //~~~~~ Orthographic projection ~~~~~//
         xyzOrthographicProjection();
 
-        //~~~~~ Group 17 ~~~~~//
+        //~~~~~ Writing output file ~~~~~//
         outputPoints(outputFileName);
 
 
@@ -105,7 +106,7 @@ struct point* getPoint(int index) {
     return inputShape->points[index];
 }
 
-// ~~~~~~~~~~~~~~~~~ GROUP Getters Go HERE ~~~~~~~~~~~~~~~~~~~ //
+// ~~~~~~~~~~~~~~~~~ Getters for Individual Functions ~~~~~~~~~~~~~~~~~~~ //
 float getGlobalScale() {
     return inputShape -> scaling[3];
 }
@@ -172,7 +173,7 @@ void setPoint(int index, struct point* newPoint) {
     }
 }
 
-// ~~~~~~~~~~~~~~~~~ GROUP Setters Go HERE ~~~~~~~~~~~~~~~~~~~ //
+// ~~~~~~~~~~~~~~~~~ Setters for Individual Functions ~~~~~~~~~~~~~~~~~~~ //
 void setGlobalScale(float newGlobalScale) {
     inputShape -> scaling[3] = newGlobalScale;
 }
@@ -247,13 +248,13 @@ void multiplyMatrix(struct point* currPoint, float matrix[4][4]) {
 }
 
 //Reset transformation matrix to the identity matrix
-void resetMatrix(){
-    for (int i = 0; i < 4; i++){
-        for (int j = 0; j < 4; j++){
-            if (i == j){
+void resetMatrix() {
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            if (i == j) {
                 transformationMatrix[i][j] = 1;
             }
-            else{
+            else {
                 transformationMatrix[i][j] = 0;
             }
         }

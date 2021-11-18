@@ -53,8 +53,8 @@ Please compile using "make" to make sure all of your functions and tests compile
 
 ## How to Run
 
-run `make`
-run ./main with the following structure:
+1. run `make`
+2. run ./main with the following structure:
 `./main <inputfile> <tranformationfile> <outputfile>`
 
 ## yScaling (ScalingInY.c) Functionality

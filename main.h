@@ -15,6 +15,7 @@ struct shape {
     float scaling[4];
     float rotation[3];
     float translation[3];
+    float reflection[3];
     float shearing[3];
 };
 
@@ -40,6 +41,9 @@ float getZRotation();
 float getXTranslation();
 float getYTranslation();
 float getZTranslation();
+float getXReflection();
+float getYReflection();
+float getZReflection();
 float getXShear();
 float getYShear();
 float getZShear();
@@ -56,6 +60,9 @@ void setZRotation(float newTheta);
 void setXTranslation(float newXTranslation);
 void setYTranslation(float newYTranslation);
 void setZTranslation(float newZTranslation);
+void setXReflection(float newXReflection);
+void setYReflection(float newYReflection);
+void setZReflection(float newZReflection);
 void setXShear(float newXShear);
 void setYShear(float newYShear);
 void setZShear(float newZShear);

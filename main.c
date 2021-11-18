@@ -147,6 +147,18 @@ float getZTranslation() {
     return inputShape->translation[2];
 }
 
+float getXReflection() {
+    return inputShape->reflection[0];
+}
+
+float getYReflection() {
+    return inputShape->reflection[1];
+}
+
+float getZReflection() {
+    return inputShape->reflection[2];
+}
+
 float getXShear() {
     return inputShape->shearing[0];
 }
@@ -212,6 +224,18 @@ void setYTranslation(float newYTranslation) {
 
 void setZTranslation(float newZTranslation) {
     inputShape->translation[2] = newZTranslation;
+}
+
+void setXReflection(float newXReflection) {
+    inputShape->reflection[0] = newXReflection;
+}
+
+void setYReflection(float newYReflection) {
+    inputShape->reflection[1] = newYReflection;
+}
+
+void setZReflection(float newZReflection) {
+    inputShape->reflection[2] = newZReflection;
 }
 
 void setXShear(float newXShear) {

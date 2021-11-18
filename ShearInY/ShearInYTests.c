@@ -86,10 +86,10 @@ void uninitializedMatrixMultiplication(){
     resetMatrix();
 
     //change col 1, row 0
-  transformationMatrix [0] [1] = 1 + xShearVal * transformationMatrix [0] [1];
+    transformationMatrix [1] [0] = xShearVal;
 
-  //change col 1, row 2
-  transformationMatrix [2] [1] =  1 + zShearVal * transformationMatrix [2] [1] ;
+    //change col 1, row 2
+    transformationMatrix [1] [2] =  zShearVal ;
 
     //multply points by matrix
     struct point* temp;
@@ -106,7 +106,7 @@ void uninitializedMatrixMultiplication(){
       setPoint(i, temp);
 
     //the correct output should replace transformationMatrix [0] [1] to 4.
-    //it shoulf also replace transformationMatrix [2] [1] to 12.
+    //it should also replace transformationMatrix [2] [1] to 12.
 
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 4; j++) {

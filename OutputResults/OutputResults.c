@@ -20,13 +20,17 @@ int outputPoints(char* filename) {
         return 0;
     }
 
+    // output header
+    fprintf(fp, "X,Y,Z,L\n");
+
     // output points to file
     int i = 0;
     point = getPoint(0);
     while (point != NULL) {
         fprintf (
-            fp, "%f %f %f\n", 
-            point->element[0], point->element[1], point->element[2]
+            fp, "%f,%f,%f,%f\n", 
+            point->element[0], point->element[1], 
+            point->element[2], point->element[3]
         );
         point = getPoint(++i);
     }

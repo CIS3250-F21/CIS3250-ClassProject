@@ -6,6 +6,7 @@ void xPlaneReflection() {
     struct point* p;
     int i = 0;
 
+	// Loop through each point negating x-values
     while ((p = getPoint(i)) != NULL)
     {
 		multiplyMatrix( p, transformationMatrix );
@@ -14,18 +15,8 @@ void xPlaneReflection() {
 	}
 }
 
+// Generates identity matrix with -1 in [0][0] element
 void generateXPlaneReflectionMatrix() {
-	for ( int i = 0; i < 4; i++ ){
-		for ( int j = 0; j < 4; j++ ){
-		    if ( i == j ){
-			    transformationMatrix[i][j] = 1;
-                if( i==0 ){
-                    transformationMatrix[i][j] = -1;
-                }	
-		    }
-		    else {
-			    transformationMatrix[i][j] = 0;
-		    }
-		}
-	}
+	resetMatrix();
+	transformationMatrix[0][0] = -1;
 }

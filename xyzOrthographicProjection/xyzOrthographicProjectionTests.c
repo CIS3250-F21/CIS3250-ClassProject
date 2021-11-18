@@ -21,16 +21,18 @@ void xyzOrthographicProjectionTest1()
 void xyzOrthographicProjectionTest2()
 {
     
-    float testElements[4] = {823.2, 3.23, 90.41, 1};
-    struct point * testPoints = malloc (sizeof(struct point*));
+    float testElements[4] = {823.2, 3.23, 90.41, 1.0};
+    struct point testPoints[1];
     struct point ** tempPoints = inputShape->points; //create a copy of the original points struct
     int tempNum = inputShape->numOfPoints; //create a copy of the original number of points
+
         for (int i = 0 ; i < 4 ; i++)
         {
             testPoints->element[i] = testElements[i];
         }
+
     inputShape->numOfPoints = 1;
-    setPoint(0, testPoints);
+    setPoint(0, &testPoints[0]);
     
     xyzOrthographicProjection();
   
@@ -40,15 +42,16 @@ void xyzOrthographicProjectionTest2()
             printf("Expected 0, Found %f\n", getPoint(0)->element[2]);
             printf("\n");
         }
+
     inputShape->numOfPoints = tempNum; //restore the original number of points
     inputShape->points = tempPoints; //restore the original points struct
-    free(testPoints);
     free(tempPoints);
 }
 
 // Test with a large amount of points (1000 points)
 void xyzOrthographicProjectionTest3()
 {
+
     struct point * testPoints[1000];
     struct point ** tempPoints = inputShape->points; //create a copy of the original points struct
     int tempNum = inputShape->numOfPoints; //create a copy of the original number of points
@@ -56,17 +59,16 @@ void xyzOrthographicProjectionTest3()
   
     for (int i = 0 ; i < inputShape->numOfPoints ; i++)
     {
+
         for (int j = 0 ; j < 4 ; j++)
         {
-            testPoints[i]->element[j] = i;
+            testPoints[i]->element[j] = (float)i;
         }
+
+        setPoint(i, &testPoints[i]);
+        
     }
-                             
-  
-    for (int k = 0 ; k < inputShape->numOfPoints ; k++)
-    {
-      setPoint(k, testPoints[k]);
-    }
+    
     xyzOrthographicProjection();
     for (int l = 0 ; l < inputShape->numOfPoints; l++)
     {
@@ -80,8 +82,7 @@ void xyzOrthographicProjectionTest3()
     }
     inputShape->numOfPoints = tempNum; //restore the original number of points
     inputShape->points = tempPoints; //restore the original points struct
-    free(testPoints);
-    free(tempPoints);
+    //free(tempPoints);
 }
 
 //Function for running all tests

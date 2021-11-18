@@ -19,7 +19,7 @@ int main(int argc, char** argv) {
         
         //~~~~~ Group 1 ~~~~~//
         inputShape = readInput(inputFileName, transformationFileName);
-
+/*
         //~~~~~ Group 2 ~~~~~//
         globalScaling();
 
@@ -68,7 +68,7 @@ int main(int argc, char** argv) {
         //~~~~~ Group 17 ~~~~~//
         outputPoints(outputFileName);
 
-
+*/
         // free all non null points
         for (int i = 0; i < inputShape->numOfPoints; i++) {
             if (inputShape->points[i] != NULL) {

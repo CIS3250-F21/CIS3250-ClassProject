@@ -366,7 +366,8 @@ void runAllTests() {
     createTestPoints();
     runZShearTests();
     freeTestPoints();
-  
+    
+    /* XYZ Orthographic Projection Tests */
     createTestPoints();
     xyzOrthographicProjectionRunTests();
     freeTestPoints();

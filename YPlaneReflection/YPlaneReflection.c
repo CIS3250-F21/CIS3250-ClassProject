@@ -2,7 +2,7 @@
 
 void yPlaneReflection() {
 	// If Y Reflection was selected in transformation file
-    if( getYReflection != 0 ) {
+    if( getYReflection() != 0 ) {
 		generateYPlaneReflectionMatrix();
 		struct point* vect;
 		int j = 1;

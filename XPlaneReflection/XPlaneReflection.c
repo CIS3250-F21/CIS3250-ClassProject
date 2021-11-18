@@ -3,7 +3,7 @@
 
 void xPlaneReflection() {
     // If X Reflection was selected in transformation file
-    if( getXReflection != 0 ) {
+    if( getXReflection() != 0 ) {
         generateXPlaneReflectionMatrix();
         struct point* p;
         int i = 0;

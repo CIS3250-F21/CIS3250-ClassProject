@@ -2,7 +2,7 @@
 
 void ZPlaneReflection() {
     // If Z Reflection was selected in transformation file
-    if( getZReflection != 0 ) {
+    if( getZReflection() != 0 ) {
         // z plane reflection matrix
         if (!(inputShape == NULL)){
         //sets transformation matrix

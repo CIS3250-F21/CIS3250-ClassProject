@@ -20,7 +20,8 @@ struct shape {
 
 float transformationMatrix[4][4];
 struct shape* inputShape;
-char* fileName;
+char* inputFileName;
+char* transformationFileName;
 char* outputFileName;
 
 //~~~~~~ Global Functions ~~~~~~//

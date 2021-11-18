@@ -20,53 +20,53 @@ int main(int argc, char** argv) {
         //~~~~~ Group 1 ~~~~~//
         inputShape = readInput(inputFileName, transformationFileName);
 /*
-        //~~~~~ Group 2 ~~~~~//
-        globalScaling();
+        // //~~~~~ Group 2 ~~~~~//
+        // globalScaling();
 
-        //~~~~~ Group 3 ~~~~~//
-        xScaling();
+        // //~~~~~ Group 3 ~~~~~//
+        // xScaling();
 
-        //~~~~~ Group 4 ~~~~~//
-        yScaling();
+        // //~~~~~ Group 4 ~~~~~//
+        // yScaling();
 
-        //~~~~~ Group 5 ~~~~~//
-        zScaling();
+        // //~~~~~ Group 5 ~~~~~//
+        // zScaling();
 
-        //~~~~~ Group 6 ~~~~~//
-        xRotation();
+        // //~~~~~ Group 6 ~~~~~//
+        // xRotation();
 
-        //~~~~~ Group 7 ~~~~~//
-        yRotation();
+        // //~~~~~ Group 7 ~~~~~//
+        // yRotation();
 
-        //~~~~~ Group 8 ~~~~~//
-        zRotation();
+        // //~~~~~ Group 8 ~~~~~//
+        // zRotation();
 
-        //~~~~~ Group 9 ~~~~~//
-        xyzTranslation();
+        // //~~~~~ Group 9 ~~~~~//
+        // xyzTranslation();
 
-        //~~~~~ Group 10 ~~~~~//
-        xPlaneReflection();
+        // //~~~~~ Group 10 ~~~~~//
+        // xPlaneReflection();
 
-        //~~~~~ Group 11 ~~~~~//
-        yPlaneReflection();
+        // //~~~~~ Group 11 ~~~~~//
+        // yPlaneReflection();
 
-        //~~~~~ Group 12 ~~~~~//
-        ZPlaneReflection();
+        // //~~~~~ Group 12 ~~~~~//
+        // ZPlaneReflection();
 
-        //~~~~~ Group 13 ~~~~~//
-        xShear();
+        // //~~~~~ Group 13 ~~~~~//
+        // xShear();
 
-        //~~~~~ Group 14 ~~~~~//
-        yShear();
+        // //~~~~~ Group 14 ~~~~~//
+        // yShear();
 
-        //~~~~~ Group 15 ~~~~~//
-        zShear();
+        // //~~~~~ Group 15 ~~~~~//
+        // zShear();
 
-        //~~~~~ Group 16 ~~~~~//
-        xyzOrthographicProjection();
+        // //~~~~~ Group 16 ~~~~~//
+        // xyzOrthographicProjection();
 
-        //~~~~~ Group 17 ~~~~~//
-        outputPoints(outputFileName);
+        // //~~~~~ Group 17 ~~~~~//
+        // outputPoints(outputFileName);
 
 */
         // free all non null points
@@ -81,7 +81,7 @@ int main(int argc, char** argv) {
 
         // free shape
         free(inputShape);
-        
+        free(transformationFileName);
         free(inputFileName);
         free(outputFileName);
     }

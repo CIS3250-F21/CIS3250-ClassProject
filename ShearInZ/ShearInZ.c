@@ -2,7 +2,7 @@
 
 void zShear() {
     // Use the transformation matrix and multiply the vectors 
-    struct point *currentVector;
+    struct point *currentPoint;
 
     // Reset transformation matrix before use
     resetMatrix();
@@ -12,11 +12,11 @@ void zShear() {
 
     // Loop call of multiply martrix on current point
     for(int i = 0; i < inputShape->numOfPoints; i++) {
-        currentVector = getPoint(i);
+        currentPoint = getPoint(i);
 
-        if(currentVector == NULL) return;
+        if(currentPoint == NULL) return;
 
-        multiplyMatrix(currentVector, transformationMatrix);
-        setPoint(i, currentVector);
+        multiplyMatrix(currentPoint, transformationMatrix);
+        setPoint(i, currentPoint);
     }
 }

@@ -23,8 +23,8 @@ Please compile using "make" to make sure all of your functions and tests compile
 ## Tests
 
 1. Your test functions can go in your testing files, inside your folder. Rename them from Group# to what you see fit.
-2. Please name the function that runs all of your tests runGroup#Tests()
-3. If you have a test handler, rename it to group#TestHandler()
+2. Please name the function that runs all of your tests runFunctionNameTests(), where "FunctionName" is renamed based on the function's name.
+3. If you have a test handler, rename it to functionNameTestHandler() (see previous for renaming).
 
 ## Naming Conventions
 

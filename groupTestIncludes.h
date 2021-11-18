@@ -2,15 +2,18 @@
 #ifndef GROUP_TEST_INCLUDES_H
 #define GROUP_TEST_INCLUDES_H
 
+#include "ReadInput/ReadInputTests.h"
 #include "RotationInX/RotationInXTests.h"
 #include "RotationInY/RotationInYTests.h"
+#include "RotationInZ/RotationInZTests.h"
 #include "ScalingInX/ScalingInXTests.h"
 #include "ScalingInY/ScalingInYTests.h"
 #include "ZPlaneReflection/ZPlaneReflectionTests.h"
 #include "GlobalScaling/GlobalScalingTests.h"
 #include "ShearInX/ShearInXTests.h"
-#include "ShearInZ/ShearInZ.h"
+#include "ShearInZ/ShearInZTests.h"
 #include "XPlaneReflection/XPlaneReflectionTests.h"
+#include "xyzOrthographicProjection/xyzOrthographicProjectionTests.h"
 #include "YPlaneReflection/YPlaneReflectionTests.h"
 #include "XYZTranslation/XYZTranslationTests.h"
 #include "ScalingInZ/ScalingInZTests.h"

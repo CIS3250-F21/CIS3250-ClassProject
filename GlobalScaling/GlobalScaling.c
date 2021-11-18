@@ -27,7 +27,7 @@ void globalScaling(){
         }
     }
 
-   
+
 
     resetMatrix();
 }

@@ -82,7 +82,7 @@ int main(int argc, char** argv) {
 
         // free shape
         free(inputShape);
-        
+        free(transformationFileName);
         free(inputFileName);
         free(outputFileName);
     }

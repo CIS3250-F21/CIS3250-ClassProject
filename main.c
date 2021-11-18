@@ -358,7 +358,7 @@ void runAllTests() {
 
     /* Z Shear Tests */
     createTestPoints();
-    //runZShearTests();
+    runZShearTests();
     freeTestPoints();
   
     createTestPoints();

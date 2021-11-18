@@ -6,7 +6,7 @@ void runZShearTests() {
     nullPointTest();
     minimumFloatShearValueTest();
     maximumFloatShearValueTest();
-    uninitializedShearValueTest();
+    uninitializedShapeStructTest();
 }
 
 /**
@@ -42,12 +42,9 @@ void validTest() {
     setYShear(yShear);
     zShear();
     
-    if(getPoint(0)->element[0] != pointExpected->element[0] || getPoint(1)->element[1] != pointExpected->element[1]) {
-        fprintf(stderr, "Test1 Failed: Expected point does not match test point\n");
-    } else {
-        printf("Test1 Passed\n");
+    if(getPoint(0)->element[0] != pointExpected->element[0] || getPoint(0)->element[1] != pointExpected->element[1]) {
+        fprintf(stderr, "validTestTest Failed: Expected point does not match test point\n");
     }
-
     free(pointExpected);
 }
 
@@ -63,21 +60,13 @@ void nullPointTest() {
     struct point *p1 = getPoint(0);
     p1 = NULL;
 
-    /* Equation version of Z shear multiplication matrix
-    X1 = X + (xShear * Z)
-    Y1 = Y + (yShear * Z)
-    Z = Z (remains unchanged)
-    1 = 1 (remains unchanged)
-    */
     setPoint(0, p1);
     setXShear(xShear);
     setYShear(yShear);
     zShear();
     
     if(getPoint(0) == NULL) {
-        fprintf(stderr, "Test2 Failed: Expected point does not match test point\n");
-    } else {
-        printf("Test2 Passed\n");
+        fprintf(stderr, "nullPointTest Failed: Expected point does not match test point\n");
     }
 }
 
@@ -111,10 +100,8 @@ void minimumFloatShearValueTest() {
     setYShear(yShear);
     zShear();
     
-    if(getPoint(0)->element[0] != pointExpected->element[0] || getPoint(1)->element[1] != pointExpected->element[1]) {
-        fprintf(stderr, "Test3 Failed: Expected point does not match test point\n");
-    } else {
-        printf("Test3 Passed\n");
+    if(getPoint(0)->element[0] != pointExpected->element[0] || getPoint(0)->element[1] != pointExpected->element[1]) {
+        fprintf(stderr, "minimumFloatShearValueTest Failed: Expected point does not match test point\n");
     }
     free(pointExpected);
 }
@@ -147,31 +134,19 @@ void maximumFloatShearValueTest() {
     setYShear(yShear);
     zShear();
     
-    if(getPoint(0)->element[0] != pointExpected->element[0] || getPoint(1)->element[1] != pointExpected->element[1]) {
-        fprintf(stderr, "Test4 Failed: Expected point does not match test point\n");
-    } else {
-        printf("Test4 Passed\n");
+    if(getPoint(0)->element[0] != pointExpected->element[0] || getPoint(0)->element[1] != pointExpected->element[1]) {
+        fprintf(stderr, "maximumFloatShearValueTest Failed: Expected point does not match test point\n");
     }
     free(pointExpected);
 }
-/**
- *  Uninitialzed Shear Values test
- *  @brief: This function will call zShear by passing uninitialized x and y shear values 
- *  @type: Dirty
- *  Test point: {1,4,6,1}
- *  Expected point: {1,4,6,1}
- */
-void uninitializedShearValueTest() {
-    float xShear = 0; //todo: need to fix this test
-    float yShear = 0;  
 
-    setXShear(xShear);
-    setYShear(yShear);
-    zShear();
-    
-    if(!inputShape->shearing[0] || !inputShape->shearing[1]) {
-        fprintf(stderr, "Test5 Failed: Expected point does not match test point\n");
-    } else {
-        printf("Test5 Passed\n");
+/**
+ *  Uninitialzed shape struct
+ *  @brief: This function will test is the shape struct is initialied or not
+ *  @type: Dirty
+ */
+void uninitializedShapeStructTest() {
+    if(inputShape == NULL) {
+        fprintf(stderr, "uninitializedShapeStructTest Failed: Shape struct is not initialized\n");
     }
 }

@@ -7,9 +7,6 @@
 #include "../main.h"
 #include "RotationInY.h"
 
-
-int compareFloat(float x, float y, float acceptedDistance);
-
 void runRotationInYTests();
 
 void rotationInYTestHandler(int (*test)(), char *testString);

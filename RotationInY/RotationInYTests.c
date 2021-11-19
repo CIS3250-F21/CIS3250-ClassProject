@@ -15,13 +15,6 @@
 // ~~~~~~ Get Point Tests ~~~~~~ //
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
-int compareFloat(float x, float y, float acceptedDistance) {
-    float difference = fabs(x - y);
-    if (difference > acceptedDistance) {
-        return 1;
-    }
-    return 0;
-}
 
 // Dirty Test
 // Tests if Get Point handles negative index values

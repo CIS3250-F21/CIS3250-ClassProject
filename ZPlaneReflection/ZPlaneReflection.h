@@ -5,4 +5,5 @@
 #include "../main.h"
 
 void ZPlaneReflection();
+void generateZPlaneReflectionMatrix();
 #endif

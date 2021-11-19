@@ -47,7 +47,7 @@ void maximumFloatValue() {
 
 //Test Two: The input is out of the range of the matrix/vector
 void inputRange () { 
-  if(sizeof(inputShape->shearing) > 4){
+  if(sizeof(inputShape->numOfPoints) > 4){
     printf ("Error: The array value of the y shear is greater than the global array\n");
   }
   else{
@@ -72,13 +72,13 @@ void uninitializedMatrixMultiplication(){
       for (int j = 0; j < 4; j++){
           if (i == j){
               if (! (transformationMatrix[i][j] == 1) ) {
-                printf ("Matrix did not reset properly.");
+                printf ("Matrix did not reset properly.\n");
                 return;
               }
           }
           else{
               if (! (transformationMatrix[i][j] == 0) ) {
-                printf ("Matrix did not reset properly.");
+                printf ("Matrix did not reset properly.\n");
                 return;
               }
           }

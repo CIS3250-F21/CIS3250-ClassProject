@@ -51,7 +51,7 @@ int main(int argc, char** argv) {
 
         //~~~~~ Reflection on the z plane ~~~~~//
         if( getZReflection() == 1) {
-            ZPlaneReflection();
+            ReflectionInZPlane();
         }
 
         //~~~~~ x shearing ~~~~~//
@@ -379,7 +379,7 @@ void runAllTests() {
 
     /* Z Plane Reflection Tests */
     createTestPoints();
-    ZPlaneReflectionTests();
+    ReflectionInZPlaneTests();
     freeTestPoints();
 
     /* XYZ Translation Tests */

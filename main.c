@@ -8,15 +8,9 @@ int main(int argc, char** argv) {
     if (argc == 2 && strcmp(argv[1], "-t") == 0) {
         runAllTests();
     } else if (argc == 4) {
-        inputFileName = malloc(sizeof(char) * BUFSIZ);
-        strncpy(inputFileName, argv[1], BUFSIZ);
-
-        transformationFileName = malloc(sizeof(char) * BUFSIZ); 
-        strncpy(transformationFileName, argv[2], BUFSIZ);
-        
-        outputFileName = malloc(sizeof(char) * BUFSIZ);
-
-        strncpy(outputFileName, argv[3], BUFSIZ);
+        char * inputFileName = argv[1];
+        char * transformationFileName = argv[2]; 
+        char * outputFileName = argv[3];
         
         //~~~~~ Reading file input ~~~~~//
         readInput(inputFileName, transformationFileName);
@@ -46,13 +40,19 @@ int main(int argc, char** argv) {
         XYZTranslation();
 
         //~~~~~ Reflection on the x plane ~~~~~//
-        xPlaneReflection();
+        if( getXReflection() == 1 ) {
+            ReflectionInXPlane();
+        }
 
         //~~~~~ Reflection on the y plane ~~~~~//
-        yPlaneReflection();
+        if( getYReflection() == 1 ) {
+            yPlaneReflection();
+        }
 
         //~~~~~ Reflection on the z plane ~~~~~//
-        ZPlaneReflection();
+        if( getZReflection() == 1) {
+            ZPlaneReflection();
+        }
 
         //~~~~~ x shearing ~~~~~//
         xShear();
@@ -64,7 +64,9 @@ int main(int argc, char** argv) {
         zShear();
 
         //~~~~~ Orthographic projection ~~~~~//
-        XYZOrthographicProjection();
+        if( getOrthographic() == 1 ) {
+            xyzOrthographicProjection();
+        }
 
         //~~~~~ Writing output file ~~~~~//
         outputPoints(outputFileName);
@@ -82,9 +84,6 @@ int main(int argc, char** argv) {
 
         // free shape
         free(inputShape);
-        
-        free(inputFileName);
-        free(outputFileName);
     }
     else {
         fprintf(stderr, "Format %s <input file> <transformation file> <output file>\n", argv[0]);
@@ -124,7 +123,7 @@ float getZScale() {
 }
 
 float getXRotation() {
-    return 0;
+    return inputShape->rotation[0];
 }
 
 float getYRotation() {
@@ -147,6 +146,18 @@ float getZTranslation() {
     return inputShape->translation[2];
 }
 
+float getXReflection() {
+    return inputShape->reflection[0];
+}
+
+float getYReflection() {
+    return inputShape->reflection[1];
+}
+
+float getZReflection() {
+    return inputShape->reflection[2];
+}
+
 float getXShear() {
     return inputShape->shearing[0];
 }
@@ -157,6 +168,10 @@ float getYShear() {
 
 float getZShear() {
     return inputShape->shearing[2];
+}
+
+float getOrthographic() {
+    return inputShape->orthographic;
 }
 
 // ~~~~~~~~~~~~~~~~~ Setters ~~~~~~~~~~~~~~~~~~~ //
@@ -191,6 +206,7 @@ void setZScale(float newZScale) {
 }
 
 void setXRotation(float newTheta) {
+    inputShape->rotation[0] = newTheta;
 }
 
 void setYRotation(float angle) {
@@ -213,6 +229,18 @@ void setZTranslation(float newZTranslation) {
     inputShape->translation[2] = newZTranslation;
 }
 
+void setXReflection(float newXReflection) {
+    inputShape->reflection[0] = newXReflection;
+}
+
+void setYReflection(float newYReflection) {
+    inputShape->reflection[1] = newYReflection;
+}
+
+void setZReflection(float newZReflection) {
+    inputShape->reflection[2] = newZReflection;
+}
+
 void setXShear(float newXShear) {
     inputShape->shearing[0] = newXShear;
 }
@@ -223,6 +251,10 @@ void setYShear(float newYShear) {
 
 void setZShear(float newZShear) {
     inputShape->shearing[2] = newZShear;
+}
+
+void setOrthographic(float newOrthographic) {
+    inputShape->orthographic = newOrthographic;
 }
 
 void multiplyMatrix(struct point* currPoint, float matrix[4][4]) {
@@ -260,7 +292,6 @@ void resetMatrix() {
         }
     }
 }
-
 // Instantiates shape struct for testing
 void createTestPoints() {
     createNTestPoints(5);
@@ -318,7 +349,11 @@ void runAllTests() {
     RunScalingInZTests();
     freeTestPoints();
   
-  
+    /* Rotation in X Tests */
+    createTestPoints();
+    setXRotation(0);
+    runRotationInXTests(); 
+    freeTestPoints();
   
     /* Rotation in Y Tests */
     createTestPoints();
@@ -334,7 +369,7 @@ void runAllTests() {
   
     /* X Plane Reflection Tests */
     createTestPoints();
-    runXPlaneReflectionTests();
+    runReflectionInXPlaneTests();
     freeTestPoints();
   
     /* Y Plane Reflection Tests */
@@ -359,7 +394,7 @@ void runAllTests() {
   
     /* Y Shear Tests */
     createTestPoints();
-    //runYShearTests(); //still need to get a testrunner
+    runYShearTests();
     freeTestPoints();
 
     /* Z Shear Tests */

@@ -3,6 +3,7 @@
 
 #include "../main.h"
 
-int yScaling();
+void yScaling();
+void setupTransformationMatrixForYScaling();
 
 #endif

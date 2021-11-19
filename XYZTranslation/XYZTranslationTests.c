@@ -22,17 +22,8 @@ void TestingExpectedPointWithXYZTranslation() {
   expected.element[2] = 8;
   expected.element[3] = 1;
 
-    // Set initial values to 0
-    for(int i = 0; i < 4; i++) {
-        for(int j = 0; j < 4; j++) {
-            transformationMatrix[i][j] = 0.0;
-      }
-    }
-  // Create the translation matrix
-  transformationMatrix[0][0] = 1.0;
-  transformationMatrix[1][1] = 1.0;
-  transformationMatrix[2][2] = 1.0;
-  transformationMatrix[3][3] = 1.0;
+  // Create Identity Matrix
+  resetMatrix();
 
   x = getXTranslation();
   y = getYTranslation();

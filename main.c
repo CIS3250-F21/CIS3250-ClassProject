@@ -8,15 +8,9 @@ int main(int argc, char** argv) {
     if (argc == 2 && strcmp(argv[1], "-t") == 0) {
         runAllTests();
     } else if (argc == 4) {
-        inputFileName = malloc(sizeof(char) * BUFSIZ);
-        strncpy(inputFileName, argv[1], BUFSIZ);
-
-        transformationFileName = malloc(sizeof(char) * BUFSIZ); 
-        strncpy(transformationFileName, argv[2], BUFSIZ);
-        
-        outputFileName = malloc(sizeof(char) * BUFSIZ);
-
-        strncpy(outputFileName, argv[3], BUFSIZ);
+        char * inputFileName = argv[1];
+        char * transformationFileName = argv[2]; 
+        char * outputFileName = argv[3];
         
         //~~~~~ Reading file input ~~~~~//
         readInput(inputFileName, transformationFileName);
@@ -90,9 +84,6 @@ int main(int argc, char** argv) {
 
         // free shape
         free(inputShape);
-        free(transformationFileName);
-        free(inputFileName);
-        free(outputFileName);
     }
     else {
         fprintf(stderr, "Format %s <input file> <transformation file> <output file>\n", argv[0]);

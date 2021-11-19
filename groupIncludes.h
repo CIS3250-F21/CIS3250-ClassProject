@@ -2,7 +2,7 @@
 #define GROUP_INCLUDES_H
 
 #include "ReadInput/ReadInput.h"
-#include "XPlaneReflection/XPlaneReflection.h"
+#include "ReflectionInXPlane/ReflectionInXPlane.h"
 #include "YPlaneReflection/YPlaneReflection.h"
 #include "ZPlaneReflection/ZPlaneReflection.h"
 #include "ShearInX/ShearInX.h"

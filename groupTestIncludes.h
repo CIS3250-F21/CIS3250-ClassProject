@@ -12,7 +12,7 @@
 #include "GlobalScaling/GlobalScalingTests.h"
 #include "ShearInX/ShearInXTests.h"
 #include "ShearInZ/ShearInZTests.h"
-#include "XPlaneReflection/XPlaneReflectionTests.h"
+#include "ReflectionInXPlane/ReflectionInXPlaneTests.h"
 #include "xyzOrthographicProjection/xyzOrthographicProjectionTests.h"
 #include "YPlaneReflection/YPlaneReflectionTests.h"
 #include "XYZTranslation/XYZTranslationTests.h"

@@ -7,19 +7,19 @@ void runReadInputTests(){
     }
 
     if(ReadInputTest2("test2.csv", "input1.csv", "input2.txt") == 1){
-        printf("ReadInput Test 2 - Failed");   
+        printf("ReadInput Test 2 - Failed");
     }
 
     if(ReadInputTest3("test3.csv", "input1.csv", "input2.txt") == 1){
-        printf("ReadInput Test 3 - Failed");   
+        printf("ReadInput Test 3 - Failed");
     }
 
     if(ReadInputTest4("test4.csv", "input1.csv", "input2.txt") == 1){
-        printf("ReadInput Test 4 - Failed");   
+        printf("ReadInput Test 4 - Failed");
     }
 
     if(ReadInputTest5("input1.csv", "incorrectFile.txt") == 1){
-        printf("ReadInput Test 5 - Failed");   
+        printf("ReadInput Test 5 - Failed");
     }
 }
 
@@ -69,12 +69,14 @@ int ReadInputTest2(char *testFile, char *orgFile, char inputfile2[20]) {
                 //printf("pass4\n");
                 freeShape(testInput);
                 //printf("pass5\n");
+                freeShape(inputShape);
                 return 1;
             }
         }
     }
     freeShape(original);
     freeShape(testInput);
+    freeShape(inputShape);
     return 0;
 }  // END OF TEST 2
 
@@ -93,12 +95,14 @@ int ReadInputTest3(char *testFile, char *orgFile, char inputfile2[20]) {
             if (test[j] != answers[j]) {  //Compare the data between the 2 files
                 freeShape(original);
                 freeShape(testInput);
+                freeShape(inputShape);
                 return 1;
             }
         }
     }
     freeShape(original);
     freeShape(testInput);
+    freeShape(inputShape);
     return 0;
 }  // END OF TEST 3
 
@@ -115,12 +119,14 @@ int ReadInputTest4(char *testFile, char *orgFile, char inputfile2[20]) {
             if (test[j] != answers[j]) {  //Compare the data between the 2 files
                 freeShape(original);
                 freeShape(testInput);
+                freeShape(inputShape);
                 return 1;
             }
         }
     }
     freeShape(original);
     freeShape(testInput);
+    freeShape(inputShape);
     return 0;
 }  // END OF TEST 4
 

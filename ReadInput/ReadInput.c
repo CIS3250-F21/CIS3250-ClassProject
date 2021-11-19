@@ -1,14 +1,5 @@
 #include "ReadInput.h"
 
-//include .h file for other groups functions then uncomment lower lines
-
-/*
-Group 1 - Group Implementation
-Zacharias Cymbaluk 1121146
-Devyendu Dutta 1018973
-Valmik Dixon 1124060
-Jesse Varkul 1139803
-*/
 
 void readInput(char *fileName, char *fileName2) {  // readInput manually creates an "expected" file read that would be what we expect from the "real function". Since the TDD is not expected to actually read the real text file, we do not get into file reading here.
     inputShape = malloc(sizeof(struct shape));

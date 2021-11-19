@@ -8,7 +8,7 @@ void XYZTranslationTests() {
   PassingEmptyShapeStruct();
 
 }
-//Test ensure proper function of xyzTranslation()
+//Test ensure proper function of XYZTranslation()
 void TestingExpectedPointWithXYZTranslation() {
 
   float x;
@@ -33,7 +33,7 @@ void TestingExpectedPointWithXYZTranslation() {
   setYTranslation(4); 
   setZTranslation(5); 
 
-  xyzTranslation();
+  XYZTranslation();
 
   setXTranslation(x);
   setYTranslation(y);
@@ -60,7 +60,7 @@ void XYZTranslationLargeValueOutOfBounds() {
   setYTranslation(FLT_MAX * 2);
   setZTranslation(FLT_MAX * 2);
 
-  xyzTranslation();
+  XYZTranslation();
   setXTranslation(x);
   setYTranslation(y);
   setZTranslation(z);
@@ -79,7 +79,7 @@ void XYZTranslationSmallValueOutOfBounds() {
   setXTranslation(FLT_MIN * 2);
   setYTranslation(FLT_MIN * 2);
   setZTranslation(FLT_MIN * 2);
-  xyzTranslation();
+  XYZTranslation();
  
   setXTranslation(x);
   setYTranslation(y);
@@ -97,7 +97,7 @@ void PassingEmptyShapeStruct() {
   }
 
   inputShape->points = NULL;
-  xyzTranslation();
+  XYZTranslation();
 
   if(inputShape->points != NULL) {
     printf("Failed Dirty Test. Should not have intialized anything\n");

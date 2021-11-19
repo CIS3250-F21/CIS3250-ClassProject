@@ -3,17 +3,19 @@
 
 //The following are dirty test cases for group 14
 
-//Test One: yshearValue does not exist
-
 void emptyYShearValue () {
 
-  if ( inputShape->shearing[1] == 0) {
-    printf ("Error: The input value of the y shear is empty.\n");
-  }
-  else {
-    return;
-  }
+    struct point *point = getPoint(0);
+    point = NULL;
+
+    setPoint(0, point);
+    setYShear(NULL);
+    
+    if(getPoint(1) == NULL) {
+        printf ("Error: The input value of the y shear is empty\n");
+    }
 }
+
 
 //Test Two: The input is out of the range of the matrix/vector
 void inputRange () { 
@@ -70,10 +72,11 @@ void uninitializedMatrixMultiplication(){
     setZShear(zShear);
     yShear();
     
-    if(getPoint(0) == NULL) {
-        printf ("Error: The input value of the x shear is empty.\n");
+    if(getPoint(0) == NULL || getPoint(2) == NULL) {
+        printf ("Error: The input value of the x or z shear is empty.\n");
         //fprintf(stderr, "nullPointTest Failed: Expected point does not match test point\n");
     }
+
   }
 
   //The following is a clean test cases for group 14

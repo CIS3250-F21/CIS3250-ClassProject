@@ -67,7 +67,7 @@ void uninitializedMatrixMultiplication(){
     struct point *point = getPoint(0);
     point = NULL;
 
-     setPoint(0, point);
+    setPoint(0, point);
     setXShear(xShear);
     setZShear(zShear);
     yShear();

@@ -75,20 +75,26 @@ void checkIfWithZero(){
     struct point * comparPoint;
 
     setGlobalScale(0);
-    globalScaling();
-    comparPoint = getPoint(0);
-    for( int i = 0; i < 4; i++) {
-        comparPoint->element[i] *= 0;
-        if( i == 3 ) {
-            if( comparPoint->element[i] != 0 ) {
-                printf("Global scaling: checkIfVectorPointsWereScaledCorrectlyWithZeroGlobalScaleValue failed.\n");
+    float globalScaleValue = getGlobalScale();
+    if(globalScaleValue == 0){
+        return;
+    }
+    else{
+        globalScaling();
+        comparPoint = getPoint(0);
+        for( int i = 0; i < 4; i++) {
+            comparPoint->element[i] *= 0;
+            if( i == 3 ) {
+                if( comparPoint->element[i] != 0 ) {
+                    continue;
+                }
+            }
+            else if( comparPoint->element[i] == (float)(i + 1) ) {
                 continue;
             }
+            printf("Global scaling: checkIfVectorPointsWereScaledCorrectlyWithZeroGlobalScaleValue failed.\n");
+            break;
         }
-        else if( comparPoint->element[i] == (float)(i + 1) ) {
-            continue;
-        }
-        break;
     }
     resetMatrix();
 }

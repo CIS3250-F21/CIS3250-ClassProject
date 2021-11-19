@@ -15,12 +15,15 @@ struct shape {
     float scaling[4];
     float rotation[3];
     float translation[3];
+    float reflection[3];
     float shearing[3];
+    float orthographic;
 };
 
 float transformationMatrix[4][4];
 struct shape* inputShape;
-char* fileName;
+char* inputFileName;
+char* transformationFileName;
 char* outputFileName;
 
 //~~~~~~ Global Functions ~~~~~~//
@@ -39,9 +42,13 @@ float getZRotation();
 float getXTranslation();
 float getYTranslation();
 float getZTranslation();
+float getXReflection();
+float getYReflection();
+float getZReflection();
 float getXShear();
 float getYShear();
 float getZShear();
+float getOrthographic();
 
 //~~~~~~ Setters ~~~~~~//
 void setPoint(int index, struct point* newPoint);
@@ -55,12 +62,17 @@ void setZRotation(float newTheta);
 void setXTranslation(float newXTranslation);
 void setYTranslation(float newYTranslation);
 void setZTranslation(float newZTranslation);
+void setXReflection(float newXReflection);
+void setYReflection(float newYReflection);
+void setZReflection(float newZReflection);
 void setXShear(float newXShear);
 void setYShear(float newYShear);
 void setZShear(float newZShear);
+void setOrthographic(float newOrthographic);
 
 //~~~~~ Helpers ~~~~~~//
 void createTestPoints();
+void createNTestPoints(int numOfPoints);
 void freeTestPoints();
 void runAllTests();
 

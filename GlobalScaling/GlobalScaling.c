@@ -9,15 +9,8 @@ void globalScaling(){
     transformationMatrix[3][3] = globalScaleValue;
 
     if(globalScaleValue == 0){
-        while((p = getPoint(i)) != NULL){
-            p->element[3] = 1;
-            p->element[2] = 0;
-            p->element[1] = 0;
-            p->element[0] = 0;
-
-            setPoint(i, p);
-            i++;
-        }
+        fprintf(stderr, "Global scale value is invalid\n");
+        exit(EXIT_FAILURE);
     } else {
          float fourthValue;
         while((p = getPoint(i)) != NULL){

@@ -8,7 +8,7 @@ void runXShearTests()
     struct shape* oldInputShape = inputShape;  
 
 		//creates a common, constant set of pre-defined points for tests to pull from when creating their shape structs
-    struct point** testPoints = createTestPoints();  
+    struct point** testPoints = createXShearTestPoints();  
 
     errorFlag = -1;
     cleanTest(testPoints);
@@ -32,7 +32,7 @@ void runXShearTests()
 
 		//refresh modified values
     free(testPoints);
-    testPoints = createTestPoints();  
+    testPoints = createXShearTestPoints();  
 
     errorFlag = -1;
     testWrongMagnitude(testPoints);
@@ -45,7 +45,7 @@ void runXShearTests()
     free(testPoints);
 }
 
-struct point** createTestPoints() 
+struct point** createXShearTestPoints() 
 {
     struct point** testPoints = malloc(sizeof(struct point*) * 10);
     for (int i = 0; i < 10; i++) 

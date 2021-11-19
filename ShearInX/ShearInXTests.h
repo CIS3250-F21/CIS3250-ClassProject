@@ -4,7 +4,7 @@
 // Calls the tests
 void runXShearTests();  
 
-struct point** createTestPoints();
+struct point** createXShearTestPoints();
 
 void cleanTest(struct point** testPoints);
 void testShapeNull();

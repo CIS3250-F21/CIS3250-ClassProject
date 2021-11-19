@@ -1,6 +1,8 @@
 #ifndef Y_SHEAR_TESTS
 #define Y_SHEAR_TESTS
 
+#include <float.h>
+
 void emptyYShearValue ();
 void inputRange ();
 void uninitializedStruct();

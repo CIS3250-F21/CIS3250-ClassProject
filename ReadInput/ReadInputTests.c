@@ -6,7 +6,7 @@ void runReadInputTests(){
         printf("readInput Test 1 - Failed");
     }
 
-    if(ReadInputTest2("test2.csv", "input1.csv", "inputTransformation.txt") == 1){
+    /*if(ReadInputTest2("test2.csv", "input1.csv", "inputTransformation.txt") == 1){
         printf("ReadInput Test 2 - Failed");
     }
 
@@ -20,7 +20,7 @@ void runReadInputTests(){
 
     if(ReadInputTest5("incorrectFileName.csv", "inputTransformation.txt") == 1){
         printf("ReadInput Test 5 - Failed");
-    }
+    }*/
 }
 
 // (CLEAN) Test #1 will compare all the given float values against the expected float values. We expect this test to pass.

@@ -21,6 +21,7 @@ struct shape {
 float transformationMatrix[4][4];
 struct shape* inputShape;
 char* fileName;
+char* outputFileName;
 
 //~~~~~~ Global Functions ~~~~~~//
 void multiplyMatrix(struct point* currPoint, float matrix[4][4]);
@@ -28,7 +29,7 @@ void resetMatrix();
 
 //~~~~~~ Getters ~~~~~~//
 struct point* getPoint(int index);
-float getGloalScale();
+float getGlobalScale();
 float getXScale();
 float getYScale();
 float getZScale();

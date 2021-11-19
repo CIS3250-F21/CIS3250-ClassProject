@@ -182,4 +182,3 @@ void freeShape(struct shape *test) {
     free(test->points);
     free(test);
 }
-*/

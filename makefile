@@ -1,7 +1,7 @@
 CC = clang
 CFLAGS = -std=c99 -Wall -pedantic
 EXECS = final
-O_FILES = ReadInput/ReadInput.o GlobalScaling/GlobalScaling.o ScalingInX/ScalingInX.o ScalingInY/ScalingInY.o ScalingInZ/ScalingInZ.o RotationInX/RotationInX.o RotationInY/RotationInY.o RotationInZ/RotationInZ.o XYZTranslation/XYZTranslation.o ReflectionInXPlane/ReflectionInXPlane.o YPlaneReflection/YPlaneReflection.o ZPlaneReflection/ZPlaneReflection.o ShearInX/ShearInX.o ShearInY/ShearInY.o ShearInZ/ShearInZ.o xyzOrthographicProjection/xyzOrthographicProjection.o OutputResults/OutputResults.o ReadInput/ReadInputTests.o GlobalScaling/GlobalScalingTests.o ScalingInX/ScalingInXTests.o ScalingInY/ScalingInYTests.o ScalingInZ/ScalingInZTests.o RotationInX/RotationInXTests.o RotationInY/RotationInYTests.o RotationInZ/RotationInZTests.o XYZTranslation/XYZTranslationTests.o ReflectionInXPlane/ReflectionInXPlaneTests.o YPlaneReflection/YPlaneReflectionTests.o ZPlaneReflection/ZPlaneReflectionTests.o ShearInX/ShearInXTests.o ShearInY/ShearInYTests.o ShearInZ/ShearInZTests.o xyzOrthographicProjection/xyzOrthographicProjectionTests.o OutputResults/OutputResultsTests.o
+O_FILES = ReadInput/ReadInput.o GlobalScaling/GlobalScaling.o ScalingInX/ScalingInX.o ScalingInY/ScalingInY.o ScalingInZ/ScalingInZ.o RotationInX/RotationInX.o RotationInY/RotationInY.o RotationInZ/RotationInZ.o XYZTranslation/XYZTranslation.o ReflectionInXPlane/ReflectionInXPlane.o YPlaneReflection/YPlaneReflection.o ReflectionInZPlane/ReflectionInZPlane.o ShearInX/ShearInX.o ShearInY/ShearInY.o ShearInZ/ShearInZ.o xyzOrthographicProjection/xyzOrthographicProjection.o OutputResults/OutputResults.o ReadInput/ReadInputTests.o GlobalScaling/GlobalScalingTests.o ScalingInX/ScalingInXTests.o ScalingInY/ScalingInYTests.o ScalingInZ/ScalingInZTests.o RotationInX/RotationInXTests.o RotationInY/RotationInYTests.o RotationInZ/RotationInZTests.o XYZTranslation/XYZTranslationTests.o ReflectionInXPlane/ReflectionInXPlaneTests.o YPlaneReflection/YPlaneReflectionTests.o ReflectionInZPlane/ReflectionInZPlaneTests.o ShearInX/ShearInXTests.o ShearInY/ShearInYTests.o ShearInZ/ShearInZTests.o xyzOrthographicProjection/xyzOrthographicProjectionTests.o OutputResults/OutputResultsTests.o
 H_FILES = main.h groupIncludes.h groupTestIncludes.h
 
 all: $(EXECS)
@@ -55,8 +55,8 @@ ReflectionInXPlane/ReflectionInXPlane.o: ReflectionInXPlane/ReflectionInXPlane.c
 YPlaneReflection/YPlaneReflection.o: YPlaneReflection/YPlaneReflection.c YPlaneReflection/YPlaneReflection.h main.h
 	$(CC) $(CFLAGS) -c YPlaneReflection/YPlaneReflection.c -o YPlaneReflection/YPlaneReflection.o
 
-ZPlaneReflection/ZPlaneReflection.o: ZPlaneReflection/ZPlaneReflection.c ZPlaneReflection/ZPlaneReflection.h main.h
-	$(CC) $(CFLAGS) -c ZPlaneReflection/ZPlaneReflection.c -o ZPlaneReflection/ZPlaneReflection.o
+ReflectionInZPlane/ReflectionInZPlane.o: ReflectionInZPlane/ReflectionInZPlane.c ReflectionInZPlane/ReflectionInZPlane.h main.h
+	$(CC) $(CFLAGS) -c ReflectionInZPlane/ReflectionInZPlane.c -o ReflectionInZPlane/ReflectionInZPlane.o
 
 ShearInX/ShearInX.o: ShearInX/ShearInX.c ShearInX/ShearInX.h main.h
 	$(CC) $(CFLAGS) -c ShearInX/ShearInX.c -o ShearInX/ShearInX.o
@@ -107,8 +107,8 @@ ReflectionInXPlane/ReflectionInXPlaneTests.o: ReflectionInXPlane/ReflectionInXPl
 YPlaneReflection/YPlaneReflectionTests.o: YPlaneReflection/YPlaneReflectionTests.c YPlaneReflection/YPlaneReflectionTests.h main.h
 	$(CC) $(CFLAGS) -c YPlaneReflection/YPlaneReflectionTests.c -o YPlaneReflection/YPlaneReflectionTests.o
 
-ZPlaneReflection/ZPlaneReflectionTests.o: ZPlaneReflection/ZPlaneReflectionTests.c ZPlaneReflection/ZPlaneReflectionTests.h main.h
-	$(CC) $(CFLAGS) -c ZPlaneReflection/ZPlaneReflectionTests.c -o ZPlaneReflection/ZPlaneReflectionTests.o
+ReflectionInZPlane/ReflectionInZPlaneTests.o: ReflectionInZPlane/ReflectionInZPlaneTests.c ReflectionInZPlane/ReflectionInZPlaneTests.h main.h
+	$(CC) $(CFLAGS) -c ReflectionInZPlane/ReflectionInZPlaneTests.c -o ReflectionInZPlane/ReflectionInZPlaneTests.o
 
 ShearInX/ShearInXTests.o: ShearInX/ShearInXTests.c ShearInX/ShearInXTests.h main.h
 	$(CC) $(CFLAGS) -c ShearInX/ShearInXTests.c -o ShearInX/ShearInXTests.o

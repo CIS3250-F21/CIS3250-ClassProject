@@ -3,24 +3,28 @@
 
 void zScaling(){
 
-  float pointScalingValue = getZScale();
-  
-    struct point* newPoint;
-    int x = 0;
+  resetMatrix(); 
 
-  while ((newPoint = getPoint(x)) != NULL)
+  transformationMatrix[2][2] = getZScale(); 
+  
+  struct point* newPoint;
+
+  for (int x = 0; x < inputShape->numOfPoints; x++)
   {
-    float zValue;
-    zValue = newPoint->element[2];
-    zValue *= pointScalingValue;
-    if(zValue >=FLT_MAX)
+    newPoint = getPoint(x); 
+    if(newPoint == NULL)
     {
       return;
     }
-    newPoint->element[2] = zValue;
-    setPoint(x, newPoint);
-    x++; 
+    if (newPoint->element[2] >=FLT_MAX)
+    {
+      return; 
+    }
+    multiplyMatrix(newPoint, transformationMatrix);
+    setPoint(x, newPoint); 
   }
+
+  resetMatrix(); 
   
   return;
 }

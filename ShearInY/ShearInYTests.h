@@ -6,7 +6,6 @@
 void maximumFloatValue ();
 void inputRange ();
 void uninitializedStruct();
-void uninitializedMatrixMultiplication();
 void dependentGroupShearValues ();
 void correctTest ();
 void runYShearTests ();

@@ -3,7 +3,17 @@
 
 //The following are dirty test cases for group 14
 
-//Test One: The input is greater than the maximum supported float value
+//Test One: The input is out of the range of the matrix/vector
+void inputRange () { 
+  if(sizeof(inputShape->numOfPoints) > 4){
+    printf ("Error: The array value of the y shear is greater than the global array\n");
+  }
+  else{
+    return;
+  }
+}
+
+//Test Two: The input is greater than the maximum supported float value
 void maximumFloatValue() {
     float xShear = FLT_MAX;
     float zShear = FLT_MAX;
@@ -31,15 +41,6 @@ void maximumFloatValue() {
     free(expectedPoint);
 }
 
-//Test Two: The input is out of the range of the matrix/vector
-void inputRange () { 
-  if(sizeof(inputShape->numOfPoints) > 4){
-    printf ("Error: The array value of the y shear is greater than the global array\n");
-  }
-  else{
-    return;
-  }
-}
 
 //Test Three: The global struct is uninitialized 
 void uninitializedStruct() { 
@@ -51,29 +52,7 @@ void uninitializedStruct() {
   } 
 } 
 
-//Test Four: The global function matrixMultiplication() is initialized incorrectly
-void uninitializedMatrixMultiplication(){
-  void resetMatrix();
-  for (int i = 0; i < 4; i++){
-      for (int j = 0; j < 4; j++){
-          if (i == j){
-              if (! (transformationMatrix[i][j] == 1) ) {
-                printf ("Matrix did not reset properly.\n");
-                return;
-              }
-          }
-          else{
-              if (! (transformationMatrix[i][j] == 0) ) {
-                printf ("Matrix did not reset properly.\n");
-                return;
-              }
-          }
-      }
-    }
-    return;
-  }
-
-  //Test Five: The x or z shear values are empty
+  //Test Four: The x or z shear values are empty
   void dependentGroupShearValues () {
    float xShear = 5;
    float zShear = 4;
@@ -93,7 +72,7 @@ void uninitializedMatrixMultiplication(){
 
   //The following is a clean test cases for group 14
 
-  //Test Six: Giving an example vector, check to see whether or not the  yShear() function updated the coordates correctly.
+  //Test five: Giving an example vector, check to see whether or not the  yShear() function updated the coordates correctly.
 
   void correctTest() {
 
@@ -143,7 +122,6 @@ void runYShearTests () {
   correctTest();
   dependentGroupShearValues();
   maximumFloatValue();
-  uninitializedMatrixMultiplication();
   uninitializedStruct();
   inputRange();
 }

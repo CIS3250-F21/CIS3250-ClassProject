@@ -65,7 +65,7 @@ int main(int argc, char** argv) {
 
         //~~~~~ Orthographic projection ~~~~~//
         if( getOrthographic() == 1 ) {
-            xyzOrthographicProjection();
+            XYZOrthographicProjection();
         }
 
         //~~~~~ Writing output file ~~~~~//

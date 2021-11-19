@@ -108,13 +108,6 @@ void uninitializedStruct() {
     //the correct output should replace transformationMatrix [0] [1] to 4.
     //it should also replace transformationMatrix [2] [1] to 12.
 
-    for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 4; j++) {
-            printf("%f ", transformationMatrix[i][j]);
-        }
-        printf("\n");
-    }
-    
   }
 }
 

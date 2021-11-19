@@ -74,21 +74,30 @@ void checkIfScaledCorrectly(){
 void checkIfWithZero(){
     struct point * comparPoint;
 
+    //set global scale value to 0
     setGlobalScale(0);
-    globalScaling();
-    comparPoint = getPoint(0);
-    for( int i = 0; i < 4; i++) {
-        comparPoint->element[i] *= 0;
-        if( i == 3 ) {
-            if( comparPoint->element[i] != 0 ) {
-                printf("Global scaling: checkIfVectorPointsWereScaledCorrectlyWithZeroGlobalScaleValue failed.\n");
+    float globalScaleValue = getGlobalScale();
+
+    //checks if the global scale value is 0 if not test fails
+    if(globalScaleValue == 0){
+        return;
+    }
+    else{
+        globalScaling();
+        comparPoint = getPoint(0);
+        for( int i = 0; i < 4; i++) {
+            comparPoint->element[i] *= 0;
+            if( i == 3 ) {
+                if( comparPoint->element[i] != 0 ) {
+                    continue;
+                }
+            }
+            else if( comparPoint->element[i] == (float)(i + 1) ) {
                 continue;
             }
+            printf("Global scaling: checkIfVectorPointsWereScaledCorrectlyWithZeroGlobalScaleValue failed.\n");
+            break;
         }
-        else if( comparPoint->element[i] == (float)(i + 1) ) {
-            continue;
-        }
-        break;
     }
     resetMatrix();
 }
@@ -101,11 +110,12 @@ void checkIfWithZero(){
 */
 void checkIfScaledCorrectlyWithInts(){
     struct point * comparPoint;
-
+    //set the global scale value to 2
     setGlobalScale(2);
     globalScaling();
 
     comparPoint = getPoint(0);
+    //checks if it scaled correctly with int points
     for( int i = 0; i < 4; i++) {
         if( i == 3 ) {
             if( comparPoint->element[i] == 1 ) {
@@ -130,10 +140,12 @@ void checkIfScaledCorrectlyWithInts(){
 void checkVectorPoints(){
     struct point * comparPoint;
 
+    //set the global scale value to 2
     setGlobalScale(1);
     globalScaling();
     
     comparPoint = getPoint(0);
+    //checks if it scaled correctly after it was doubled
     for( int i = 0; i < 4; i++) {
         comparPoint->element[i] *= 2;
 
@@ -159,10 +171,26 @@ void checkVectorPoints(){
 */
 void checkIfScaledWithNullPoints(){
     struct point* comparPoint;
+    // Saves pointer to old address for freeing later
+    struct point* oldPoint;
 
+    // Creating test point
+    struct point* newPoint = (struct point*) malloc( sizeof(struct point) );
+    for(int i = 0; i <4; i++) {
+        newPoint->element[i] = 0;
+    }
+    newPoint->element[3] = 0;
+
+    // Overwrites point at index 0
+    oldPoint = getPoint(0);
+    setPoint(0, newPoint);
+    free( oldPoint );
+
+    //set the global scale value to 2
     setGlobalScale(1);
     globalScaling();
     
+    //checks if it scaled correctly with 0s as the vector points
     comparPoint = getPoint(0);
     for( int i = 0; i < 4; i++) {
         comparPoint->element[i] *= 2;
@@ -190,10 +218,17 @@ void checkIfScaledWithNullPoints(){
 void checkIfScaledWithNegativeNumber(){
     struct point* comparPoint;
 
+    //set the global scale value to -1
     setGlobalScale(-1);
+    float globalScaleValue = getGlobalScale();
+    //checks the global scale value if it was negative
+    if(globalScaleValue < 0){
+        return;
+    }
     globalScaling();
     
     comparPoint = getPoint(0);
+
     for( int i = 0; i < 4; i++) {
         comparPoint->element[i] *= 2;
 

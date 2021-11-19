@@ -2,13 +2,13 @@
 #define GROUP_INCLUDES_H
 
 #include "ReadInput/ReadInput.h"
-#include "XPlaneReflection/XPlaneReflection.h"
+#include "ReflectionInXPlane/ReflectionInXPlane.h"
 #include "YPlaneReflection/YPlaneReflection.h"
-#include "ZPlaneReflection/ZPlaneReflection.h"
+#include "ReflectionInZPlane/ReflectionInZPlane.h"
 #include "ShearInX/ShearInX.h"
 #include "ShearInY/ShearInY.h"
 #include "ShearInZ/ShearInZ.h"
-#include "xyzOrthographicProjection/xyzOrthographicProjection.h"
+#include "XYZOrthographicProjection/XYZOrthographicProjection.h"
 #include "OutputResults/OutputResults.h"
 #include "GlobalScaling/GlobalScaling.h"
 #include "ScalingInX/ScalingInX.h"

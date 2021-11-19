@@ -12,6 +12,13 @@ void zRotation() {
 
         multiplyMatrix (currentPoint, transformationMatrix);
 
+        // loop through y and round close to 0, to 0.
+        for (int k = 0; k < 4; k++) {
+            if (compareFloat(currentPoint->element[k], 0, 0.0001) == 0) {
+                currentPoint->element[k] = 0;  
+            }
+        }  
+
         setPoint (i, currentPoint);   
     }
 
@@ -19,19 +26,10 @@ void zRotation() {
 
 void generateZRotationMatrix (float theta) {
 
-    for (int i = 0 ; i < 4 ; i++)  {
-
-        for (int j = 0 ; j < 4; j++) {
-
-            transformationMatrix[i][j] = 0;
-
-        }
-    }
+    resetMatrix();
   
     transformationMatrix[0][0] = cos (theta);
     transformationMatrix[0][1] = -sin (theta);
     transformationMatrix[1][0] = sin (theta);
     transformationMatrix[1][1] = cos (theta);
-    transformationMatrix[2][2] = 1;
-    transformationMatrix[3][3] = 1;  
 }

@@ -41,7 +41,7 @@ void readInput(char *fileName, char *fileName2) {  // readInput manually creates
 	const char s[2] = "=";
 	char *token;
 	
-	float functCallNums[13];
+	float functCallNums[17];
 	i = 0;
 	fgets(line2, 40, fp2);
 
@@ -64,10 +64,13 @@ void readInput(char *fileName, char *fileName2) {  // readInput manually creates
   	setXTranslation(functCallNums[7]);
   	setYTranslation(functCallNums[8]);
   	setZTranslation(functCallNums[9]);
-    setXShear(functCallNums[10]);
-    setYShear(functCallNums[11]);
-    setZShear(functCallNums[12]);
-	
+    setXReflection(functCallNums[10]);
+  	setYReflection(functCallNums[11]);
+  	setZReflection(functCallNums[12]);
+    setXShear(functCallNums[13]);
+    setYShear(functCallNums[14]);
+    setZShear(functCallNums[15]);
+	setOrthographic(functCallNums[16]);
 
     fclose(fp);
     fclose(fp2);

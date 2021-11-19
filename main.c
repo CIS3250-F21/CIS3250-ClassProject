@@ -8,64 +8,67 @@ int main(int argc, char** argv) {
     if (argc == 2 && strcmp(argv[1], "-t") == 0) {
         runAllTests();
     } else if (argc == 4) {
-        inputFileName = malloc(sizeof(char) * BUFSIZ);
-        strncpy(inputFileName, argv[1], BUFSIZ);
-
-        transformationFileName = malloc(sizeof(char) * BUFSIZ); 
-        strncpy(transformationFileName, argv[2], BUFSIZ);
+        char * inputFileName = argv[1];
+        char * transformationFileName = argv[2]; 
+        char * outputFileName = argv[3];
         
-        outputFileName = malloc(sizeof(char) * BUFSIZ);
-        strncpy(outputFileName, argv[3], BUFSIZ);
-        
-        //~~~~~ Group 1 ~~~~~//
+        //~~~~~ Reading file input ~~~~~//
         readInput(inputFileName, transformationFileName);
 
-        //~~~~~ Group 2 ~~~~~//
+        //~~~~~ Global scaling ~~~~~//
         globalScaling();
 
-        //~~~~~ Group 3 ~~~~~//
+        //~~~~~ Scaling in the x axis ~~~~~//
         xScaling();
 
-        //~~~~~ Group 4 ~~~~~//
+        //~~~~~ Scaling in the y axis ~~~~~//
         yScaling();
 
-        //~~~~~ Group 5 ~~~~~//
+        //~~~~~ Scaling in the z axis ~~~~~//
         zScaling();
 
-        //~~~~~ Group 6 ~~~~~//
+        //~~~~~ Rotate in the x axis ~~~~~//
         xRotation();
 
-        //~~~~~ Group 7 ~~~~~//
+        //~~~~~ Rotate in the x axis ~~~~~//
         yRotation();
 
-        //~~~~~ Group 8 ~~~~~//
+        //~~~~~ Rotate in the x axis ~~~~~//
         zRotation();
 
-        //~~~~~ Group 9 ~~~~~//
-        xyzTranslation();
+        //~~~~~ Translation ~~~~~//
+        XYZTranslation();
 
-        //~~~~~ Group 10 ~~~~~//
-        xPlaneReflection();
+        //~~~~~ Reflection on the x plane ~~~~~//
+        if( getXReflection() == 1 ) {
+            ReflectionInXPlane();
+        }
 
-        //~~~~~ Group 11 ~~~~~//
-        yPlaneReflection();
+        //~~~~~ Reflection on the y plane ~~~~~//
+        if( getYReflection() == 1 ) {
+            yPlaneReflection();
+        }
 
-        //~~~~~ Group 12 ~~~~~//
-        ZPlaneReflection();
+        //~~~~~ Reflection on the z plane ~~~~~//
+        if( getZReflection() == 1) {
+            ReflectionInZPlane();
+        }
 
-        //~~~~~ Group 13 ~~~~~//
+        //~~~~~ x shearing ~~~~~//
         xShear();
 
-        //~~~~~ Group 14 ~~~~~//
+        //~~~~~ y shearing ~~~~~//
         yShear();
 
-        //~~~~~ Group 15 ~~~~~//
+        //~~~~~ z shearing ~~~~~//
         zShear();
 
-        //~~~~~ Group 16 ~~~~~//
-        xyzOrthographicProjection();
+        //~~~~~ Orthographic projection ~~~~~//
+        if( getOrthographic() == 1 ) {
+            XYZOrthographicProjection();
+        }
 
-        //~~~~~ Group 17 ~~~~~//
+        //~~~~~ Writing output file ~~~~~//
         outputPoints(outputFileName);
 
 
@@ -81,9 +84,6 @@ int main(int argc, char** argv) {
 
         // free shape
         free(inputShape);
-        
-        free(inputFileName);
-        free(outputFileName);
     }
     else {
         fprintf(stderr, "Format %s <input file> <transformation file> <output file>\n", argv[0]);
@@ -105,7 +105,7 @@ struct point* getPoint(int index) {
     return inputShape->points[index];
 }
 
-// ~~~~~~~~~~~~~~~~~ GROUP Getters Go HERE ~~~~~~~~~~~~~~~~~~~ //
+// ~~~~~~~~~~~~~~~~~ Getters for Individual Functions ~~~~~~~~~~~~~~~~~~~ //
 float getGlobalScale() {
     return inputShape -> scaling[3];
 }
@@ -123,7 +123,7 @@ float getZScale() {
 }
 
 float getXRotation() {
-    return 0;
+    return inputShape->rotation[0];
 }
 
 float getYRotation() {
@@ -146,6 +146,18 @@ float getZTranslation() {
     return inputShape->translation[2];
 }
 
+float getXReflection() {
+    return inputShape->reflection[0];
+}
+
+float getYReflection() {
+    return inputShape->reflection[1];
+}
+
+float getZReflection() {
+    return inputShape->reflection[2];
+}
+
 float getXShear() {
     return inputShape->shearing[0];
 }
@@ -156,6 +168,10 @@ float getYShear() {
 
 float getZShear() {
     return inputShape->shearing[2];
+}
+
+float getOrthographic() {
+    return inputShape->orthographic;
 }
 
 // ~~~~~~~~~~~~~~~~~ Setters ~~~~~~~~~~~~~~~~~~~ //
@@ -172,7 +188,7 @@ void setPoint(int index, struct point* newPoint) {
     }
 }
 
-// ~~~~~~~~~~~~~~~~~ GROUP Setters Go HERE ~~~~~~~~~~~~~~~~~~~ //
+// ~~~~~~~~~~~~~~~~~ Setters for Individual Functions ~~~~~~~~~~~~~~~~~~~ //
 void setGlobalScale(float newGlobalScale) {
     inputShape -> scaling[3] = newGlobalScale;
 }
@@ -190,6 +206,7 @@ void setZScale(float newZScale) {
 }
 
 void setXRotation(float newTheta) {
+    inputShape->rotation[0] = newTheta;
 }
 
 void setYRotation(float angle) {
@@ -212,6 +229,18 @@ void setZTranslation(float newZTranslation) {
     inputShape->translation[2] = newZTranslation;
 }
 
+void setXReflection(float newXReflection) {
+    inputShape->reflection[0] = newXReflection;
+}
+
+void setYReflection(float newYReflection) {
+    inputShape->reflection[1] = newYReflection;
+}
+
+void setZReflection(float newZReflection) {
+    inputShape->reflection[2] = newZReflection;
+}
+
 void setXShear(float newXShear) {
     inputShape->shearing[0] = newXShear;
 }
@@ -222,6 +251,10 @@ void setYShear(float newYShear) {
 
 void setZShear(float newZShear) {
     inputShape->shearing[2] = newZShear;
+}
+
+void setOrthographic(float newOrthographic) {
+    inputShape->orthographic = newOrthographic;
 }
 
 void multiplyMatrix(struct point* currPoint, float matrix[4][4]) {
@@ -247,28 +280,44 @@ void multiplyMatrix(struct point* currPoint, float matrix[4][4]) {
 }
 
 //Reset transformation matrix to the identity matrix
-void resetMatrix(){
-    for (int i = 0; i < 4; i++){
-        for (int j = 0; j < 4; j++){
-            if (i == j){
+void resetMatrix() {
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            if (i == j) {
                 transformationMatrix[i][j] = 1;
             }
-            else{
+            else {
                 transformationMatrix[i][j] = 0;
             }
         }
     }
 }
 
+//compare 1 float to another within a accepted range
+int compareFloat(float x, float y, float acceptedDistance) {
+    float difference = fabs(x - y);
+
+    if (difference > acceptedDistance) {
+        return 1;
+    }
+    
+    return 0;
+}
+
 // Instantiates shape struct for testing
 void createTestPoints() {
+    createNTestPoints(5);
+}
+
+// Creates new inputShape with variable amt of testPoints
+void createNTestPoints(int numOfPoints) {
     int i;
 
     inputShape = malloc(sizeof(struct shape));
-    inputShape->numOfPoints = 5;
-    inputShape->points = malloc(sizeof(struct point*) * 5);
+    inputShape->numOfPoints = numOfPoints;
+    inputShape->points = malloc(sizeof(struct point*) * numOfPoints);
 
-    for (i = 0; i < 5; i++) {
+    for (i = 0; i < numOfPoints; i++) {
         struct point* temp = malloc(sizeof(struct point));
         for (int j = 0; j < 3; j++) {
             temp->element[j] = j + i;
@@ -281,7 +330,7 @@ void createTestPoints() {
 // Frees instantiated shape struct
 void freeTestPoints() {
     int i;
-    for (i = 0; i < 5; i++) {
+    for (i = 0; i < inputShape->numOfPoints; i++) {
         free(inputShape->points[i]);
     }
     free(inputShape->points);
@@ -313,7 +362,11 @@ void runAllTests() {
     RunScalingInZTests();
     freeTestPoints();
   
-  
+    /* Rotation in X Tests */
+    createTestPoints();
+    setXRotation(0);
+    runRotationInXTests(); 
+    freeTestPoints();
   
     /* Rotation in Y Tests */
     createTestPoints();
@@ -329,7 +382,7 @@ void runAllTests() {
   
     /* X Plane Reflection Tests */
     createTestPoints();
-    runXPlaneReflectionTests();
+    runReflectionInXPlaneTests();
     freeTestPoints();
   
     /* Y Plane Reflection Tests */
@@ -339,7 +392,7 @@ void runAllTests() {
 
     /* Z Plane Reflection Tests */
     createTestPoints();
-    ZPlaneReflectionTests();
+    ReflectionInZPlaneTests();
     freeTestPoints();
 
     /* XYZ Translation Tests */
@@ -354,16 +407,17 @@ void runAllTests() {
   
     /* Y Shear Tests */
     createTestPoints();
-    //runYShearTests(); //still need to get a testrunner
+    runYShearTests();
     freeTestPoints();
 
     /* Z Shear Tests */
     createTestPoints();
-    //runZShearTests();
+    runZShearTests();
     freeTestPoints();
-  
+    
+    /* XYZ Orthographic Projection Tests */
     createTestPoints();
-    // xyzOrthographicProjectionRunTests();
+    XYZOrthographicProjectionRunTests();
     freeTestPoints();
 
     /* Output Results Tests */

@@ -8,7 +8,7 @@ void XYZTranslationTests() {
   PassingEmptyShapeStruct();
 
 }
-//Test ensure proper function of xyzTranslation()
+//Test ensure proper function of XYZTranslation()
 void TestingExpectedPointWithXYZTranslation() {
 
   float x;
@@ -22,17 +22,8 @@ void TestingExpectedPointWithXYZTranslation() {
   expected.element[2] = 8;
   expected.element[3] = 1;
 
-    // Set initial values to 0
-    for(int i = 0; i < 4; i++) {
-        for(int j = 0; j < 4; j++) {
-            transformationMatrix[i][j] = 0.0;
-      }
-    }
-  // Create the translation matrix
-  transformationMatrix[0][0] = 1.0;
-  transformationMatrix[1][1] = 1.0;
-  transformationMatrix[2][2] = 1.0;
-  transformationMatrix[3][3] = 1.0;
+  // Create Identity Matrix
+  resetMatrix();
 
   x = getXTranslation();
   y = getYTranslation();
@@ -42,7 +33,7 @@ void TestingExpectedPointWithXYZTranslation() {
   setYTranslation(4); 
   setZTranslation(5); 
 
-  xyzTranslation();
+  XYZTranslation();
 
   setXTranslation(x);
   setYTranslation(y);
@@ -69,7 +60,7 @@ void XYZTranslationLargeValueOutOfBounds() {
   setYTranslation(FLT_MAX * 2);
   setZTranslation(FLT_MAX * 2);
 
-  xyzTranslation();
+  XYZTranslation();
   setXTranslation(x);
   setYTranslation(y);
   setZTranslation(z);
@@ -88,7 +79,7 @@ void XYZTranslationSmallValueOutOfBounds() {
   setXTranslation(FLT_MIN * 2);
   setYTranslation(FLT_MIN * 2);
   setZTranslation(FLT_MIN * 2);
-  xyzTranslation();
+  XYZTranslation();
  
   setXTranslation(x);
   setYTranslation(y);
@@ -106,7 +97,7 @@ void PassingEmptyShapeStruct() {
   }
 
   inputShape->points = NULL;
-  xyzTranslation();
+  XYZTranslation();
 
   if(inputShape->points != NULL) {
     printf("Failed Dirty Test. Should not have intialized anything\n");

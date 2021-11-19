@@ -9,6 +9,5 @@ void TestInputNotEmptyZ();
 void TestInputFreedZ();
 void OverflowZ();
 void UnderflowZ();
-void ZPlaneReflectionTests();
 
 #endif

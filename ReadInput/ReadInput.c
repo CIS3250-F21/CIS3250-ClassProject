@@ -1,15 +1,5 @@
 #include "ReadInput.h"
 
-//include .h file for other groups functions then uncomment lower lines
-
-/*
-Group 1 - Group Implementation
-Zacharias Cymbaluk 1121146
-Devyendu Dutta 1018973
-Valmik Dixon 1124060
-Jesse Varkul 1139803
-*/
-
 void readInput(char *fileName, char *fileName2) {  // readInput manually creates an "expected" file read that would be what we expect from the "real function". Since the TDD is not expected to actually read the real text file, we do not get into file reading here.
     inputShape = malloc(sizeof(struct shape));
     FILE *fp = fopen(fileName, "r");
@@ -46,8 +36,6 @@ void readInput(char *fileName, char *fileName2) {  // readInput manually creates
         i++;
     } while (fgets(line, 40, fp));
 
-    //uncoment for other groups when .h file is included
-    
 	
 	char line2[40];
 	const char s[2] = "=";
@@ -70,9 +58,9 @@ void readInput(char *fileName, char *fileName2) {  // readInput manually creates
 	setXScale(functCallNums[1]);
   	setYScale(functCallNums[2]);
   	setZScale(functCallNums[3]);
-  	setXRotation(functCallNums[4]*(M_PI/180));      //Convert degrees to radians
+  	setXRotation(functCallNums[4]*(M_PI/180));      //Converting degrees to radians
   	setYRotation(functCallNums[5]*(M_PI/180));
-  	setZRotation(functCallNums[6]*(M_PI/180));
+  	setZRotation(functCallNums[6]*(M_PI/180));\
   	setXTranslation(functCallNums[7]);
   	setYTranslation(functCallNums[8]);
   	setZTranslation(functCallNums[9]);

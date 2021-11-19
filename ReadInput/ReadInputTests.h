@@ -1,6 +1,11 @@
 #include "../main.h"
 #include "ReadInput.h"
 
+
+void runReadInputTests();
+
+struct shape* readCSVInputTest(char *);
+
 char ReadInputTest1(char *, char *, char *);
 
 int ReadInputTest2(char *, char *, char[20]);

@@ -2,30 +2,30 @@
 
 void runReadInputTests(){
 
-    if(ReadInputTest1("input1.csv", "answers1.csv", "input2.txt")){
+    if(ReadInputTest1("input1.csv", "answers1.csv", "inputTransformation.txt")){
         printf("readInput Test 1 - Failed");
     }
 
-    if(ReadInputTest2("test2.csv", "input1.csv", "input2.txt") == 1){
+    if(ReadInputTest2("test2.csv", "input1.csv", "inputTransformation.txt") == 1){
         printf("ReadInput Test 2 - Failed");
     }
 
-    if(ReadInputTest3("test3.csv", "input1.csv", "input2.txt") == 1){
+    if(ReadInputTest3("test3.csv", "input1.csv", "inputTransformation.txt") == 1){
         printf("ReadInput Test 3 - Failed");
     }
 
-    if(ReadInputTest4("test4.csv", "input1.csv", "input2.txt") == 1){
+    if(ReadInputTest4("test4.csv", "input1.csv", "inputTransformation.txt") == 1){
         printf("ReadInput Test 4 - Failed");
     }
 
-    if(ReadInputTest5("input1.csv", "incorrectFile.txt") == 1){
+    if(ReadInputTest5("incorrectFileName.csv", "inputTransformation.txt") == 1){
         printf("ReadInput Test 5 - Failed");
     }
 }
 
 // (CLEAN) Test #1 will compare all the given float values against the expected float values. We expect this test to pass.
 char ReadInputTest1(char testFile[20], char answerFile[20], char inputfile2[20]) {
-    //struct shape *input = readInput(testFile);
+    readInput(testFile, inputfile2);
     FILE *fp = fopen(answerFile, "r");
     int lines = 0;
     char buf[30];
@@ -80,7 +80,7 @@ int ReadInputTest2(char *testFile, char *orgFile, char inputfile2[20]) {
     return 0;
 }  // END OF TEST 2
 
-//Dirty test 2 - incorrect inputs format more than 4 values on each line in the input file)
+//Dirty test 2 - incorrect inputs format (more than 4 values on each line in the input file)
 int ReadInputTest3(char *testFile, char *orgFile, char inputfile2[20]) {
     float *test, *answers;
     readInput(orgFile, inputfile2);
@@ -135,7 +135,6 @@ int ReadInputTest5(char answerFile[20], char inputfile2[20]) {
     readInput(answerFile, inputfile2);  //Call the function with an incorrect file name
     
     if (inputShape == NULL) {
-        freeShape(inputShape);
         return 1;  // If file name not found, fail case.
     }
     freeShape(inputShape);

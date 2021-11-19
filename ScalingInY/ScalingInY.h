@@ -4,5 +4,6 @@
 #include "../main.h"
 
 void yScaling();
+void setupTransformationMatrixForYScaling();
 
 #endif

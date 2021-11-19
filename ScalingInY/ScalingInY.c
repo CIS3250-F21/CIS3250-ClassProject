@@ -18,10 +18,8 @@
  */
 void yScaling() {
     struct point *curPoint;      // Holds current point
-    
-    // Setup transformation matrix
-    resetMatrix();
-    transformationMatrix[1][1] = getYScale();  // Y scale used to modify points
+    // Reset transformation matrix
+    setupTransformationMatrixForYScaling();
 
     // Iterate through each point in the point array and update the y value by
     // multiplying it by the yScale value.
@@ -31,4 +29,11 @@ void yScaling() {
         // Set point back to transformed value
         setPoint(curIndex, curPoint);
     }
+}
+
+void setupTransformationMatrixForYScaling() {
+    // Reset transformation matrix
+    resetMatrix();
+    // Set to Y scale used to modify points
+    transformationMatrix[1][1] = getYScale(); 
 }

@@ -8,5 +8,6 @@ void uninitializedMatrixMultiplication();
 void dependentGroupShearValues ();
 void correctTest ();
 void runYShearTests ();
+void yShear();
 
 #endif

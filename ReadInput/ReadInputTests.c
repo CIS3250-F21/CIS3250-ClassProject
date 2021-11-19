@@ -3,7 +3,7 @@
 void runReadInputTests(){
 
     if(ReadInputTest1("input1.csv", "answers1.csv", "input2.txt")){
-        printf("ReadInput Test 1 - Failed");
+        printf("readInput Test 1 - Failed");
     }
 
     if(ReadInputTest2("test2.csv", "input1.csv", "input2.txt") == 1){
@@ -25,7 +25,7 @@ void runReadInputTests(){
 
 // (CLEAN) Test #1 will compare all the given float values against the expected float values. We expect this test to pass.
 char ReadInputTest1(char testFile[20], char answerFile[20], char inputfile2[20]) {
-    //struct shape *input = ReadInput(testFile);
+    //struct shape *input = readInput(testFile);
     FILE *fp = fopen(answerFile, "r");
     int lines = 0;
     char buf[30];
@@ -52,9 +52,9 @@ char ReadInputTest1(char testFile[20], char answerFile[20], char inputfile2[20])
 int ReadInputTest2(char *testFile, char *orgFile, char inputfile2[20]) {
     float *test, *answers;
     //printf("pass readinput1\n");
-    ReadInput(orgFile, inputfile2);
+    readInput(orgFile, inputfile2);
     struct shape *original = inputShape;
-    ReadInput(testFile, inputfile2);  //Read the input file containing characters
+    readInput(testFile, inputfile2);  //Read the input file containing characters
     struct shape *testInput = inputShape;
     //printf("pass readinput2\n");
     for (int i = 0; i < original->numOfPoints; i++) {
@@ -83,9 +83,9 @@ int ReadInputTest2(char *testFile, char *orgFile, char inputfile2[20]) {
 //Dirty test 2 - incorrect inputs format more than 4 values on each line in the input file)
 int ReadInputTest3(char *testFile, char *orgFile, char inputfile2[20]) {
     float *test, *answers;
-    ReadInput(orgFile, inputfile2);
+    readInput(orgFile, inputfile2);
     struct shape *original = inputShape;
-    ReadInput(testFile, inputfile2);  //Read the input file containing characters
+    readInput(testFile, inputfile2);  //Read the input file containing characters
     struct shape *testInput = inputShape;
     
     for (int i = 0; i < original->numOfPoints; i++) {
@@ -109,9 +109,9 @@ int ReadInputTest3(char *testFile, char *orgFile, char inputfile2[20]) {
 //Dirty test 3 - incorrect inputs (incomplete matrix in the input file)
 int ReadInputTest4(char *testFile, char *orgFile, char inputfile2[20]) {
     float *test, *answers;
-    ReadInput(orgFile, inputfile2);
+    readInput(orgFile, inputfile2);
     struct shape *original = inputShape;
-    ReadInput(testFile, inputfile2);  //Read the input file containing characters
+    readInput(testFile, inputfile2);  //Read the input file containing characters
     struct shape *testInput = inputShape;    for (int i = 0; i < original->numOfPoints; i++) {
         test = original->points[i]->element;
         answers = testInput->points[i]->element;
@@ -132,7 +132,7 @@ int ReadInputTest4(char *testFile, char *orgFile, char inputfile2[20]) {
 
 //Dirty test 4 - Incorrect file name passed, fails to read because filereader == NULL.
 int ReadInputTest5(char answerFile[20], char inputfile2[20]) {
-    ReadInput(answerFile, inputfile2);  //Call the function with an incorrect file name
+    readInput(answerFile, inputfile2);  //Call the function with an incorrect file name
     
     if (inputShape == NULL) {
         freeShape(inputShape);
@@ -147,7 +147,7 @@ int ReadInputTest5(char answerFile[20], char inputfile2[20]) {
     float runningTotalExpected = 0;
     float runningTotalSecond = 0;
 
-    struct shape *passedStruct = ReadInput(testFile, inputfile2);
+    struct shape *passedStruct = readInput(testFile, inputfile2);
 
     for (int i = 0; i < passedStruct->numOfPoints; i++) {
         for (int j = 0; j <= 5; j++) {

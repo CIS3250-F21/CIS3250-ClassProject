@@ -60,7 +60,7 @@ void readInput(char *fileName, char *fileName2) {  // readInput manually creates
   	setZScale(functCallNums[3]);
   	setXRotation(functCallNums[4]*(M_PI/180));      //Converting degrees to radians
   	setYRotation(functCallNums[5]*(M_PI/180));
-  	setZRotation(functCallNums[6]*(M_PI/180));\
+  	setZRotation(functCallNums[6]*(M_PI/180));
   	setXTranslation(functCallNums[7]);
   	setYTranslation(functCallNums[8]);
   	setZTranslation(functCallNums[9]);

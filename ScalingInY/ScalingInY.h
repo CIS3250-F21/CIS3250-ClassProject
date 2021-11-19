@@ -3,6 +3,6 @@
 
 #include "../main.h"
 
-int yScaling();
+void yScaling();
 
 #endif

@@ -16,7 +16,7 @@
  * Since only y is modified by a variable value, yScaling transforms the matrix by focusing on
  * only the y value of the point
  */
-int yScaling() {
+void yScaling() {
     struct point *curPoint;      // Holds current point
     float yScale = getYScale();  // Y scale used to modify points
 
@@ -24,15 +24,8 @@ int yScaling() {
     // multiplying it by the yScale value.
     for (int curIndex = 0; curIndex < inputShape->numOfPoints; curIndex++) {
         curPoint = getPoint(curIndex);
-
-        if (curPoint == NULL) {
-            // point at this index is not initialised
-            // fprintf(stderr, "ERROR: Could not perform yScaling function as point at index %d was NULL.\n", curIndex);
-            return 0;
-        }
-
         curPoint->element[1] *= yScale;
+        // Set point back to transformed value
         setPoint(curIndex, curPoint);
     }
-    return 1;
 }

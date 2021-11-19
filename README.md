@@ -13,7 +13,9 @@ When making a pull request please try and make it the final version of your code
 
 Please compile using "make" to make sure all of your functions and tests compile properly. Please also run a Valgrind check and make sure there are no memory leaks/uninitialized jumps. The command is below.
 
-> valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./main inputShapeFile.csv inputTransformation.txt test.csv
+> valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./final inputShapeFile.csv inputTransformation.txt test.csv
+
+> valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./final -t
 
 ## Group File
 
@@ -54,8 +56,8 @@ Please compile using "make" to make sure all of your functions and tests compile
 ## How to Run
 
 1. run `make`
-2. run ./main with the following structure:
-`./main <inputfile> <tranformationfile> <outputfile>`
+2. run ./final with the following structure:
+`./final <inputfile> <tranformationfile> <outputfile>`
 
 ## yScaling (ScalingInY.c) Functionality
 Retrives the yScale value. Using a loop to cycle through the points, yScaling retrieves a point, multiplies the y value (index 1 of the point) by yScale, and stores the new value.

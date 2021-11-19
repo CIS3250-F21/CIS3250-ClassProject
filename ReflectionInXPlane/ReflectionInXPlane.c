@@ -1,7 +1,7 @@
-#include "XPlaneReflection.h"
+#include "ReflectionInXPlane.h"
 #include "../main.h"
 
-void xPlaneReflection() {
+void ReflectionInXPlane() {
     generateXPlaneReflectionMatrix();
     struct point* p;
     int i = 0;

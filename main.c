@@ -41,7 +41,7 @@ int main(int argc, char** argv) {
 
         //~~~~~ Reflection on the x plane ~~~~~//
         if( getXReflection() == 1 ) {
-            xPlaneReflection();
+            ReflectionInXPlane();
         }
 
         //~~~~~ Reflection on the y plane ~~~~~//
@@ -369,7 +369,7 @@ void runAllTests() {
   
     /* X Plane Reflection Tests */
     createTestPoints();
-    runXPlaneReflectionTests();
+    runReflectionInXPlaneTests();
     freeTestPoints();
   
     /* Y Plane Reflection Tests */

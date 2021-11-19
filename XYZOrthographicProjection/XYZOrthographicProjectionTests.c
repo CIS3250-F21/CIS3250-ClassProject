@@ -1,24 +1,26 @@
-#include "xyzOrthographicProjectionTests.h"
+#include "XYZOrthographicProjectionTests.h"
 
-//xyzOrthographicProjection clean test with checks the current points
-void xyzOrthographicProjectionTest1()
+//XYZOrthographicProjection clean test with checks the current points
+void XYZOrthographicProjectionTest1()
 {
 
-    xyzOrthographicProjection();
+    XYZOrthographicProjection();
  
     for (int i = 0 ; i < inputShape->numOfPoints ; i++)
     {
         if (getPoint(i)->element[2] != 0)
         {
-            printf("Function xyzOrthographicProjection: Test 1 failed,\n");
+            printf("Function XYZOrthographicProjection: Test 1 failed,\n");
             printf("Expected 0, Found %f\n", getPoint(i)->element[2]);
             printf("\n");
         }
     }
+
+    resetMatrix();
 }
 
-//xyzOrthographicProjection test when there is only one point
-void xyzOrthographicProjectionTest2()
+//XYZOrthographicProjection test when there is only one point
+void XYZOrthographicProjectionTest2()
 {
     // Free old test points
     freeTestPoints();
@@ -40,18 +42,19 @@ void xyzOrthographicProjectionTest2()
     setPoint(0, testPoint);
     free( origPoint );
 
-    xyzOrthographicProjection();
+    XYZOrthographicProjection();
     if (getPoint(0)->element[2] != 0)
     {
-        printf("Function xyzOrthographicProjection: Test 2 failed,\n");
+        printf("Function XYZOrthographicProjection: Test 2 failed,\n");
         printf("Expected 0, Found %f\n", getPoint(0)->element[2]);
         printf("\n");
     }
+    resetMatrix();
     
 }
 
 // Test with a large amount of points (1000 points)
-void xyzOrthographicProjectionTest3()
+void XYZOrthographicProjectionTest3()
 {
     // Free old test points
     freeTestPoints();
@@ -59,23 +62,25 @@ void xyzOrthographicProjectionTest3()
     // Create new inputShape struct with 1000 testPoints
     createNTestPoints(1000);
 
-    xyzOrthographicProjection();
+    XYZOrthographicProjection();
     for (int i = 0 ; i < inputShape->numOfPoints; i++)
     {
         if (getPoint(i)->element[2] != 0)
         {
-            printf("Function xyzOrthographicProjection: Test 3 failed,\n");
+            printf("Function XYZOrthographicProjection: Test 3 failed,\n");
             printf("Expected 0, Found %f", getPoint(i)->element[2]);
             printf("\n");
             return;
         }
     }
+
+    resetMatrix();
 }
 
 //Function for running all tests
-void xyzOrthographicProjectionRunTests()
+void XYZOrthographicProjectionRunTests()
 {
-    xyzOrthographicProjectionTest1();
-    xyzOrthographicProjectionTest2();
-    xyzOrthographicProjectionTest3();
+    XYZOrthographicProjectionTest1();
+    XYZOrthographicProjectionTest2();
+    XYZOrthographicProjectionTest3();
 }

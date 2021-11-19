@@ -3,6 +3,7 @@
 
 #include "../main.h"
 
-void xyzOrthographicProjection();
+void XYZOrthographicProjection();
+void generateXYZOrthographicProjectionMatrix();
 
 #endif

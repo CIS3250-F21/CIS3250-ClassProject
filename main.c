@@ -43,7 +43,7 @@ int main(int argc, char** argv) {
         zRotation();
 
         //~~~~~ Translation ~~~~~//
-        xyzTranslation();
+        XYZTranslation();
 
         //~~~~~ Reflection on the x plane ~~~~~//
         xPlaneReflection();
@@ -64,7 +64,7 @@ int main(int argc, char** argv) {
         zShear();
 
         //~~~~~ Orthographic projection ~~~~~//
-        xyzOrthographicProjection();
+        XYZOrthographicProjection();
 
         //~~~~~ Writing output file ~~~~~//
         outputPoints(outputFileName);
@@ -369,7 +369,7 @@ void runAllTests() {
     
     /* XYZ Orthographic Projection Tests */
     createTestPoints();
-    xyzOrthographicProjectionRunTests();
+    XYZOrthographicProjectionRunTests();
     freeTestPoints();
 
     /* Output Results Tests */

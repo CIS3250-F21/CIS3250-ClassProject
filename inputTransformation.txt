@@ -10,4 +10,4 @@ setYTranslation=0
 setZTranslation=0
 setXshear=0
 setYshear=0
-setZshear=0
+setZshear=

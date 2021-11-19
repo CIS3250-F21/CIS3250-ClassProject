@@ -4,11 +4,11 @@
 #include "../main.h"
 #include "ZPlaneReflection.h"
 void ZPlaneReflectionTests();
-void ZPlaneReflectionTest1();
-void ZPlaneReflectionTest2();
-void ZPlaneReflectionTest3();
-void ZPlaneReflectionTest4();
-void ZPlaneReflectionTest5();
+void DidZReflect();
+void TestInputNotEmptyZ();
+void TestInputFreedZ();
+void OverflowZ();
+void UnderflowZ();
 void ZPlaneReflectionTests();
 
 #endif

@@ -3,8 +3,6 @@
 
 #include "../main.h"
 
-void initialisePoints();
-void uninitialisedYPointTest();
 void testNegativeScale();
 void testZeroScale();
 void testPositiveScale();

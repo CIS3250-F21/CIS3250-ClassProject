@@ -156,7 +156,7 @@ void uninitializedMatrixMultiplication(){
 void runYShearTests () {
   correctTest();
   dependentGroupShearValues();
-  minimumFloatShearValueTest
+  maximumFloatShearValueTest();
   uninitializedMatrixMultiplication();
   uninitializedStruct();
   inputRange();

@@ -8,7 +8,7 @@
 #include "RotationInZ/RotationInZTests.h"
 #include "ScalingInX/ScalingInXTests.h"
 #include "ScalingInY/ScalingInYTests.h"
-#include "ZPlaneReflection/ZPlaneReflectionTests.h"
+#include "ReflectionInZPlane/ReflectionInZPlaneTests.h"
 #include "GlobalScaling/GlobalScalingTests.h"
 #include "ShearInX/ShearInXTests.h"
 #include "ShearInZ/ShearInZTests.h"

@@ -2,8 +2,8 @@
 #define Z_PLANE_REFLECTION_TESTS_H
 
 #include "../main.h"
-#include "ZPlaneReflection.h"
-void ZPlaneReflectionTests();
+#include "ReflectionInZPlane.h"
+void ReflectionInZPlaneTests();
 void DidZReflect();
 void TestInputNotEmptyZ();
 void TestInputFreedZ();

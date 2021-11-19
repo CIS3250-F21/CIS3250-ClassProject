@@ -1,7 +1,7 @@
-#include "ZPlaneReflectionTests.h"
+#include "ReflectionInZPlaneTests.h"
 
 
-void ZPlaneReflectionTests() {
+void ReflectionInZPlaneTests() {
   DidZReflect();
   TestInputNotEmptyZ();
   TestInputFreedZ();
@@ -18,21 +18,21 @@ void DidZReflect() {
 	for (int i = 0; i < inputShape->numOfPoints; i ++) {
 		test2[i].element[2] *= -1;
 	}
-    ZPlaneReflection(); // multiply inputShape by our reflection matrix
+    ReflectionInZPlane(); // multiply inputShape by our reflection matrix
     for (int i = 0; i < inputShape->numOfPoints; i ++) {
         if (getPoint(i)->element[2] != test2[i].element[2]) { // test if initialization passes
             printf("Failed clean test, point number %d did not reflect properly.\n",i);
         }
     } 
 	//restore old values
-	ZPlaneReflection();
+	ReflectionInZPlane();
 
 }
 // Dirty test 1, points are uninitialized. Should generate error when accessing point for reflection calculations, our function should detect this, and print an error message.
 void TestInputNotEmptyZ() {
 	struct point ** temp3 = inputShape->points;
 	inputShape->points = NULL;
-  ZPlaneReflection();
+  ReflectionInZPlane();
 	if (inputShape->points != NULL) {
 		printf("ZPlaneReflection falied dirty test 1.\n");
 	}
@@ -47,7 +47,7 @@ void TestInputFreedZ() {
 	struct shape * temp;
 	temp = inputShape;
 	inputShape = NULL;
-  ZPlaneReflection();
+  ReflectionInZPlane();
 	if (inputShape != NULL) {
 		printf("ZPlaneReflection failed dirty test 2.\n");
 	}
@@ -69,7 +69,7 @@ void OverflowZ(){
   for (int i = 0; i < inputShape->numOfPoints; i ++) {
     setPoint(i, test);
   }
-  ZPlaneReflection();
+  ReflectionInZPlane();
 	for (int i = 0; i < inputShape->numOfPoints; i ++) {
 		for (int j = 0; j < 4; j ++) {
 			if (getPoint(i)->element[j] != test->element[j]) {
@@ -99,7 +99,7 @@ void UnderflowZ() {
   for (int i = 0; i < inputShape->numOfPoints; i ++) {
     setPoint(i, test);
   }
-  ZPlaneReflection();
+  ReflectionInZPlane();
   for (int i = 0; i < inputShape->numOfPoints; i ++) {
 		for (int j = 0; j < 4; j ++) {
 			if (getPoint(i)->element[j] != test->element[j]) {

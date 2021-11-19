@@ -4,7 +4,7 @@
 #include "ReadInput/ReadInput.h"
 #include "ReflectionInXPlane/ReflectionInXPlane.h"
 #include "YPlaneReflection/YPlaneReflection.h"
-#include "ZPlaneReflection/ZPlaneReflection.h"
+#include "ReflectionInZPlane/ReflectionInZPlane.h"
 #include "ShearInX/ShearInX.h"
 #include "ShearInY/ShearInY.h"
 #include "ShearInZ/ShearInZ.h"

@@ -26,6 +26,7 @@ struct shape* inputShape;
 //~~~~~~ Global Functions ~~~~~~//
 void multiplyMatrix(struct point* currPoint, float matrix[4][4]);
 void resetMatrix();
+int compareFloat(float x, float y, float acceptedDistance);
 
 //~~~~~~ Getters ~~~~~~//
 struct point* getPoint(int index);

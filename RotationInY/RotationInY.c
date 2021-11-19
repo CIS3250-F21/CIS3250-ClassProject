@@ -9,6 +9,14 @@ void yRotation() {
 
     while ((y = getPoint(i)) != NULL) {
         multiplyMatrix(y, transformationMatrix);
+
+        // loop through y and round close to 0, to 0.
+        for (int k = 0; k < 4; k++) {
+            if (compareFloat(y->element[k], 0, 0.0001) == 0) {
+                y->element[k] = 0;  
+            }
+        }    
+
         setPoint(i, y);
         i++;
     }

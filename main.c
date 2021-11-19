@@ -292,6 +292,18 @@ void resetMatrix() {
         }
     }
 }
+
+//compare 1 float to another within a accepted range
+int compareFloat(float x, float y, float acceptedDistance) {
+    float difference = fabs(x - y);
+
+    if (difference > acceptedDistance) {
+        return 1;
+    }
+    
+    return 0;
+}
+
 // Instantiates shape struct for testing
 void createTestPoints() {
     createNTestPoints(5);

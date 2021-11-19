@@ -3,7 +3,7 @@
 
 #include <float.h>
 
-void emptyYShearValue ();
+void maximumFloatShearValueTest ();
 void inputRange ();
 void uninitializedStruct();
 void uninitializedMatrixMultiplication();

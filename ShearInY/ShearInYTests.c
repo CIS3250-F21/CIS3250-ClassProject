@@ -65,10 +65,10 @@ void uninitializedMatrixMultiplication(){
     struct point *point = getPoint(0);
     point = NULL;
 
-    setPoint(0, point);
+     setPoint(0, point);
     setXShear(xShear);
-    setYShear(zShear);
-    zShear();
+    setZShear(zShear);
+    yShear();
     
     if(getPoint(0) == NULL) {
         printf ("Error: The input value of the x shear is empty.\n");

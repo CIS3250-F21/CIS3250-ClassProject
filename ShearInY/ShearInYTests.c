@@ -59,14 +59,20 @@ void uninitializedMatrixMultiplication(){
 
   //Test Five: The x or z shear values are empty
   void dependentGroupShearValues () {
-    if ( inputShape->shearing[0] == 0) {
-      printf ("Error: The input value of the x shear is empty.\n");
-    }
-    else if ( inputShape->shearing[2] == 0) {
-      printf ("Error: The input value of the z shear is empty.\n");
-    }
-    else {
-      return;
+   float xShear = 5;
+    float zShear = 4;
+
+    struct point *point = getPoint(0);
+    point = NULL;
+
+    setPoint(0, point);
+    setXShear(xShear);
+    setYShear(zShear);
+    zShear();
+    
+    if(getPoint(0) == NULL) {
+        printf ("Error: The input value of the x shear is empty.\n");
+        //fprintf(stderr, "nullPointTest Failed: Expected point does not match test point\n");
     }
   }
 

@@ -31,20 +31,6 @@ void maximumFloatValue() {
     free(expectedPoint);
 }
 
-
-// void emptyYShearValue () {
-
-//     struct point *point = getPoint(0);
-//     point = NULL;
-
-//     setPoint(0, point);
-//     setYShear();
-    
-//     if(getPoint(1) == NULL) {
-//         printf ("Error: The input value of the y shear is empty\n");
-//     }
-// }
-
 //Test Two: The input is out of the range of the matrix/vector
 void inputRange () { 
   if(sizeof(inputShape->numOfPoints) > 4){

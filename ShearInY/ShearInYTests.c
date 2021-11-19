@@ -4,7 +4,7 @@
 //The following are dirty test cases for group 14
 
 //Test One: The input is greater than the maximum supported float value
-void maximumFloatShearValueTest() {
+void maximumFloatValue() {
     float xShear = FLT_MAX;
     float zShear = FLT_MAX;
 
@@ -156,7 +156,7 @@ void uninitializedMatrixMultiplication(){
 void runYShearTests () {
   correctTest();
   dependentGroupShearValues();
-  maximumFloatShearValueTest();
+  maximumFloatValue();
   uninitializedMatrixMultiplication();
   uninitializedStruct();
   inputRange();

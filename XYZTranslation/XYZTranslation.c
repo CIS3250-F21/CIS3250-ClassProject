@@ -1,6 +1,6 @@
 #include "XYZTranslation.h"
 
-void xyzTranslation() {
+void XYZTranslation() {
     // Variable Declarations
     int index = 0;
     struct point *resultPoint;

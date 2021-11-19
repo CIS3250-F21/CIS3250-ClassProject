@@ -3,6 +3,6 @@
 
 #include "../main.h"
 
-void xyzTranslation();
+void XYZTranslation();
 
 #endif

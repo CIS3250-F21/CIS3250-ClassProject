@@ -8,7 +8,7 @@
 #include "ShearInX/ShearInX.h"
 #include "ShearInY/ShearInY.h"
 #include "ShearInZ/ShearInZ.h"
-#include "xyzOrthographicProjection/xyzOrthographicProjection.h"
+#include "XYZOrthographicProjection/XYZOrthographicProjection.h"
 #include "OutputResults/OutputResults.h"
 #include "GlobalScaling/GlobalScaling.h"
 #include "ScalingInX/ScalingInX.h"

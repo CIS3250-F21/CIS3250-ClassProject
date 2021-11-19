@@ -1,8 +1,7 @@
 CC = clang
 CFLAGS = -std=c99 -Wall -pedantic
 EXECS = final
-O_FILES = ReadInput/ReadInput.o GlobalScaling/GlobalScaling.o ScalingInX/ScalingInX.o ScalingInY/ScalingInY.o ScalingInZ/ScalingInZ.o RotationInX/RotationInX.o RotationInY/RotationInY.o RotationInZ/RotationInZ.o XYZTranslation/XYZTranslation.o ReflectionInXPlane/ReflectionInXPlane.o YPlaneReflection/YPlaneReflection.o ZPlaneReflection/ZPlaneReflection.o ShearInX/ShearInX.o ShearInY/ShearInY.o ShearInZ/ShearInZ.o xyzOrthographicProjection/xyzOrthographicProjection.o OutputResults/OutputResults.o ReadInput/ReadInputTests.o GlobalScaling/GlobalScalingTests.o ScalingInX/ScalingInXTests.o ScalingInY/ScalingInYTests.o ScalingInZ/ScalingInZTests.o RotationInX/RotationInXTests.o RotationInY/RotationInYTests.o RotationInZ/RotationInZTests.o XYZTranslation/XYZTranslationTests.o ReflectionInXPlane/ReflectionInXPlaneTests.o YPlaneReflection/YPlaneReflectionTests.o ZPlaneReflection/ZPlaneReflectionTests.o ShearInX/ShearInXTests.o ShearInY/ShearInYTests.o ShearInZ/ShearInZTests.o xyzOrthographicProjection/xyzOrthographicProjectionTests.o OutputResults/OutputResultsTests.o
-H_FILES = main.h groupIncludes.h groupTestIncludes.h
+O_FILES = ReadInput/ReadInput.o GlobalScaling/GlobalScaling.o ScalingInX/ScalingInX.o ScalingInY/ScalingInY.o ScalingInZ/ScalingInZ.o RotationInX/RotationInX.o RotationInY/RotationInY.o RotationInZ/RotationInZ.o XYZTranslation/XYZTranslation.o ReflectionInXPlane/ReflectionInXPlane.o YPlaneReflection/YPlaneReflection.o ZPlaneReflection/ZPlaneReflection.o ShearInX/ShearInX.o ShearInY/ShearInY.o ShearInZ/ShearInZ.o xyzOrthographicProjection/xyzOrthographicProjection.o OutputResults/OutputResults.o ReadInput/ReadInputTests.o GlobalScaling/GlobalScalingTests.o ScalingInX/ScalingInXTests.o ScalingInY/ScalingInYTests.o ScalingInZ/ScalingInZTests.o RotationInX/RotationInXTests.o RotationInY/RotationInYTests.o RotationInZ/RotationInZTests.o XYZTranslation/XYZTranslationTests.o ReflectionInXPlane/ReflectionInXPlaneTests.o YPlaneReflection/YPlaneReflectionTests.o ZPlaneReflection/ZPlaneReflectionTests.o ShearInX/ShearInXTests.o ShearInY/ShearInYTests.o ShearInZ/ShearInZTests.o XYZOrthographicProjection/XYZOrthographicProjectionTests.o OutputResults/OutputResultsTests.o
 
 all: $(EXECS)
 
@@ -67,8 +66,8 @@ ShearInY/ShearInY.o: ShearInY/ShearInY.c ShearInY/ShearInY.h main.h
 ShearInZ/ShearInZ.o: ShearInZ/ShearInZ.c ShearInZ/ShearInZ.h main.h
 	$(CC) $(CFLAGS) -c ShearInZ/ShearInZ.c -o ShearInZ/ShearInZ.o
 
-xyzOrthographicProjection/xyzOrthographicProjection.o: xyzOrthographicProjection/xyzOrthographicProjection.c xyzOrthographicProjection/xyzOrthographicProjection.h main.h
-	$(CC) $(CFLAGS) -c xyzOrthographicProjection/xyzOrthographicProjection.c -o xyzOrthographicProjection/xyzOrthographicProjection.o
+XYZOrthographicProjection/XYZOrthographicProjection.o: XYZOrthographicProjection/XYZOrthographicProjection.c XYZOrthographicProjection/XYZOrthographicProjection.h main.h
+	$(CC) $(CFLAGS) -c XYZOrthographicProjection/XYZOrthographicProjection.c -o XYZOrthographicProjection/XYZOrthographicProjection.o
 
 OutputResults/OutputResults.o: OutputResults/OutputResults.c OutputResults/OutputResults.h main.h
 	$(CC) $(CFLAGS) -c OutputResults/OutputResults.c -o OutputResults/OutputResults.o
@@ -119,8 +118,8 @@ ShearInY/ShearInYTests.o: ShearInY/ShearInYTests.c ShearInY/ShearInYTests.h main
 ShearInZ/ShearInZTests.o: ShearInZ/ShearInZTests.c ShearInZ/ShearInZTests.h main.h
 	$(CC) $(CFLAGS) -c ShearInZ/ShearInZTests.c -o ShearInZ/ShearInZTests.o
 
-xyzOrthographicProjection/xyzOrthographicProjectionTests.o: xyzOrthographicProjection/xyzOrthographicProjectionTests.c xyzOrthographicProjection/xyzOrthographicProjectionTests.h main.h
-	$(CC) $(CFLAGS) -c xyzOrthographicProjection/xyzOrthographicProjectionTests.c -o xyzOrthographicProjection/xyzOrthographicProjectionTests.o
+XYZOrthographicProjection/XYZOrthographicProjectionTests.o: XYZOrthographicProjection/XYZOrthographicProjectionTests.c XYZOrthographicProjection/XYZOrthographicProjectionTests.h main.h
+	$(CC) $(CFLAGS) -c XYZOrthographicProjection/XYZOrthographicProjectionTests.c -o XYZOrthographicProjection/XYZOrthographicProjectionTests.o
 
 OutputResults/OutputResultsTests.o: OutputResults/OutputResultsTests.c OutputResults/OutputResultsTests.h main.h
 	$(CC) $(CFLAGS) -c OutputResults/OutputResultsTests.c -o OutputResults/OutputResultsTests.o

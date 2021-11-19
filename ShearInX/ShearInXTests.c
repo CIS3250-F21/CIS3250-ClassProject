@@ -10,6 +10,7 @@ void runXShearTests()
 		//creates a common, constant set of pre-defined points for tests to pull from when creating their shape structs
     struct point** testPoints = createXShearTestPoints();  
 
+
     errorFlag = -1;
     cleanTest(testPoints);
 
@@ -33,6 +34,7 @@ void runXShearTests()
 		//refresh modified values
     free(testPoints);
     testPoints = createXShearTestPoints();  
+
 
     errorFlag = -1;
     testWrongMagnitude(testPoints);

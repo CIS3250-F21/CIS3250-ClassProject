@@ -1,5 +1,5 @@
-#ifndef GROUP_7_TESTS
-#define GROUP_7_TESTS
+#ifndef ROTATION_Y_TESTS_H
+#define ROTATION_Y_TESTS_H
 
 #include <math.h>
 #include <stdio.h>
@@ -10,9 +10,9 @@
 
 int compareFloat(float x, float y, float acceptedDistance);
 
-void runGroup7Tests();
+void runRotationInYTests();
 
-void group7TestHandler(int (*test)(), char *testString);
+void rotationInYTestHandler(int (*test)(), char *testString);
 
 void setup();
 

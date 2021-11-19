@@ -5,29 +5,27 @@ void yShear() {
   //get shear values
   float xShearVal = getXShear();
   float zShearVal = getZShear();
+  
 
   //reset matrix
   resetMatrix();
 
-  //change col 1, row 0
-  transformationMatrix[0][1] = xShearVal;
+  transformationMatrix[1][0] = xShearVal;
 
   //change col 1, row 2
-  transformationMatrix[2][1] = zShearVal;
+  transformationMatrix[1][2] = zShearVal;
 
   //multply points by matrix
-  struct point* temp;
+  struct point* currentVector;
 
-  for (int i = 0; i < inputShape->numOfPoints; i++) {
-    
-    temp = getPoint(i);
-    
-    if (temp == NULL) {
+  //multiply matrix by point
+  for(int i = 0; i < inputShape->numOfPoints; i++) {
+    currentVector = getPoint(i);
+
+    if(currentVector == NULL) 
       return;
-    }
 
-    multiplyMatrix(temp, transformationMatrix);
-    setPoint(i, temp);
-
+    multiplyMatrix(currentVector, transformationMatrix);
+    setPoint(i, currentVector);
     }
 }

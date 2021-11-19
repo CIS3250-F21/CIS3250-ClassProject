@@ -3,33 +3,29 @@
 
 void runGlobalScalingTests(){
     makeTestPoint(0);
-    globalScalingCleanTest();
+    checkIfScaledCorrectly();
 
     makeTestPoint(0);
-    globalScalingDirtyTest1();
-
-    // The program actually properly handles this case, maybe turn it into a clean test
-    //makeTestPoint(0);
-    //globalScalingDirtyTest2();
+    checkIfWithZero();
 
     makeTestPoint(0);
-    globalScalingDirtyTest3();
+    checkIfScaledCorrectlyWithInts();
 
     makeTestPoint(0);
-    globalScalingDirtyTest4();
+    checkVectorPoints();
 
-    // This test had the same implementation as test4, not sure why
-    //makeTestPoint(0);
-    //GlobalScalingDirtyTest5(); 
+    makeTestPoint(0);
+    checkIfScaledWithNullPoints();
+
+    makeTestPoint(0);
+    checkIfScaledWithNegativeNumber();
 }
 
 /*
-    -First clean test
     -calls globalscaling
     -checks each index in point to see if globalScaling has scaled proeprly 
-    -if unsuccessful prints Global scaling: globalScalingCleanTest failed
 */
-void globalScalingCleanTest(){
+void checkIfScaledCorrectly(){
 
     struct point* comparPoint;
     // Saves pointer to old address for freeing later
@@ -62,7 +58,7 @@ void globalScalingCleanTest(){
         else if( comparPoint->element[i] == (float) (i + 1) ) {
             continue;
         }
-        printf("\nGlobal scaling: globalScalingCleanTest failed.\n");
+        printf("\nGlobal scaling: checkIfVectorPointsWereScaledCorrectly failed.\n");
         break;
     }
 
@@ -70,60 +66,66 @@ void globalScalingCleanTest(){
 }
 
 /*
-    -First dirty test
     -We set each point in the vector to a float value of [1,2,3,1]
     -set the global scale value to 0 
     -we call global scaling 
-    -each point will now equal 0 and function has been broken([0, 0 ,0, 0])
+    -each point will now equal 0 and each point will stay the same
 */
-void globalScalingDirtyTest1(){
+void checkIfWithZero(){
     struct point * comparPoint;
 
+    //set global scale value to 0
     setGlobalScale(0);
-    globalScaling();
- 
-    comparPoint = getPoint(0);
-    for( int i = 0; i < 4; i++) {
-        if( i == 3 ) {
-            if( comparPoint->element[i] != 1 ) {
+    float globalScaleValue = getGlobalScale();
+
+    //checks if the global scale value is 0 if not test fails
+    if(globalScaleValue == 0){
+        return;
+    }
+    else{
+        globalScaling();
+        comparPoint = getPoint(0);
+        for( int i = 0; i < 4; i++) {
+            comparPoint->element[i] *= 0;
+            if( i == 3 ) {
+                if( comparPoint->element[i] != 0 ) {
+                    continue;
+                }
+            }
+            else if( comparPoint->element[i] == (float)(i + 1) ) {
                 continue;
             }
+            printf("Global scaling: checkIfVectorPointsWereScaledCorrectlyWithZeroGlobalScaleValue failed.\n");
+            break;
         }
-        else if( comparPoint->element[i] != (float)(i + 1) ) {
-            continue;
-        }
-        printf("\nGlobal scaling: globalScalingDirtyTest1 failed.\n");
-        break;
     }
-
     resetMatrix();
 }
 
 
 /*
-    -Second dirty test
     -We set each point in the vector to an int
     -we call global scaling 
-    -The point will be scaled but the values stored at each point will be different to whats it suppose to be([0,1,1,1])
-    for example: 3/2 = 1.5 but sinces its an int, it will be stored as only 1 
+    -The points will be scaled according to the global scale value
 */
-void globalScalingDirtyTest2(){
+void checkIfScaledCorrectlyWithInts(){
     struct point * comparPoint;
-
+    //set the global scale value to 2
     setGlobalScale(2);
     globalScaling();
 
     comparPoint = getPoint(0);
+    //checks if it scaled correctly with int points
     for( int i = 0; i < 4; i++) {
         if( i == 3 ) {
-            if( comparPoint->element[i] != 1 ) {
+            if( comparPoint->element[i] == 1 ) {
                 continue;
             }
         }
-        else if( comparPoint->element[i] != (float)(i + 1)/2 ) {
+        else if( comparPoint->element[i] == (float)(i + 1)/2 ) {
             continue;
         }
-        printf("\nGlobal scaling: globalScalingDirtyTest2 failed.\n");
+        printf("\nGlobal scaling: checkIfVectorPointsWereScaledCorrectlyWithInts failed.\n");
         break;
     }
 
@@ -131,19 +133,19 @@ void globalScalingDirtyTest2(){
 }
 
 /*
-    -Third dirty test
-    -We set each point in the vector to a float value
     -we call global scaling
     -after the vector has been scaled we multiply each point by 2 
-    -This will break it as each point will now contain a incorrect value([1,2,3,2])
+    -This will break it as each point will now contain a incorrect value
 */
-void globalScalingDirtyTest3(){
+void checkVectorPoints(){
     struct point * comparPoint;
 
+    //set the global scale value to 2
     setGlobalScale(1);
     globalScaling();
     
     comparPoint = getPoint(0);
+    //checks if it scaled correctly after it was doubled
     for( int i = 0; i < 4; i++) {
         comparPoint->element[i] *= 2;
 
@@ -155,7 +157,7 @@ void globalScalingDirtyTest3(){
         else if( comparPoint->element[i] != (float)(i + 1)/2 ) {
             continue;
         }
-        printf("\nGlobal scaling: globalScalingDirtyTest3 failed.\n");
+        printf("\nGlobal scaling: checkIfVectorPointsWereScaledCorrectlyWhenVectorpointsWhereDoubled failed.\n");
         break;
     }
 
@@ -163,17 +165,32 @@ void globalScalingDirtyTest3(){
 }
 
 /*
-    -Fourth dirty test 
     -we set each point in the vector to NULL
     -we call global scaling 
-    -Each point will not be scaled as it was passed a null pointer to each point([])
+    -Each point will not be scaled as it was passed a null pointer to each point
 */
-void globalScalingDirtyTest4(){
+void checkIfScaledWithNullPoints(){
     struct point* comparPoint;
+    // Saves pointer to old address for freeing later
+    struct point* oldPoint;
 
+    // Creating test point
+    struct point* newPoint = (struct point*) malloc( sizeof(struct point) );
+    for(int i = 0; i <4; i++) {
+        newPoint->element[i] = 0;
+    }
+    newPoint->element[3] = 0;
+
+    // Overwrites point at index 0
+    oldPoint = getPoint(0);
+    setPoint(0, newPoint);
+    free( oldPoint );
+
+    //set the global scale value to 2
     setGlobalScale(1);
     globalScaling();
     
+    //checks if it scaled correctly with 0s as the vector points
     comparPoint = getPoint(0);
     for( int i = 0; i < 4; i++) {
         comparPoint->element[i] *= 2;
@@ -186,7 +203,7 @@ void globalScalingDirtyTest4(){
         else if( comparPoint->element[i] != (float)(i + 1)/2 ) {
             continue;
         }
-        printf("\nGlobal scaling: globalScalingDirtyTest4 failed.\n");
+        printf("\nGlobal scaling: checkIfVectorPointsWereScaledCorrectlyWhenPassedNullPointers failed.\n");
         break;
     }
 
@@ -194,18 +211,24 @@ void globalScalingDirtyTest4(){
 }
 
 /*
-    -Fifth dirty test
     -We pass in negitive numbers at each point in the vector 
     -we call global scaling 
-    -The vectors points will all be negitive when its suppose to be positive([-1,-2,-3,-1])
+    -The vectors points will all be negitive but the the 4th point in the vector will stay as 1
 */
-void globalScalingDirtyTest5(){
+void checkIfScaledWithNegativeNumber(){
     struct point* comparPoint;
 
-    setGlobalScale(1);
+    //set the global scale value to -1
+    setGlobalScale(-1);
+    float globalScaleValue = getGlobalScale();
+    //checks the global scale value if it was negative
+    if(globalScaleValue < 0){
+        return;
+    }
     globalScaling();
     
     comparPoint = getPoint(0);
+
     for( int i = 0; i < 4; i++) {
         comparPoint->element[i] *= 2;
 
@@ -217,7 +240,7 @@ void globalScalingDirtyTest5(){
         else if( comparPoint->element[i] != (float)(i + 1)/2 ) {
             continue;
         }
-        printf("\nGlobal scaling: globalScalingDirtyTest4 failed.\n");
+        printf("\nGlobal scaling: checkIfVectorPointsWereScaledCorrectlyWithNegativeNumberGlobalScaleValue failed.\n");
         break;
     }
     

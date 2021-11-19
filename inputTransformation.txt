@@ -1,0 +1,17 @@
+setGlobalScale=1
+setXScale=1
+setYScale=1
+setZScale=1
+setXRotation=0
+setYRotation=0
+setZRotation=0
+setXTranslation=0
+setYTranslation=0
+setZTranslation=0
+setXReflection=0
+setYReflection=0
+setZReflection=0
+setXshear=0
+setYshear=0
+setZshear=0
+setOrthographic=1

@@ -2,13 +2,13 @@
 
 
 void ZPlaneReflectionTests() {
-  ZPlaneReflectionTest1();
-	ZPlaneReflectionTest2();
-	ZPlaneReflectionTest3();
-	ZPlaneReflectionTest4();
-	ZPlaneReflectionTest5();
+  DidZReflect();
+  TestInputNotEmptyZ();
+  TestInputFreedZ();
+  OverflowZ();
+  UnderflowZ();
 }
-void ZPlaneReflectionTest1() {
+void DidZReflect() {
 	struct point test2[inputShape->numOfPoints];
 	for (int i = 0; i < inputShape->numOfPoints; i ++) {
 		for (int j = 0; j < 4; j ++) {
@@ -29,7 +29,7 @@ void ZPlaneReflectionTest1() {
 
 }
 // Dirty test 1, points are uninitialized. Should generate error when accessing point for reflection calculations, our function should detect this, and print an error message.
-void ZPlaneReflectionTest2() {
+void TestInputNotEmptyZ() {
 	struct point ** temp3 = inputShape->points;
 	inputShape->points = NULL;
   ZPlaneReflection();
@@ -38,10 +38,11 @@ void ZPlaneReflectionTest2() {
 	}
 	//restore points
 	inputShape->points = temp3;
+
 }
 // Dirty test 2, calling function after the global shape has been freed.
 // This should cause a segmentation fault when trying to access the global shape for editing, but our function should catch that and print an error statement.
-void ZPlaneReflectionTest3() {
+void TestInputFreedZ() {
 	//store old shape
 	struct shape * temp;
 	temp = inputShape;
@@ -55,7 +56,7 @@ void ZPlaneReflectionTest3() {
 }
 // Dirty test 3, calling functiopoints which use numbers too large to be a float.
 // Should produce a logical error and our function will catch that and state which point is invalid.
-void ZPlaneReflectionTest4(){
+void OverflowZ(){
   float over = FLT_MAX * 10; // over the max number that can be represented in a float
   struct point * test = malloc(sizeof(struct point));
 	struct point * temp[inputShape->numOfPoints];
@@ -85,7 +86,7 @@ void ZPlaneReflectionTest4(){
 }
 // Dirty test 4, calling function with points which use numbers too small to be a float.
 // Should produce a logical error and our function will catch that and state which point is invalid.
-void ZPlaneReflectionTest5() {
+void UnderflowZ() {
   float under = FLT_MIN / 10;
  	struct point * test = malloc(sizeof(struct point));
 	struct point  * temp[inputShape->numOfPoints];

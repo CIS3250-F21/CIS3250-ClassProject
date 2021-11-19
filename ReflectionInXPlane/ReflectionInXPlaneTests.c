@@ -1,5 +1,5 @@
-#include "XPlaneReflectionTests.h"
-#include "XPlaneReflection.h"
+#include "ReflectionInXPlaneTests.h"
+#include "ReflectionInXPlane.h"
 
 /* 
  Tests if the x value was correctly flipped
@@ -69,16 +69,21 @@ int testSetPoint( struct point * localPoint, int index ) {
 	return( didXReflect(localPoint, getPoint(index)) && testOtherValuesUnchanged(localPoint, getPoint(index)) );
 }
 
-void runXPlaneReflectionTests() {
+void runReflectionInXPlaneTests() {
+	
     generateXPlaneReflectionMatrix();
     testTransformationMatrix();
 	testInputNotEmpty();
-    testXPlaneReflection();
+    testReflectionInXPlane();
 
     resetMatrix();
 }
 
-void testXPlaneReflection() {
+/* 
+ Tests if a point was multiplied successfully
+ Returns 1 on if reflected successfully, 0 otherwise
+*/
+void testReflectionInXPlane() {
     struct point oldP, newP;
 
     generateXPlaneReflectionMatrix();

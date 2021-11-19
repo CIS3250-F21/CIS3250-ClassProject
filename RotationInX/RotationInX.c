@@ -9,7 +9,16 @@ void xRotation() {
 
     while ((x = getPoint(i)) != NULL) {
         multiplyMatrix(x, transformationMatrix);
+        
+        // loop through x and round close to 0, to 0.
+        for (int k = 0; k < 4; k++) {
+            if (compareFloat(x->element[k], 0, 0.0001) == 0) {
+                x->element[k] = 0;  
+            }
+        }  
+
         setPoint(i, x);
+
         i++;
     }
 }

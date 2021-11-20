@@ -3,7 +3,7 @@
 
 #include "../main.h"
 
-void yPlaneReflection();
+void ReflectionInYPlane();
 void generateYPlaneReflectionMatrix();
 
 #endif

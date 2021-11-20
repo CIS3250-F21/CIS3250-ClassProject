@@ -1,5 +1,5 @@
-#include "YPlaneReflectionTests.h"
-#include "YPlaneReflection.h"
+#include "ReflectionInYPlaneTests.h"
+#include "ReflectionInYPlane.h"
 
 /* 
  Tests if the y value was correctly flipped

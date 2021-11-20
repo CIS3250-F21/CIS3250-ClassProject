@@ -14,7 +14,7 @@
 #include "ShearInZ/ShearInZTests.h"
 #include "ReflectionInXPlane/ReflectionInXPlaneTests.h"
 #include "XYZOrthographicProjection/XYZOrthographicProjectionTests.h"
-#include "YPlaneReflection/YPlaneReflectionTests.h"
+#include "ReflectionInYPlane/ReflectionInYPlaneTests.h"
 #include "XYZTranslation/XYZTranslationTests.h"
 #include "ScalingInZ/ScalingInZTests.h"
 #include "OutputResults/OutputResultsTests.h"

@@ -1,6 +1,6 @@
-#include "YPlaneReflection.h"
+#include "ReflectionInYPlane.h"
 
-void yPlaneReflection() {
+void ReflectionInYPlane() {
 	generateYPlaneReflectionMatrix();
 	struct point* vect;
 	int j = 1;

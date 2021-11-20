@@ -1,7 +1,7 @@
 #include "ShearInYTests.h"
 #include "../main.h"
 
-//The following are dirty test cases for the yShear function
+//The following are dirty test cases for group 14
 
 //Test One: The input is out of the range of the matrix/vector
 void inputRange () { 
@@ -70,7 +70,10 @@ void uninitializedStruct() {
     }
   }
 
+  //The following is a clean test cases for group 14
+
   //Test five: Giving an example vector, check to see whether or not the  yShear() function updated the coordates correctly.
+
   void correctTest() {
 
     //the following code is from the yShear() function but will be given dummy values for the purpose of this test:

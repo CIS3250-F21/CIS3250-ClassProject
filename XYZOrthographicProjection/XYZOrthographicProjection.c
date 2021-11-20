@@ -9,7 +9,8 @@ void XYZOrthographicProjection()
 
   for ( index = 0; index < inputShape->numOfPoints; index++)
   {
-    tempPoint = getPoint(index); //get point from global matrix in inputShape
+    
+    tempPoint = getPoint(index); //get vector from global matrix in inputShape
     multiplyMatrix(tempPoint, transformationMatrix); //rearrange that vector
     setPoint(index, tempPoint); //set it back inside inputShape
   }
@@ -17,6 +18,6 @@ void XYZOrthographicProjection()
 
 void generateXYZOrthographicProjectionMatrix()
 {
-  resetMatrix(); //resets transformation matrix to identity matrix
-  transformationMatrix[2][2] = 0; //set z column (third column of matrix) in identity matrix to zero
+  resetMatrix();
+  transformationMatrix[2][2] = 0;
 }

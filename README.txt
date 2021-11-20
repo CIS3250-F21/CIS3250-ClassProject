@@ -54,42 +54,42 @@ setOrthographic=1
 
 Where each corresponds to a transformation with the following limitations and functionality:
 
-setGlobalScale=1
+setGlobalScale
 
 This value handles the scaling of all values inside of a point where the value passed in must be greater than zero.
 
-setXScale=1
-setYScale=1
-setZScale=1
+setXScale
+setYScale
+setZScale
 
 This value handles the scaling of each individual x y z coordinate individually to scale all the points.
 
-setXRotation=0
-setYRotation=0
-setZRotation=0
+setXRotation
+setYRotation
+setZRotation
 
 This value handles the rotation of  points about each axis based on a supplied angle which is in degrees.
 
-setXTranslation=0
-setYTranslation=0
-setZTranslation=0
+setXTranslation
+setYTranslation
+setZTranslation
 
 This value handles the translation of  points in the x, y and z directions where there is no restrictions on these values.
 
-setXReflection=0
-setYReflection=0
-setZReflection=0
+setXReflection
+setYReflection
+setZReflection
 
 These are boolean values that represent if the shape has to be flipped (1) or not (0) in the x, y and z direction.
 
 
-setXshear=0
-setYshear=0
-setZshear=0
+setXshear
+setYshear
+setZshear
 
 These values correspond to the x, y and z shears on a point where they will transform the function by squashing or pulling it in a direction.
 
 
-setOrthographic=1
+setOrthographic
 
 This is a  boolean value that represents if the shape has to be projected orthographically (1) or not (0).

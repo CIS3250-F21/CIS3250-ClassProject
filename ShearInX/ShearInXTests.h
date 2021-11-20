@@ -1,8 +1,7 @@
 #ifndef XSHEAR_TEST_H
 #define XSHEAR_TEST_H
 
-// Calls the tests
-void runXShearTests();  
+void runXShearTests();  // Calls the tests
 
 struct point** createXShearTestPoints();
 

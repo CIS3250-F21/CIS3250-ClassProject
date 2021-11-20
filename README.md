@@ -59,15 +59,9 @@ Please compile using "make" to make sure all of your functions and tests compile
 2. run ./final with the following structure:
 `./final <inputfile> <tranformationfile> <outputfile>`
 
-## xScaling (ScalingInX.c) Functionality
-Retrieves the xScale value. Using a loop to cycle through the points, xScaling retrieves all points, multiplies the x value (index 0 of each point) by xScale, and stores the new value.
-
 ## yScaling (ScalingInY.c) Functionality
 Retrives the yScale value. Using a loop to cycle through the points, yScaling retrieves a point, multiplies the y value (index 1 of the point) by yScale, and stores the new value.
 
 ## globalScaling (GlobalScaling.c) Functionality
 Retrives the global scale value. Using a loop to cycle through the points, globalScaling retrieves the 4th point multiplies it by the global scale value. If the fourth point is not equal to 1, then divide every point by the fourth point and store the new values.
-
-## xShear (ShearInX.c)
-Retrieves the Y and Z shear values, and uses them to create a matrix that will shear around the X axis. Loops through each point, multiplying each by the matrix created.
 

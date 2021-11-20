@@ -1,7 +1,7 @@
 #include "ReadInputTests.h"
-void printShape(struct shape *test);
 
 void runReadInputTests(){
+		
     if(ReadInputTest1("inputShapeFile.csv", "ReadInput/answers1.csv", "inputTransformation.txt")){
         printf("ReadInput Test 1 - Failed\n");
     }
@@ -23,7 +23,7 @@ void runReadInputTests(){
 }
 
 // (CLEAN) Test #1 will compare all the given float values against the expected float values. We expect this test to pass.
-char ReadInputTest1(char testFile[20], char answerFile[20], char inputfile2[20]) {
+int ReadInputTest1(char testFile[20], char answerFile[20], char inputfile2[20]) {
     readInput(testFile, inputfile2);
     FILE *fp = fopen(answerFile, "r");
     int lines = 0;
@@ -36,15 +36,15 @@ char ReadInputTest1(char testFile[20], char answerFile[20], char inputfile2[20])
         lines++;
         for (int j = 0; j < 4; j++) {
             if (test[j] != answers[j]) {
-                fclose(fp);
+								fclose(fp);
                 freeShape(inputShape);
-                return '1';
+                return 1;
             }
         }
     }
     fclose(fp);
     freeShape(inputShape);
-    return '0';
+    return 0;
 }  // END OF TEST 1
 
 //Dirty test 1 - incorrect input format(characters found in the input file)

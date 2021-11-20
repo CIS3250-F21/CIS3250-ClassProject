@@ -8,7 +8,7 @@
 #include "RotationInZ.h"
 
 void runRotationInZTests ();
-void testValidVectors ();
+void testValidPoints ();
 void testAngleWithSqrt ();
 void testAngleWithMinFloatValue ();
 void testAngleWithMaxFloatValue ();

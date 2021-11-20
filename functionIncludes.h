@@ -1,5 +1,5 @@
-#ifndef GROUP_INCLUDES_H
-#define GROUP_INCLUDES_H
+#ifndef FUNCTION_INCLUDES_H
+#define FUNCTION_INCLUDES_H
 
 #include "ReadInput/ReadInput.h"
 #include "ReflectionInXPlane/ReflectionInXPlane.h"

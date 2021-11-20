@@ -1,6 +1,6 @@
 
-#ifndef GROUP_TEST_INCLUDES_H
-#define GROUP_TEST_INCLUDES_H
+#ifndef TEST_INCLUDES_H
+#define TEST_INCLUDES_H
 
 #include "ReadInput/ReadInputTests.h"
 #include "RotationInX/RotationInXTests.h"

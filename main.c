@@ -1,7 +1,7 @@
 #include "main.h"
 //~~~~~~ Class Includes ~~~~~~//
-#include "groupIncludes.h"
-#include "groupTestIncludes.h"
+#include "functionIncludes.h"
+#include "testIncludes.h"
 
 int main(int argc, char** argv) {
     // Run tests if need be

@@ -46,7 +46,7 @@ int main(int argc, char** argv) {
 
         //~~~~~ Reflection on the y plane ~~~~~//
         if( getYReflection() == 1 ) {
-            yPlaneReflection();
+            ReflectionInYPlane();
         }
 
         //~~~~~ Reflection on the z plane ~~~~~//
@@ -340,7 +340,6 @@ void freeTestPoints() {
 void runAllTests() {
   
     /*Read Input Tests*/
-    runReadInputTests(); 
 
     /* Global Scaling Tests */
     createTestPoints();

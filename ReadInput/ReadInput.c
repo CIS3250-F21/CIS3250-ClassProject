@@ -1,5 +1,9 @@
 #include "ReadInput.h"
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1c0cc891d9a8155f872e319628876f8809e55e74
 void readInput(char *fileName, char *fileName2) {  // readInput manually creates an "expected" file read that would be what we expect from the "real function". Since the TDD is not expected to actually read the real text file, we do not get into file reading here.
     inputShape = malloc(sizeof(struct shape));
     FILE *fp = fopen(fileName, "r");

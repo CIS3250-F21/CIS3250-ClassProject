@@ -65,3 +65,6 @@ Retrives the yScale value. Using a loop to cycle through the points, yScaling re
 ## globalScaling (GlobalScaling.c) Functionality
 Retrives the global scale value. Using a loop to cycle through the points, globalScaling retrieves the 4th point multiplies it by the global scale value. If the fourth point is not equal to 1, then divide every point by the fourth point and store the new values.
 
+## xShear (ShearInX.c)
+Retrieves the Y and Z shear values, and uses them to create a matrix that will shear around the X axis. Loops through each point, multiplying each by the matrix created.
+

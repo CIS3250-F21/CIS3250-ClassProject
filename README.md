@@ -75,3 +75,5 @@ Sets all values in the third column of the global matrix to zero. Using a loop t
 ## xShear (ShearInX.c)
 Retrieves the Y and Z shear values, and uses them to create a matrix that will shear around the X axis. Loops through each point, multiplying each by the matrix created.
 
+## zRotation (RotationInZ.c) Functionality
+Retrives the zRotation value and generates the zRotation matrix. Using a loop to cycle through the points, zRotation retrieves a point and multiplies it by the zRotation matrix to get the rotated point. 

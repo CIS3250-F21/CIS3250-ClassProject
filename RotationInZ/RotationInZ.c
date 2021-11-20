@@ -14,7 +14,7 @@ void zRotation() {
 
         // loop through y and round close to 0, to 0.
         for (int k = 0; k < 4; k++) {
-            if (compareFloat(currentPoint->element[k], 0, 0.0001) == 0) {
+            if (compareFloat (currentPoint->element[k], 0, 0.0001) == 0) {
                 currentPoint->element[k] = 0;  
             }
         }  

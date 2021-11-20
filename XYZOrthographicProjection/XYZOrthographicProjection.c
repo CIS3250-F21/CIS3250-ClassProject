@@ -18,6 +18,6 @@ void XYZOrthographicProjection()
 
 void generateXYZOrthographicProjectionMatrix()
 {
-  resetMatrix();
-  transformationMatrix[2][2] = 0;
+  resetMatrix(); //resets transformation matrix to identity matrix
+  transformationMatrix[2][2] = 0; //set z column (third column of matrix) in identity matrix to zero
 }

@@ -5,19 +5,19 @@ void runReadInputTests(){
     if(ReadInputTest1("inputShapeFile.csv", "ReadInput/answers1.csv", "inputTransformation.txt")){
         printf("ReadInput Test 1 - Failed\n");
     }
-    if(ReadInputTest2("ReadInput/test2.csv", "inputShapeFile.csv", "inputTransformation.txt") == 1){
+    if(ReadInputTest2("ReadInput/test2.csv", "inputShapeFile.csv", "inputTransformation.txt") == 0){
          printf("ReadInput Test 2 - Failed\n");
     }
 
-    if(ReadInputTest3("ReadInput/test3.csv", "inputShapeFile.csv", "inputTransformation.txt") == 1){
+    if(ReadInputTest3("ReadInput/test3.csv", "inputShapeFile.csv", "inputTransformation.txt") == 0){
         printf("ReadInput Test 3 - Failed\n");
     }
 
-    if(ReadInputTest4("ReadInput/test4.csv", "inputShapeFile.csv", "inputTransformation.txt") == 1){
+    if(ReadInputTest4("ReadInput/test4.csv", "inputShapeFile.csv", "inputTransformation.txt") == 0){
         printf("ReadInput Test 4 - Failed\n");
     }
 
-    if(ReadInputTest5("incorrectFileName.csv", "inputTransformation.txt") == 1){
+    if(ReadInputTest5("incorrectFileName.csv", "inputTransformation.txt") == 0){
         printf("ReadInput Test 5 - Failed\n");
     }
 }

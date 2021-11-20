@@ -129,13 +129,12 @@ int ReadInputTest5(char answerFile[20], char inputfile2[20]) {
 void freeShape(struct shape *test) {
     if (!test) return;
     for (int i = 0; i < test->numOfPoints; i++) {
-        free(test->points[i]);
-				test->points[i] = NULL;
+        if (test->points[i] != NULL) {
+                free(test->points[i]);
+        }
     }
     free(test->points);
-		test->points = NULL;
     free(test);
-		test = NULL;
 }
 
 void printShape(struct shape *test){

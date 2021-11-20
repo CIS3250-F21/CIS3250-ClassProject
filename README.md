@@ -60,8 +60,12 @@ Please compile using "make" to make sure all of your functions and tests compile
 `./final <inputfile> <tranformationfile> <outputfile>`
 
 ## yScaling (ScalingInY.c) Functionality
-Retrives the yScale value. Using a loop to cycle through the points, yScaling retrieves a point, multiplies the y value (index 1 of the point) by yScale, and stores the new value.
+Retrieves the yScale value. Using a loop to cycle through the points, yScaling retrieves a point, multiplies the y value (index 1 of the point) by yScale, and stores the new value.
 
 ## globalScaling (GlobalScaling.c) Functionality
-Retrives the global scale value. Using a loop to cycle through the points, globalScaling retrieves the 4th point multiplies it by the global scale value. If the fourth point is not equal to 1, then divide every point by the fourth point and store the new values.
+Retrieves the global scale value. Using a loop to cycle through the points, globalScaling retrieves the 4th point multiplies it by the global scale value. If the fourth point is not equal to 1, then divide every point by the fourth point and store the new values.
+
+## XYZOrthographicProjection (XYZOrthographicProjection.c) Functionality
+Sets all values in the third column of the global matrix to zero. Using a loop to cycle through all points, retrieves a point from the global inputShape, multiplies it by the orthographic transformation matrix, and overwrites the point in the global InputShape with the modified point. The orthographic projection matrix can be defined as a modified identity matrix, where the element in the third row, third column is zero.
+
 

@@ -1,7 +1,11 @@
 #include "../main.h"
 #include "ReadInput.h"
 
-char ReadInputTest1(char *, char *, char *);
+void runReadInputTests();
+
+struct shape* readCSVInputTest(char *);
+
+int ReadInputTest1(char *, char *, char *);
 
 int ReadInputTest2(char *, char *, char[20]);
 
@@ -14,3 +18,5 @@ int ReadInputTest5(char[20], char[20]);
 int ReadInputTest6(char[20], char[20], char[20]);
 
 void freeShape(struct shape *);
+
+void printShape(struct shape *test);

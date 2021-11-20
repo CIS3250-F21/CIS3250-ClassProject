@@ -8,7 +8,11 @@
 #include "RotationInZ.h"
 
 void runRotationInZTests ();
-void testValidAngles (float expectedTransformationMatrix[4][4], float theta);
-void testValidVectors (float expectedVector [4]);
+void testValidPoints ();
+void testAngleWithSqrt ();
+void testAngleWithMinFloatValue ();
+void testAngleWithMaxFloatValue ();
+void testAnglesWithDecimalPlaces ();
+void testAngleEqualtoZero ();
 
 #endif

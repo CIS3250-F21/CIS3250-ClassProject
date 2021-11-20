@@ -375,6 +375,7 @@ void runAllTests() {
   
     /* Rotation in Z Tests */
     createTestPoints();
+    setZRotation(0);
     runRotationInZTests ();
     freeTestPoints();
   
@@ -396,7 +397,7 @@ void runAllTests() {
 
     /* XYZ Translation Tests */
     createTestPoints();
-    // runXYZTranslationTest();
+    runXYZTranslationTests();
     freeTestPoints();
   
     /* X Shear Tests */

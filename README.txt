@@ -13,6 +13,9 @@ Instructions to run the file:
 
 After using the make command, the following command should run the program,
 ./final inputShapeFile.csv inputTransformation.txt ouputShapeFile.csv
+the following command will run the program with tests
+./final inputShapeFile.csv inputTransformation.txt ouputShapeFile.csv -t
+
 
 Format for Input and Output files:
 
